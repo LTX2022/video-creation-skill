@@ -1,5 +1,5 @@
 
-> **离线公开整理候选 / publication review only:** 60 风格源码保留；第三方研究抽帧与转写未附；精选自生成示例见仓库 media 目录。原创代码 MIT 范围已获用户确认；第三方与媒体另按各自许可。当前测试与缺口见 [发布说明](../README.md)。历史记录不等于本次验收。
+> **离线公开整理候选 / publication review only:** 60 风格源码保留；第三方研究抽帧与转写未附；精选自生成示例见仓库 media 目录。原创代码 MIT 范围已获用户确认；第三方与媒体另按各自许可。当前测试与缺口见 [仓库发布说明（在线）](https://github.com/LTX2022/video-creation-skill/blob/main/README.md)。历史记录不等于本次验收。
 
 # Web Video Presentation
 

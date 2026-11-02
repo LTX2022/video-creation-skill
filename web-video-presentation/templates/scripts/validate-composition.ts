@@ -4,9 +4,9 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { localPath, outputMode, readState } from './delivery-contract';
 
-export function validateComposition(root = process.cwd()): string[] {
+export function validateComposition(root = process.cwd(), selectedMode?: unknown): string[] {
   const state = readState(root);
-  if (!['composite', 'both'].includes(outputMode(state.outputMode))) return [];
+  if (!['composite', 'both'].includes(outputMode(selectedMode ?? state.outputMode))) return [];
   const errors: string[] = [];
   if (!Number.isFinite(state.videoFps) || state.videoFps <= 0) errors.push('project-state.videoFps must be a positive number');
   const timingPath = resolve(root, 'src/video/render-timing.generated.ts');

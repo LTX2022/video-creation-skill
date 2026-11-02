@@ -2,7 +2,7 @@
 name: web-video-presentation
 description: 把文章、口播、产品流程、机制或参考动效制作成帧确定性的 Remotion 视频；支持横竖屏、多种内容风格、TTS/字幕、透明 Alpha 素材、实拍动态图形，以及生图/非生图两路封面。适用于制作或修改视频项目，不把交互网页或未验收的预览当成最终视频。
 ---
-> **离线公开整理候选 / publication review only:** 60 风格源码保留；第三方研究抽帧与转写未附；精选自生成示例见仓库 media 目录。原创代码 MIT 范围已获用户确认；第三方与媒体另按各自许可。当前测试与缺口见 [发布说明](../README.md)。历史记录不等于本次验收。
+> **离线公开整理候选 / publication review only:** 60 风格源码保留；第三方研究抽帧与转写未附；精选自生成示例见仓库 media 目录。原创代码 MIT 范围已获用户确认；第三方与媒体另按各自许可。当前测试与缺口见 [仓库发布说明（在线）](https://github.com/LTX2022/video-creation-skill/blob/main/README.md)。历史记录不等于本次验收。
 
 
 # Web Video Presentation
@@ -72,8 +72,9 @@ description: 把文章、口播、产品流程、机制或参考动效制作成�
 | 尺寸/帧率/平台安全区 | [FORMATS](references/FORMATS.md) |
 | Alpha、亮暗边、导入编辑器 | [ALPHA-COMPOSITING](references/ALPHA-COMPOSITING.md) |
 | 本地实拍、跟踪或遮挡需求 | [LIVE-ACTION-OVERLAYS](references/LIVE-ACTION-OVERLAYS.md)，另按需查 [VIDEO-ASSETS](references/VIDEO-ASSETS.md) |
+| 用户提供视频/网站参考，要求学习动态设计、创建可复用新风格或命名保存版本 | [CUSTOM-STYLES](references/CUSTOM-STYLES.md)：60 套是起点；先核验实际可见时间序列和授权，原创实现专属 Scene，给出可播放小样并由用户确认；显式目录保存命名版本。不可访问的参考不冒称已分析，无法渲染只保存 draft，不自动抓取/绕访问限制或改写原60套 |
 | 使用新增参考衍生风格 | [REFERENCE-STYLES](references/REFERENCE-STYLES.md)：四类保留场景的适用题材、真实入口、修改点与Alpha边界，不叫统一“Claude风格” |
-| 原有预制风格选择/使用/切换 | 先 `node scripts/theme-summary.mjs --query="题材" --limit=3`；已选只读该 `theme.json` 与当前 family；[风格使用与验收](references/PRESET-REBUILD.md) / [主题契约](references/THEMES.md)。不要把 56 套全部加载进每章上下文，也不把 SVG 检查替代浏览器验收 |
+| 原有预制风格选择/使用/切换 | 先将 `SKILL` 设为已确认的 Skill 安装绝对路径（不是项目目录），再运行 `node "$SKILL/scripts/theme-summary.mjs" --query="题材" --limit=3`；已选只读该 `theme.json` 与当前 family；[风格使用与验收](references/PRESET-REBUILD.md) / [主题契约](references/THEMES.md)。不要把 56 套全部加载进每章上下文，也不把 SVG 检查替代浏览器验收 |
 | 查看本轮实际离线代码样片与可复跑源码 | [CPU 设计试片](examples/cinematic-cpu-trial/README.md)：已编码 26 秒 1080p30 静音样片；独立 Python 渲染器，不替代 Remotion、Alpha 或客户验收 |
 | 查看语义连续、条件分流与中间帧检验的真实中文小样 | [缓存边界示例](examples/semantic-cache-study/README.md)：14秒静音代码片与复跑源码；独立机制示意，不是第61个已验收风格 |
 | 需要连续粒子形变与空间相机原型 | [独立数学示例](examples/cinematic-primitives/README.md)：模型契约已测，Remotion 适配未渲染；不等于成片质量与工作流验收 |

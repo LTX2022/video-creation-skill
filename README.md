@@ -17,7 +17,7 @@
 | [![Product workflow](media/samples-20261102/en/product.gif)](media/samples-20261102/en/product.mp4) | [![Data explanation](media/samples-20261102/en/data.gif)](media/samples-20261102/en/data.mp4) | [![Kinetic typography](media/samples-20261102/en/type.gif)](media/samples-20261102/en/type.mp4) |
 | [Open MP4](media/samples-20261102/en/product.mp4) | [Open MP4](media/samples-20261102/en/data.mp4) | [Open MP4](media/samples-20261102/en/type.mp4) |
 
-These are animated GIF previews, not embedded MP4 players. Click to open each MP4; if GitHub shows no player, choose **Download raw file**. The videos use an offline React/SVG → librsvg/Cairo → FFmpeg route, **not a verified Remotion browser render**. Data are illustrative. Full decoding and sampled-frame review passed; full real-time playback and user acceptance were not performed. These 12-second demos are separate from the 15-second exercise below. [Sources and verification](media/samples-20261102/README.md)
+These are animated GIF previews, not embedded MP4 players. Click to open each MP4; if GitHub shows no player, choose **Download raw file**.
 
 <details>
 <summary><strong>Earlier reference examples — Chinese on-screen text</strong></summary>
@@ -59,6 +59,14 @@ Click a preview to open the MP4 file page. If no player appears, choose **Downlo
 | Live-action footage you have permission to use | Transparent motion graphics and overlays |
 
 This is a tool for **AI agents that can load skills, read and write files, and run code**, not a standalone video editor. Installation and permissions vary by agent. The workflow is: **choose a style → approve the storyboard and key frames → preview → render and check → receive the video and source project**. Installing the skill does not install the rendering environment.
+
+## 60 styles are a starting point, not a limit
+
+None of the built-in styles fit? Give your agent a video, website, or playable screen recording and explain what you like about it. Within the material it can actually access and has permission to study, the agent can examine composition, camera movement, continuous transformations, transitions, and pacing, then build a reusable new style—not just a different color palette. Unseen motion stays unknown: this does not automatically scrape arbitrary websites or bypass access restrictions.
+
+Start with a short playable preview. Review and approve the direction before expanding it into a full video. You can name the style, save versions in a personal folder you choose, and reuse or revise it later. Saving a new version does not overwrite older versions or silently update existing projects. If rendering is unavailable, the result remains a clearly marked draft, not an approved style. Reference assets, fonts, and code still need appropriate usage rights.
+
+[How to study, save, and reuse a custom style](web-video-presentation/references/CUSTOM-STYLES.md)
 
 ## Download and install
 

@@ -474,6 +474,9 @@ cp "$TEMPLATES/scripts/validate-alpha.ts"                  scripts/validate-alph
 cp "$TEMPLATES/scripts/test-silent-route.mjs"              scripts/test-silent-route.mjs
 cp "$TEMPLATES/scripts/test-contracts.ts"                  scripts/test-contracts.ts
 cp "$TEMPLATES/scripts/render-route-args.ts" scripts/render-route-args.ts
+cp "$TEMPLATES/scripts/render-output-safety.ts" scripts/render-output-safety.ts
+cp "$TEMPLATES/scripts/test-render-output-safety.ts" scripts/test-render-output-safety.ts
+cp "$TEMPLATES/scripts/test-alpha-composite-media.ts" scripts/test-alpha-composite-media.ts
 cp "$TEMPLATES/scripts/render-smoke.ts" scripts/render-smoke.ts
 cp "$TEMPLATES/scripts/test-render-route-args.ts" scripts/test-render-route-args.ts
 cp "$TEMPLATES/scripts/test-narration-scope.mjs" scripts/test-narration-scope.mjs
@@ -622,6 +625,8 @@ p.scripts = Object.assign({}, p.scripts, {
   "test:preset-manifest": "node scripts/test-preset-manifest.mjs",
   "validate-assets": "node --import tsx scripts/validate-assets.ts",
   "validate:composition": "node --import tsx scripts/validate-composition.ts",
+  "test:render-output-safety": "node --import tsx --test scripts/test-render-output-safety.ts",
+  "test:alpha-composite-media": "node --import tsx --test scripts/test-alpha-composite-media.ts",
   "test:render-route-args": "node --import tsx --test scripts/test-render-route-args.ts",
   "test:narration-scope": "node --test scripts/test-narration-scope.mjs",
   "test:studio": "node --test scripts/test-run-studio.mjs",

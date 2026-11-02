@@ -1,12 +1,13 @@
+import { atomicOutputWrite, safeOutputFile, safeRenderOutput, stagedRenderOutput, validateDecodedMedia, withOutputRollback } from './render-output-safety';
 import { bothChildArgs, parseAlphaSampleFrames, resolveRenderOutput } from './render-route-args';
 import { captureInputRevision, hashLocalFile, renderVariantDigest, revisionErrors, safeLocalPath, type InputRevision } from "./input-revision";
 import { requiredDecisionChecks } from "./workflow-evidence";
 import { installedBrowser } from "./browser";
 import { execFileSync, spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, statSync } from "node:fs";
 import { createRequire } from "node:module";
 import { createServer } from "node:net";
-import { basename, dirname, extname, resolve } from "node:path";
+import { basename, dirname, extname, relative, resolve } from "node:path";
 import { contractErrors, finalOutputs, mergeFinalOutput, outputKinds, outputMode, OUTPUTS, readState, type OutputKind } from './delivery-contract';
 import { validateComposition } from './validate-composition';
 import { validateAlphaMedia } from './validate-alpha';
@@ -88,6 +89,7 @@ const subtitles = !alpha && (hasFlag('--subtitles') || hasFlag('--captions') || 
 const output = resolveRenderOutput(selectedMode, isDraft, subtitles, readFlag('--output'), OUTPUTS[kind].output);
 const alphaSampleFrames=parseAlphaSampleFrames(readFlag('--alpha-sample-frames'));
 let alphaValidation: ReturnType<typeof validateAlphaMedia> | null = null;
+let decodeValidation: ReturnType<typeof validateDecodedMedia> | null = null;
 const concurrency = readFlag("--concurrency");
 const x264Preset = readFlag("--x264-preset", isDraft ? "veryfast" : null);
 const pixelFormat = readFlag("--pixel-format");
@@ -248,17 +250,16 @@ function probeMedia(path: string) {
   }
 }
 
-function writeRenderResult(port: number) {
+function writeRenderResult(port: number, validatedProbe?: ReturnType<typeof probeMedia>) {
   const after = captureInputRevision();
   const stale = revisionErrors(after, inputRevision);
   if (stale.length) throw new Error(`Inputs changed during rendering; no final receipt recorded: ${stale.join('; ')}`);
   const outputPath = safeLocalPath(process.cwd(), output);
   if (!existsSync(outputPath)) {
-    console.error(`x render finished but output file is missing: ${output}`);
-    process.exit(1);
+    throw new Error(`render finished but output file is missing: ${output}`);
   }
   const stat = statSync(outputPath);
-  const mediaProbe = probeMedia(outputPath);
+  const mediaProbe = validatedProbe ?? probeMedia(outputPath);
   if (mediaProbe.ok !== true) throw new Error(`ffprobe failed; no final evidence recorded: ${JSON.stringify(mediaProbe)}`);
   const result = {
     schema: 3,
@@ -268,6 +269,7 @@ function writeRenderResult(port: number) {
     kind,
     outputMode: contractMode,
     alphaValidation,
+    decodeValidation,
     generatedAt: new Date().toISOString(),
     output,
     absoluteOutput: outputPath,
@@ -299,17 +301,18 @@ function writeRenderResult(port: number) {
   const perOutputResult = `output/render-results/${renderResultName(output)}.json`;
   const isFinalEvidence = !isDraft && !frames && normalizedOutputPath(output) === OUTPUTS[kind].output && outputKinds(contractMode).includes(kind);
   mkdirSync(resultDir, { recursive: true });
-  writeFileSync(resolve(process.cwd(), perOutputResult), `${JSON.stringify(result, null, 2)}\n`, "utf8");
+  atomicOutputWrite(process.cwd(), perOutputResult, `${JSON.stringify(result, null, 2)}\n`);
   if (isFinalEvidence) {
     const finalPath = resolve(process.cwd(), 'output/render-result.json');
     const previous = existsSync(finalPath) ? JSON.parse(readFileSync(finalPath, 'utf8')) : null;
     const manifest = mergeFinalOutput(projectState, result, previous);
     if (!manifest) throw new Error('Output cannot be recorded as final evidence');
-    writeFileSync(finalPath, `${JSON.stringify(manifest, null, 2)}\n`, 'utf8');
+    atomicOutputWrite(process.cwd(), 'output/render-result.json', `${JSON.stringify(manifest, null, 2)}\n`);
     const currentState = readState();
     currentState.finalRenderApproved = false; // A newly encoded artifact always needs fresh review.
-    writeFileSync(resolve(process.cwd(), 'project-state.json'), `${JSON.stringify(currentState, null, 2)}\n`, 'utf8');
+    atomicOutputWrite(process.cwd(), 'project-state.json', `${JSON.stringify(currentState, null, 2)}\n`);
   }
+  safeOutputFile(process.cwd(), "feedback-events.jsonl");
   appendFeedbackEvent({
     eventType: "gate-result",
     phase: "render-video",
@@ -395,8 +398,8 @@ if (everyNthFrame) renderArgs.push("--every-nth-frame", everyNthFrame);
 if (quiet) renderArgs.push("--quiet");
 
 async function main() {
-  safeLocalPath(process.cwd(), output);
   inputRevision = captureInputRevision();
+  safeRenderOutput(process.cwd(), output, inputRevision.files.map((file) => file.path));
   if (inputRevision.status !== 'bound') throw new Error(`Cannot render with unknown input revision: ${inputRevision.issues.join('; ')}`);
   assertDraftAcknowledged();
   assertWorkflowAllowed();
@@ -417,7 +420,7 @@ async function main() {
     return;
   }
   if (kind === 'composite') {
-    const errors = validateComposition();
+    const errors = validateComposition(process.cwd(), selectedMode);
     if (errors.length) throw new Error(errors.join('\n'));
   }
   if (alpha && pixelFormat && pixelFormat !== 'yuva444p10le') throw new Error('Alpha pixel format is fixed to yuva444p10le');
@@ -432,30 +435,52 @@ async function main() {
     `rendering ${output} (${preset}, ${alpha ? "prores+alpha" : codec}${alpha ? "" : `, crf ${crf}`}${concurrency ? `, concurrency ${concurrency}` : ""}${!alpha && x264Preset ? `, x264 ${x264Preset}` : ""}, port ${port}${subtitles ? ", burned subtitles" : ""})`,
   );
 
-  execFileSync(process.execPath, renderArgs, {
-    stdio: "inherit",
-    env: {
-      ...process.env,
-      REMOTION_SUBTITLES: subtitles ? "1" : "0",
-    },
-  });
-  if (alpha) {
-    alphaValidation = validateAlphaMedia(resolve(process.cwd(), output), { evidenceDir: resolve(process.cwd(), `output/alpha-validation/${renderResultName(output)}`), sampleFrames:alphaSampleFrames });
-    if (!alphaValidation.pass) throw new Error(`Decoded alpha validation failed: ${JSON.stringify(alphaValidation)}`);
-  }
-  writeRenderResult(port);
+  const metadataPaths = [`output/render-results/${renderResultName(output)}.json`, 'output/render-result.json', 'project-state.json', 'feedback-events.jsonl'];
+  for (const path of metadataPaths) safeOutputFile(process.cwd(), path);
+  const existingManifest = safeOutputFile(process.cwd(), 'output/render-result.json');
+  if (existsSync(existingManifest)) JSON.parse(readFileSync(existingManifest, 'utf8'));
+  safeLocalPath(process.cwd(), 'output/alpha-validation');
+  const staged = stagedRenderOutput(process.cwd(), output, inputRevision.files.map((file) => file.path));
+  try {
+    renderArgs[4] = staged.temporary;
+    execFileSync(process.execPath, renderArgs, {
+      stdio: "inherit",
+      env: { ...process.env, REMOTION_SUBTITLES: subtitles ? "1" : "0" },
+    });
+    safeOutputFile(process.cwd(), relative(process.cwd(), staged.temporary));
+    decodeValidation = validateDecodedMedia(staged.temporary);
+    if (alpha) {
+      const evidenceDir = safeLocalPath(process.cwd(), `output/alpha-validation/${renderResultName(output)}-${basename(dirname(staged.temporary))}`);
+      alphaValidation = validateAlphaMedia(staged.temporary, { evidenceDir, sampleFrames:alphaSampleFrames });
+      if (!alphaValidation.pass) throw new Error(`Decoded alpha validation failed: ${JSON.stringify(alphaValidation)}`);
+    }
+    const stale = revisionErrors(captureInputRevision(), inputRevision);
+    if (stale.length) throw new Error(`Inputs changed during rendering; destination preserved: ${stale.join('; ')}`);
+    const stagedProbe = probeMedia(staged.temporary);
+    if (stagedProbe.ok !== true) throw new Error(`ffprobe failed; destination preserved: ${JSON.stringify(stagedProbe)}`);
+    withOutputRollback(process.cwd(), metadataPaths, () => {
+      staged.commit();
+      writeRenderResult(port, stagedProbe);
+    });
+  } catch (error) {
+    staged.rollback();
+    throw error;
+  } finally { staged.cleanup(); }
 }
 
 main().catch((error) => {
   console.error(error);
-  appendFeedbackEvent({
-    eventType: "gate-result",
-    phase: "render-video",
-    target: "video-render",
-    problem: String(error?.message ?? error),
-    agentAction: `tsx scripts/render-video.ts --preset=${preset}${subtitles ? " --subtitles" : ""}`,
-    validation: [{ command: "npm run render:video", status: "fail" }],
-    userResolution: "pending",
-  });
+  try {
+    safeOutputFile(process.cwd(), "feedback-events.jsonl");
+    appendFeedbackEvent({
+      eventType: "gate-result",
+      phase: "render-video",
+      target: "video-render",
+      problem: String(error?.message ?? error),
+      agentAction: `tsx scripts/render-video.ts --preset=${preset}${subtitles ? " --subtitles" : ""}`,
+      validation: [{ command: "npm run render:video", status: "fail" }],
+      userResolution: "pending",
+    });
+  } catch (loggingError) { console.error(`Failure log not written safely: ${String(loggingError)}`); }
   process.exit(1);
 });

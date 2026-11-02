@@ -17,7 +17,7 @@
 | [![产品流程](media/samples-20261102/zh-CN/product.gif)](media/samples-20261102/zh-CN/product.mp4) | [![数据解释](media/samples-20261102/zh-CN/data.gif)](media/samples-20261102/zh-CN/data.mp4) | [![动态排版](media/samples-20261102/zh-CN/type.gif)](media/samples-20261102/zh-CN/type.mp4) |
 | [打开 MP4](media/samples-20261102/zh-CN/product.mp4) | [打开 MP4](media/samples-20261102/zh-CN/data.mp4) | [打开 MP4](media/samples-20261102/zh-CN/type.mp4) |
 
-上方是动态 GIF 预览，不是内嵌 MP4 播放器。点击打开成片；GitHub 无播放器时选择 **Download raw file**。这六个中英文版本通过 React/SVG → librsvg/Cairo → FFmpeg 离线路线生成，**不代表 Remotion 浏览器渲染链已通过**。数据为教学假设。已完成全程解码与抽帧目视检查，未做真人实时完整播放或用户验收。三条 12 秒示范不是下方的 15 秒入门练习。[来源与验证](media/samples-20261102/README.md)
+上方是动态 GIF 预览，不是内嵌 MP4 播放器。点击打开成片；GitHub 无播放器时选择 **Download raw file**。
 
 <details>
 <summary><strong>历史中文参考样片与 60 风格总览</strong></summary>
@@ -57,6 +57,14 @@
 | 已授权实拍素材 | 透明动态图形及画面叠加 |
 
 这是供**支持加载 Skill，且能读写文件、运行代码的 AI Agent**使用的工具，不是独立剪辑软件。不同 Agent 的安装方式与权限可能不同。工作流程是：**选风格 → 确认分镜与关键画面 → 预览 → 渲染与检查 → 交付视频和源码**。安装 Skill 不等于装好渲染环境。
+
+## 60 套是起点，不是上限
+
+没有合适的内置风格？把喜欢的视频、网站或可播放录屏交给 Agent，说明你想借鉴的部分。Agent 会在实际可访问、获准研究的范围内观察构图、运镜、连续形变、转场和节奏，提炼规则并编写可复用的新风格，而不只是换颜色。看不到的动态会明确标为未知，不会假装已经分析过，也不会自动抓取任意网站或绕过访问限制。
+
+先做一段可播放小样，你看过并确认方向后，再扩展到完整视频。新风格可以起名、按版本保存到你指定的个人风格目录，以后继续调用或修改；旧版本和已有项目不会随库更新被覆盖。若环境暂时无法渲染，只能保存明确标记的草案，不冒充已验收风格。参考素材、字体与代码仍须有相应使用授权。
+
+[新风格的学习、保存与复用说明](web-video-presentation/references/CUSTOM-STYLES.md)
 
 ## 下载与安装
 

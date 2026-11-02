@@ -46,6 +46,16 @@ node scripts/package-skill.ts --verify <交付目录>
 
 发行打包器当前要求 Node 24+ 的原生TypeScript运行能力；Unix ZIP依赖PATH中的zip，Windows分支未在本次Linux测试中实测。验证拒绝ZIP64/多卷和symlink；SHA256是完整性校验，不是签名/来源认证。排除列表不是秘密扫描器，交付前仍需检查敏感信息。
 
+### 独立包许可与回归
+
+Skill 根目录随包保留 [LICENSE](LICENSE)、[LICENSE-SCOPE.md](LICENSE-SCOPE.md) 和 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)，其内容与仓库根目录对应文件逐字节一致。修改根许可说明后，须同步这三个副本并运行下面的回归；不得扩大授权范围。许可说明中 `web-video-presentation/` 等路径仍以原仓库布局解释；独立包只携带该 Skill，仓库的 `media/`、`fix-agent/` 等未随包附带，不能据路径说明声称文件已包含或媒体获 MIT 授权。第三方上游许可证保留在 `third-party/`。
+
+```bash
+node --test scripts/test-package-standalone.mjs scripts/test-package-exclusions.mjs
+```
+
+独立包回归在 Unix 需要 `zip` 和 `unzip`：真实打包、解压、逐文件核验，并在与仓库脱离的解压目录再次打包。新用户从 ZIP 安装只需解压得到的 `web-video-presentation/`；完整交付目录的 `--verify` 还需要原 `delivery-manifest.json` 和声明的 ZIP，不把单独解压目录误作交付目录。在线仓库发布说明需要联网；本地使用与许可说明不依赖父目录 README。
+
 ## C. 包含主技能、fix-agent、历史包和样片的组合交付
 
 组合包解压根包含 `bundle-manifest.json`；它不是上面核心发行打包器的纯净输出目录。**不要对组合包根运行 `package-skill.ts --verify`**：核心验证器按设计会拒绝 `bundle-manifest.json`、fix-agent、legacy、样片等额外成员，不应为此删除交付内容或放宽核心检查。

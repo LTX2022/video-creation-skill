@@ -16,10 +16,13 @@
 
 未选主题先查摘要，选定后只读该主题；全库盘点才使用 `--all`。
 
+从任意工作目录调用均使用已确认的 Skill 安装绝对路径；`SKILL` 不是客户项目路径。下面路径仅为占位，不是默认目的地。
+
 ```bash
-node scripts/theme-summary.mjs --query="科普 技术原理" --limit=3
-node scripts/theme-summary.mjs --id=science-diagram
-node scripts/theme-summary.mjs --all
+SKILL='/absolute/path/to/web-video-presentation'
+node "$SKILL/scripts/theme-summary.mjs" --query="科普 技术原理" --limit=3
+node "$SKILL/scripts/theme-summary.mjs" --id=science-diagram
+node "$SKILL/scripts/theme-summary.mjs" --all
 ```
 
 脚本只做元数据关键词筛选，不返回画质评分，也不读取所有主题作为每章的模型上下文。
