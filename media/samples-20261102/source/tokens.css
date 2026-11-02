@@ -1,0 +1,78 @@
+/* Theme midnight-press | 暖暗编辑排版
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #0d0b09;
+  --surface: #1a1714;
+  --surface-2: #231f1a;
+  --surface-3: #2c2823;
+  --text: #f5f0e5;
+  --text-2: #ece4d2;
+  --text-mute: #90908a;
+  --text-faint: #76726d;
+  --text-disabled: #4a443e;
+  --rule: #2f2a25;
+
+  /* Brand color roles */
+  --accent: #ff4a2b;
+  --accent-strong: #ff5335;
+  --accent-on: #000000;
+  --accent-soft: rgba(255, 74, 43, .13);
+  --accent-glow: rgba(255, 74, 43, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Noto Serif SC", serif;
+  --font-display-en: Didot, "Bodoni 72", Georgia, "Times New Roman", serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 500;
+  --body-leading: 1.55;
+  --label-tracking: .12em;
+  --r-card: 4px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 1px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: italic;
+  --hero-num-weight: 400;
+  --hero-num-track: -0.02em;
+  --stage-pad-x: 140px;
+  --stage-pad-y: 100px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 540ms;
+  --dur-slow: 900ms;
+  --dur-cinematic: 1280ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-vignette: radial-gradient(circle at 50% 60%, transparent 35%, rgba(0, 0, 0, 0.12) 100%);
+
+  /* Semantic states and data categories */
+  --success: #69c99b;
+  --success-soft: rgba(105, 201, 155, .12);
+  --success-on: #000000;
+  --warning: #edc779;
+  --warning-soft: rgba(237, 199, 121, .12);
+  --warning-on: #000000;
+  --error: #f39a9a;
+  --error-soft: rgba(243, 154, 154, .12);
+  --error-on: #000000;
+  --chart-1: #ff5335;
+  --chart-2: #69c99b;
+  --chart-3: #edc779;
+  --chart-4: #f39a9a;
+  --chart-5: #c2b4e8;
+
+}
+
+/* Authored sample-specific semantic palettes; not new installed presets. */
+:root{--data-paper:#f2f0e8;--data-ink:#162b30;--data-muted:#526566;--data-rule:#d7ded8;--data-base:#a7b8b1;--data-accent:#006b57;--type-paper:#e6ff4f;--type-ink:#161711;--type-accent:#7a24cf;}

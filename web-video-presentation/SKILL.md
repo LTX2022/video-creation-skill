@@ -64,6 +64,7 @@ description: 把文章、口播、产品流程、机制或参考动效制作成�
 
 | 当前任务 | 读取 |
 |---|---|
+| 用户选择首页的 15 秒产品流程入门任务，或明确要求按首次视频指南执行 | [FIRST-VIDEO-AGENT](references/FIRST-VIDEO-AGENT.md)：按需读取；Agent 负责工程命令，保留实际授权与确认门，不将本例的时长、风格或静音设置强加给其他任务 |
 | 产品宣传片需要真实 UI 镜头编排或镜头配方定位 | [PRODUCT-PROMO](references/PRODUCT-PROMO.md)：按需镜头证据、UI 切片、可选节拍回测；复用既有分镜/时序/确认，不替换60风格 |
 | 用户选择同模板低成本批量填充 | [LOW-COST-BATCH](references/LOW-COST-BATCH.md)：先批准真实代表样片，再冻结指定本地设计文件与字段边界；只读输入预检不是自动 renderer 或画质保证，旧项目无需补合同 |
 | 代码动态视频的文案与画面共写 | [VISUAL-SCRIPT](references/VISUAL-SCRIPT.md)：事实→对象动作证据→补充旁白→最小标签；[单任务卡](templates/script-templates/visual-script-task.md)与[4份前后稿](examples/visual-script/README.md)，不默认加载研究全文 |
@@ -97,3 +98,4 @@ description: 把文章、口播、产品流程、机制或参考动效制作成�
 - 没有实拍只可称“合成测试板”；屏幕固定注释不叫跟踪，手工轨迹不叫自动 tracking。遮挡需要实际 matte/分层实现。
 - 源尺寸/fps 可经明确 crop/contain/cover 和复帧/丢帧适配；不把所有素材改成 60fps，不默认光流插帧。
 - 不把技术检测、参考相似度分数、一次平台事故或未经复核的样本统计说成视觉质量、版权或平台审核保证。
+
