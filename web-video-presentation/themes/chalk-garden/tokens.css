@@ -1,0 +1,79 @@
+/* Theme chalk-garden | 亲和手绘课堂但正文清楚
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #16171c;
+  --surface: #1e1e24;
+  --surface-2: #28282f;
+  --surface-3: #34343c;
+  --text: #f4f4f5;
+  --text-2: #d4d4d8;
+  --text-mute: #a1a1aa;
+  --text-faint: #7e7e86;
+  --text-disabled: #71717a;
+  --rule: rgba(255, 255, 255, 0.20);
+
+  /* Brand color roles */
+  --accent: #facc15;
+  --accent-strong: #facc15;
+  --accent-on: #000000;
+  --accent-soft: rgba(250, 204, 21, .13);
+  --accent-glow: rgba(250, 204, 21, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "Kaiti SC", "STKaiti", "KaiTi", "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Noto Serif SC", serif;
+  --font-display-en: "Kaiti SC", "STKaiti", "KaiTi", Georgia, serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 600;
+  --body-leading: 1.6;
+  --label-tracking: .06em;
+  --r-card: 4px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 2px;
+  --rule-style: dashed;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: normal;
+  --hero-num-weight: 500;
+  --hero-num-track: -0.015em;
+  --stage-pad-x: 108px;
+  --stage-pad-y: 84px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 440ms;
+  --dur-slow: 720ms;
+  --dur-cinematic: 1040ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/></svg>");
+  --surface-pattern-size: 240px 240px;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 0.16;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #69c99b;
+  --success-soft: rgba(105, 201, 155, .12);
+  --success-on: #000000;
+  --warning: #edc779;
+  --warning-soft: rgba(237, 199, 121, .12);
+  --warning-on: #000000;
+  --error: #f39a9a;
+  --error-soft: rgba(243, 154, 154, .12);
+  --error-on: #000000;
+  --chart-1: #facc15;
+  --chart-2: #69c99b;
+  --chart-3: #edc779;
+  --chart-4: #f39a9a;
+  --chart-5: #c2b4e8;
+
+}

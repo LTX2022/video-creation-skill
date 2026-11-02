@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "renderer": "python-numpy-pillow-scipy-ffmpeg",
+  "source_sha256": "1db98264ea682d3742e57961a5b3ad1f1478d0f4671c0342b171e52db259501d",
+  "checks": [
+    {
+      "name": "same frame is pixel-identical after out-of-order seek",
+      "pass": true
+    },
+    {
+      "name": "equal physical time gives equal pixels at30and60fps",
+      "pass": true
+    },
+    {
+      "name": "stable population IDs and exposed IDs cannot mutate later state",
+      "pass": true
+    },
+    {
+      "name": "131 model samples across full timeline have finite positions",
+      "pass": true
+    },
+    {
+      "name": "negative/out-of-range/fractional frames rejected",
+      "pass": true
+    },
+    {
+      "name": "invalid dimensions,fps,seed,count rejected",
+      "pass": true
+    },
+    {
+      "name": "nonfinite duration/grain rejected",
+      "pass": true
+    },
+    {
+      "name": "boolean duration/grain rejected",
+      "pass": true
+    },
+    {
+      "name": "missing local font fails without downloading",
+      "pass": true
+    },
+    {
+      "name": "existing output is never overwritten",
+      "pass": true
+    },
+    {
+      "name": "dangling output symlink rejected",
+      "pass": true
+    },
+    {
+      "name": "new seed changes actual rendered pixels",
+      "pass": true
+    }
+  ],
+  "passed": 12,
+  "failed": 0,
+  "scope": "Independent small-frame runtime contracts, not aesthetics, Remotion, alpha or NLE proof."
+}

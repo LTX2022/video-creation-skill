@@ -1,0 +1,79 @@
+/* Theme history-museum | 年代与器物解释
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #d7cbb8;
+  --surface: #f0e6d4;
+  --surface-2: #f8f1e6;
+  --surface-3: #e3d5bf;
+  --text: #211914;
+  --text-2: #374151;
+  --text-mute: #585d69;
+  --text-faint: #737881;
+  --text-disabled: #9ca3af;
+  --rule: #d8dee8;
+
+  /* Brand color roles */
+  --accent: #a8792a;
+  --accent-strong: #78571e;
+  --accent-on: #000000;
+  --accent-soft: rgba(168, 121, 42, .10);
+  --accent-glow: rgba(168, 121, 42, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Noto Serif SC", serif;
+  --font-display-en: Georgia, "Times New Roman", "Noto Serif", serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 600;
+  --body-leading: 1.65;
+  --label-tracking: .14em;
+  --r-card: 2px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 1px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: normal;
+  --hero-num-weight: 500;
+  --hero-num-track: -0.02em;
+  --stage-pad-x: 128px;
+  --stage-pad-y: 96px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 620ms;
+  --dur-slow: 1000ms;
+  --dur-cinematic: 1440ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: none;
+  --surface-pattern-size: auto;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 0;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #136a45;
+  --success-soft: rgba(19, 106, 69, .12);
+  --success-on: #ffffff;
+  --warning: #7c560b;
+  --warning-soft: rgba(124, 86, 11, .12);
+  --warning-on: #ffffff;
+  --error: #a9313a;
+  --error-soft: rgba(169, 49, 58, .12);
+  --error-on: #ffffff;
+  --chart-1: #78571e;
+  --chart-2: #15734a;
+  --chart-3: #845c0c;
+  --chart-4: #b1333d;
+  --chart-5: #705392;
+
+}

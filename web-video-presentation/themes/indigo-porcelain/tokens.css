@@ -1,0 +1,75 @@
+/* Theme indigo-porcelain | 靛蓝学术刊物
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #e4e8ec;
+  --surface: #f1f3f5;
+  --surface-2: #f8fafc;
+  --surface-3: #e7ebef;
+  --text: #0a1f3d;
+  --text-2: #152a4a;
+  --text-mute: #4a5a78;
+  --text-faint: #78879c;
+  --text-disabled: #8595ad;
+  --rule: #c6cdd6;
+
+  /* Brand color roles */
+  --accent: #1e3a8a;
+  --accent-strong: #1e3a8a;
+  --accent-on: #ffffff;
+  --accent-soft: rgba(30, 58, 138, .10);
+  --accent-glow: rgba(30, 58, 138, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Noto Serif SC", serif;
+  --font-display-en: Georgia, "Times New Roman", "Noto Serif", serif;
+  --font-body: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Noto Serif SC", serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 600;
+  --body-leading: 1.65;
+  --label-tracking: .16em;
+  --r-card: 0px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 1px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: italic;
+  --hero-num-weight: 400;
+  --hero-num-track: -0.02em;
+  --stage-pad-x: 136px;
+  --stage-pad-y: 100px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 540ms;
+  --dur-slow: 900ms;
+  --dur-cinematic: 1280ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #15734a;
+  --success-soft: rgba(21, 115, 74, .12);
+  --success-on: #ffffff;
+  --warning: #845c0c;
+  --warning-soft: rgba(132, 92, 12, .12);
+  --warning-on: #ffffff;
+  --error: #b1333d;
+  --error-soft: rgba(177, 51, 61, .12);
+  --error-on: #ffffff;
+  --chart-1: #1e3a8a;
+  --chart-2: #15734a;
+  --chart-3: #845c0c;
+  --chart-4: #b1333d;
+  --chart-5: #705392;
+
+}

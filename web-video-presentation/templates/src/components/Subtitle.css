@@ -1,0 +1,65 @@
+.subtitle-safe-area {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 76px;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  padding: 0 120px;
+}
+
+.subtitle-box {
+  max-width: 1180px;
+  padding: 10px 24px;
+  color: #fff;
+  text-align: center;
+  font-family:
+    var(--font-subtitle, var(--font-body)),
+    "Inter",
+    "Noto Sans SC",
+    "Microsoft YaHei",
+    Arial,
+    sans-serif;
+  font-size: 42px;
+  font-weight: 650;
+  line-height: 1.22;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.28);
+  letter-spacing: 0;
+  text-wrap: balance;
+  -webkit-text-stroke: 0.035em rgba(0, 0, 0, 0.82);
+  paint-order: stroke fill;
+  text-shadow:
+    0 2px 2px rgba(0, 0, 0, 0.9),
+    0 5px 14px rgba(0, 0, 0, 0.75),
+    0 0 2px rgba(0, 0, 0, 0.95);
+}
+
+.subtitle-line + .subtitle-line {
+  margin-top: 4px;
+}
+
+.subtitle-safe-area.is-blocked .subtitle-box {
+  text-shadow:
+    0 2px 2px rgba(0, 0, 0, 0.95),
+    0 5px 14px rgba(0, 0, 0, 0.82),
+    0 0 12px color-mix(in srgb, var(--accent) 65%, transparent);
+}
+
+.stage-frame[data-format="portrait"] .subtitle-safe-area {
+  /* 字幕 75% 红线：底部保持在 scene 高度的 73%，距底 27%。
+     百分比基于实际包含块高度，不是浏览器视口或旧版固定画幅：
+     1920px → 518.4px；旧版 3200px → 864px（保留原位置比例）。
+     与 platformUiBand(82%) 保留 9% 隔离带；字体/横向间距不变。 */
+  bottom: 27%;
+  padding: 0 84px;
+}
+
+.stage-frame[data-format="portrait"] .subtitle-box {
+  max-width: 900px;
+  font-size: 52px;
+  line-height: 1.14;
+  padding: 12px 26px;
+}

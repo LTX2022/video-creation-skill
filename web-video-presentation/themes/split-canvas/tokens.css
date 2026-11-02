@@ -1,0 +1,79 @@
+/* Theme split-canvas | 真正双栏比较而非一张双色底
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #dcc7b8;
+  --surface: #f5e6dc;
+  --surface-2: #e4dff0;
+  --surface-3: #f0d8c7;
+  --text: #1a1410;
+  --text-2: #322820;
+  --text-mute: #6b5a4d;
+  --text-faint: #88796d;
+  --text-disabled: #9a8a7c;
+  --rule: #b8a89a;
+
+  /* Brand color roles */
+  --accent: #d24a78;
+  --accent-strong: #a53a5f;
+  --accent-on: #000000;
+  --accent-soft: rgba(210, 74, 120, .10);
+  --accent-glow: rgba(210, 74, 120, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
+  --font-display-en: "Avenir Next", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 600;
+  --body-leading: 1.55;
+  --label-tracking: .08em;
+  --r-card: 10px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 1px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: normal;
+  --hero-num-weight: 600;
+  --hero-num-track: -0.015em;
+  --stage-pad-x: 96px;
+  --stage-pad-y: 84px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 420ms;
+  --dur-slow: 680ms;
+  --dur-cinematic: 960ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: linear-gradient(90deg, transparent 0%, transparent 49.95%, #e4dff0 50.05%, #e4dff0 100%);
+  --surface-pattern-size: 100% 100%;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 1;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #146e47;
+  --success-soft: rgba(20, 110, 71, .12);
+  --success-on: #ffffff;
+  --warning: #80590c;
+  --warning-soft: rgba(128, 89, 12, .12);
+  --warning-on: #ffffff;
+  --error: #af333c;
+  --error-soft: rgba(175, 51, 60, .12);
+  --error-on: #ffffff;
+  --chart-1: #a53a5f;
+  --chart-2: #15734a;
+  --chart-3: #845c0c;
+  --chart-4: #b1333d;
+  --chart-5: #705392;
+
+}

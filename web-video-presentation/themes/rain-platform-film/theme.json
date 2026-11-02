@@ -1,0 +1,85 @@
+{
+  "id": "rain-platform-film",
+  "name": "Rain Platform Film",
+  "nameZh": "雨夜站台叙事",
+  "description": "Rain Platform Film: original frame-deterministic SVG scene. Source implementation; rendered review pending.",
+  "descriptionZh": "靛蓝雨夜、暖金站台光与湿地倒影组成的单场景叙事。已接入主题选择与默认示例；实际画面、连续动效、字体与 Alpha 边缘待渲染复核。",
+  "mood": [
+    "indigo",
+    "warm-gold",
+    "rain",
+    "雨夜",
+    "站台"
+  ],
+  "bestFor": [
+    "氛围叙事短片",
+    "城市夜景概念",
+    "故事片头",
+    "情绪文案"
+  ],
+  "preview": {
+    "shell": "#030611",
+    "surface": "#090d1b",
+    "text": "#f5f1e7",
+    "accent": "#edbd78"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "reference",
+    "contentCategory": "rain-platform-film",
+    "identity": "靛蓝雨夜、暖金站台光与湿地倒影组成的单场景叙事",
+    "contentLayout": "站台透视、景深、雨线和倒影作为完整场景，短句嵌入安静区域",
+    "semanticMotion": "夜车停靠、撑伞旅人走近、车门开启；旅人在门前停住，雨和倒影继续。",
+    "distinction": "独立完整 SVG 场景，不复用旧 56 个主题的标题/卡片构图。",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "serif",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static token contrast checks cover surrounding flat stage/UI roles only; authored SVG palettes, gradients, texture, motion and output pixels require rendered inspection.",
+    "staticSvg": "reviewed-14-cases",
+    "motionSvg": "reviewed-12-second-30fps-preview",
+    "targetBrowser": "not-tested",
+    "alphaEditor": "not-tested",
+    "scopedEvidenceStatus": "offline-svg-reviewed-target-renderer-pending"
+  },
+  "materialRisk": "原创程序化 SVG 叙事场景；不是实拍雨景、真实地理站点或参考原作完整复刻。",
+  "runtime": {
+    "entrypoint": "src/video/presets/PresetScene.tsx",
+    "component": "src/video/reference-styles/RainPlatform.tsx",
+    "defaultExample": "src/chapters/01-example/Example.tsx",
+    "presetId": "rain-platform-film",
+    "palettePolicy": "authored-scene-palette; CSS tokens cover surrounding stage/UI only, not universal SVG recoloring",
+    "timing": "frame-deterministic; scene-bound narration and three-step shot plan"
+  },
+  "limitations": [
+    "原创程序化 SVG 叙事场景；不是实拍雨景、真实地理站点或参考原作完整复刻。",
+    "SVG 内部为作者设定配色；编辑 tokens.css 不保证重着色所有主体、渐变或文字。",
+    "源代码与类型/静态测试不是视觉验收；实际横竖屏、字幕、字体、连续帧与透明合成仍需检查。",
+    "只表现接近车门与停顿；没有上车、开走或真实交通时刻信息。"
+  ]
+}

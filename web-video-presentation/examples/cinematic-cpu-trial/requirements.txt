@@ -1,0 +1,6 @@
+# Installed versions used for this specimen; no dependency installer was run.
+numpy==2.3.5
+scipy==1.17.0
+Pillow==12.3.0
+fonttools==4.61.1
+# External local executable: FFmpeg 7.1.5. Fonts are not redistributed.

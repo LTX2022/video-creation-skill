@@ -1,0 +1,33 @@
+{
+  "fps": 30,
+  "frames": 420,
+  "renderer": "independent-python-pillow",
+  "notRemotionE2E": true,
+  "objectId": "focus-surface",
+  "events": [
+    {
+      "id": "expand",
+      "frame": 30
+    },
+    {
+      "id": "type",
+      "frame": 78
+    },
+    {
+      "id": "click",
+      "frame": 146
+    },
+    {
+      "id": "result",
+      "frame": 201
+    },
+    {
+      "id": "collapse",
+      "frame": 285
+    },
+    {
+      "id": "end-hold",
+      "frame": 342
+    }
+  ]
+}

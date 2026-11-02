@@ -1,0 +1,7 @@
+{
+  "schema": 1,
+  "coordinateSpace": "screen",
+  "backgroundColor": "#000000",
+  "plates": [],
+  "notes": "For composite/both, add local public-relative video plates. startFrame and durationInFrames use project FPS; trimStartSec uses source seconds. This is fixed screen-space overlay, not automatic tracking or occlusion."
+}

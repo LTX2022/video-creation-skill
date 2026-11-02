@@ -1,0 +1,64 @@
+{
+  "id": "data-ops-slate",
+  "name": "data ops slate",
+  "nameZh": "数据运维石板",
+  "description": "data ops slate: 状态可信的运维界面. Source configuration; rendered review pending.",
+  "descriptionZh": "状态可信的运维界面。用于告警时间线、状态表、拓扑故障定位、日志；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "dark",
+    "data",
+    "ops"
+  ],
+  "bestFor": [
+    "数据分析",
+    "运维监控",
+    "企业安全",
+    "业务复盘"
+  ],
+  "preview": {
+    "shell": "#111317",
+    "surface": "#1a1d22",
+    "text": "#f1f3f5",
+    "accent": "#f59e0b"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "data",
+    "contentCategory": "enterprise-data",
+    "identity": "状态可信的运维界面",
+    "contentLayout": "告警时间线、状态表、拓扑故障定位、日志",
+    "semanticMotion": "事件触发与状态转换，不做随机跳数",
+    "distinction": "补语义成功/警告/故障色与图形冗余",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "mono",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "No texture-based identity claim; actual material, layout and contrast still require rendered inspection."
+}

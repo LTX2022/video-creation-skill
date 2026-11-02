@@ -1,0 +1,32 @@
+{
+  "file": "60-styles-noto-overview.mp4",
+  "sha256": "318da07ba27a7d712bbdeff11dc93e054b19eee528edd0f0c30fd2f3ec8aa1b8",
+  "bytes": 8613926,
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 960,
+        "height": 576,
+        "r_frame_rate": "30/1",
+        "nb_frames": "11520"
+      }
+    ],
+    "format": {
+      "duration": "384.000000",
+      "size": "8613926"
+    }
+  },
+  "full_decode_exit": 0,
+  "full_decode_stderr_bytes": 0,
+  "sampled_frames": 60,
+  "sample_fraction_within_each_segment": 0.6,
+  "source_asset_guard": "Each SVG rejected image/foreignObject/script/href/src/@import; all font-family forced Noto Sans CJK SC",
+  "engine": "React SSR -> librsvg/Cairo -> FFmpeg, not Remotion browser",
+  "font_manifest": "font-manifest.json",
+  "source_manifest": "source-hashes.json",
+  "visual_review": "Viewed all four contact sheets covering 60 segment samples plus full-resolution particle and rain samples; no missing glyph blocks, empty scenes or gross frame clipping observed in those samples. Not exhaustive all-frame review or real-time human playback."
+}

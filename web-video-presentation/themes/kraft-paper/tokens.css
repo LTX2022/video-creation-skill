@@ -1,0 +1,79 @@
+/* Theme kraft-paper | 手作档案但不牺牲墨色
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #dccab0;
+  --surface: #eedfc7;
+  --surface-2: #f3e9d6;
+  --surface-3: #e0d0b6;
+  --text: #2a1e13;
+  --text-2: #3a2a1d;
+  --text-mute: #6a573e;
+  --text-faint: #83725c;
+  --text-disabled: #a08c70;
+  --rule: #b8a486;
+
+  /* Brand color roles */
+  --accent: #a35b2a;
+  --accent-strong: #864b23;
+  --accent-on: #ffffff;
+  --accent-soft: rgba(163, 91, 42, .10);
+  --accent-glow: rgba(163, 91, 42, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Noto Serif SC", serif;
+  --font-display-en: Georgia, "Times New Roman", "Noto Serif", serif;
+  --font-body: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Noto Serif SC", serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 600;
+  --body-leading: 1.65;
+  --label-tracking: .10em;
+  --r-card: 2px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 1px;
+  --rule-style: dashed;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: italic;
+  --hero-num-weight: 500;
+  --hero-num-track: -0.02em;
+  --stage-pad-x: 120px;
+  --stage-pad-y: 92px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 540ms;
+  --dur-slow: 900ms;
+  --dur-cinematic: 1280ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='260'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' seed='7'/><feColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.32 0 0 0 0 0.18 0 0 0 0.28 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  --surface-pattern-size: 260px 260px;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 0.16;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #136742;
+  --success-soft: rgba(19, 103, 66, .12);
+  --success-on: #ffffff;
+  --warning: #78530b;
+  --warning-soft: rgba(120, 83, 11, .12);
+  --warning-on: #ffffff;
+  --error: #a42f39;
+  --error-soft: rgba(164, 47, 57, .12);
+  --error-on: #ffffff;
+  --chart-1: #864b23;
+  --chart-2: #15734a;
+  --chart-3: #845c0c;
+  --chart-4: #b1333d;
+  --chart-5: #705392;
+
+}

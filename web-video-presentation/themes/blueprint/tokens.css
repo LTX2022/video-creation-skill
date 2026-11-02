@@ -1,0 +1,78 @@
+/* Theme blueprint | 工程图纸与尺寸标注
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #0a1224;
+  --surface: #0e1a2e;
+  --surface-2: #142441;
+  --surface-3: #1c2f54;
+  --text: #d6e5ff;
+  --text-2: #a8c2f0;
+  --text-mute: #7f99c1;
+  --text-faint: #677a9b;
+  --text-disabled: #3e5680;
+  --rule: rgba(120, 200, 255, 0.30);
+
+  /* Brand color roles */
+  --accent: #4dd2ff;
+  --accent-strong: #4dd2ff;
+  --accent-on: #000000;
+  --accent-soft: rgba(77, 210, 255, .13);
+  --accent-glow: rgba(77, 210, 255, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-display-en: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-body: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 600;
+  --body-leading: 1.45;
+  --label-tracking: .10em;
+  --r-card: 0px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 1px;
+  --rule-style: dashed;
+  --hero-num-font: var(--font-mono);
+  --hero-num-style: normal;
+  --hero-num-weight: 500;
+  --hero-num-track: 0;
+  --stage-pad-x: 88px;
+  --stage-pad-y: 68px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 360ms;
+  --dur-slow: 600ms;
+  --dur-cinematic: 900ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: linear-gradient(rgba(120, 200, 255, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(120, 200, 255, 0.045) 1px, transparent 1px);
+  --surface-pattern-size: 80px 80px;
+  --surface-pattern-opacity: 1;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #69c99b;
+  --success-soft: rgba(105, 201, 155, .12);
+  --success-on: #000000;
+  --warning: #edc779;
+  --warning-soft: rgba(237, 199, 121, .12);
+  --warning-on: #000000;
+  --error: #f39a9a;
+  --error-soft: rgba(243, 154, 154, .12);
+  --error-on: #000000;
+  --chart-1: #4dd2ff;
+  --chart-2: #69c99b;
+  --chart-3: #edc779;
+  --chart-4: #f39a9a;
+  --chart-5: #c2b4e8;
+
+}

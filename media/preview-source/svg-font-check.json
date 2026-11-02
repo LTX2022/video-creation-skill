@@ -1,0 +1,362 @@
+[
+  {
+    "file": "ai-orchestration-first.svg",
+    "sha256": "9068b6d56e320d4283103e3974e01551644b2e107e099d3c9036999a706dac3c",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "apple-glass-studio-first.svg",
+    "sha256": "439c7df24cb5414ae1d98f2b5f437ed9ae0a53b6aa8e695c14ca4b0cf2e8ef15",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "atelier-gallery-first.svg",
+    "sha256": "cd64afd9416be5df1203d28c4a5c365902044f5a7429857b17588a34590eec7b",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "bauhaus-bold-first.svg",
+    "sha256": "1a1a339f1e8c98ee86b3d1726cc02051b7a590c0657d0a759524d3966affda12",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "blueprint-first.svg",
+    "sha256": "f77a1999c08d28d9afa9f8e243daec5f77918a385463b15c987105a7898bad91",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "bold-signal-first.svg",
+    "sha256": "b67ffc13ecbaa9b8b277bc6819860f8692610c402e12ec81c4043d3aec9ff41a",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "bootstrap-marketplace-first.svg",
+    "sha256": "f8cebab2d203801a1a950c548b75def15b0257272e54483bec4ae0b3dad23dd0",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "campus-blackboard-pro-first.svg",
+    "sha256": "d4b84db576fb08d044accaca308361c31901a3a7c862143cf946ad85ce653338",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "chalk-garden-first.svg",
+    "sha256": "a841eff4db7d8426f4dee9d0c4dde7094045933c59f374ed6608ba0b2a6cbeae",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "cinema-title-card-first.svg",
+    "sha256": "668ad467a604537b0668db70a03c09606a65ae52b6587efb03af7ce269fbf218",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "course-studio-first.svg",
+    "sha256": "473a75c0316ed7f0377b4fc953ffff1addcfe40d8f811889df82ad009778ba74",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "creative-voltage-first.svg",
+    "sha256": "defdf49a5a27326c6fd3b6812a119ec312c6b5643b8246501065bb2f5749042d",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "creator-dashboard-first.svg",
+    "sha256": "e19d8772a473281411906d18a13e91309dd2429ebb40af4236561cca268ebc65",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "creator-neon-grid-first.svg",
+    "sha256": "c847e0b72c11c75e9ccc7e08eada756d298ea551113d61a8515dbbcfac3a9e44",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "dark-botanical-first.svg",
+    "sha256": "23144e457bebf41f82aa6c5aa0320b29e6d0bda73011c5eed122cd5dc0f06447",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "dark-tech-glow-first.svg",
+    "sha256": "5ee1f224b7d51d29b50cc9ab6dfcc58d85c2a9c21186b8d26376050252b8ffed",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "data-ops-slate-first.svg",
+    "sha256": "a98c58e5f62665a4b81e17d8ef360a89deddc038e35e309177247d101539a068",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "documentary-archive-first.svg",
+    "sha256": "8ea87598628b2fd76e616b715b6a1e5d7141671965b8f6fcd349f78ed723633b",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "douyin-high-contrast-first.svg",
+    "sha256": "3106354b054404a5db4545cadf8e9bb63f2e3d9ec8aa655c2e6796f849eac699",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "dune-first.svg",
+    "sha256": "8b52b636c62bf02238e217a8893597b4935a2091a1c8acd7ba58b443b72d936f",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "electric-studio-first.svg",
+    "sha256": "efd1c5ce44d1e1df5f8bb654eb69bf190d38135f83965a72c332da71671b10c5",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "element-clean-first.svg",
+    "sha256": "f102ab78cb3edafc510f87227832aa40ce714123432fdd95b592cb7e1589d469",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "ferrari-rosso-corsa-first.svg",
+    "sha256": "fde294c0d2ffd608d9d2e6ab0de6e127f571f4b6dcb4095da3373caa3b123152",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "fintech-terminal-first.svg",
+    "sha256": "54ddc8c3809096830dbed794141dc2d7a588d311ab74bb6fec8af536e66d906f",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "forest-ink-first.svg",
+    "sha256": "bcf9a7c0b278658db7b6b8fc989c49a4ec3eb12a4eceaeb04fbd3ac93db45d84",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "history-museum-first.svg",
+    "sha256": "1f3f46f23c60adad280b2e4e7429215200a6a0419be34cf00ad41240abec774a",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "houdini-node-lab-first.svg",
+    "sha256": "8ee15b7374e678f791484e33bdc1831f45d924ba068f532c61f6a1fbcf7f3910",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "indigo-porcelain-first.svg",
+    "sha256": "b7f67c71966888c9fbe9288bc04064d5ce5c691037957934cd8efc4c6a836fe9",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "kinetic-wireframe-film-first.svg",
+    "sha256": "79f52222d703dd1564e0d8c9c80cd46e952df3411a8c668b6a87a73b05438505",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "kraft-paper-first.svg",
+    "sha256": "e8d8bc53438eff82e35b3dc1aaea466a2e3dc5276a8c51300c74f5f1ae1bf0d5",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "luxury-watch-black-first.svg",
+    "sha256": "f0ffad91ba3ce3c7a16117f814d197744a36742cff9e67c2c523fc633e9b21fe",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "magazine-white-space-first.svg",
+    "sha256": "f6b4c291151f9187d5fd2d6f427418007459ca3bfae151849e50d86877b8256e",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "medical-clean-room-first.svg",
+    "sha256": "e5bf746dc43a061a37461a88ce9cd08cddad681839438ae3bfe13ef50a6914d3",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "midnight-press-first.svg",
+    "sha256": "baaf059aaec01c3d1fe73b216de66984afe171f6934df959c0da9e6d9267081f",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "monochrome-print-first.svg",
+    "sha256": "ff4d36f5444aa31a4c0d06e27d0fa8092208ad71355a7aa3016a115c3f5d3730",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "neon-cyber-first.svg",
+    "sha256": "564e8e891e6cd83011d3a06018e7b49f29a95c677679a294c3717e7b030035b6",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "newsroom-first.svg",
+    "sha256": "0bbc9ac9bdea354871d65fa38ee55dc41e1cccec0e5dc9953a076bd6a1476ed8",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "paper-press-first.svg",
+    "sha256": "a37c71444c387bc4112d84a6eab399c9e5c247d4332a1b7df88b7ef649b3abac",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "particle-depth-film-first.svg",
+    "sha256": "90d9eb3b624601ee95ba2030ad68cf0834fd01273493c157fe238554de7762dd",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "pastel-dream-first.svg",
+    "sha256": "987449b546bd8e65aa2cd2ee05394f09c9abf84e5ad9492b7c9e9bb67436bab8",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "podcast-wave-studio-first.svg",
+    "sha256": "bba2aabc0280cee4f3ad2dfe1d020ab37faff714255f1950a28d94774c319fcf",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "porsche-precision-first.svg",
+    "sha256": "214461401a0752238d9a68aa7f7929070249a27f3cf4195630f37e593a60890a",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "practical-skill-first.svg",
+    "sha256": "cdb2fa434fe8f1ebad7b41aa1e0bd0fadb4c60872271412641707cb71cd45dd9",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "procedural-vfx-first.svg",
+    "sha256": "ffafac914c1c63e198de114f3e2fb46cc7671234696bb156c6285fdb3b76dab3",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "quantum-interface-first.svg",
+    "sha256": "17d8c77792169c7c7d142578c1d73a5162684a362cc1c3b1bf748f747b68a85c",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "rain-platform-film-first.svg",
+    "sha256": "8990de8e518aafb9b04744d0da6f52df999edce09e5036b68a9559bab7b6829e",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "robotics-showroom-first.svg",
+    "sha256": "faad51d30bc8d1cb8189746613fb9317897742af576f877fb703be6dbe0757d4",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "saas-command-center-first.svg",
+    "sha256": "74947714954131b90f60d962de1256263eebda6a1c6e6eff406d98dca9447589",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "science-diagram-first.svg",
+    "sha256": "870f26f6c8eebea558a7a1163e764cf628db6fb38c2dfebe5148861196ab3be7",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "soft-neu-first.svg",
+    "sha256": "5b7ccb0293e779a87b70abbb7a0d8c79ec5530a4bb4033b0b8942c23455eb12d",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "spectral-material-film-first.svg",
+    "sha256": "2f4208dd6fccbc90f03253957d366844c30d05ed340c8e2b2203d27ac47602d7",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "split-canvas-first.svg",
+    "sha256": "f9820716709f19b452056b869584947d63b5fe3b87b8b6318318d698ca01156c",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "sunset-zine-first.svg",
+    "sha256": "f26ebd93c7f37147fc9856d2474c3f8f868fe6e5a32262ede40f4ee8fbbe82d7",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "swiss-ikb-first.svg",
+    "sha256": "35193aa98bded8f134f38e100f28abc3dc485f4e41a52a51386f97b8629bc2ac",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "taste-skill-neo-first.svg",
+    "sha256": "a38d43ecd9cd7d1cd473dcaf0d1059acc86aa6d5d48c9bbe73fff60c1a228bc8",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "terminal-green-first.svg",
+    "sha256": "1a8dd2e500f1d1101146b104b5fb061c996822f2a8c77654e67c790e28eb34f9",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "uxbot-product-lab-first.svg",
+    "sha256": "9fdb9b96aefc04f2128e13277e30cdef8b598818dc032e0b4bfbed9813ad9a1d",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "vintage-editorial-first.svg",
+    "sha256": "f3f0d8713901e0a4f2ee4b17f9d81d62f88c26b88ae1b2f14083d35c322a0c0c",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "warm-keynote-first.svg",
+    "sha256": "64ef931bfde2481d72da5bf02dd799efc88fc946710d4b53588cb18349190761",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  },
+  {
+    "file": "xiaohongshu-premium-first.svg",
+    "sha256": "96e1492a627a75faa972dc1dc372d413c3f5c55df07263107e01fcfab1561a5e",
+    "font_only_noto": true,
+    "no_unresolved_variables": true
+  }
+]

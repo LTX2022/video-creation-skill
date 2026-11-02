@@ -1,0 +1,31 @@
+{
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "duration": 26.0,
+  "seed": 20261027,
+  "threads": 36,
+  "samples": 256,
+  "title": "从噪声到秩序",
+  "palette": [
+    [
+      255,
+      220,
+      167
+    ],
+    [
+      251,
+      169,
+      106
+    ],
+    [
+      238,
+      224,
+      197
+    ]
+  ],
+  "grain": 0.4,
+  "cjk_font": "/usr/share/fonts/opentype/noto/NotoSerifCJK-Regular.ttc",
+  "cjk_font_index": 2,
+  "latin_font": "/usr/share/fonts/opentype/urw-base35/NimbusSans-Regular.otf"
+}

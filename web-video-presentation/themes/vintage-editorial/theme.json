@@ -1,0 +1,68 @@
+{
+  "id": "vintage-editorial",
+  "name": "Vintage Editorial",
+  "nameZh": "复古编辑",
+  "description": "Vintage Editorial: 有性格的专栏排版. Source configuration; rendered review pending.",
+  "descriptionZh": "有性格的专栏排版。用于长短引文、旁注、图片裁切、独立评论；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "light",
+    "vintage",
+    "editorial",
+    "opinionated",
+    "witty",
+    "personality"
+  ],
+  "bestFor": [
+    "个人见解 / 评论",
+    "文化随笔 / 美学话题",
+    "有声音的博主",
+    "设计 / 字体话题",
+    "文艺类长文改编"
+  ],
+  "preview": {
+    "shell": "#e8e0cf",
+    "surface": "#f5f3ee",
+    "text": "#1a1a1a",
+    "accent": "#c25e3a"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "editorial",
+    "contentCategory": "print-editorial",
+    "identity": "有性格的专栏排版",
+    "contentLayout": "长短引文、旁注、图片裁切、独立评论",
+    "semanticMotion": "克制轻微超调只在一处，正文稳定",
+    "distinction": "几何装饰不应被误当内容数据",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "serif",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "Texture/blend/compression and any transparent surface require actual composited inspection; source-only adjustment."
+}

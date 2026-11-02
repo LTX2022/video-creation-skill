@@ -1,0 +1,401 @@
+{
+  "name": "web-video-presentation",
+  "version": "3.8.0",
+  "publicVersion": "3.8.0",
+  "internalRevision": "3.8.0-public-candidate.1",
+  "releaseDate": "2026-10-31",
+  "channel": "offline-publication-review-candidate",
+  "versionFiles": [
+    "VERSION",
+    "VERSION.json",
+    "VERSION.md",
+    "manifest.json"
+  ],
+  "deliveryDirectory": null,
+  "notes": [
+    "Offline publication cleanup: research dataset, historical media and archives excluded; 60 styles retained. Owner authorized MIT for rights-controlled original code; source ownership and media permission remain separately scoped.",
+    "Offline audit repair candidate: explicit TTS authorization, pre-resolve cross-platform paths, production gap rejection, max-end duration and safe numeric arithmetic; no browser/render acceptance claim.",
+    "Original optional object handoff tracks reuse the existing chapter event clock; no new timing table or dependency.",
+    "Bounded opt-in Canvas temporal supersampling with premultiplied alpha; sharp fallback is explicit.",
+    "60 styles, approval gates, audio-none/tts/provided, Alpha and composite routes preserved.",
+    "New runtime is model/scaffold tested, not browser-rendered or customer accepted."
+  ],
+  "historicalNotes": [
+    "Starting in v2.9.0, workflow gates are hardened: acceptedChapterIds + chapter-review events, draft/smoke requires --acknowledge-draft when gates are incomplete, overlay rgba/text-stroke preflight, Remotion Hook-in-map static scan, outline/registry/shot-manifest drift detection, reference-video resolution guard, npm run render:alpha:smoke, and run-studio.cjs auto port selection. Lessons 18/19/27/28/33/35 downgrade to [AUTO] (27→32).",
+    "Starting in v2.8.0, transparent alpha export is productized: built-in TransparentFix + overlayChapterIds + full-video-alpha composition, render:video:alpha with ProRes 4444 alpha guards, script coverage gate, stage SVG viewBox gate, and lesson lifecycle downgrade [AUTO] 22→27.",
+    "Read VERSION or VERSION.json first; this skill may be distributed without a .git directory.",
+    "Do not infer the skill version from file timestamps, project folder names, or git commands.",
+    "Starting in v2.0.0, scaffolded projects are Remotion-first and no longer use Vite/Web presentation as the preview runtime.",
+    "This is a major workflow break from the previous Web/Vite presentation-first line.",
+    "Starting in v2.0.4, official delivery packages exclude legacy Vite/Web template leftovers even if source mirrors still keep deprecated files for non-destructive compatibility.",
+    "Starting in v2.1.0, workflow evidence, first-chapter anchor gates, full shot-design review, 50+ premium themes, Pexels asset candidate search, final-render state guards are part of the enterprise contract.",
+    "Starting in v2.1.1, production incident lessons are enforced by render-safe CSS gates, format metadata checks, post-fix golden validation rules, and render-result SHA256 metadata.",
+    "Starting in v2.1.2, serious fix-agent failures are converted into hard workflow gates: automatic gate-result evidence, chapter registry drift checks, Remotion staticFile asset-path checks, timing-warning failures, explicit TTS provider voice evidence, and nested generated-project guards.",
+    "Starting in v2.1.3, reusable Remotion/HyperFrames/community-inspired motion patterns are enforced through MOTION-PATTERN-LIBRARY.md, visualRecipe, and motionStyle fields in shot-manifest.json.",
+    "Starting in v2.1.4, projects use profile-first entry (douyin / bilibili / custom), require shot-design.md before chapter development, include Lottie and OpenDesign workflow rules, require final MP4 for every profile, and package final videos plus delivery-summary evidence into a desktop ZIP.",
+    "Starting in v2.1.5, douyin/portrait projects require a post-render Remotion cover workflow: cover:generate, cover:validate, cover evidence, and package:delivery inclusion. The cover uses a <=10-character title from the first three frames/opening hook, a representative visual above the title, and the supplied overlay image without occluding key elements.",
+    "Starting in v2.1.5, the built-in theme library includes soft-neu: a mist-gray soft neumorphic course/product UI style based on user-provided soft-neu export.",
+    "Starting in v2.1.6, cover generation is hardened for delivery: UTF-8 BOM JSON inputs are tolerated, local Edge/Chrome is auto-detected for Remotion still rendering, cover titles scale as true short-video headlines, cover backgrounds follow the active video theme, and validation proves the overlay is present in final cover pixels.",
+    "Starting in v2.1.7, JSON-reading delivery gates tolerate UTF-8 BOM where appropriate, and package:delivery fails loudly when required workflow JSON cannot be parsed instead of silently bypassing cover/final-render checks.",
+    "Starting in v2.1.8, cover visuals use a dark cinematic background, no glyph stroke/black edge on title text, and a more representative semantic flow-to-core SVG visual above the title.",
+    "Starting in v2.1.9, douyin cover generation is hardened against weak video-frame-like covers: titles must occupy the cover headline band, representative visuals must be cover-grade rather than thumbnail-like, and portrait/mobile shots must declare mobileReadability hard evidence in shot-manifest.json.",
+    "Starting in v2.1.9, cover titles default to one line; short titles such as AI未来前景 must not wrap, and cover:validate blocks title wrapping.",
+    "Starting in v2.1.10, reference-video learning requires continuous-frame motion analysis via REFERENCE-VIDEO-STYLES.md, and adds validated kinetic-prompt-to-product / annotated-flow-diagram recipes plus prompt-product-kinetic / whiteboard-engineering-flow motion styles.",
+    "Starting in v2.1.11, those reference-video styles are code-backed by src/video/reference-style-scenes.tsx, scaffolded into every project, validated by preflight, and verified in both landscape and portrait Remotion projects. Subtitles now default from project-state.json when requested, so Studio preview and MP4 rendering share the same subtitle intent unless REMOTION_SUBTITLES=0 is explicitly set.",
+    "Starting in v2.2.0, reference-video and complex-motion workflows require motion-strip verification: generated projects include scripts/render-motion-strips.ts, npm run render:motion-strips, npm run render:motion-strips:fast, and preflight blocks reference-video recipe/style steps without output/motion-strips/manifest.json continuous-frame evidence.",
+    "Starting in v2.2.3, reference-video workflows require source-video analysis evidence: generated projects include scripts/analyze-reference-videos.ts, npm run analyze:references, preflight blocks referenceVideo/referenceVideoStyle shots without output/reference-video-analysis/manifest.json, and package:delivery includes that evidence.",
+    "Starting in v2.2.3, motion-strip verification supports parallel still rendering via --parallel and defaults to 2 concurrent renders, making reference-style evidence generation faster and less likely to time out.",
+    "Starting in v2.2.3, motion-strip manifests include per-frame SHA256/bytes and per-step distinctFrameHashes; preflight requires those hashes for reference-video style shots to prove actual visual change, not just different frame numbers.",
+    "Starting in v2.2.4, generated projects include scripts/validate-delivery.ts and npm run validate:delivery. package:delivery runs it first and includes output/delivery-validation.json in the customer handoff bundle.",
+    "Starting in v2.2.5, generated projects include scripts/compare-reference-style.ts and npm run compare:references. Reference-video workflows now produce output/reference-style-comparison with a machine-readable verdict that the result is motion-grammar mapping, not an identical copy, unless exact shared frame hashes indicate copy risk.",
+    "Public release v2.2 includes the complete v2.2.x hardening line through internal revision v2.2.15.",
+    "Starting in v2.2.15, reference-style comparison also emits a dynamic-structure verdict that checks entry / reveal / readable-hold / exit coverage from motion-strip metadata, so agents can distinguish exact-copy risk from same-grammar different-execution evidence.",
+    "Starting in v2.2.14, delivery-chain JSON readers are BOM-safe for asset manifests, timing manifests, project state, feedback events, subtitles export, final render gates, and TTS segments, preventing Windows/editor/agent encoding drift from breaking preflight or rendering.",
+    "Starting in v2.2.13, every step must record subtitleSafety geometry evidence. Preflight and final delivery validation block text or critical visual boxes that collide with subtitle bands or portrait/douyin platform UI bands.",
+    "Starting in v2.2.12, draft/smoke/frame-range renders write per-output metadata under output/render-results/*.json and cannot overwrite output/render-result.json. Final delivery accepts only quality full render evidence for output/full.mp4.",
+    "Starting in v2.2.11, final delivery validation reruns screen-text validation, keeps detailed duplicate-text errors, and limits opening/ending subtitle-overlap exceptions to short 12-normalized-character labels.",
+    "Starting in v2.2.10, accepted feedback events must contain evidence: user-facing accepted events require userQuote, and gate-result accepted events require pass status plus validation evidence.",
+    "Starting in v2.2.9, delivery validation checks workflow acceptance evidence in feedback-events.jsonl. State flags alone and script-generated pending events no longer count as acceptance.",
+    "Starting in v2.2.8, render-result.json records ffprobe mediaProbe evidence for final MP4 stream count, audio track presence, duration, fps, dimensions, codecs, and audio channel/sample-rate evidence. Delivery validation blocks missing mediaProbe, missing audio streams when audio is requested, and major duration/fps/size mismatches.",
+    "Starting in v2.2.7, TTS synthesis writes output/tts-manifest.json with narration text hashes, provider, voice/profile, audio SHA256, file size, and per-step status. Delivery validation blocks missing/stale audio when narrations, provider, or voice change.",
+    "Starting in v2.2.6, mainline source mirrors and installed skill directories remove the legacy Vite/Web runtime leftovers (templates/index.html, templates/vite.config.ts, templates/src/App.tsx, templates/src/main.tsx, old stepper/progress/autoplay components, and old hooks) so agents cannot accidentally revive the pre-Remotion workflow.",
+    "Starting in v2.2.16, cover system renders single-layer per Cover Design Handbook. Portrait size 1440x3200. On-screen text count hard-gated (max 2/step, 3 opening-ending). Animation stack adds animejs + Pixabay + CardArrayFlow. Single-track versioning.",
+    "Starting in v2.2.17, DOUYIN BLOGGER DISTILLATION RELEASE. 新增 douyin-laon (老七聊AI风格) + douyin-skill (每天一个必备skill风格) 两个Profile; 新增 dark-tech-glow + practical-skill 两个主题; 新增7段式脚本模板; 双风格完整对比表; Whisper转写工具链。",
+    "Starting in v2.5.0, 抖音审核合规红线落地 (6.22 事故): SKILL.md/VIDEO-PROFILES.md/CHAPTER-CRAFT.md 新增禁止安装命令/终端画面/外链引导/安装式CTA规则，内容定位仅限「种草」，引导平台外的内容会被降播放量; 每步 shot-manifest.json 新增 platformCompliance 字段，preflight/validate:delivery 阻断违规信号。",
+    "Starting in v2.5.0, 字幕字数收紧 15-20字 → 10-15字 (6.16 反馈)，SKILL.md/DELIVERY.md/README/README.zh-CN/AUDIO.md/PRODUCTION-WORKFLOW.md/QUALITY-GATE.md 7 处同步。",
+    "Starting in v2.5.0, 字幕 75% 红线: 竖屏/抖音字幕底部不得低于画面 75% 高度处，subtitleBand 从 y=0.66/h=0.16 收紧到 y=0.60/h=0.13 (占60%-73%)，FORMATS.md/build-shot-manifest.ts/Subtitle.css/preflight.ts/validate-delivery.ts 同步，preflight 阻断 subtitleBand.y+height>0.75。",
+    "Starting in v2.5.0, 封面分辨率固定 1080×1440 (与视频画幅 1440×3200 解耦): generate-cover.ts/validate-cover.ts/CoverRoot.tsx 改用封面专用尺寸常量，validate-cover 校验封面为 1080×1440; COVER-WORKFLOW.md 重写。",
+    "Starting in v2.5.0, 封面可选 overlay 两层架构恢复 (6.16-P1): 默认单层 Remotion，用户提供封面模板 PNG 时切换两层叠加; 封面生成失败 3 次自动回退视频关键帧截图方案; Shot Design Review 阶段主动询问用户是否有封面模板。",
+    "Starting in v2.5.0, Remotion 缓存清理硬规则 (6.16-P1): render:golden/cover:video 重做前必须清理 .remotion bundle 缓存，解决「重做未生效」事故。",
+    "Starting in v2.5.0, TTS 用户 provider 偏好记录 (6.16-P2): project-state.json.ttsPreferences 记录用户选择/拒绝的 provider，同项目不重复询问; 并行开发后强制 build-shot-manifest --force (6.16-P2); OUTLINE-FORMAT.md 补充 douyin 单步 6s 上限自检 (6.16-P0); CHAPTER-CRAFT.md 新增竖屏底部安全区/全屏利用率自检、抖音禁止静默 step (6.16-P1)。",
+    "Starting in v2.5.0, 版本号递增规则文档化: VERSION.md 新增「版本号递增规则」章节，小修 PATCH/中修 MINOR/大修 MAJOR 判定标准与操作清单。",
+    "Starting in v2.5.2, 文案去AI味深度融合 Humanizer-zh 24 模式方法论: references/SCRIPT-STYLE.md 去AI味从「五类腔调」扩为「十类模式清单」(新增 AI高频词黑名单/破折号加粗括号/虚假范围同义词循环/谄媚填充/模糊归因夸大象征)，新增「注入灵魂」小节(有观点/承认复杂/允许混乱/对感受具体)，自检从三层升为四层(形式/风骨/50分量化/念出来)，50分评分(直接性节奏信任度真实性精炼度各10分，45+通过/<35整稿重写)，两个脚本模板检查清单联动，SKILL.md 两处引用同步。",
+    "Starting in v2.5.3, 封面单独复制 (PATCH): 新增 npm run cover:copy 命令，只把封面 PNG 复制到桌面，不走 package:delivery 全项目打包; 用户说「做个封面」时走 cover:generate→cover:validate→cover:copy，完整交付才走 package:delivery; 新增 templates/scripts/copy-cover.ts; COVER-WORKFLOW.md/SKILL.md/Codex.md/AGENT-RULEBOOK.md/PRODUCTION-WORKFLOW.md/README/README.zh-CN/DELIVERY.md/TRANSFER.md 9 处文档同步。",
+    "Starting in v2.5.3, 文案模板红线 (PATCH): references/SCRIPT-STYLE.md 万能模板章节新增「不是...而是...」否定-转折骨架和「先说...再说.../最明显的...」步骤预告骨架两个必清子节，含反面例子/修改原则/全文搜索自检方法; 风骨层自检清单新增两条检查项。",
+    "Starting in v2.6.0, 视频素材处理子系统 (MINOR, 6.26 事故 P0): 新增 references/VIDEO-ASSETS.md 完整规范视频素材入库流程——public/videos/ 目录约定 + staticFile() 引用 + asset-manifest.json 新增 type:video 字段(fps/durationSec/width/height/orientation); 源素材 fps 必须归一化到项目 fps(默认60)，24/30fps 源用 ffmpeg minterpolate 转码，preflight 阻断 fps 不匹配; 章节组件必须用 <OffthreadVideo>(@remotion/video) 而非原生 <video>，preflight 扫描 src/chapters 和 src/components 阻断 <video> JSX 标签; scaffold.sh 依赖新增 @remotion/video; CardArrayFlow.tsx 占位符黑块改为真 OffthreadVideo; RENDERING.md 新增视频素材帧率匹配 + <video> 禁用 + render:smoke 验证; CHAPTER-CRAFT.md 新增平台审核反模式清单 + 大号 CJK 文字抖动红线(>=48px 禁与 revealStyle y!=0/will-change 同用) + 完工自检 3 条; QUALITY-GATE.md 新增视频素材校验 + 封面首次失败停止规则; COVER-WORKFLOW.md 新增首次验证失败停止规则 + 封面标题手动输入优先; SKILL.md 文件指南/企业红线/相关资源/方案确认 4 处同步。",
+    "Starting in v2.6.0, 大号 CJK 文字抖动红线 (6.26 事故 P0): >=48px CJK 文字禁与 revealStyle({y:非0}) 或 will-change:transform 同时使用; 标签文字优先 absolute 定位脱离 flex 流 + 纯 interpolate opacity(零 transform); flex 容器内禁同级 GPU 合成层动画元素; 事故根因为提示词工程项目标签在 flex 内 + will-change + 同级视频 GPU 层导致亚像素抖动 4 轮未修复。",
+    "Starting in v2.6.0, 封面首次失败停止规则 (6.26 事故 P0): cover:generate 后 cover:validate 首次失败必须停下展示封面给用户并问设计方向(换标题/换主题色/手搓ffmpeg/提供模板)，不连续自动修补 5+ 轮; generate-cover.ts auto-infer 标题检测到虚词结尾或 10 字截断上限时输出警告引导手动指定; 事故根因为提示词工程项目封面 5+ 轮自动修补浪费 90min。",
+    "Starting in v2.6.0, 重大修改前先展示方案 (6.26 事故 P2): 涉及 >3 文件或需要重新渲染的修改(如全项目 <video>→<OffthreadVideo> 迁移、章节视觉大改、封面重做)，先列修改方案给用户看过再执行，不直接改完才汇报; 用户原话「先不要渲染...列出修改方案给我看过再执行」。",
+    "Starting in v2.7.0, Jitter 动态技法族系统 (MINOR): 新增 references/jitter-motion-techniques/ 目录(README + 12 个技法文章,5300+ 行),提炼自 jitter.video 612 URL / 156 changelog / 390 模板的系统性逆向研究; shot-manifest.json 新增 motionTechnique 必填字段(12 个技法族 ID: 01-fade-opacity ~ 12-glass-shader); build-shot-manifest.ts 新增 inferMotionTechnique() 推断函数; preflight.ts 强制校验 motionTechnique 字段存在且值在 12 ID 枚举内; outline.md 可预选 motionTechnique(从口播设计阶段就有动态方向); CHAPTER-CRAFT.md 流程新增第 4 步选 motionTechnique + 自检清单新增 6 条; motionStyle(motionStyle 管「整体气质」) 与 motionTechnique(管「具体怎么动」) 是互补关系。",
+    "Starting in v2.7.0, 修改记录教训全量沉淀 (MINOR): MODIFICATION-RECORD-LESSONS.md 新增教训 17-42(26 条),来自三个真实项目修改记录——AI圈大地震(TransparentFix 透明底方案/纸纹噪点导致 ProRes 46.6GB/并行自检强制/模式 A 停顿/useCurrentFrame Hook 规则/H.265 无 alpha/ChapterStepProps isOverlay)、DeepSeek 涨价(Shot Design Review 门禁/第一章 anchor 门禁/透明底图形不透明规则/尺寸计算前置/竖屏最小字号/并行开发前提/section label 不显示口播原句)、GPT-5.6 门禁(Phase 1.2 全文校验/项目规格按 profile/章节变更重走 SDR/SVG viewBox 一致性/装饰 SVG 与主内容重叠/变量初始化顺序); preflight.ts 新增 audioDurationMs: null 超 50% 门禁(教训 29,仅 TTS 项目生效,不误伤参考视频内置音频); render-video.ts 新增 detectInstalledBrowser() 自动扫描 Edge/Chrome/Firefox 已安装路径(教训 22,用户原话「千万不要下载」); RENDERING.md 新增 ProRes 噪点纹理体积爆炸章节(教训 23) + H.265 无 alpha 章节(教训 37) + 端口冲突处理(教训 36); QUALITY-GATE.md 新增 SVG viewBox/ProRes 噪点/motionTechnique/audioDurationMs 4 条检查项; 7 个技法文章反模式章节补充对应修改记录教训。",
+    "Starting in v2.7.0, 教训生命周期管理 + 可视化预览器 + 推断改进 (MINOR): (1) 42 条教训每条标注 [AUTO](22条,已被 preflight/脚本自动化,Agent 不需要记忆) 或 [MANUAL](20条,需手动遵守); Agent 认知负担减少 52%; 新增教训必须标注生命周期; 每半年复查 [MANUAL] 是否可降级为 [AUTO]。 (2) 新增 templates/src/video/TechniquePreviews.tsx(280 行),12 个最小可渲染 Remotion composition(technique-01-fade ~ technique-12-glass),Agent 在 Studio 选技法时看效果而非读文字(行业领先功能); 已注册到 RemotionRoot.tsx。 (3) inferMotionTechnique 推断准确率从 21% 提升到 79%(30 条真实口播测试),扩展中文数字/时间线/语义短句匹配。 (4) AGENT-RULEBOOK.md 新增「Agent 工作方法(对话效率原则)」5 条:先问问题再动手/写完脚本立即测试/规则膨胀自己提/不最后才发现问题/理论方案标注未验证。"
+  ],
+  "metadataNotice": "All pre-existing validation/validationStatus blocks are historical evidence, not this candidate acceptance. Current reproducible checks are reported in ../README.md. MIT is authorized only for owner-controlled original code; third-party materials and media are excluded from that grant.",
+  "validationStatus": {
+    "round4_integration": "final_local_typecheck_and_offline_regressions_passed",
+    "remotion_browser_end_to_end": "blocked_not_retried",
+    "actual_model_token_usage": "unavailable",
+    "target_editors": "not_tested",
+    "native_macos_windows": "not_tested",
+    "real_installation": "not_run",
+    "provided_audio": "synthetic_local_per_step_wav_probe_and_timing_only",
+    "cover": "real_inkscape_and_pixel_preserving_existing_imagegen_png_import_video_revision_stable_not_user_accepted",
+    "offlineTestCounts": {
+      "workspace": 29,
+      "scaffold_explicit_choices": 4,
+      "contracts": 43,
+      "workflow": 31,
+      "audio_source": 11,
+      "quality_gates": 34,
+      "silent_screen_text": 14,
+      "tts_mock_cache_and_source_guard": 54,
+      "cover": 24,
+      "continuity": 13,
+      "review_fake_backend": 19,
+      "timing_subtitles": 6,
+      "metrics": 15,
+      "review_summary": 14,
+      "package_safety_and_snapshot": 10,
+      "cover_runner": 3
+    },
+    "fresh_input_revision": {
+      "status": "bound",
+      "files": 60,
+      "issues": []
+    },
+    "round7_motion_update": {
+      "version": "3.4.0",
+      "status": "validation-candidate",
+      "date": "2026-10-27",
+      "new_tests": {
+        "mechanisms": 11,
+        "motion_direction": 29
+      },
+      "regressions": {
+        "theme_and_style_wiring": 126,
+        "scaffold_existing": 10,
+        "existing_preset_runtime": 11,
+        "contracts": 43,
+        "workflow_synthetic": 31,
+        "quality_assertions": 34
+      },
+      "generated_project_typecheck": "passed",
+      "preserved_baseline_source_files": 133,
+      "preserved_baseline_source_changes": 0,
+      "new_visual_probe": {
+        "renderer": "actual React SVG component -> librsvg/Cairo -> FFmpeg; not Remotion browser",
+        "duration_seconds": 6,
+        "fps": 30,
+        "dimensions": [
+          960,
+          540
+        ],
+        "audio": "none",
+        "frames": 180,
+        "sha256": "a4692d651097833bc4046675c9af799a524eaafcf0a94ad7c71566c6b9469ccd",
+        "observed": "12 chronological sampled frames plus portrait and alpha inspection; not human real-time playback"
+      },
+      "independent_recheck": {
+        "portrait_and_ultrawide_background": "all pixels alpha255",
+        "omitted_background": "transparent",
+        "unique_namespaces": "12 of12 IDs unique",
+        "review_issue_range": "fixed and negative-tested"
+      },
+      "not_verified": [
+        "real Remotion/browser end-to-end",
+        "encoded ProRes Alpha and target NLE import",
+        "user Mac/Windows environment",
+        "arbitrary content, automatic rigging or topology repair",
+        "weak-model quality parity",
+        "measured model-token savings",
+        "customer acceptance"
+      ],
+      "dependencies_added": [],
+      "third_party_source_executed": false
+    },
+    "previous_rounds": "historical evidence retained; new preview does not upgrade browser/editor status",
+    "round9_reference_styles": {
+      "version": "3.5.0",
+      "status": "validation-candidate",
+      "catalog": {
+        "preservedOriginalIds": 56,
+        "addedExecutableStyles": [
+          "ink-landscape-film",
+          "particle-depth-film",
+          "spectral-material-film",
+          "kinetic-wireframe-film",
+          "rain-platform-film"
+        ],
+        "total": 61
+      },
+      "styleVisualChecks": {
+        "finalSvgCases": 70,
+        "rasterSuccess": 70,
+        "textOutsideHints": 0,
+        "overlapHints": 0,
+        "continuousClips": 5,
+        "secondsPerClip": 12,
+        "fps": 30,
+        "dimensions": [
+          960,
+          540
+        ],
+        "framesDecoded": 1800,
+        "review": "chronological half-second images plus focused transitions and full-frame low-resolution change diagnostics; not real-time listening/playback",
+        "provider": "actual shared React SVG components via librsvg/Cairo and FFmpeg"
+      },
+      "scopeLimits": [
+        "Not actual Remotion/browser end-to-end",
+        "No target Mac/Windows or NLE acceptance",
+        "SVG alpha checks do not certify encoded customer Alpha; separate transient ProRes fixture only tested validation sampling",
+        "Particle alpha intended for dark footage; ink alpha for light low-detail footage",
+        "Rain figure intentionally enters from frame edge; safe final framing is not all-frame containment",
+        "No arbitrary model or reference-quality parity guarantee",
+        "No customer acceptance recorded"
+      ],
+      "performance": {
+        "particlePreviewBeforeSeconds": 547.5675561110002,
+        "particlePreviewAfterSeconds": 62.809278656997776,
+        "sameClipDimensionsAndFrames": true,
+        "change": "fill-only circles use fill-opacity rather than group-like opacity; geometry and point IDs preserved",
+        "pixelComparisonMaximumChannelDelta": 2,
+        "conditions": "same local offline renderer, differing concurrent workloads; not a controlled benchmark or Remotion/GPU/token claim"
+      },
+      "auditedFixes": [
+        "project version binding",
+        "shape-only direction without invented fonts",
+        "project-local script isolation",
+        "mixed TTS/silent timing",
+        "confirmed voice/provider identity",
+        "provided audio provenance in package",
+        "composite-only caption forwarding in both",
+        "mode-aware bounded smoke with alpha alias",
+        "explicit installed Studio browser and no-open routing",
+        "explicit transient alpha sampling",
+        "opt-in exact selected-source snapshot",
+        "outer bundle verification"
+      ],
+      "newRuntimeDependencies": [],
+      "finalTests": {
+        "sourceWorkspaceScaffoldCatalogBundle": 215,
+        "runtimeScenesMechanismsDirectionStudioRoutes": 92,
+        "wholeGeneratedProjectTypecheck": "passed",
+        "priorAuditedHandoffAudioRoutes": 23,
+        "priorSourceHandoffAssertions": 14,
+        "referenceShotManifestAssertions": 9
+      }
+    },
+    "round10_remove_rejected_style": {
+      "version": "3.5.1",
+      "status": "validation-candidate",
+      "change": "Removed user-rejected ink-landscape-film; no replacement style added",
+      "removedPresetId": "ink-landscape-film",
+      "preservedOriginalPresetCount": 56,
+      "retainedNewPresetIds": [
+        "particle-depth-film",
+        "spectral-material-film",
+        "kinetic-wireframe-film",
+        "rain-platform-film"
+      ],
+      "totalSelectablePresets": 60,
+      "visualScope": {
+        "retainedSceneSource": "hash-identical to reviewed v3.5.0 components",
+        "retainedVideos": 4,
+        "secondsPerVideo": 12,
+        "overviewSeconds": 48,
+        "decodedFrames": 1440,
+        "retainedCheckImages": 56,
+        "newRenderingRequired": false
+      },
+      "userAcceptance": "Ink rejected; no acceptance inferred for the other four",
+      "limits": [
+        "No real Remotion/browser or target Mac/Windows verification",
+        "No final customer Alpha/NLE acceptance",
+        "Particle alpha intended for dark footage",
+        "Previous release evidence is scoped historical evidence, not a new full render test"
+      ]
+    },
+    "bounded_art_review_candidate": {
+      "version": "3.5.2-candidate.1",
+      "status": "documentation-candidate",
+      "visualSourceChanged": false,
+      "runtimeDependenciesAdded": [],
+      "visualImprovement": "not_tested",
+      "userAcceptance": "not_recorded",
+      "offlineValidation": {
+        "skill_frontmatter": "passed",
+        "existing_source_tests": 207,
+        "local_links_checked": 46,
+        "baseline_files_unchanged": 485,
+        "selectable_styles": 60,
+        "scope": "documentation, source and synthetic regressions only; no new visual render or user acceptance"
+      }
+    },
+    "low_cost_batch_candidate": {
+      "version": "3.5.2-candidate.2",
+      "status": "offline-input-contract-candidate",
+      "newBehaviorTests": 12,
+      "coreRegressionTests": 214,
+      "scaffoldSmoke": "skip-install; generated-project batch tests 12/12 passed",
+      "initialBroadProbe": {
+        "passed": 308,
+        "failedTestFiles": 8,
+        "reason": "Existing tests require unavailable tsx; template-only pipeline probe also lacked generated package.json. No dependency installation attempted."
+      },
+      "newRuntimeDependencies": [],
+      "rendererBatchIntegration": "not_implemented",
+      "cheapModelEvaluation": "not_run",
+      "humanApprovalAuthentication": "not_provided",
+      "visualRendering": "not_run",
+      "visualSourceHashUnchangedFiles": 205,
+      "localLinksChecked": 46
+    },
+    "visual_script_integration": {
+      "version": "3.5.2",
+      "status": "validation-candidate",
+      "offlineNodeTestsPassed": 313,
+      "initialBroadProbeFailedFiles": 8,
+      "initialBroadProbeReason": "Seven suites require unavailable tsx; pipeline suite also requires generated package.json. No installation attempted.",
+      "teachingFixtureChecks": 5,
+      "runtimeSourceUnchanged": true,
+      "themeFilesUnchanged": true,
+      "selectableStyles": 60,
+      "newVideoRendering": "not_run",
+      "audioMeasured": "not_run",
+      "cheapModelEvaluation": "not_run",
+      "customerProductionAcceptance": "not_recorded"
+    }
+  },
+  "historicalDistillationPlan": {
+    "status": "historical-plan-not-implemented-or-verified",
+    "original": {
+      "laoqiDistillation": "Ready for Batch: 单视频蒸馏完成，准备全量视频批量分析",
+      "skillBloggerDistillation": "Ready for Batch: 风格框架完成，准备全量视频批量分析",
+      "batchPipeline": "TikHub API + Whisper转写 + 跨视频聚合分析 + 风格规律提取",
+      "bloggersToProcess": 2,
+      "videosPerBloggerTarget": 20,
+      "totalProfiles": 5
+    },
+    "note": "Legacy TikHub/Whisper/profile targets are not installed providers, a current batch capability, or an instruction to process those accounts."
+  },
+  "validation": {
+    "round14_reference_application": {
+      "status": "validation-candidate",
+      "draftRouteTests": 21,
+      "pilotBehaviorChecks": 23,
+      "sourceMjsTests": 236,
+      "temporalSyntheticCalls": 20,
+      "temporalAdditionalChecks": "2 platform-label runs and 3 sample-count mocks; native macOS/Windows not tested",
+      "independentAudit": "8 gate combinations, pilot bug reproduction/fix and sparse-source fractional interval checks",
+      "coreLimits": [
+        "No browser/ReactSSR for new pilot",
+        "No actual customer batch approval",
+        "No NLE/target-host acceptance",
+        "Video review used screen frames and visible captions, not complete audio listening",
+        "Original reference source URLs partially unresolved"
+      ],
+      "originalDemo": {
+        "seconds": 14,
+        "size": [
+          1280,
+          720
+        ],
+        "fps": 30,
+        "decodedFrames": 420,
+        "sha256": "2ff0065728a472dacb0b5105bfe0833500b8afb158e5f42ed8267188e290cd0a",
+        "status": "original-method-study-not-user-accepted",
+        "audio": "none",
+        "alpha": "PNG only; no transparent video test",
+        "seekTests": 8,
+        "independentEmptyOutputRerun": true
+      },
+      "finalApplicableOfflineNodeTests": {
+        "passed": 335,
+        "failed": 0
+      },
+      "remainingEnvironmentLimitedTestFiles": 8
+    },
+    "shotcraftIntegration": {
+      "status": "independently-reviewed-offline-candidate",
+      "newPythonBehaviorTests": 15,
+      "upstreamCommit": "1266a3ec4831289c4d893d42dd5102723658039a",
+      "runtimeDependenciesAdded": [],
+      "runtimeSourceChanged": false,
+      "themeFilesChanged": false,
+      "audioRendererIntegration": false,
+      "upstreamPreviewViewed": false,
+      "customerAcceptance": "not-recorded",
+      "nodePassedTests": 348,
+      "environmentLimitedSuites": 8,
+      "sample": "Independent Python/Pillow concept study, not Skill end-to-end"
+    },
+    "originalObjectHandoff": {
+      "status": "validation-candidate",
+      "offlineRegressionTests": 335,
+      "clockAndTrackTests": 12,
+      "temporalTests": 6,
+      "freshScaffoldBehaviorTests": 1,
+      "newDependencies": [],
+      "browserRender": "blocked by sandbox/launcher",
+      "remotionRender": "not run: dependencies unavailable; registry operation denied, not retried",
+      "typecheck": "not run: compiler/dependencies unavailable",
+      "customerAcceptance": "not recorded",
+      "thirdPartyRepositoryCodeCopied": false,
+      "lowModelExecution": {
+        "model": "Luna low",
+        "result": "local no-dependency tests/probe and skip-install scaffold succeeded; one focus.to.x edit reflected in probe and stable boundary",
+        "limits": "not a video generation, throughput, token-cost or broad capability benchmark"
+      }
+    }
+  }
+}

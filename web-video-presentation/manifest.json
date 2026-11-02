@@ -1,0 +1,15 @@
+{
+  "name": "web-video-presentation",
+  "version": "3.8.0",
+  "category": "Web Video / Presentation",
+  "description": "Create deterministic Remotion videos, mechanism explainers, transparent Alpha assets, and explicit live-action composites. Preserve narrated profiles, themes, TTS and subtitles; route references progressively and verify actual output pixels, timelines, assets and mode-aware delivery manifests.",
+  "homepage": "local://web-video-presentation",
+  "compat": [
+    "claude-code",
+    "claude-ai",
+    "cursor",
+    "codex-cli",
+    "gemini-cli",
+    "opencode"
+  ]
+}

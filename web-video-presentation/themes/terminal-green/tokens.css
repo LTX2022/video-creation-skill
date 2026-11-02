@@ -1,0 +1,82 @@
+/* Theme terminal-green | 可读的终端而非滤镜
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #000000;
+  --surface: #050a07;
+  --surface-2: #0a1410;
+  --surface-3: #0f1c17;
+  --text: #41ff97;
+  --text-2: #2ed084;
+  --text-mute: #2c9362;
+  --text-faint: #307254;
+  --text-disabled: #0f5c39;
+  --rule: rgba(65, 255, 151, 0.30);
+
+  /* Brand color roles */
+  --accent: #41ff97;
+  --accent-strong: #41ff97;
+  --accent-on: #000000;
+  --accent-soft: rgba(65, 255, 151, .13);
+  --accent-glow: rgba(65, 255, 151, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-display-en: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-body: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 600;
+  --body-leading: 1.4;
+  --label-tracking: .06em;
+  --r-card: 0px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 1px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-mono);
+  --hero-num-style: normal;
+  --hero-num-weight: 500;
+  --hero-num-track: 0;
+  --stage-pad-x: 80px;
+  --stage-pad-y: 60px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 360ms;
+  --dur-slow: 600ms;
+  --dur-cinematic: 900ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: repeating-linear-gradient( 0deg, transparent 0px, transparent 2px, rgba(65, 255, 151, 0.04) 2px, rgba(65, 255, 151, 0.04) 3px );
+  --surface-pattern-size: 100% 100%;
+  --surface-pattern-opacity: 0.35;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #69c99b;
+  --success-soft: rgba(105, 201, 155, .12);
+  --success-on: #000000;
+  --warning: #edc779;
+  --warning-soft: rgba(237, 199, 121, .12);
+  --warning-on: #000000;
+  --error: #f39a9a;
+  --error-soft: rgba(243, 154, 154, .12);
+  --error-on: #000000;
+  --chart-1: #41ff97;
+  --chart-2: #69c99b;
+  --chart-3: #edc779;
+  --chart-4: #f39a9a;
+  --chart-5: #c2b4e8;
+
+  /* Theme-specific optional hooks; consumer coverage is recorded in QA. */
+  --ease-quart: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-expo: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --dur-quick: 180ms;
+}

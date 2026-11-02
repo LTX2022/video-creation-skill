@@ -1,0 +1,26 @@
+{
+  "status": "encoded_technical_checks_pass_visual_trial_not_user_approved",
+  "width": 1920,
+  "height": 1080,
+  "fps": "30/1",
+  "duration": "26.000000",
+  "decoded_frames": 780,
+  "declared_frames": "780",
+  "audio_streams": 0,
+  "decode_errors": false,
+  "adjacent_mean_absolute_gray_difference_320x180": {
+    "min": 0.0,
+    "median": 0.39449653029441833,
+    "max": 2.0176563262939453,
+    "max_at_frame": 182,
+    "exact_adjacent_duplicate_count": 2,
+    "duplicate_following_frames": [
+      1,
+      2
+    ]
+  },
+  "current_source_default_frame_720_matches_cover_exactly": true,
+  "qa_seconds": 4.239027559000078,
+  "duplicate_explanation": "Frames 0–2 are the near-black opening fade quantizing to identical pixels in downscaled grayscale; no mid-film freeze is indicated.",
+  "visual_inspection": "native keyframes + dense chronological contact frames from encoded preview/final; not claimed real-time full playback"
+}

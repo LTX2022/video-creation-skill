@@ -1,0 +1,68 @@
+{
+  "id": "neon-cyber",
+  "name": "Neon Cyber",
+  "nameZh": "霓虹赛博",
+  "description": "Neon Cyber: 可控双霓虹技术世界. Source configuration; rendered review pending.",
+  "descriptionZh": "可控双霓虹技术世界。用于关系图、终端、对照流程；正文中性；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "dark",
+    "cyberpunk",
+    "neon",
+    "futuristic",
+    "technical",
+    "saturated"
+  ],
+  "bestFor": [
+    "AI / 大模型评测",
+    "web3 / 区块链",
+    "网络安全 / 黑客向",
+    "未来主义产品",
+    "赛博朋克 / 科幻话题"
+  ],
+  "preview": {
+    "shell": "#04060f",
+    "surface": "#0a0f1c",
+    "text": "#e8f4ff",
+    "accent": "#00ffcc"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "kinetic",
+    "contentCategory": "system-diagram",
+    "identity": "可控双霓虹技术世界",
+    "contentLayout": "关系图、终端、对照流程；正文中性",
+    "semanticMotion": "单一连接/状态高亮，禁止网格呼吸乱闪",
+    "distinction": "网格+双霓虹字影+光晕须降为一主两辅",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "grotesk",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "Texture/blend/compression and any transparent surface require actual composited inspection; source-only adjustment."
+}

@@ -1,0 +1,64 @@
+{
+  "id": "luxury-watch-black",
+  "name": "luxury watch black",
+  "nameZh": "高级腕表黑金",
+  "description": "luxury watch black: 黑金精密产品图录. Source configuration; rendered review pending.",
+  "descriptionZh": "黑金精密产品图录。用于单物大图、机芯/材料特写、参数展签；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "dark",
+    "luxury",
+    "catalog"
+  ],
+  "bestFor": [
+    "奢侈品",
+    "珠宝腕表",
+    "高端品牌片",
+    "质感展示"
+  ],
+  "preview": {
+    "shell": "#060606",
+    "surface": "#10100f",
+    "text": "#f4eee2",
+    "accent": "#d6b15d"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "gallery",
+    "contentCategory": "product-material",
+    "identity": "黑金精密产品图录",
+    "contentLayout": "单物大图、机芯/材料特写、参数展签",
+    "semanticMotion": "克制光位/细节推移，文字先稳定再切",
+    "distinction": "金色必须保持小字可读，不靠大阴影显贵",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "high-serif",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "No texture-based identity claim; actual material, layout and contrast still require rendered inspection."
+}

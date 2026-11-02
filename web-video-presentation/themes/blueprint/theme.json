@@ -1,0 +1,68 @@
+{
+  "id": "blueprint",
+  "name": "Blueprint",
+  "nameZh": "蓝图",
+  "description": "Blueprint: 工程图纸与尺寸标注. Source configuration; rendered review pending.",
+  "descriptionZh": "工程图纸与尺寸标注。用于剖面、尺寸线、装配步骤、图号/单位；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "dark",
+    "engineering",
+    "blueprint",
+    "industrial",
+    "technical",
+    "navy"
+  ],
+  "bestFor": [
+    "技术架构",
+    "系统拆解",
+    "技术评测",
+    "工程教程",
+    "API / SDK 介绍"
+  ],
+  "preview": {
+    "shell": "#0a1224",
+    "surface": "#0e1a2e",
+    "text": "#d6e5ff",
+    "accent": "#4dd2ff"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "blueprint",
+    "contentCategory": "system-diagram",
+    "identity": "工程图纸与尺寸标注",
+    "contentLayout": "剖面、尺寸线、装配步骤、图号/单位",
+    "semanticMotion": "按装配/依赖顺序画线，标注稳定",
+    "distinction": "网格必须退到图下，不做满屏细线噪声",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "mono",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "Texture/blend/compression and any transparent surface require actual composited inspection; source-only adjustment."
+}

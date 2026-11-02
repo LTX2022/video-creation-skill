@@ -1,0 +1,85 @@
+{
+  "id": "spectral-material-film",
+  "name": "Spectral Material Film",
+  "nameZh": "同形材质实验",
+  "description": "Spectral Material Film: original frame-deterministic SVG scene. Source implementation; rendered review pending.",
+  "descriptionZh": "暖白空间里的同一橙色轮廓，连续经历平涂、纸面与线版材质。已接入主题选择与默认示例；实际画面、连续动效、字体与 Alpha 边缘待渲染复核。",
+  "mood": [
+    "warm-white",
+    "orange",
+    "material",
+    "纸面",
+    "线版",
+    "材质"
+  ],
+  "bestFor": [
+    "材质概念片",
+    "设计实验",
+    "艺术装置预演",
+    "产品气质探索"
+  ],
+  "preview": {
+    "shell": "#ebe5da",
+    "surface": "#f7f3ea",
+    "text": "#171b1f",
+    "accent": "#aa3b21"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "reference",
+    "contentCategory": "spectral-material-film",
+    "identity": "暖白空间里的同一橙色轮廓与连续材质转换",
+    "contentLayout": "原创折带形体与留白排版构成主景，材质变化始终绑定同一轮廓",
+    "semanticMotion": "平涂保持、纸面扫入、线版扫入，最后保留印刷质感",
+    "distinction": "独立完整 SVG 场景，不复用旧 56 个主题的标题/卡片构图。",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "serif",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static token contrast checks cover surrounding flat stage/UI roles only; authored SVG palettes, gradients, texture, motion and output pixels require rendered inspection.",
+    "staticSvg": "reviewed-14-cases",
+    "motionSvg": "reviewed-12-second-30fps-preview",
+    "targetBrowser": "not-tested",
+    "alphaEditor": "not-tested",
+    "scopedEvidenceStatus": "offline-svg-reviewed-target-renderer-pending"
+  },
+  "materialRisk": "程序化 SVG 平涂、纸面、线条网点近似；不是光线追踪、真实折射、纸张物理或产品实物认证。",
+  "runtime": {
+    "entrypoint": "src/video/presets/PresetScene.tsx",
+    "component": "src/video/reference-styles/SpectralMaterial.tsx",
+    "defaultExample": "src/chapters/01-example/Example.tsx",
+    "presetId": "spectral-material-film",
+    "palettePolicy": "authored-scene-palette; CSS tokens cover surrounding stage/UI only, not universal SVG recoloring",
+    "timing": "frame-deterministic; scene-bound narration and three-step shot plan"
+  },
+  "limitations": [
+    "程序化 SVG 平涂、纸面、线条网点近似；不是光线追踪、真实折射、纸张物理或产品实物认证。",
+    "SVG 内部为作者设定配色；编辑 tokens.css 不保证重着色所有主体、渐变或文字。",
+    "源代码与类型/静态测试不是视觉验收；实际横竖屏、字幕、字体、连续帧与透明合成仍需检查。"
+  ]
+}

@@ -1,0 +1,79 @@
+/* Theme sunset-zine | 有编辑秩序的剪贴杂志
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #f4d4b6;
+  --surface: #fcecd4;
+  --surface-2: #ffe6c8;
+  --surface-3: #f0d4a8;
+  --text: #2a1810;
+  --text-2: #4a2c20;
+  --text-mute: #7a5040;
+  --text-faint: #967060;
+  --text-disabled: #a07866;
+  --rule: #c89878;
+
+  /* Brand color roles */
+  --accent: #e91e63;
+  --accent-strong: #b6174e;
+  --accent-on: #000000;
+  --accent-soft: rgba(233, 30, 99, .10);
+  --accent-glow: rgba(233, 30, 99, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Noto Serif SC", serif;
+  --font-display-en: Georgia, "Times New Roman", "Noto Serif", serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 700;
+  --body-leading: 1.5;
+  --label-tracking: .08em;
+  --r-card: 0px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 2px;
+  --rule-style: dashed;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: italic;
+  --hero-num-weight: 600;
+  --hero-num-track: -0.02em;
+  --stage-pad-x: 92px;
+  --stage-pad-y: 76px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 420ms;
+  --dur-slow: 680ms;
+  --dur-cinematic: 960ms;
+
+  /* Restrained material signature */
+  --card-shadow: 3px 3px 0 rgba(122, 80, 64, 0.18);
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' seed='12'/><feColorMatrix values='0 0 0 0 0.65 0 0 0 0 0.50 0 0 0 0 0.40 0 0 0 0.20 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  --surface-pattern-size: 200px 200px;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 0.16;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #146b45;
+  --success-soft: rgba(20, 107, 69, .12);
+  --success-on: #ffffff;
+  --warning: #7c570b;
+  --warning-soft: rgba(124, 87, 11, .12);
+  --warning-on: #ffffff;
+  --error: #aa313b;
+  --error-soft: rgba(170, 49, 59, .12);
+  --error-on: #ffffff;
+  --chart-1: #b6174e;
+  --chart-2: #15734a;
+  --chart-3: #845c0c;
+  --chart-4: #b1333d;
+  --chart-5: #705392;
+
+}

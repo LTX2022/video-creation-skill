@@ -1,0 +1,79 @@
+/* Theme taste-skill-neo | 审美判断的对照工具
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #e5e1d8;
+  --surface: #fbf8f0;
+  --surface-2: #fffdf7;
+  --surface-3: #eeeade;
+  --text: #11110f;
+  --text-2: #374151;
+  --text-mute: #636976;
+  --text-faint: #80858f;
+  --text-disabled: #9ca3af;
+  --rule: #d8dee8;
+
+  /* Brand color roles */
+  --accent: #a3e635;
+  --accent-strong: #52731b;
+  --accent-on: #000000;
+  --accent-soft: rgba(163, 230, 53, .10);
+  --accent-glow: rgba(163, 230, 53, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
+  --font-display-en: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 800;
+  --body-leading: 1.45;
+  --label-tracking: .08em;
+  --r-card: 4px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 2px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: normal;
+  --hero-num-weight: 700;
+  --hero-num-track: -0.015em;
+  --stage-pad-x: 100px;
+  --stage-pad-y: 76px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 280ms;
+  --dur-slow: 460ms;
+  --dur-cinematic: 720ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: none;
+  --surface-pattern-size: auto;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 0;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #15734a;
+  --success-soft: rgba(21, 115, 74, .12);
+  --success-on: #ffffff;
+  --warning: #845c0c;
+  --warning-soft: rgba(132, 92, 12, .12);
+  --warning-on: #ffffff;
+  --error: #b1333d;
+  --error-soft: rgba(177, 51, 61, .12);
+  --error-on: #ffffff;
+  --chart-1: #52731b;
+  --chart-2: #15734a;
+  --chart-3: #845c0c;
+  --chart-4: #b1333d;
+  --chart-5: #705392;
+
+}

@@ -1,0 +1,79 @@
+/* Theme vintage-editorial | 有性格的专栏排版
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #e8e0cf;
+  --surface: #f5f3ee;
+  --surface-2: #fbf9f3;
+  --surface-3: #ebe4d2;
+  --text: #1a1a1a;
+  --text-2: #2e2a25;
+  --text-mute: #6b6357;
+  --text-faint: #878175;
+  --text-disabled: #9a9385;
+  --rule: #c8bfa8;
+
+  /* Brand color roles */
+  --accent: #c25e3a;
+  --accent-strong: #a04e30;
+  --accent-on: #000000;
+  --accent-soft: rgba(194, 94, 58, .10);
+  --accent-glow: rgba(194, 94, 58, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Noto Serif SC", serif;
+  --font-display-en: Georgia, "Times New Roman", "Noto Serif", serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 600;
+  --body-leading: 1.6;
+  --label-tracking: .12em;
+  --r-card: 4px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 1px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: italic;
+  --hero-num-weight: 500;
+  --hero-num-track: -0.02em;
+  --stage-pad-x: 128px;
+  --stage-pad-y: 92px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 540ms;
+  --dur-slow: 900ms;
+  --dur-cinematic: 1280ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><g fill='none' stroke='%23a89878' stroke-width='1' opacity='0.16'><circle cx='80' cy='90' r='52'/><circle cx='340' cy='250' r='78'/><circle cx='180' cy='320' r='2.5' fill='%23a89878' stroke='none'/><circle cx='280' cy='110' r='2.5' fill='%23a89878' stroke='none'/><line x1='40' y1='200' x2='110' y2='200'/><line x1='300' y1='370' x2='370' y2='370'/></g></svg>");
+  --surface-pattern-size: 400px 400px;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 0.28;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #15734a;
+  --success-soft: rgba(21, 115, 74, .12);
+  --success-on: #ffffff;
+  --warning: #845c0c;
+  --warning-soft: rgba(132, 92, 12, .12);
+  --warning-on: #ffffff;
+  --error: #b1333d;
+  --error-soft: rgba(177, 51, 61, .12);
+  --error-on: #ffffff;
+  --chart-1: #a04e30;
+  --chart-2: #15734a;
+  --chart-3: #845c0c;
+  --chart-4: #b1333d;
+  --chart-5: #705392;
+
+}

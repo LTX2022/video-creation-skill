@@ -1,0 +1,79 @@
+/* Theme newsroom | 新闻证据与报刊网格
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #c8bca0;
+  --surface: #f1ebd8;
+  --surface-2: #f8f3e2;
+  --surface-3: #ebe3cc;
+  --text: #14110b;
+  --text-2: #2a261a;
+  --text-mute: #5e564a;
+  --text-faint: #888070;
+  --text-disabled: #8c8473;
+  --rule: #968e7a;
+
+  /* Brand color roles */
+  --accent: #c8260d;
+  --accent-strong: #c3250d;
+  --accent-on: #ffffff;
+  --accent-soft: rgba(200, 38, 13, .10);
+  --accent-glow: rgba(200, 38, 13, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Noto Serif SC", serif;
+  --font-display-en: Georgia, "Times New Roman", "Noto Serif", serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 700;
+  --body-leading: 1.55;
+  --label-tracking: .10em;
+  --r-card: 0px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 2px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: italic;
+  --hero-num-weight: 500;
+  --hero-num-track: -0.02em;
+  --stage-pad-x: 100px;
+  --stage-pad-y: 76px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 540ms;
+  --dur-slow: 900ms;
+  --dur-cinematic: 1280ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='320' height='320'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='8'/><feColorMatrix values='0 0 0 0 0.5 0 0 0 0 0.45 0 0 0 0 0.35 0 0 0 0.10 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  --surface-pattern-size: 320px 320px;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 0.16;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #15734a;
+  --success-soft: rgba(21, 115, 74, .12);
+  --success-on: #ffffff;
+  --warning: #845c0c;
+  --warning-soft: rgba(132, 92, 12, .12);
+  --warning-on: #ffffff;
+  --error: #b1333d;
+  --error-soft: rgba(177, 51, 61, .12);
+  --error-on: #ffffff;
+  --chart-1: #c3250d;
+  --chart-2: #15734a;
+  --chart-3: #845c0c;
+  --chart-4: #b1333d;
+  --chart-5: #705392;
+
+}

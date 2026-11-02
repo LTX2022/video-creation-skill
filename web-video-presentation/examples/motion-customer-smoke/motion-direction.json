@@ -1,0 +1,117 @@
+{
+  "schema": 1,
+  "synthetic": true,
+  "label": "Synthetic reuse fixture — implemented source, no rendered or accepted media",
+  "scope": {
+    "durationSec": 6,
+    "audioMode": "none",
+    "outputMode": "alpha"
+  },
+  "requirements": [
+    {
+      "id": "req-identity",
+      "text": "One frame-deterministic object morphs continuously across the chapter step boundary.",
+      "required": true,
+      "status": "implemented"
+    },
+    {
+      "id": "req-material",
+      "text": "Paper, line and halftone share the same contour, ID, palette and seed.",
+      "required": true,
+      "status": "implemented"
+    },
+    {
+      "id": "req-output",
+      "text": "Silent 960x540, 30 fps, 180 frames, true Alpha with black/white edge review.",
+      "required": true,
+      "status": "blocked",
+      "reason": "Browser/encoding execution is outside this forward-test authorization; no MOV or decoded pixel QA exists."
+    }
+  ],
+  "objects": [
+    {
+      "id": "obj-token",
+      "meaning": "A single graphic token, not a physical object simulation"
+    }
+  ],
+  "transformations": [
+    {
+      "id": "move-morph",
+      "objectId": "obj-token",
+      "source": {
+        "atSec": 1,
+        "state": "circle"
+      },
+      "target": {
+        "atSec": 5,
+        "state": "diamond"
+      },
+      "mechanism": "prepared equal-count perimeter correspondence and smoothstep interpolation",
+      "preserve": "Stable identity, ordered point IDs, palette, seed and position.",
+      "requirementIds": [
+        "req-identity",
+        "req-material"
+      ]
+    }
+  ],
+  "keyframes": [
+    {
+      "id": "kf-0",
+      "atSec": 0.0,
+      "purpose": "paper circle",
+      "requirementIds": [
+        "req-identity",
+        "req-material"
+      ]
+    },
+    {
+      "id": "kf-60",
+      "atSec": 2.0,
+      "purpose": "line and morph quarter",
+      "requirementIds": [
+        "req-identity",
+        "req-material"
+      ]
+    },
+    {
+      "id": "kf-90",
+      "atSec": 3.0,
+      "purpose": "chapter step boundary",
+      "requirementIds": [
+        "req-identity",
+        "req-material"
+      ]
+    },
+    {
+      "id": "kf-120",
+      "atSec": 4.0,
+      "purpose": "halftone and morph three-quarter",
+      "requirementIds": [
+        "req-identity",
+        "req-material"
+      ]
+    },
+    {
+      "id": "kf-150",
+      "atSec": 5.0,
+      "purpose": "diamond arrives",
+      "requirementIds": [
+        "req-identity",
+        "req-material"
+      ]
+    },
+    {
+      "id": "kf-179",
+      "atSec": 5.966666666666667,
+      "purpose": "last actual frame",
+      "requirementIds": [
+        "req-identity",
+        "req-material"
+      ]
+    }
+  ],
+  "review": {
+    "status": "unreviewed",
+    "samples": []
+  }
+}

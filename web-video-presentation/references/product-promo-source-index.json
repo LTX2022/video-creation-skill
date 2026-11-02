@@ -1,0 +1,60 @@
+{
+  "commit": "1266a3ec4831289c4d893d42dd5102723658039a",
+  "checkedAt": "2026-10-31",
+  "catalogSha256": "1adcdf77a3681eac6f94a3c180dcd52f7483e84f4ac33b8aef013b48a12ed590",
+  "scope": "Selected source paths verified in git tree; previews not viewed; implementations not executed",
+  "recipes": [
+    {
+      "card": "before-after-slider-scrub",
+      "styleKey": "before-after-slider-scrub",
+      "cardPath": "references/shots/data/before-after-slider-scrub.md",
+      "demoPath": "demos/data/before-after-slider-scrub/BeforeAfterSliderScrub.tsx",
+      "previewPath": "gallery/media/before-after-slider-scrub.mp4",
+      "previewIndexedUrl": "./media/before-after-slider-scrub.mp4?v=1790980736772",
+      "previewViewed": false,
+      "demoExecuted": false,
+      "previewUrl": "https://vincentwei1021.github.io/video-shotcraft/media/before-after-slider-scrub.mp4",
+      "previewPinnedToCommit": false,
+      "previewInGitTree": false
+    },
+    {
+      "card": "card-stack",
+      "styleKey": "card-stack",
+      "cardPath": "references/shots/ui-entrance/card-stack.md",
+      "demoPath": "demos/ui-entrance/card-stack/CardStack.tsx",
+      "previewPath": "gallery/media/card-stack.mp4",
+      "previewIndexedUrl": "./media/card-stack.mp4?v=1790980736783",
+      "previewViewed": false,
+      "demoExecuted": false,
+      "previewUrl": "https://vincentwei1021.github.io/video-shotcraft/media/card-stack.mp4",
+      "previewPinnedToCommit": false,
+      "previewInGitTree": false
+    },
+    {
+      "card": "row-embed",
+      "styleKey": "row-embed",
+      "cardPath": "references/shots/ui-entrance/row-embed.md",
+      "demoPath": "demos/ui-entrance/row-embed/RowEmbed.tsx",
+      "previewPath": "gallery/media/row-embed.mp4",
+      "previewIndexedUrl": "./media/row-embed.mp4?v=1790980736857",
+      "previewViewed": false,
+      "demoExecuted": false,
+      "previewUrl": "https://vincentwei1021.github.io/video-shotcraft/media/row-embed.mp4",
+      "previewPinnedToCommit": false,
+      "previewInGitTree": false
+    },
+    {
+      "card": "spotlight-hero-card",
+      "styleKey": "spotlight-hero-card",
+      "cardPath": "references/shots/opening/spotlight-hero-card.md",
+      "demoPath": "demos/opening/spotlight-hero-card/SpotlightHeroCard.tsx",
+      "previewPath": "gallery/media/spotlight-hero-card.mp4",
+      "previewIndexedUrl": "./media/spotlight-hero-card.mp4?v=1790980736873",
+      "previewViewed": false,
+      "demoExecuted": false,
+      "previewUrl": "https://vincentwei1021.github.io/video-shotcraft/media/spotlight-hero-card.mp4",
+      "previewPinnedToCommit": false,
+      "previewInGitTree": false
+    }
+  ]
+}

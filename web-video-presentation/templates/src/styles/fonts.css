@@ -1,0 +1,15 @@
+/* Offline-first font policy (v3).
+ * Theme font-family lists fall back to installed local/system fonts. No remote
+ * requests occur from this file. Different installed fonts can change line
+ * breaks and glyph shapes: approve the actual rendered typography, not a claim
+ * of pixel identity with v2.9.
+ *
+ * For repeatable branded output, add licensed font files to public/fonts/ and
+ * register explicit local @font-face rules here; keep the files in the asset
+ * manifest. Do not fetch fonts or contact a font service without authorization.
+ * The former 13 Google Fonts imports are preserved in fonts.remote.css as an
+ * explicit network opt-in, never imported by the default compositions.
+ */
+html {
+  font-family: system-ui, -apple-system, "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+}

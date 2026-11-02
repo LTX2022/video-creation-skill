@@ -1,0 +1,64 @@
+{
+  "id": "fintech-terminal",
+  "name": "fintech terminal",
+  "nameZh": "金融终端",
+  "description": "fintech terminal: 可解释金融数据终端. Source configuration; rendered review pending.",
+  "descriptionZh": "可解释金融数据终端。用于时间序列、区间、基准对比、风险/来源/单位；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "light",
+    "finance",
+    "terminal"
+  ],
+  "bestFor": [
+    "金融科技",
+    "商业分析",
+    "投资汇报",
+    "指标解读"
+  ],
+  "preview": {
+    "shell": "#dfe5df",
+    "surface": "#f6f8f2",
+    "text": "#101914",
+    "accent": "#0f9f6e"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "data",
+    "contentCategory": "enterprise-data",
+    "identity": "可解释金融数据终端",
+    "contentLayout": "时间序列、区间、基准对比、风险/来源/单位",
+    "semanticMotion": "稳定坐标与数字增量，不模拟不存在的行情",
+    "distinction": "补正负/不确定性语义，浅底当前非终端结构",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "mono",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "No texture-based identity claim; actual material, layout and contrast still require rendered inspection."
+}

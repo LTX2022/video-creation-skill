@@ -1,0 +1,82 @@
+TAP version 13
+# Subtest: same seed/count gives stable geometry/IDs; a new seed changes geometry
+ok 1 - same seed/count gives stable geometry/IDs; a new seed changes geometry
+  ---
+  duration_ms: 8.026555
+  type: 'test'
+  ...
+# Subtest: all morph endpoints and final hold equal their authored geometry
+ok 2 - all morph endpoints and final hold equal their authored geometry
+  ---
+  duration_ms: 2.815399
+  type: 'test'
+  ...
+# Subtest: one global timeline retains all IDs and has no shot-boundary jumps
+ok 3 - one global timeline retains all IDs and has no shot-boundary jumps
+  ---
+  duration_ms: 6.1409
+  type: 'test'
+  ...
+# Subtest: out-of-order seeks and repeated same frames have no memory; inputs stay immutable
+ok 4 - out-of-order seeks and repeated same frames have no memory; inputs stay immutable
+  ---
+  duration_ms: 3.674322
+  type: 'test'
+  ...
+# Subtest: equal physical time at 24, 30, 60 and 120 fps gives exactly equal models
+ok 5 - equal physical time at 24, 30, 60 and 120 fps gives exactly equal models
+  ---
+  duration_ms: 12.075726
+  type: 'test'
+  ...
+# Subtest: perspective center, vertical convention and near/far-plane clipping
+ok 6 - perspective center, vertical convention and near/far-plane clipping
+  ---
+  duration_ms: 0.731049
+  type: 'test'
+  ...
+# Subtest: depth sorting is far-to-near, ID-stable at equal depth, and non-mutating
+ok 7 - depth sorting is far-to-near, ID-stable at equal depth, and non-mutating
+  ---
+  duration_ms: 0.297477
+  type: 'test'
+  ...
+# Subtest: all frames have finite world/camera/projected numbers and stable count
+ok 8 - all frames have finite world/camera/projected numbers and stable count
+  ---
+  duration_ms: 65.188254
+  type: 'test'
+  ...
+# Subtest: invalid counts/seeds/times/fps/viewports fail explicitly
+ok 9 - invalid counts/seeds/times/fps/viewports fail explicitly
+  ---
+  duration_ms: 1.335352
+  type: 'test'
+  ...
+# Subtest: invalid camera bases/projection ranges and nonfinite world points are rejected
+ok 10 - invalid camera bases/projection ranges and nonfinite world points are rejected
+  ---
+  duration_ms: 0.840299
+  type: 'test'
+  ...
+# Subtest: invalid/overlapping timeline ranges and unknown target names fail validation
+ok 11 - invalid/overlapping timeline ranges and unknown target names fail validation
+  ---
+  duration_ms: 0.436539
+  type: 'test'
+  ...
+# Subtest: source has no ambient side effects or imports
+ok 12 - source has no ambient side effects or imports
+  ---
+  duration_ms: 0.557718
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 296.684019

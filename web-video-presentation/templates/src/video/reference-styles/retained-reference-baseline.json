@@ -1,0 +1,30 @@
+{
+  "description": "Immutable retained-reference source snapshot from round9-candidate (v3.5.0), captured before removing the rejected first film. Hashes verify exact source preservation, not new pixel rendering or aesthetic approval.",
+  "ids": [
+    "particle-depth-film",
+    "spectral-material-film",
+    "kinetic-wireframe-film",
+    "rain-platform-film"
+  ],
+  "registryEntries": {
+    "particle-depth-film": "3047c40b1a5b06f11905ec5ef5d56508d1b1c3aece33bb6d5ae32dca71722721",
+    "spectral-material-film": "4be82d69a29b5ce1de69650ef858496ef1b8701cc4de7f69883b773187942084",
+    "kinetic-wireframe-film": "c2b394c479a4d95bf6dfe4377a2b647223bdb8ce5886dbff0a7853c06e71fd38",
+    "rain-platform-film": "9b66b7b3f29526fa5f4230695c414870c44cb0d08e32c5d3a6e51aa48534bf24"
+  },
+  "sourceFiles": {
+    "templates/src/video/reference-styles/ParticleField.tsx": "62494391477a339a9814ede1a5fb51907a08020b018409c299eb37f99c08408b",
+    "templates/src/video/reference-styles/SpectralMaterial.tsx": "095e58dc9a90e6cecf3978f4b9e84785644cd1a02c98fd809450d8d015c167ba",
+    "templates/src/video/reference-styles/KineticWireframe.tsx": "f49e9899b9a267559406aaaa8acae392a6ff58489d7a2074d50fa5a7700b60cd",
+    "templates/src/video/reference-styles/RainPlatform.tsx": "c42cb90157a772f227b19ab62ec61041384def4e7c28f8a9c1998d8534120d98",
+    "templates/src/video/reference-styles/common.ts": "0d0031bd05547f5a4fe0c27b25a30a3f0b6363b32a9bb9c22625c2ffd7e7f629",
+    "themes/particle-depth-film/theme.json": "1f6e863b2449a63c6f1ccae3d93c1a076f78ab4469dddd1c7a9b4179efbe1ab3",
+    "themes/particle-depth-film/tokens.css": "c942d840b46f351bcbbe366ede34e7ece8ccfe07e65d44a337628146f81d0470",
+    "themes/spectral-material-film/theme.json": "50891a99d0329b6fe58ddc8fc5b330ee352b7c20acf0ffbb8df079679f8dd014",
+    "themes/spectral-material-film/tokens.css": "1a0d9a3249541ac52e2b3ae00e2730c9c64fad4964594a278caec37f39652d24",
+    "themes/kinetic-wireframe-film/theme.json": "0d001becd483c0fd94df42e51abf9567778abb26ce3f84c0fcb4c7c81c1b3b3c",
+    "themes/kinetic-wireframe-film/tokens.css": "399860ea6bb34bf4723b3ddfaad5e629dfe8cd1144b6030de5a16db93e97f4d5",
+    "themes/rain-platform-film/theme.json": "8ba60a77cb902f9168b1ce1c5c9a6654dfc7b11394046f3e38664ec7e05cc34c",
+    "themes/rain-platform-film/tokens.css": "fc8ad38cf2f827ff42f3c2f543c1f06da5c568306476d25fd35a179caed345cf"
+  }
+}

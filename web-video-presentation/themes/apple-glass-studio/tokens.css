@@ -1,0 +1,82 @@
+/* Theme apple-glass-studio | 产品白场与一层克制玻璃
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #dfe4ea;
+  --surface: #f7f9fb;
+  --surface-2: #ffffff;
+  --surface-3: #edf0f4;
+  --text: #14171a;
+  --text-2: #374151;
+  --text-mute: #666d7a;
+  --text-faint: #848994;
+  --text-disabled: #9ca3af;
+  --rule: #d8dee8;
+
+  /* Brand color roles */
+  --accent: #007aff;
+  --accent-strong: #0068da;
+  --accent-on: #000000;
+  --accent-soft: rgba(0, 122, 255, .10);
+  --accent-glow: rgba(0, 122, 255, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
+  --font-display-en: "Avenir Next", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 600;
+  --body-leading: 1.5;
+  --label-tracking: .10em;
+  --r-card: 24px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 1px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: normal;
+  --hero-num-weight: 600;
+  --hero-num-track: -0.015em;
+  --stage-pad-x: 128px;
+  --stage-pad-y: 92px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 480ms;
+  --dur-slow: 780ms;
+  --dur-cinematic: 1120ms;
+
+  /* Restrained material signature */
+  --card-shadow: 0 8px 28px rgba(25, 35, 45, 0.08);
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: none;
+  --surface-pattern-size: auto;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 0;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #15734a;
+  --success-soft: rgba(21, 115, 74, .12);
+  --success-on: #ffffff;
+  --warning: #845c0c;
+  --warning-soft: rgba(132, 92, 12, .12);
+  --warning-on: #ffffff;
+  --error: #b1333d;
+  --error-soft: rgba(177, 51, 61, .12);
+  --error-on: #ffffff;
+  --chart-1: #0068da;
+  --chart-2: #15734a;
+  --chart-3: #845c0c;
+  --chart-4: #b1333d;
+  --chart-5: #705392;
+
+  /* Theme-specific optional hooks; consumer coverage is recorded in QA. */
+  --card-glass-bg: rgba(255, 255, 255, 0.84);
+  --card-glass-border: rgba(70, 84, 100, 0.16);
+}

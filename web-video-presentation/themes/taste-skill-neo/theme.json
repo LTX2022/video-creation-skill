@@ -1,0 +1,64 @@
+{
+  "id": "taste-skill-neo",
+  "name": "taste skill neo",
+  "nameZh": "审美训练场",
+  "description": "taste skill neo: 审美判断的对照工具. Source configuration; rendered review pending.",
+  "descriptionZh": "审美判断的对照工具。用于好坏对照、局部放大、网格/字级标注、评分依据；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "light",
+    "taste",
+    "modern"
+  ],
+  "bestFor": [
+    "设计复盘",
+    "审美分析",
+    "创作方法论",
+    "反 AI 味教程"
+  ],
+  "preview": {
+    "shell": "#e5e1d8",
+    "surface": "#fbf8f0",
+    "text": "#11110f",
+    "accent": "#a3e635"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "soft",
+    "contentCategory": "bold-social",
+    "identity": "审美判断的对照工具",
+    "contentLayout": "好坏对照、局部放大、网格/字级标注、评分依据",
+    "semanticMotion": "对照同步、差异标注而非任意评分",
+    "distinction": "酸绿只作定位，不做低对比正文",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "grotesk",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "No texture-based identity claim; actual material, layout and contrast still require rendered inspection."
+}

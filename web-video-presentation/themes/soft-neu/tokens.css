@@ -1,0 +1,87 @@
+/* Theme soft-neu | 软材质界面但边界可见
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #ecf0f3;
+  --surface: #f2f5f7;
+  --surface-2: #f2f5f7;
+  --surface-3: #e6eaef;
+  --text: #2c3e50;
+  --text-2: #34495e;
+  --text-mute: #606a75;
+  --text-faint: #80858e;
+  --text-disabled: #b0b8c4;
+  --rule: #d1d9e6;
+
+  /* Brand color roles */
+  --accent: #3b7dd8;
+  --accent-strong: #3169b5;
+  --accent-on: #000000;
+  --accent-soft: rgba(59, 125, 216, .10);
+  --accent-glow: rgba(59, 125, 216, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
+  --font-display-en: "Avenir Next", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 600;
+  --body-leading: 1.6;
+  --label-tracking: .08em;
+  --r-card: 22px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 1px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: normal;
+  --hero-num-weight: 600;
+  --hero-num-track: -0.015em;
+  --stage-pad-x: 120px;
+  --stage-pad-y: 92px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 480ms;
+  --dur-slow: 780ms;
+  --dur-cinematic: 1120ms;
+
+  /* Restrained material signature */
+  --card-shadow: var(--neu-raised);
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: none;
+  --surface-pattern-size: 0;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 0;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #15734a;
+  --success-soft: rgba(21, 115, 74, .12);
+  --success-on: #ffffff;
+  --warning: #845c0c;
+  --warning-soft: rgba(132, 92, 12, .12);
+  --warning-on: #ffffff;
+  --error: #b1333d;
+  --error-soft: rgba(177, 51, 61, .12);
+  --error-on: #ffffff;
+  --chart-1: #3169b5;
+  --chart-2: #15734a;
+  --chart-3: #845c0c;
+  --chart-4: #b1333d;
+  --chart-5: #705392;
+
+  /* Theme-specific optional hooks; consumer coverage is recorded in QA. */
+  --accent-2: #74a7f2;
+  --accent-3: #8bd5ff;
+  --neu-raised: 8px 8px 20px #d8dfe6, -8px -8px 20px #ffffff;
+  --neu-raised-sm: 4px 4px 10px #d8dfe6, -4px -4px 10px #ffffff;
+  --neu-pressed: inset 5px 5px 12px #d8dfe6, inset -5px -5px 12px #ffffff;
+  --neu-pressed-sm: inset 3px 3px 8px #d8dfe6, inset -3px -3px 8px #ffffff;
+  --neu-ring: inset 5px 5px 12px #d8dfe6, inset -5px -5px 12px #ffffff;
+}

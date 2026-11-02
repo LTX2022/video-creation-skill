@@ -1,0 +1,64 @@
+{
+  "id": "douyin-high-contrast",
+  "name": "douyin high contrast",
+  "nameZh": "抖音高对比",
+  "description": "douyin high contrast: 竖屏可读的强观点. Source configuration; rendered review pending.",
+  "descriptionZh": "竖屏可读的强观点。用于竖屏钩子、短句证据、对照、结论；平台安全区；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "dark",
+    "short-video",
+    "high-contrast"
+  ],
+  "bestFor": [
+    "抖音短视频",
+    "观点输出",
+    "口播爆点",
+    "社媒广告"
+  ],
+  "preview": {
+    "shell": "#050505",
+    "surface": "#0b0b0b",
+    "text": "#ffffff",
+    "accent": "#fe2c55"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "kinetic",
+    "contentCategory": "bold-social",
+    "identity": "竖屏可读的强观点",
+    "contentLayout": "竖屏钩子、短句证据、对照、结论；平台安全区",
+    "semanticMotion": "字幕/标题分工，信息节拍清楚",
+    "distinction": "高对比不等于全程霓虹或急闪",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "grotesk",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "No texture-based identity claim; actual material, layout and contrast still require rendered inspection."
+}

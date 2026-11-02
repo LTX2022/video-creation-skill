@@ -1,0 +1,68 @@
+{
+  "id": "swiss-ikb",
+  "name": "Swiss IKB",
+  "nameZh": "瑞士克莱因蓝",
+  "description": "Swiss IKB: 国际主义网格与信息节奏. Source configuration; rendered review pending.",
+  "descriptionZh": "国际主义网格与信息节奏。用于非居中网格、巨字数字、信息列、图像矩形；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "light",
+    "swiss",
+    "modernist",
+    "international-style",
+    "grid",
+    "extra-light"
+  ],
+  "bestFor": [
+    "AI / 科技产品发布",
+    "年度总结 / 数据汇报",
+    "设计 / 工程领域分享",
+    "严肃学术 / 国际化品牌",
+    "信息驱动设计 / 信息图"
+  ],
+  "preview": {
+    "shell": "#e8e8e6",
+    "surface": "#fafaf8",
+    "text": "#0a0a0a",
+    "accent": "#002fa7"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "data",
+    "contentCategory": "bold-social",
+    "identity": "国际主义网格与信息节奏",
+    "contentLayout": "非居中网格、巨字数字、信息列、图像矩形",
+    "semanticMotion": "短直线位移与网格对齐",
+    "distinction": "200 字重仅大标题；正文不用极细",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "grotesk",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "Texture/blend/compression and any transparent surface require actual composited inspection; source-only adjustment."
+}

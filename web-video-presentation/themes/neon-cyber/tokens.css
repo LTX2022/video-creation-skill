@@ -1,0 +1,80 @@
+/* Theme neon-cyber | 可控双霓虹技术世界
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #04060f;
+  --surface: #0a0f1c;
+  --surface-2: #111828;
+  --surface-3: #1a2238;
+  --text: #e8f4ff;
+  --text-2: #b8c8e0;
+  --text-mute: #7d8ba5;
+  --text-faint: #646e82;
+  --text-disabled: #3a4660;
+  --rule: rgba(0, 255, 204, 0.22);
+
+  /* Brand color roles */
+  --accent: #00ffcc;
+  --accent-strong: #00ffcc;
+  --accent-on: #000000;
+  --accent-soft: rgba(0, 255, 204, .13);
+  --accent-glow: rgba(0, 255, 204, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
+  --font-display-en: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 700;
+  --body-leading: 1.4;
+  --label-tracking: .12em;
+  --r-card: 2px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 1px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: normal;
+  --hero-num-weight: 600;
+  --hero-num-track: -0.015em;
+  --stage-pad-x: 96px;
+  --stage-pad-y: 76px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 360ms;
+  --dur-slow: 600ms;
+  --dur-cinematic: 900ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: linear-gradient(rgba(0, 255, 204, 0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 204, 0.025) 1px, transparent 1px);
+  --surface-pattern-size: 96px 96px;
+  --surface-pattern-opacity: 1;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #69c99b;
+  --success-soft: rgba(105, 201, 155, .12);
+  --success-on: #000000;
+  --warning: #edc779;
+  --warning-soft: rgba(237, 199, 121, .12);
+  --warning-on: #000000;
+  --error: #f39a9a;
+  --error-soft: rgba(243, 154, 154, .12);
+  --error-on: #000000;
+  --chart-1: #00ffcc;
+  --chart-2: #69c99b;
+  --chart-3: #edc779;
+  --chart-4: #f39a9a;
+  --chart-5: #c2b4e8;
+
+  /* Theme-specific optional hooks; consumer coverage is recorded in QA. */
+  --dur-quick: 160ms;
+}

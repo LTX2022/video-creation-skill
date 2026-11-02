@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "kind": "isolated-pure-model-test",
+  "timestampUtc": "2026-10-27T08:10:40.362589+00:00",
+  "runtime": "v24.22.1",
+  "commands": [
+    "node --check cinematic-kernel.mjs",
+    "node --test --test-reporter=tap cinematic-kernel.test.mjs"
+  ],
+  "tests": 12,
+  "passed": 12,
+  "failed": 0,
+  "mainSkillSourceModified": false,
+  "adapterStatus": "unrendered-not-typechecked",
+  "remotionE2E": "not-run",
+  "visualQuality": "not-assessed",
+  "hashes": {
+    "CinematicParticles.unrendered.tsx": "8060ebfdd05e8f50b1a1e5b9104bb458fe6a6be0877facfd25c537ceb3b450b7",
+    "cinematic-kernel.mjs": "9bd3725ae49d79de60d799985cc00d09651362aeb0fd71d496cd0622d5913816",
+    "cinematic-kernel.test.mjs": "ea302ac6df5732a97d297da48387599bbed72d7a34429d5f49bfb3c069cf57ac",
+    "cinematic-kernel.d.mts": "ccaecce99d813200e71b4bea5ca8363c67284fb3f45ea4c87dc9964b9a9727f3",
+    "test-results.tap": "d8d65c2f7791c131a4517518c4a1909b1789f712ef60ece719ba9cb6cded2414",
+    "README.md": "989834a52f76742fcd1211bdf536fff9f3428341ceef1e31968b10235c84dd66"
+  },
+  "packagingNote": "Original test scope was the isolated module. Packaging adds this optional example to the skill without runtime registration; README wording updated only."
+}

@@ -1,0 +1,81 @@
+/* Theme dark-tech-glow | 暗色技术解释，减少标题霓虹
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #101220;
+  --surface: #1a1d35;
+  --surface-2: #20243f;
+  --surface-3: #272b4a;
+  --text: #ffffff;
+  --text-2: #e5e7f0;
+  --text-mute: #9ca3af;
+  --text-faint: #717785;
+  --text-disabled: #6b7280;
+  --rule: rgba(255, 255, 255, 0.15);
+
+  /* Brand color roles */
+  --accent: #34d399;
+  --accent-strong: #34d399;
+  --accent-on: #000000;
+  --accent-soft: rgba(52, 211, 153, .13);
+  --accent-glow: rgba(52, 211, 153, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
+  --font-display-en: system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 700;
+  --body-leading: 1.5;
+  --label-tracking: .08em;
+  --r-card: 12px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 1px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: normal;
+  --hero-num-weight: 600;
+  --hero-num-track: -0.015em;
+  --stage-pad-x: 100px;
+  --stage-pad-y: 80px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 360ms;
+  --dur-slow: 600ms;
+  --dur-cinematic: 900ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-vignette: radial-gradient(circle at 72% 24%, rgba(91, 181, 255, 0.045), transparent 54%);
+
+  /* Semantic states and data categories */
+  --success: #69c99b;
+  --success-soft: rgba(105, 201, 155, .12);
+  --success-on: #000000;
+  --warning: #edc779;
+  --warning-soft: rgba(237, 199, 121, .12);
+  --warning-on: #000000;
+  --error: #f39a9a;
+  --error-soft: rgba(243, 154, 154, .12);
+  --error-on: #000000;
+  --chart-1: #34d399;
+  --chart-2: #69c99b;
+  --chart-3: #edc779;
+  --chart-4: #f39a9a;
+  --chart-5: #c2b4e8;
+
+  /* Theme-specific optional hooks; consumer coverage is recorded in QA. */
+  --title-from: #ffffff;
+  --title-to: #ffffff;
+  --title-glow: none;
+  --card-glass-bg: rgba(16, 18, 32, 0.75);
+  --card-glass-border: rgba(255, 255, 255, 0.12);
+}

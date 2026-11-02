@@ -1,0 +1,67 @@
+{
+  "id": "warm-keynote",
+  "name": "Warm Keynote",
+  "nameZh": "暖色 Keynote",
+  "description": "Warm Keynote: 暖色大面板和产品故事. Source configuration; rendered review pending.",
+  "descriptionZh": "暖色大面板和产品故事。用于功能主物、对照、三步讲解、证据数字；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "light",
+    "keynote",
+    "editorial",
+    "warm",
+    "spring",
+    "saas"
+  ],
+  "bestFor": [
+    "SaaS 产品 keynote",
+    "B 端产品发布",
+    "工具产品讲解",
+    "团队对外汇报"
+  ],
+  "preview": {
+    "shell": "#f5efe1",
+    "surface": "#fdfbf7",
+    "text": "#43302b",
+    "accent": "#14b8a6"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "product",
+    "contentCategory": "product-material",
+    "identity": "暖色大面板和产品故事",
+    "contentLayout": "功能主物、对照、三步讲解、证据数字",
+    "semanticMotion": "有弹性但非所有元素弹簧，阅读帧稳定",
+    "distinction": "真正玻璃实现缺 backdrop-filter；网格与重影降噪",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "humanist",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "Texture/blend/compression and any transparent surface require actual composited inspection; source-only adjustment."
+}

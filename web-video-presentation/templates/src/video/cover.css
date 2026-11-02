@@ -1,0 +1,96 @@
+/* ─────────────────────────────────────────────────────────────
+   cover.css —— 封面五层布局样式（《封面设计手册》v2.2.16 单层渲染）。
+   背景由 DouyinCover inline style 驱动（mood 渐变 + 主题色辉光），
+   本文件只负责各层结构与排版。
+   不再有 .cover-overlay 层。
+   ───────────────────────────────────────────────────────────── */
+
+.cover-stage {
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* 层 1: 大标题 —— 手册二节，白色 900 字重 + 投影滤镜 */
+.cover-title {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  text-wrap: nowrap;
+  font-family: var(--font-display, var(--font-sans));
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: 0;
+  color: #ffffff;
+  z-index: 30;
+  text-shadow:
+    0 14px 46px rgba(0, 0, 0, 0.62),
+    0 0 36px rgba(0, 0, 0, 0.34);
+}
+
+/* 层 2: 装饰线 —— 主题色，分隔标题与副标题 */
+.cover-decorline {
+  position: absolute;
+  z-index: 25;
+  border-radius: 999px;
+  opacity: 0.85;
+}
+
+/* 层 3: 副标题 —— #cbd5df 灰色，700 字重 */
+.cover-subtitle {
+  position: absolute;
+  z-index: 28;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  word-break: keep-all;
+  text-wrap: nowrap;
+  font-family: var(--font-display, var(--font-sans));
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  color: #cbd5df;
+  text-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
+}
+
+/* 层 4: 中央纯图形 —— 无内嵌文字（手册原则 4） */
+.cover-visual {
+  position: absolute;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+}
+
+.cover-symbol {
+  display: block;
+  filter: drop-shadow(0 34px 70px rgba(0, 0, 0, 0.34));
+  opacity: 0.94;
+}
+
+/* 层 5: 底部徽章 —— 主题色 14% 填充 + 70% 描边，圆角矩形 */
+.cover-badge {
+  position: absolute;
+  z-index: 35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-style: solid;
+  border-width: 2px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.cover-badge-text {
+  font-family: var(--font-display, var(--font-sans));
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+}

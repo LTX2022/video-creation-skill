@@ -1,0 +1,18 @@
+{
+  "missing_required_output": {
+    "exit_code": 2,
+    "stderr": "usage: render.py [-h] --out-dir OUT_DIR --font FONT --bold-font BOLD_FONT\nrender.py: error: the following arguments are required: --out-dir, --font, --bold-font"
+  },
+  "reject_existing_nonempty": {
+    "exit_code": 2,
+    "stderr": "usage: render.py [-h] --out-dir OUT_DIR --font FONT --bold-font BOLD_FONT\nrender.py: error: --out-dir 必须是新目录或空目录；拒绝覆盖已有文件。"
+  },
+  "reject_missing_font": {
+    "exit_code": 2,
+    "stderr": "usage: render.py [-h] --out-dir OUT_DIR --font FONT --bold-font BOLD_FONT\nrender.py: error: 字体文件不存在：/nonexistent；请提供本地CJK字体，不会自动下载。"
+  },
+  "reject_missing_cjk_glyphs": {
+    "exit_code": 2,
+    "stderr": "usage: render.py [-h] --out-dir OUT_DIR --font FONT --bold-font BOLD_FONT\nrender.py: error: 字体缺少所需中文字形：/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf：一不且个仍件到剩变只可同响型复好就已应性恰意才换接改新时是期未条查检模求测用直相示秒算而能计试请路辑还逻重间非"
+  }
+}

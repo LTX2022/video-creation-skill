@@ -1,0 +1,117 @@
+#!/usr/bin/env python3
+"""Original deterministic semantic motion study. Pillow -> FFmpeg, no assets/network."""
+from pathlib import Path
+import math,json,subprocess,time,hashlib
+from PIL import Image,ImageDraw,ImageFont
+import numpy as np
+ROOT=Path(__file__).resolve().parent
+W,H,FPS,DURATION=1280,720,30,14
+BG='#101b24'; INK='#edf1e9'; MUTED='#8d9ca6'; DIM='#33444f'; ORANGE='#ffb166'; GREEN='#9ed8b3'
+FONT='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
+BOLD='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
+def font(n,bold=False): return ImageFont.truetype(BOLD if bold else FONT,n)
+F={n:font(n) for n in [16,18,20,22,24,28,36,46]}
+FB={n:font(n,True) for n in [18,22,24,28,36]}
+def ease(v): v=max(0,min(1,v)); return v*v*(3-2*v)
+def mix(a,b,p): return tuple(a[i]+(b[i]-a[i])*p for i in range(2))
+def model(now,request_key='report:v1',cached_key='report:v1',expires=10):
+    same=request_key==cached_key; fresh=now<expires
+    return dict(request_id='R1',request_key=request_key,cached_key=cached_key,now=now,expires=expires,key_equal=same,fresh=fresh,hit=same and fresh,route='REUSE' if same and fresh else 'COMPUTE',units='s')
+def state(frame):
+    video_s=frame/FPS; m=model(4 if video_s<7 else 10)
+    m.update(video_s=video_s,local_s=video_s if video_s<7 else video_s-7,pass_index=0 if video_s<7 else 1)
+    return m
+A=(155,342); G=(465,342); U=(790,280); L=(790,450); O=(1100,342)
+def poly_point(points,p):
+    ds=[math.dist(a,b) for a,b in zip(points,points[1:])]; x=max(0,min(1,p))*sum(ds)
+    for a,b,d in zip(points,points[1:],ds):
+        if x<=d:return mix(a,b,x/d)
+        x-=d
+    return points[-1]
+def render(frame,foreground=False):
+    s=state(frame); t=s['local_s']; hit=s['hit']; accent=GREEN if hit else ORANGE
+    im=Image.new('RGBA',(W,H),(0,0,0,0) if foreground else BG); d=ImageDraw.Draw(im)
+    def txt(x,y,st,size=20,fill=INK,bold=False,anchor=None):d.text((x,y),st,font=(FB if bold and size in FB else F)[size],fill=fill,anchor=anchor)
+    def line(pts,fill=DIM,width=3):d.line(pts,fill=fill,width=width,joint='curve')
+    def box(rect,outline=DIM,fill=BG,r=16,width=2):d.rounded_rectangle(rect,radius=r,fill=fill,outline=outline,width=width)
+    # Fixed visual grammar: request, predicate, branches, response never change identity.
+    txt(54,35,'CACHE / BOUNDARY STUDY',18,MUTED)
+    txt(54,70,'Same request. Different model time.',36,INK,True)
+    txt(1225,42,f'ANIMATION  {s["video_s"]:04.1f} s',16,MUTED,anchor='ra')
+    txt(1225,70,'Not an execution timer',16,MUTED,anchor='ra')
+    box((54,125,1226,185),fill='#172630',r=12)
+    txt(78,143,f'MODEL TIME   now = {s["now"]} s',22,accent,True)
+    txt(555,143,f'expires = {s["expires"]} s',22,INK)
+    txt(1198,144,'valid only while now < expires',18,MUTED,anchor='ra')
+    upper=[G,(580,342),(650,280),U,(930,280),O]
+    lower=[G,(580,342),(650,450),L,(930,450),O]
+    line([A,G]);line(upper);line(lower)
+    # Branch emphasis follows exactly the same predicate as readouts and travel.
+    if t>=2.5:
+        path=upper if hit else lower
+        line(path,accent,5)
+        # Arrowheads are distinct from the traveling request.
+        end=path[-1]; start=path[-2]; ang=math.atan2(end[1]-start[1],end[0]-start[0]); q=mix(start,end,.75)
+        d.polygon([q,(q[0]-15*math.cos(ang-.5),q[1]-15*math.sin(ang-.5)),(q[0]-15*math.cos(ang+.5),q[1]-15*math.sin(ang+.5))],fill=accent)
+    box((70,292,242,393),fill='#172630')
+    txt(155,310,'REQUEST',18,MUTED,anchor='ma');txt(155,344,s['request_key'],20,INK,anchor='ma')
+    box((365,277,565,406),outline=accent if 1.6<=t<3.3 else DIM,fill='#172630')
+    txt(465,293,'CACHE GATE',18,MUTED,anchor='ma')
+    txt(465,327,'key = key' if s['key_equal'] else 'key ≠ key',22,(GREEN if s['key_equal'] else ORANGE) if t>=1.6 else MUTED,anchor='ma')
+    txt(465,363,f'{s["now"]} s < {s["expires"]} s',24,accent if t>=2 else MUTED,True,anchor='ma')
+    box((704,245,879,315),outline=GREEN if hit and t>=2.5 else DIM,fill='#172630')
+    txt(791,266,'REUSE',24,GREEN if hit and t>=2.5 else MUTED,True,anchor='ma')
+    box((704,415,879,485),outline=ORANGE if not hit and t>=2.5 else DIM,fill='#172630')
+    txt(791,436,'COMPUTE',24,ORANGE if not hit and t>=2.5 else MUTED,True,anchor='ma')
+    d.ellipse((1066,308,1134,376),fill=BG,outline=accent if t>=4.9 else DIM,width=3)
+    txt(1100,401,'RESPONSE',18,MUTED,anchor='ma')
+    txt(790,340,'cached key: '+s['cached_key'],16,MUTED,anchor='ma')
+    txt(465,439,'same key AND unexpired',16,MUTED,anchor='ma')
+    # One R1 token. A visible dotted return carries identity into the second evaluation.
+    if s['pass_index']==0 and t>=5.8:
+        return_path=[O,(1100,540),(155,540),A]
+        for a,b in zip(return_path,return_path[1:]):
+            n=int(math.dist(a,b)/16)
+            for i in range(n):line([mix(a,b,i/n),mix(a,b,min(1,(i+.35)/n))],DIM,2)
+        pos=poly_point(return_path,ease((t-5.8)/1.2))
+        txt(640,563,'RE-EVALUATE R1 / change only model time',18,MUTED,anchor='ma')
+    elif t<.7:pos=A
+    elif t<1.7:pos=mix(A,G,ease((t-.7)))
+    elif t<3:pos=G
+    elif t<5:pos=poly_point(upper if hit else lower,ease((t-3)/2))
+    else:pos=O
+    # Revision 2: reserve an upper token lane below the model-time strip.
+    px,py=pos; py-=62+34*max(0,1-abs(px-465)/180)
+    d.line((px,py+20,px,py+42),fill=accent,width=2)
+    d.ellipse((px-27,py-27,px+27,py+27),fill=accent)
+    txt(px,py-13,s['request_id'],20,BG,True,anchor='ma')
+    # Readout appears after gate evaluation and holds through the result.
+    if t>=2.5:
+        if hit: status=f'HIT  /  matching key + {s["expires"]-s["now"]} s remaining'
+        else: status='MISS  /  now = expires, so validity has ended'
+        txt(640,608,status,24,accent,True,anchor='ma')
+    else:txt(640,608,'One identity, evaluated against one predicate.',20,MUTED,anchor='ma')
+    line([(54,657),(1226,657)],DIM,1)
+    txt(54,676,'Simplified logic illustration / no cache writes / not a performance test',16,MUTED)
+    txt(1226,676,'SILENT  •  14 s',16,MUTED,anchor='ra')
+    return im if foreground else im.convert('RGB')
+def main():
+    start=time.monotonic(); out=ROOT/'semantic-cache-boundary.mp4'
+    cmd=['ffmpeg','-y','-v','error','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),'-i','-','-an','-c:v','libx264','-preset','medium','-crf','18','-pix_fmt','yuv420p','-movflags','+faststart',str(out)]
+    p=subprocess.Popen(cmd,stdin=subprocess.PIPE)
+    hashes=[]
+    for i in range(FPS*DURATION):
+        im=render(i); raw=im.tobytes(); hashes.append(hashlib.sha256(raw).hexdigest());p.stdin.write(raw)
+    p.stdin.close();assert p.wait()==0
+    render(12*FPS).save(ROOT/'cover.png')
+    render(4*FPS,True).save(ROOT/'foreground-alpha.png')
+    samples=[0,1.5,2.7,3.7,5.3,6.4,7,8.8,9.7,10.7,12.2,13.8]
+    sheet=Image.new('RGB',(1280,3*204),'#101b24');sd=ImageDraw.Draw(sheet)
+    for j,t in enumerate(samples):
+        x=(j%4)*320;y=(j//4)*204
+        sheet.paste(render(round(t*FPS)).resize((320,180)),(x,y));sd.text((x+8,y+182),f'video {t:.1f}s / model {state(round(t*FPS))["now"]}s',font=F[16],fill=INK)
+    sheet.save(ROOT/'keyframes.png')
+    report={'render_and_encode_wall_seconds':round(time.monotonic()-start,3),'frame_count':len(hashes),'unique_source_frames':len(set(hashes)),'adjacent_identical_source_frames':sum(a==b for a,b in zip(hashes,hashes[1:])),'state_boundary_tests':{'4s_hit':model(4)['hit'],'10s_miss':not model(10)['hit'],'9.999s_hit':model(9.999)['hit'],'mismatch_miss':not model(4,request_key='other')['hit']},'deterministic_random_order':all(hashlib.sha256(render(i).tobytes()).hexdigest()==hashes[i] for i in [419,0,210,89,299,150,209,300]),'source_frame_hashes':hashes}
+    (ROOT/'validation.json').write_text(json.dumps(report,indent=2))
+    print(json.dumps({k:v for k,v in report.items() if k!='source_frame_hashes'},indent=2))
+if __name__=='__main__':main()

@@ -1,0 +1,77 @@
+/* Kinetic Wireframe Film / 动势线框结构
+ * Stage/UI tokens only. SVG scene has its own authored material palette.
+ * Source implementation; rendered aesthetic, font and alpha review pending.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #020202;
+  --surface: #0b0b0b;
+  --surface-2: #14171f;
+  --surface-3: #20252d;
+  --text: #f5f1e7;
+  --text-2: #d6dce5;
+  --text-mute: #b0bdcd;
+  --text-faint: #8c9aab;
+  --text-disabled: #637083;
+  --rule: #424b5e;
+
+  /* Brand color roles */
+  --accent: #ff9a5c;
+  --accent-strong: #ff9a5c;
+  --accent-on: #090a0b;
+  --accent-soft: rgba(255, 154, 92, .12);
+  --accent-glow: rgba(255, 154, 92, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "Songti SC", "STSong", "SimSun", "Noto Serif CJK SC", "Noto Serif SC", serif;
+  --font-display-en: Didot, "Bodoni 72", Georgia, "Times New Roman", serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 700;
+  --body-leading: 1.6;
+  --label-tracking: .06em;
+  --r-card: 0px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 1px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: normal;
+  --hero-num-weight: 700;
+  --hero-num-track: -0.02em;
+  --stage-pad-x: 104px;
+  --stage-pad-y: 106px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 620ms;
+  --dur-slow: 1000ms;
+  --dur-cinematic: 1440ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: none;
+  --surface-pattern-size: auto;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 0;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #8bd5ab;
+  --success-soft: rgba(105, 201, 155, .12);
+  --success-on: #000000;
+  --warning: #edc779;
+  --warning-soft: rgba(237, 199, 121, .12);
+  --warning-on: #000000;
+  --error: #f5aaa4;
+  --error-soft: rgba(243, 154, 154, .12);
+  --error-on: #000000;
+  --chart-1: #ff9a5c;
+  --chart-2: #8bd5ab;
+  --chart-3: #edc779;
+  --chart-4: #f5aaa4;
+  --chart-5: #c5b4ef;
+
+}

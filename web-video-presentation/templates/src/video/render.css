@@ -1,0 +1,9 @@
+.render-stage {
+  position: relative;
+  inset: auto;
+  top: auto;
+  left: auto;
+  transform: none;
+  box-shadow: none;
+  border-radius: 0;
+}

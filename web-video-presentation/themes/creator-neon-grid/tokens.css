@@ -1,0 +1,79 @@
+/* Theme creator-neon-grid | 暗底霓虹只定位一个重点
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #05070a;
+  --surface: #0b1117;
+  --surface-2: #101c25;
+  --surface-3: #192937;
+  --text: #edfaff;
+  --text-2: #cbd5df;
+  --text-mute: #8b98a5;
+  --text-faint: #67737e;
+  --text-disabled: #65717d;
+  --rule: #343c46;
+
+  /* Brand color roles */
+  --accent: #22d3ee;
+  --accent-strong: #22d3ee;
+  --accent-on: #000000;
+  --accent-soft: rgba(34, 211, 238, .13);
+  --accent-glow: rgba(34, 211, 238, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
+  --font-display-en: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 800;
+  --body-leading: 1.4;
+  --label-tracking: .12em;
+  --r-card: 4px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 1px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: normal;
+  --hero-num-weight: 700;
+  --hero-num-track: -0.015em;
+  --stage-pad-x: 88px;
+  --stage-pad-y: 76px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 280ms;
+  --dur-slow: 460ms;
+  --dur-cinematic: 720ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: linear-gradient(rgba(34, 211, 238, 0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(34, 211, 238, 0.035) 1px, transparent 1px);
+  --surface-pattern-size: 96px 96px;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 1;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #69c99b;
+  --success-soft: rgba(105, 201, 155, .12);
+  --success-on: #000000;
+  --warning: #edc779;
+  --warning-soft: rgba(237, 199, 121, .12);
+  --warning-on: #000000;
+  --error: #f39a9a;
+  --error-soft: rgba(243, 154, 154, .12);
+  --error-on: #000000;
+  --chart-1: #22d3ee;
+  --chart-2: #69c99b;
+  --chart-3: #edc779;
+  --chart-4: #f39a9a;
+  --chart-5: #c2b4e8;
+
+}

@@ -1,0 +1,403 @@
+{
+  "schema": 1,
+  "route": "nonimage",
+  "mode": "composed",
+  "title": "让资料自己归位",
+  "subtitle": "资料归档助手",
+  "width": 1080,
+  "height": 1440,
+  "safeArea": {
+    "top": 70,
+    "right": 76,
+    "bottom": 65,
+    "left": 76
+  },
+  "layout": {
+    "title": {
+      "x": 76,
+      "y": 130,
+      "width": 928,
+      "height": 285,
+      "fontSize": 120,
+      "lines": [
+        "让资料",
+        "自己归位"
+      ],
+      "lineHeight": 1.13
+    },
+    "subtitle": {
+      "x": 80,
+      "y": 440,
+      "width": 920,
+      "height": 70,
+      "fontSize": 39,
+      "fontWeight": 500
+    },
+    "visual": {
+      "x": 76,
+      "y": 553,
+      "width": 928,
+      "height": 810
+    }
+  },
+  "palette": {
+    "background": "#f5f1e8",
+    "foreground": "#173f36",
+    "accent": "#d65b39",
+    "muted": "#5a7066"
+  },
+  "fontFamily": "Noto Sans CJK SC, sans-serif",
+  "visual": {
+    "kind": "code",
+    "description": "文件、截图和链接进入归档助手，保留来源并建立索引，整理到项目资料、参考素材和待处理三个文件夹；不暗示已实测自动分类准确率。",
+    "shapes": [
+      {
+        "type": "rect",
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 1000,
+        "fill": "#e6ede8",
+        "rx": 45
+      },
+      {
+        "type": "text",
+        "x": 55,
+        "y": 80,
+        "text": "从杂乱输入，到有序归档",
+        "fontSize": 33,
+        "fill": "#36584c",
+        "fontWeight": 700
+      },
+      {
+        "type": "rect",
+        "x": 72,
+        "y": 160,
+        "width": 246,
+        "height": 155,
+        "fill": "#fffdf6",
+        "rx": 12,
+        "stroke": "#9aafa3",
+        "strokeWidth": 2
+      },
+      {
+        "type": "line",
+        "x1": 97,
+        "y1": 202,
+        "x2": 267,
+        "y2": 202,
+        "stroke": "#9aafa3",
+        "strokeWidth": 5
+      },
+      {
+        "type": "line",
+        "x1": 97,
+        "y1": 229,
+        "x2": 232,
+        "y2": 229,
+        "stroke": "#9aafa3",
+        "strokeWidth": 5
+      },
+      {
+        "type": "line",
+        "x1": 97,
+        "y1": 256,
+        "x2": 267,
+        "y2": 256,
+        "stroke": "#9aafa3",
+        "strokeWidth": 5
+      },
+      {
+        "type": "rect",
+        "x": 109,
+        "y": 202,
+        "width": 246,
+        "height": 155,
+        "fill": "#fffdf6",
+        "rx": 12,
+        "stroke": "#9aafa3",
+        "strokeWidth": 2
+      },
+      {
+        "type": "line",
+        "x1": 134,
+        "y1": 244,
+        "x2": 304,
+        "y2": 244,
+        "stroke": "#9aafa3",
+        "strokeWidth": 5
+      },
+      {
+        "type": "line",
+        "x1": 134,
+        "y1": 271,
+        "x2": 269,
+        "y2": 271,
+        "stroke": "#9aafa3",
+        "strokeWidth": 5
+      },
+      {
+        "type": "line",
+        "x1": 134,
+        "y1": 298,
+        "x2": 304,
+        "y2": 298,
+        "stroke": "#9aafa3",
+        "strokeWidth": 5
+      },
+      {
+        "type": "rect",
+        "x": 69,
+        "y": 246,
+        "width": 246,
+        "height": 155,
+        "fill": "#fffdf6",
+        "rx": 12,
+        "stroke": "#9aafa3",
+        "strokeWidth": 2
+      },
+      {
+        "type": "line",
+        "x1": 94,
+        "y1": 288,
+        "x2": 264,
+        "y2": 288,
+        "stroke": "#9aafa3",
+        "strokeWidth": 5
+      },
+      {
+        "type": "line",
+        "x1": 94,
+        "y1": 315,
+        "x2": 229,
+        "y2": 315,
+        "stroke": "#9aafa3",
+        "strokeWidth": 5
+      },
+      {
+        "type": "line",
+        "x1": 94,
+        "y1": 342,
+        "x2": 264,
+        "y2": 342,
+        "stroke": "#9aafa3",
+        "strokeWidth": 5
+      },
+      {
+        "type": "text",
+        "x": 76,
+        "y": 453,
+        "text": "文件 · 截图 · 链接",
+        "fontSize": 27,
+        "fill": "#36584c",
+        "fontWeight": 600
+      },
+      {
+        "type": "path",
+        "d": "M 338 312 H 438 L 418 292 M 438 312 L 418 332",
+        "fill": "none",
+        "stroke": "#d65b39",
+        "strokeWidth": 10
+      },
+      {
+        "type": "rect",
+        "x": 466,
+        "y": 160,
+        "width": 460,
+        "height": 360,
+        "fill": "#173f36",
+        "rx": 28
+      },
+      {
+        "type": "text",
+        "x": 505,
+        "y": 226,
+        "text": "ARCHIVE / 01",
+        "fontSize": 23,
+        "fill": "#bdd0c5",
+        "fontWeight": 600
+      },
+      {
+        "type": "text",
+        "x": 505,
+        "y": 290,
+        "text": "识别 → 分类",
+        "fontSize": 43,
+        "fill": "#fffdf6",
+        "fontWeight": 700
+      },
+      {
+        "type": "text",
+        "x": 505,
+        "y": 358,
+        "text": "保留来源",
+        "fontSize": 32,
+        "fill": "#bdd0c5",
+        "fontWeight": 600
+      },
+      {
+        "type": "text",
+        "x": 505,
+        "y": 420,
+        "text": "建立索引",
+        "fontSize": 32,
+        "fill": "#bdd0c5",
+        "fontWeight": 600
+      },
+      {
+        "type": "path",
+        "d": "M 696 544 V 600 M 197 600 H 797 M 197 600 V 635 M 497 600 V 635 M 797 600 V 635 M 180 618 L 197 635 L 214 618 M 480 618 L 497 635 L 514 618 M 780 618 L 797 635 L 814 618",
+        "fill": "none",
+        "stroke": "#d65b39",
+        "strokeWidth": 10
+      },
+      {
+        "type": "rect",
+        "x": 62,
+        "y": 680,
+        "width": 270,
+        "height": 235,
+        "fill": "#fffdf6",
+        "rx": 19,
+        "stroke": "#9aafa3",
+        "strokeWidth": 2
+      },
+      {
+        "type": "rect",
+        "x": 84,
+        "y": 653,
+        "width": 120,
+        "height": 44,
+        "fill": "#fffdf6",
+        "rx": 10,
+        "stroke": "#9aafa3",
+        "strokeWidth": 2
+      },
+      {
+        "type": "text",
+        "x": 86,
+        "y": 750,
+        "text": "01",
+        "fontSize": 27,
+        "fill": "#d65b39",
+        "fontWeight": 700
+      },
+      {
+        "type": "text",
+        "x": 86,
+        "y": 820,
+        "text": "项目资料",
+        "fontSize": 36,
+        "fill": "#173f36",
+        "fontWeight": 700
+      },
+      {
+        "type": "line",
+        "x1": 86,
+        "y1": 866,
+        "x2": 294,
+        "y2": 866,
+        "stroke": "#9aafa3",
+        "strokeWidth": 3
+      },
+      {
+        "type": "rect",
+        "x": 362,
+        "y": 680,
+        "width": 270,
+        "height": 235,
+        "fill": "#fffdf6",
+        "rx": 19,
+        "stroke": "#9aafa3",
+        "strokeWidth": 2
+      },
+      {
+        "type": "rect",
+        "x": 384,
+        "y": 653,
+        "width": 120,
+        "height": 44,
+        "fill": "#fffdf6",
+        "rx": 10,
+        "stroke": "#9aafa3",
+        "strokeWidth": 2
+      },
+      {
+        "type": "text",
+        "x": 386,
+        "y": 750,
+        "text": "02",
+        "fontSize": 27,
+        "fill": "#d65b39",
+        "fontWeight": 700
+      },
+      {
+        "type": "text",
+        "x": 386,
+        "y": 820,
+        "text": "参考素材",
+        "fontSize": 36,
+        "fill": "#173f36",
+        "fontWeight": 700
+      },
+      {
+        "type": "line",
+        "x1": 386,
+        "y1": 866,
+        "x2": 594,
+        "y2": 866,
+        "stroke": "#9aafa3",
+        "strokeWidth": 3
+      },
+      {
+        "type": "rect",
+        "x": 662,
+        "y": 680,
+        "width": 270,
+        "height": 235,
+        "fill": "#f0c9b7",
+        "rx": 19,
+        "stroke": "#9aafa3",
+        "strokeWidth": 2
+      },
+      {
+        "type": "rect",
+        "x": 684,
+        "y": 653,
+        "width": 120,
+        "height": 44,
+        "fill": "#f0c9b7",
+        "rx": 10,
+        "stroke": "#9aafa3",
+        "strokeWidth": 2
+      },
+      {
+        "type": "text",
+        "x": 686,
+        "y": 750,
+        "text": "03",
+        "fontSize": 27,
+        "fill": "#d65b39",
+        "fontWeight": 700
+      },
+      {
+        "type": "text",
+        "x": 686,
+        "y": 820,
+        "text": "待处理",
+        "fontSize": 36,
+        "fill": "#173f36",
+        "fontWeight": 700
+      },
+      {
+        "type": "line",
+        "x1": 686,
+        "y1": 866,
+        "x2": 894,
+        "y2": 866,
+        "stroke": "#9aafa3",
+        "strokeWidth": 3
+      }
+    ]
+  }
+}

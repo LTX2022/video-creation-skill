@@ -1,0 +1,30 @@
+{
+  "file": "order_emergent_1080p30.mp4",
+  "sha256": "110853dde0d7e70ccab311af94f852de2fc0a3885ba56ce7187e869df20fb80c",
+  "width": 1920,
+  "height": 1080,
+  "fps": "30/1",
+  "decoded_frames": 780,
+  "duration_seconds": 26.0,
+  "codec": "h264",
+  "pixel_format": "yuv420p",
+  "audio_streams": [],
+  "gray_mean_range": [
+    0.6825810185185185,
+    20.031828703703702
+  ],
+  "max_near_white_fraction": 9.645061728395061e-05,
+  "near_static_runs_review_only": [
+    {
+      "start_s": 23.5,
+      "end_s": 24.967
+    }
+  ],
+  "near_black_runs_review_only": [],
+  "mean_frame_delta": 0.39034493374301266,
+  "notes": [
+    "No perceptual quality score inferred.",
+    "Low-resolution grayscale temporal checks can miss motion and do not replace full visual playback.",
+    "No browser, alpha or editor compatibility implied."
+  ]
+}

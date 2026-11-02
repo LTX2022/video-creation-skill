@@ -1,0 +1,29 @@
+{
+  "video": "semantic-cache-boundary.mp4",
+  "sha256": "2ff0065728a472dacb0b5105bfe0833500b8afb158e5f42ed8267188e290cd0a",
+  "width": 1280,
+  "height": 720,
+  "fps": 30,
+  "duration_seconds": 14,
+  "source_frames": 420,
+  "unique_source_frames": 222,
+  "adjacent_identical_source_frames": 198,
+  "full_decode_frames": 420,
+  "unique_decoded_frames": 349,
+  "adjacent_identical_decoded_frames": 16,
+  "all_boundary_tests_pass": true,
+  "source_random_order_pass": true,
+  "all_encoded_random_seek_tests_pass": true,
+  "render_and_encode_wall_seconds": 7.279,
+  "png_alpha_extrema": [
+    0,
+    255
+  ],
+  "alpha_video_tested": false,
+  "rerun": [
+    "python render.py --out-dir /NEW/EMPTY/DIRECTORY --font /LOCAL/CJK-Regular.ttc --bold-font /LOCAL/CJK-Bold.ttc",
+    "python validate.py --artifact-dir /NEW/EMPTY/DIRECTORY"
+  ],
+  "explicit_empty_directory_rerun_pass": true,
+  "cli_safety_tests_pass": true
+}

@@ -1,0 +1,26 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {createRequire} from 'node:module';
+import {spawnSync} from 'node:child_process';
+const here=path.dirname(fileURLToPath(import.meta.url));
+const loader=createRequire(import.meta.url).resolve('tsx');
+test('narration validator uses only current project script, never adjacent or linked drafts',t=>{
+ const parent=fs.mkdtempSync(path.join(os.tmpdir(),'vwp-script-scope-'));t.after(()=>fs.rmSync(parent,{recursive:true,force:true}));
+ const root=path.join(parent,'project');
+ for(const d of ['scripts','src/registry','src/chapters/02-local'])fs.mkdirSync(path.join(root,d),{recursive:true});
+ fs.copyFileSync(path.join(here,'validate-narrations.ts'),path.join(root,'scripts/validate-narrations.ts'));
+ fs.writeFileSync(path.join(root,'package.json'),JSON.stringify({type:'module'}));
+ fs.writeFileSync(path.join(root,'project-state.json'),JSON.stringify({audioRequested:true,timingMode:'narration'}));
+ fs.writeFileSync(path.join(root,'src/registry/chapters.ts'),"import {narrations} from '../chapters/02-local/narrations'; export const CHAPTERS=[{id:'local',narrations}];");
+ fs.writeFileSync(path.join(root,'src/chapters/02-local/narrations.ts'),"export const narrations=['Current project narration.'];");
+ fs.writeFileSync(path.join(parent,'script.md'),'Unrelated parent script. '.repeat(100));
+ const script=path.join(root,'script.md');fs.writeFileSync(script,'Current project narration.');
+ const run=()=>spawnSync(process.execPath,['--import',loader,path.join(root,'scripts/validate-narrations.ts')],{cwd:root,encoding:'utf8'});
+ let r=run();assert.equal(r.status,0,r.stderr);
+ fs.unlinkSync(script);r=run();assert.equal(r.status,1);assert.match(r.stderr,/script.md not found/);
+ fs.symlinkSync(path.join(parent,'script.md'),script);r=run();assert.equal(r.status,1);assert.match(r.stderr,/regular project-local/);
+});

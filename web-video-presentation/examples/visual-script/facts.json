@@ -1,0 +1,108 @@
+{
+  "provenance": "fictional-teaching-fixtures-not-product-evidence",
+  "workflow": {
+    "records": [
+      {
+        "id": "A",
+        "date": "2026/10/01",
+        "amount": 100,
+        "unit": "CNY"
+      },
+      {
+        "id": "B",
+        "date": "2026-10-01",
+        "amount": 100,
+        "unit": "CNY"
+      },
+      {
+        "id": "C",
+        "date": "2026-10-02",
+        "amount": 80,
+        "unit": "CNY"
+      }
+    ],
+    "expectedReviewIds": [
+      "A",
+      "B"
+    ],
+    "expectedDeletedIds": [],
+    "estimatedSeconds": [
+      4,
+      7,
+      6
+    ],
+    "audioMeasuredSeconds": null
+  },
+  "data": {
+    "orders": [
+      40,
+      55
+    ],
+    "windowDays": [
+      7,
+      7
+    ],
+    "unit": "单",
+    "expectedDelta": 15,
+    "estimatedSeconds": [
+      4,
+      5,
+      5
+    ],
+    "audioMeasuredSeconds": null
+  },
+  "cache": {
+    "key": "report:v1",
+    "expiresAt": 10,
+    "probes": [
+      {
+        "key": "report:v1",
+        "now": 4,
+        "expectedHit": true
+      },
+      {
+        "key": "report:v1",
+        "now": 10,
+        "expectedHit": false
+      },
+      {
+        "key": "report:v2",
+        "now": 4,
+        "expectedHit": false
+      }
+    ],
+    "estimatedSeconds": [
+      4,
+      6,
+      5
+    ],
+    "audioMeasuredSeconds": null
+  },
+  "overlay": {
+    "outputMode": "both",
+    "audioRequested": false,
+    "narrations": [
+      "",
+      "",
+      ""
+    ],
+    "fps": 30,
+    "plannedStepFrames": [
+      60,
+      120,
+      90
+    ],
+    "estimatedSeconds": [
+      2,
+      4,
+      3
+    ],
+    "audioMeasuredSeconds": null,
+    "plateStatus": "missing",
+    "eventBinding": "pending-real-plate",
+    "scalePositions": [
+      2,
+      4
+    ]
+  }
+}

@@ -1,0 +1,112 @@
+[
+  {
+    "path": "media/order-emergent-26s.mp4",
+    "bytes": 10922819,
+    "sha256": "b9889c77f512ece19f786e6c7f3750e70c4ed996eb7111176c85577513abd6d7",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080,
+          "avg_frame_rate": "30/1",
+          "nb_frames": "780"
+        }
+      ],
+      "format": {
+        "duration": "26.000000"
+      }
+    },
+    "full_decode_exit": 0,
+    "decode_errors": "",
+    "rights_scope": "Owner-authorized viewing of own code-generated demonstration; no blanket media MIT grant. See media/README.md and font-notices."
+  },
+  {
+    "path": "media/thread-continuity-14s.mp4",
+    "bytes": 444160,
+    "sha256": "0ab0a62d8262b656a8733a757f1c773c5f777ac65fc221dbcfa36aa03fee9d0d",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1280,
+          "height": 720,
+          "avg_frame_rate": "30/1",
+          "nb_frames": "420"
+        },
+        {
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "avg_frame_rate": "0/0",
+          "nb_frames": "658"
+        }
+      ],
+      "format": {
+        "duration": "14.000000"
+      }
+    },
+    "full_decode_exit": 0,
+    "decode_errors": "",
+    "rights_scope": "Owner-authorized viewing of own code-generated demonstration; no blanket media MIT grant. See media/README.md and font-notices."
+  },
+  {
+    "path": "web-video-presentation/examples/semantic-cache-study/semantic-cache-boundary.mp4",
+    "bytes": 237560,
+    "sha256": "2ff0065728a472dacb0b5105bfe0833500b8afb158e5f42ed8267188e290cd0a",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1280,
+          "height": 720,
+          "avg_frame_rate": "30/1",
+          "nb_frames": "420"
+        }
+      ],
+      "format": {
+        "duration": "14.000000"
+      }
+    },
+    "full_decode_exit": 0,
+    "decode_errors": "",
+    "rights_scope": "Owner-authorized viewing of own code-generated demonstration; no blanket media MIT grant. See media/README.md and font-notices."
+  },
+  {
+    "path": "media/60-styles-noto-overview.mp4",
+    "bytes": 8613926,
+    "sha256": "318da07ba27a7d712bbdeff11dc93e054b19eee528edd0f0c30fd2f3ec8aa1b8",
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 960,
+          "height": 576,
+          "r_frame_rate": "30/1",
+          "nb_frames": "11520"
+        }
+      ],
+      "format": {
+        "duration": "384.000000",
+        "size": "8613926"
+      }
+    },
+    "full_decode_exit": 0,
+    "decode_errors": "",
+    "source": "media/preview-source/",
+    "render_status": "New isolated React SSR/librsvg/Cairo/FFmpeg preview, forced Noto fonts; not Remotion browser",
+    "visual_review": "Viewed all four contact sheets covering 60 segment samples plus full-resolution particle and rain samples; no missing glyph blocks, empty scenes or gross frame clipping observed in those samples. Not exhaustive all-frame review or real-time human playback.",
+    "rights_scope": "Owner-authorized self-generated preview; fixed Noto font license notices retained; no blanket media MIT grant."
+  }
+]

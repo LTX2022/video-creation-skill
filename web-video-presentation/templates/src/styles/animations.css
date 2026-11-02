@@ -1,0 +1,25 @@
+/* ─────────────────────────────────────────────────────────────────────
+ * animations.css — compatibility names only.
+ *
+ * Remotion-bound chapter motion is frame-driven. Do not add CSS animation,
+ * CSS transition, timed keyframes, or Tailwind animation utilities here.
+ * Use src/video/motion.ts or Remotion interpolate/Easing instead.
+ * ───────────────────────────────────────────────────────────────────── */
+
+.mask-reveal {
+  display: inline-block;
+  clip-path: inset(0 100% 0 0);
+}
+
+.mask-reveal.in {
+  clip-path: inset(0 0 0 0);
+}
+
+.rule-grow {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.letter-stagger > .letter {
+  display: inline-block;
+}

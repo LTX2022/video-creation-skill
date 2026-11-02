@@ -1,0 +1,68 @@
+{
+  "id": "split-canvas",
+  "name": "Split Canvas",
+  "nameZh": "双拼画布",
+  "description": "Split Canvas: 真正双栏比较而非一张双色底. Source configuration; rendered review pending.",
+  "descriptionZh": "真正双栏比较而非一张双色底。用于等量对照、前后图、辩论角色、对应标注；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "light",
+    "playful",
+    "dual-tone",
+    "friendly",
+    "creative",
+    "warm-cool"
+  ],
+  "bestFor": [
+    "双主题对比 / 辩论",
+    "故事讲述 / 对话",
+    "创意分享",
+    "轻量品牌片",
+    "概念对照型科普"
+  ],
+  "preview": {
+    "shell": "#dcc7b8",
+    "surface": "#f5e6dc",
+    "text": "#1a1410",
+    "accent": "#d24a78"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "soft",
+    "contentCategory": "playful-layout",
+    "identity": "真正双栏比较而非一张双色底",
+    "contentLayout": "等量对照、前后图、辩论角色、对应标注",
+    "semanticMotion": "两侧同锚点变化，避免强行平移跨缝",
+    "distinction": "对每一半底色单独做对比和竖屏重排",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "humanist",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "Texture/blend/compression and any transparent surface require actual composited inspection; source-only adjustment."
+}

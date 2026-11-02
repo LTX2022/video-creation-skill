@@ -1,0 +1,65 @@
+{
+  "id": "ferrari-rosso-corsa",
+  "name": "ferrari rosso corsa",
+  "nameZh": "法拉利红色赛道",
+  "description": "ferrari rosso corsa: 速度与工业比例，非品牌复刻. Source configuration; rendered review pending.",
+  "descriptionZh": "速度与工业比例，非品牌复刻。用于侧面轮廓、性能对照、材质特写、参数标注；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "light",
+    "luxury",
+    "performance"
+  ],
+  "bestFor": [
+    "品牌片",
+    "汽车速度主题",
+    "高端广告",
+    "发布会开场"
+  ],
+  "preview": {
+    "shell": "#e8e1d7",
+    "surface": "#fff9f0",
+    "text": "#111111",
+    "accent": "#d40000"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "kinetic",
+    "contentCategory": "product-material",
+    "identity": "速度与工业比例，非品牌复刻",
+    "contentLayout": "侧面轮廓、性能对照、材质特写、参数标注",
+    "semanticMotion": "方向一致的短推移与硬切，避免无因甩镜",
+    "distinction": "保留 ID，文案不暗示官方授权/复刻",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "condensed",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "No texture-based identity claim; actual material, layout and contrast still require rendered inspection.",
+  "affiliation": "ID retained for compatibility; no official affiliation, brand asset license or reproduction claim."
+}

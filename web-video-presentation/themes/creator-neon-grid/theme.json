@@ -1,0 +1,64 @@
+{
+  "id": "creator-neon-grid",
+  "name": "creator neon grid",
+  "nameZh": "创作者霓虹网格",
+  "description": "creator neon grid: 暗底霓虹只定位一个重点. Source configuration; rendered review pending.",
+  "descriptionZh": "暗底霓虹只定位一个重点。用于创作者观点、短列表、图像证据、一项强数字；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "dark",
+    "creator",
+    "neon"
+  ],
+  "bestFor": [
+    "短视频方法论",
+    "创作者工具",
+    "AI 创业",
+    "社媒增长"
+  ],
+  "preview": {
+    "shell": "#05070a",
+    "surface": "#0b1117",
+    "text": "#edfaff",
+    "accent": "#22d3ee"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "kinetic",
+    "contentCategory": "bold-social",
+    "identity": "暗底霓虹只定位一个重点",
+    "contentLayout": "创作者观点、短列表、图像证据、一项强数字",
+    "semanticMotion": "节拍驱动重点切换，正文静止",
+    "distinction": "名字写 grid 而当前没有网格；需有用或改描述",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "grotesk",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "Texture/blend/compression and any transparent surface require actual composited inspection; source-only adjustment."
+}

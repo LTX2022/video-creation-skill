@@ -1,0 +1,79 @@
+/* Theme bauhaus-bold | 几何块面与重型网格
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #1a1a1a;
+  --surface: #f4f1ea;
+  --surface-2: #ffffff;
+  --surface-3: #e8e3d4;
+  --text: #0a0a0a;
+  --text-2: #1f1f1f;
+  --text-mute: #5a5a5a;
+  --text-faint: #808080;
+  --text-disabled: #8c8c8c;
+  --rule: #0a0a0a;
+
+  /* Brand color roles */
+  --accent: #2541ee;
+  --accent-strong: #2541ee;
+  --accent-on: #ffffff;
+  --accent-soft: rgba(37, 65, 238, .10);
+  --accent-glow: rgba(37, 65, 238, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
+  --font-display-en: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 900;
+  --body-leading: 1.35;
+  --label-tracking: .06em;
+  --r-card: 0px;
+  --r-stage: 0;
+  --card-border-w: 4px;
+  --rule-w: 4px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: normal;
+  --hero-num-weight: 900;
+  --hero-num-track: -0.035em;
+  --stage-pad-x: 80px;
+  --stage-pad-y: 64px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 280ms;
+  --dur-slow: 460ms;
+  --dur-cinematic: 720ms;
+
+  /* Restrained material signature */
+  --card-shadow: 5px 5px 0 var(--text);
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #15734a;
+  --success-soft: rgba(21, 115, 74, .12);
+  --success-on: #ffffff;
+  --warning: #845c0c;
+  --warning-soft: rgba(132, 92, 12, .12);
+  --warning-on: #ffffff;
+  --error: #b1333d;
+  --error-soft: rgba(177, 51, 61, .12);
+  --error-on: #ffffff;
+  --chart-1: #2541ee;
+  --chart-2: #15734a;
+  --chart-3: #845c0c;
+  --chart-4: #b1333d;
+  --chart-5: #705392;
+
+  /* Theme-specific optional hooks; consumer coverage is recorded in QA. */
+  --ease-overshoot: cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-quick: 180ms;
+  --stage-border: 2px solid var(--text);
+}

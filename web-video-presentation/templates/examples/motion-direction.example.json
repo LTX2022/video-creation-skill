@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "synthetic": true,
+  "label": "SYNTHETIC FORMAT EXAMPLE — 8-second silent alpha label; not rendered or reviewed",
+  "scope": {"durationSec": 8, "audioMode": "none", "outputMode": "alpha"},
+  "requirements": [
+    {"id": "req-identity", "text": "The same labeled object moves from source to destination; do not swap unrelated cards.", "required": true, "status": "planned"},
+    {"id": "req-clearance", "text": "Leave the plate subject unobscured; inspect the actual overlay against its intended plate.", "required": true, "status": "planned"},
+    {"id": "req-silent-alpha", "text": "Deliver alpha-only without adding narration, music or an opaque background.", "required": true, "status": "planned"}
+  ],
+  "direction": {
+    "palette": [{"role": "label", "value": "#F7F2E8"}, {"role": "accent", "value": "#E7B85D"}],
+    "type": [{"role": "label", "family": "Noto Sans SC", "sizePx": 44, "weight": 600}],
+    "whitespace": {"safeInsetPx": 64, "gapPx": 20, "rationale": "Example-only inset; adapt to the actual plate subject and delivery dimensions."},
+    "motion": {"behavior": "One label travels along its connector; the camera and caption remain still.", "easing": "cubic-bezier(0.22, 1, 0.36, 1)", "durationSec": 0.8, "holdSec": 1.2},
+    "bans": ["No decorative camera shake", "No unrequested music or TTS", "No opaque full-frame fill"]
+  },
+  "objects": [{"id": "obj-label", "meaning": "One persistent semantic item, with unchanged label text"}],
+  "transformations": [{
+    "id": "move-label", "objectId": "obj-label",
+    "source": {"atSec": 1.2, "state": "Anchored next to the source connector endpoint"},
+    "target": {"atSec": 2, "state": "Anchored next to the destination connector endpoint"},
+    "mechanism": "Interpolate the same object's position along the authored connector; no crossfade substitute.",
+    "preserve": "Stable object ID, label text and destination relationship; alpha outside foreground remains transparent.",
+    "requirementIds": ["req-identity", "req-silent-alpha"]
+  }],
+  "keyframes": [
+    {"id": "kf-opening", "atSec": 0, "purpose": "Check opening state and intended empty area before motion.", "requirementIds": ["req-clearance", "req-silent-alpha"]},
+    {"id": "kf-source", "atSec": 1.2, "purpose": "First fully composed state; object meaning and hierarchy are readable.", "requirementIds": ["req-identity", "req-clearance"]},
+    {"id": "kf-target", "atSec": 2, "purpose": "Confirm identity and source-to-target mechanism at landing.", "requirementIds": ["req-identity"]},
+    {"id": "kf-end-hold", "atSec": 7.8, "purpose": "Check a real end-hold frame; exact final frame comes from the project's FPS, not a hardcoded default.", "requirementIds": ["req-clearance", "req-silent-alpha"]}
+  ],
+  "review": {"status": "unreviewed", "samples": [], "issues": []}
+}

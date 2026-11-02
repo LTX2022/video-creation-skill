@@ -1,0 +1,68 @@
+{
+  "id": "forest-ink",
+  "name": "Forest Ink",
+  "nameZh": "森林墨",
+  "description": "Forest Ink: 自然文献的绿墨与图版. Source configuration; rendered review pending.",
+  "descriptionZh": "自然文献的绿墨与图版。用于地图/标本/图像说明、长短引文、来源；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "light",
+    "forest",
+    "nature",
+    "editorial",
+    "documentary",
+    "warm"
+  ],
+  "bestFor": [
+    "自然 / 可持续 / 环保",
+    "户外品牌 / 农业",
+    "纪录 / 非虚构",
+    "文化 / 行业观察",
+    "慢生活 / 文学农庄"
+  ],
+  "preview": {
+    "shell": "#ece7da",
+    "surface": "#f5f1e8",
+    "text": "#1a2e1f",
+    "accent": "#4d7a4d"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "editorial",
+    "contentCategory": "print-editorial",
+    "identity": "自然文献的绿墨与图版",
+    "contentLayout": "地图/标本/图像说明、长短引文、来源",
+    "semanticMotion": "图注逐层出现，图像主叙事",
+    "distinction": "纸纹弱化并验证深层表面文字",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "serif",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "Texture/blend/compression and any transparent surface require actual composited inspection; source-only adjustment."
+}

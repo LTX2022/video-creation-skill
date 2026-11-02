@@ -1,0 +1,65 @@
+{
+  "id": "uxbot-product-lab",
+  "name": "uxbot product lab",
+  "nameZh": "产品实验室",
+  "description": "uxbot product lab: 研究证据到设计决策. Source configuration; rendered review pending.",
+  "descriptionZh": "研究证据到设计决策。用于研究发现、用户流程、方案对照、证据矩阵；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "light",
+    "product",
+    "research"
+  ],
+  "bestFor": [
+    "用户研究",
+    "产品策略",
+    "设计复盘",
+    "功能拆解"
+  ],
+  "preview": {
+    "shell": "#e8e3d9",
+    "surface": "#fbf7ef",
+    "text": "#1e2428",
+    "accent": "#ff6b57"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "soft",
+    "contentCategory": "enterprise-data",
+    "identity": "研究证据到设计决策",
+    "contentLayout": "研究发现、用户流程、方案对照、证据矩阵",
+    "semanticMotion": "从证据连接决策，页面结构保持",
+    "distinction": "不能只浅珊瑚色卡；需研究与交互图示",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "humanist",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "No texture-based identity claim; actual material, layout and contrast still require rendered inspection.",
+  "affiliation": "ID retained for compatibility; no official affiliation, brand asset license or reproduction claim."
+}

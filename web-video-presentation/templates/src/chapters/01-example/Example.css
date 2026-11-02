@@ -1,0 +1,3 @@
+.ex-preset { width: 100%; height: 100%; font-family: var(--font-body); }
+/* PresetScene computes its explicit normalized safe regions. No hard-coded paper palette. */
+.ex-preset > svg { width: 100%; height: 100%; display: block; }

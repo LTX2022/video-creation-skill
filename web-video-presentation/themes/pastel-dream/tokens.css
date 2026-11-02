@@ -1,0 +1,79 @@
+/* Theme pastel-dream | 友好柔色但保持信息对比
+ * Status: source-updated-render-review-pending.
+ * Accent is a brand fill; small accent text uses --accent-strong.
+ * Faint/disabled roles must not carry essential small copy.
+ * Fonts and materials require actual-render inspection; no remote font fetch.
+ */
+:root {
+  /* Surfaces and readable foregrounds */
+  --shell: #c8d9e6;
+  --surface: #faf9f7;
+  --surface-2: #ffffff;
+  --surface-3: #f0ecde;
+  --text: #1f2429;
+  --text-2: #3a4046;
+  --text-mute: #646b73;
+  --text-faint: #81878d;
+  --text-disabled: #a8b0b8;
+  --rule: #d8d4cb;
+
+  /* Brand color roles */
+  --accent: #5a7c6a;
+  --accent-strong: #527161;
+  --accent-on: #ffffff;
+  --accent-soft: rgba(90, 124, 106, .10);
+  --accent-glow: rgba(90, 124, 106, .16);
+
+  /* Offline typography and geometry */
+  --font-display-cn: "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
+  --font-display-en: "Avenir Next", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono", "Noto Sans Mono CJK SC", "Microsoft YaHei", monospace;
+  --font-features: "tnum";
+  --font-display-weight: 600;
+  --body-leading: 1.6;
+  --label-tracking: .06em;
+  --r-card: 20px;
+  --r-stage: 0;
+  --card-border-w: 1px;
+  --rule-w: 1px;
+  --rule-style: solid;
+  --hero-num-font: var(--font-display-en);
+  --hero-num-style: normal;
+  --hero-num-weight: 600;
+  --hero-num-track: -0.015em;
+  --stage-pad-x: 112px;
+  --stage-pad-y: 88px;
+
+  /* Semantic motion hints; renderer owns frame timing */
+  --dur-base: 420ms;
+  --dur-slow: 680ms;
+  --dur-cinematic: 960ms;
+
+  /* Restrained material signature */
+  --card-shadow: none;
+  --shadow-stage: none;
+  --text-shadow: none;
+  --surface-pattern: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' preserveAspectRatio='xMaxYMid slice'><g><rect x='1820' y='180' width='44' height='160' rx='22' fill='%23f0b4d4' opacity='0.55'/><rect x='1820' y='360' width='44' height='220' rx='22' fill='%23a8d4c4' opacity='0.55'/><rect x='1820' y='600' width='44' height='140' rx='22' fill='%23c7b8ea' opacity='0.55'/><rect x='1820' y='760' width='44' height='180' rx='22' fill='%23ffe6a7' opacity='0.55'/></g></svg>");
+  --surface-pattern-size: 100% 100%;
+  --surface-pattern-blend: normal;
+  --surface-pattern-opacity: 0.28;
+  --surface-vignette: none;
+
+  /* Semantic states and data categories */
+  --success: #15734a;
+  --success-soft: rgba(21, 115, 74, .12);
+  --success-on: #ffffff;
+  --warning: #845c0c;
+  --warning-soft: rgba(132, 92, 12, .12);
+  --warning-on: #ffffff;
+  --error: #b1333d;
+  --error-soft: rgba(177, 51, 61, .12);
+  --error-on: #ffffff;
+  --chart-1: #527161;
+  --chart-2: #15734a;
+  --chart-3: #845c0c;
+  --chart-4: #b1333d;
+  --chart-5: #705392;
+
+}

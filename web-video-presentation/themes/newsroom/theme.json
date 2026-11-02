@@ -1,0 +1,68 @@
+{
+  "id": "newsroom",
+  "name": "Newsroom",
+  "nameZh": "报社",
+  "description": "Newsroom: 新闻证据与报刊网格. Source configuration; rendered review pending.",
+  "descriptionZh": "新闻证据与报刊网格。用于标题/导语、图表、来源、引文、时序；源代码已调整，实际画面与动效待渲染复核。",
+  "mood": [
+    "light",
+    "newspaper",
+    "editorial",
+    "serif",
+    "documentary",
+    "warm"
+  ],
+  "bestFor": [
+    "纪录片 / 报道",
+    "深度评测",
+    "时事评论",
+    "AI 产品分析",
+    "热点解读"
+  ],
+  "preview": {
+    "shell": "#c8bca0",
+    "surface": "#f1ebd8",
+    "text": "#14110b",
+    "accent": "#c8260d"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "editorial",
+    "contentCategory": "print-editorial",
+    "identity": "新闻证据与报刊网格",
+    "contentLayout": "标题/导语、图表、来源、引文、时序",
+    "semanticMotion": "先结论后证据展开，所有标注稳定",
+    "distinction": "无字号/列宽实现；需真正新闻图文范式",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "serif",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "materialRisk": "Texture/blend/compression and any transparent surface require actual composited inspection; source-only adjustment."
+}

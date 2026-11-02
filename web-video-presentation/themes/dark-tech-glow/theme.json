@@ -1,0 +1,117 @@
+{
+  "id": "dark-tech-glow",
+  "name": "Dark Tech Glow",
+  "nameZh": "深色科技光",
+  "description": "Dark Tech Glow: 暗色技术解释，减少标题霓虹. Source configuration; rendered review pending.",
+  "bestFor": [
+    "AI 工具科普",
+    "开发者视频",
+    "技术评测",
+    "知识干货短视频"
+  ],
+  "mood": [
+    "克制",
+    "高级",
+    "科技感"
+  ],
+  "descriptionZh": "暗色技术解释，减少标题霓虹。用于代码状态、浏览器操作、系统关系、三态操作反馈；源代码已调整，实际画面与动效待渲染复核。",
+  "preview": {
+    "shell": "#101220",
+    "surface": "#1a1d35",
+    "text": "#ffffff",
+    "accent": "#34d399"
+  },
+  "implementationStatus": "source-updated-render-review-pending",
+  "designIntent": {
+    "family": "product",
+    "contentCategory": "system-diagram",
+    "identity": "暗色技术解释，减少标题霓虹",
+    "contentLayout": "代码状态、浏览器操作、系统关系、三态操作反馈",
+    "semanticMotion": "按操作因果高亮，禁止 2x 突兀缩放",
+    "distinction": "修专有 token 接线，去除未证实“同款”承诺",
+    "preserveId": true
+  },
+  "fontPolicy": {
+    "strategy": "offline-system-fallback",
+    "fontAssetsBundled": false,
+    "preferredTypeClass": "sans",
+    "verifiedOnRenderer": false,
+    "risk": "Installed fonts, CJK fallback, real weight faces, line breaks and glyph shapes must be inspected on the actual render machine; these stacks do not promise pixel identity."
+  },
+  "tokenRoles": {
+    "text": "Essential titles/body; check actual size/weight and background.",
+    "text-2": "Essential secondary copy.",
+    "text-mute": "Essential small labels; source flat-surface target >=4.5.",
+    "text-faint": "Nonessential low-priority annotation or large labels only; not essential small copy; source flat-surface target >=3.",
+    "text-disabled": "Inactive/decorative only; never essential information.",
+    "accent": "Brand fill, nonessential line or large graphic; not assumed safe for small text.",
+    "accent-strong": "Small accent-colored text on surface tiers; source target >=4.5.",
+    "accent-on": "Text on solid accent fill only; source target >=4.5.",
+    "status": "Use labels/icons as well as color; colors do not validate the truth of data.",
+    "chart": "Always label directly or use shape/dash as well; pairwise category distinctness remains render-review-pending."
+  },
+  "review": {
+    "staticRoleContrast": "source-checked",
+    "aesthetic": "not-reviewed",
+    "layout": "renderer-review-pending",
+    "motion": "renderer-review-pending",
+    "fonts": "renderer-review-pending",
+    "alpha": "renderer-review-pending",
+    "commercialReadiness": "not-certified",
+    "notes": "Static values are not pixel measurements, renderer output or a visual approval."
+  },
+  "legacyAttribution": {
+    "label": "老七聊AI（抖音 98879680662）蒸馏",
+    "status": "historical-metadata-not-independently-verified-in-this-rebuild"
+  },
+  "plannedComponents": [
+    "GradientTitle",
+    "GlassPanel",
+    "TriStateButton",
+    "StepIndicator",
+    "VSLayout",
+    "CodeEditorBox",
+    "BigEmphasis",
+    "BrowserBar",
+    "CircleBadge",
+    "SpotlightBg"
+  ],
+  "legacyMotionNotes": {
+    "enterDuration": 500,
+    "staggerDelay": 100,
+    "emphasisScale": 2.0,
+    "easing": "ease-out-cubic"
+  },
+  "legacyDesignNotes": {
+    "status": "historical-not-runtime-contract",
+    "colors": {
+      "bg": {
+        "from": "#101220",
+        "to": "#1a1d35",
+        "spotlight": "rgba(139, 92, 246, 0.15)"
+      },
+      "title": {
+        "from": "#b06bff",
+        "to": "#5bb5ff"
+      },
+      "active": "#34d399",
+      "text": "#ffffff",
+      "textSecondary": "#9ca3af",
+      "border": "rgba(255, 255, 255, 0.15)",
+      "glassBg": "rgba(16, 18, 32, 0.75)"
+    },
+    "typography": {
+      "titleFont": "Inter, sans-serif",
+      "bodyFont": "Inter, sans-serif",
+      "titleWeight": 700,
+      "bodyWeight": 400
+    },
+    "effects": {
+      "backdropBlur": "12px",
+      "titleGlow": "0 0 20px rgba(176, 107, 255, 0.4)",
+      "noiseOpacity": 0.03
+    },
+    "distillationDate": "2026-06-17"
+  },
+  "materialRisk": "Texture/blend/compression and any transparent surface require actual composited inspection; source-only adjustment."
+}
