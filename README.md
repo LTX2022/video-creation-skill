@@ -1,6 +1,6 @@
-# 视频制作 Skill · 60 风格公开整理候选
+# 视频制作 Skill · 60 风格
 
-**3.8.0-public-candidate.1 · 离线准备，尚未发布 GitHub。用户已同意其有权授权的原创代码采用 MIT；第三方与媒体不自动适用 MIT。公开前仍需完成来源核对。**
+**3.8.0-public-candidate.1 · 已于 2026-11-02 发布至 [GitHub](https://github.com/LTX2022/video-creation-skill)。用户已授权公开，并同意其有权授权的原创代码采用 MIT；第三方与媒体不自动适用 MIT。候选版本号保留，以表明下述生产验证尚未全部完成。**
 
 这是原有 Web Video Presentation Skill 的筛选版本，不是新做的独立 model-first Skill。保留 `web-video-presentation/` 与可选 `fix-agent/`。开始使用见 [中文说明](web-video-presentation/README.zh-CN.md) 和 [SKILL](web-video-presentation/SKILL.md)。
 
@@ -53,11 +53,12 @@ node --import ./scripts/register-ts-runtime.mjs templates/scripts/test-contracts
 
 [观看4条示例](media/README.md)：新60风格总览384秒、26秒秩序、14秒缓存边界、14秒THREAD。最大单文件约10.9MB。3条历史自生成成片完整解码通过；本轮新总览使用实际React/SVG场景、隔离Noto字体、librsvg/Cairo和FFmpeg，11,520帧完整解码、60段各抽样一帧并检查联系表通过。复现代码、字体hash及版本清单随包；这不是Remotion浏览器渲染、全帧美术/真人视听或客户验收。
 
-## 发布前仍需完成
+## 发布与许可边界
 
-1. 权利人确认原包、保留摘要/模板/代码可公开，确认 MIT 适用文件范围；用户已明确选择其有权授权原创代码 MIT，不得扩张覆盖第三方或媒体。
-2. 审查 [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES.md)，确认依赖、品牌名称及各保留来源的适用条款。
-3. 核对下列最终验证状态；补齐尚未执行的真实渲染、代表镜头及目标宿主验收。
-4. 明确目标 GitHub 仓库、可见性和发布授权，复核最终清单/哈希后才推送。
+- 本仓库已按用户明确授权公开发布，包含 60 风格 Skill 与上述 4 条视频；首次完整发布的 519 个文件已按路径、Git blob SHA、文件大小与模式逐项对照冻结候选，全部一致。
+- MIT 仅覆盖用户有权授权的原创代码，详见 [LICENSE-SCOPE](LICENSE-SCOPE.md)；第三方、依赖、字体和媒体保留独立条款，详见 [THIRD_PARTY_NOTICES](THIRD_PARTY_NOTICES.md) 与 [视频说明](media/README.md)。公开可见不等于对媒体授予商用或再分发许可，也不构成完整法律权属认证。
+- 欢迎提交 Issue 或通过 Fork 提交 Pull Request。公开仓库不赋予访客直接写入权限；本次未新增协作者或开启自动合并，合并由维护者决定。
+- 仍未完成的真实渲染、生产编码、视听验收、真实模型/TTS provider、目标 NLE 与原生系统端到端验证，见上方“未验”清单。公开发布不代表这些项目通过。
+- 首次发布时没有 GitHub Actions 工作流运行或 Check Run；上方测试结果来自本轮隔离环境验证，不是 GitHub CI 通过声明。
 
-本次未写入 GitHub、未改变原 Library/原 ZIP，也未证明不存在所有形式的秘密或个人信息。范围有限的模式扫描不构成安全认证。
+本次发布未改变原 Library/原 ZIP，也未证明不存在所有形式的秘密或个人信息。范围有限的模式扫描不构成安全认证。
