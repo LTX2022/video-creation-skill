@@ -19,8 +19,7 @@ Extensible visual styles · Landscape and portrait · Voiceover and subtitles ·
 
 These are animated GIF previews, not embedded MP4 players. Click to open each MP4; if GitHub shows no player, choose **Download raw file**.
 
-<details>
-<summary><strong>Earlier reference examples — Chinese on-screen text</strong></summary>
+**Earlier reference examples — Chinese on-screen text**
 
 These older examples are Chinese-language references, not demonstrations of English-language output.
 
@@ -37,17 +36,11 @@ These older examples are Chinese-language references, not demonstrations of Engl
 
 Click a preview to open the MP4 file page. If no player appears, choose **Download raw file** to watch it locally. The animated preview above is a silent GIF, **not an embedded MP4 player**. The three videos in the table are silent.
 
-<details>
-<summary><strong>Browse the built-in styles</strong> (actual frames from the overview, in playback order)</summary>
+**Browse the built-in styles** (actual frames from the overview, in playback order)
 
 [![Frames from the built-in styles](media/previews/60-styles.jpg)](media/60-styles-noto-overview.mp4)
 
 [Style names, uses, and timestamps](media/preview-source/index.json) · [All theme source files](web-video-presentation/themes/)
-
-</details>
-
-
-</details>
 
 ## What can you make?
 

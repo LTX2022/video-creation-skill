@@ -19,8 +19,7 @@
 
 上方是动态 GIF 预览，不是内嵌 MP4 播放器。点击打开成片；GitHub 无播放器时选择 **Download raw file**。
 
-<details>
-<summary><strong>历史中文参考样片与内置风格总览</strong></summary>
+**历史中文参考样片与内置风格总览**
 
 ### 历史中文样片
 
@@ -35,17 +34,11 @@
 
 点击图片打开 MP4 文件页；若无播放器，点 **Download raw file** 下载播放。首页动态图片是无声 GIF，**不是内嵌 MP4 播放器**。后三条视频为静音。
 
-<details>
-<summary><strong>展开看全部 60 套风格</strong>（真实总览截图，按视频顺序排列）</summary>
+**全部 60 套风格**（真实总览截图，按视频顺序排列）
 
 [![全部60套风格的逐段截图](media/previews/60-styles.jpg)](media/60-styles-noto-overview.mp4)
 
 [风格名称、用途与视频时间](media/preview-source/index.json) · [全部主题源码](web-video-presentation/themes/)
-
-</details>
-
-
-</details>
 
 ## 适合做什么
 
