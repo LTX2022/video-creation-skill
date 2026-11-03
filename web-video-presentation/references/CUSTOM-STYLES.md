@@ -6,7 +6,7 @@
 
 用户说“学习这个视频/网站”“保存为我的风格”“以后沿用这种动态设计”时，走本页。复用已知偏好，只补来源、允许研究的范围、新风格名、独立研究/项目目录和个人风格库位置等必要信息。已获授权的工程内研究可继续；不得把用户的参考链接当作下载、登录、付费、全局安装、发布或挪用素材的授权。
 
-个人风格默认保存在**用户指定的独立目录**，不写安装目录、全局 skills、账户或设置。不将个人新风格加入内置 60 项清单。目录保存不是远端备份；换机器需带走整个包。
+个人风格默认保存在**用户指定的独立目录**，不写安装目录、全局 skills、账户或设置。不将个人新风格加入内置 60 项清单。推荐固定分“系统内置风格 / 用户自建风格”两栏，使用 [双栏推荐入口](THEMES.md#推荐时固定两栏)；不读未授权目录，不把尚未读取说成空库。目录保存不是远端备份；换机器需带走整个包。
 
 ## 1. 看真实时间序列，而不是猜一张图
 
@@ -59,6 +59,7 @@ my-style/
 `style.json` 必须含：
 
 - `schema: 1`、唯一小写连字符 `id`（不撞内置 ID）、`name`、正整数 `version`、已存在的 `baseTheme`。
+- 可选推荐字段：`bestFor: string[]`（适用用途）、`mood: string[]`、`tags: string[]`、`description: string`。写真实规则及适用限制，不虚构用户偏好或验收；旧包无这些字段仍兼容，未填用途明确显示未填写。
 - `status: "draft" | "render-reviewed"`。后者需 `reviewEvidence` 对象：`artifact` 实际样片位置、`sha256`（64位小写十六进制）、`renderer` 所用渲染器、`observed` 看过的帧/片段、`limitations` 剩余缺口；脚本只检查记录存在，不能替人审片。
 - `references`: `{kind, source, observed, rights, limitations}` 数组；不复制未授权第三方视频/字体/图像到包里。可存 URL 与观察记录；需跨机器携带的原创或授权资产要保留许可。
 - `design`: `composition,color,camera,motion,morph,transitions,rhythm` 七个具体字符串。某项不适用就写原因，不能空着，更不能虚构看见了。
@@ -76,11 +77,17 @@ SKILL_ROOT="/absolute/path/to/web-video-presentation"
 node "$SKILL_ROOT/scripts/custom-style.mjs" validate --package=/approved/work/my-style
 node "$SKILL_ROOT/scripts/custom-style.mjs" save --package=/approved/work/my-style --library-root=/approved/my-styles
 node "$SKILL_ROOT/scripts/custom-style.mjs" list --library-root=/approved/my-styles
+# 推荐两栏；仅按实际元数据命中，不是自动审美评价
+node "$SKILL_ROOT/scripts/style-recommendations.mjs" --query="连续形变" --library-root=/approved/my-styles
+# 用户要看全库：无分页地列出每个 ID 的全部版本、名称、用途和状态
+node "$SKILL_ROOT/scripts/style-recommendations.mjs" --all --library-root=/approved/my-styles
 node "$SKILL_ROOT/scripts/custom-style.mjs" scaffold \
   --package=/approved/my-styles/my-style/v1 \
   --project-root=/approved/projects/new-video \
   --profile=custom --format=landscape --fps=30 --subtitles=false
 ```
+
+`list` 完整返回该目录所有 ID/版本，含来源、用途与状态，不按显示名去重、不隐去旧版；`--all` 双栏入口同样完整展开，Agent 不得把该输出再悄悄截为推荐数量。目录缺失/不可读/包损坏不是“没有风格”。
 
 `save` 保存完整源码/元数据到 `<library-root>/<id>/v<version>`，不覆盖同名版本；草案明确保留 draft。`scaffold` 先验证包，再调用原 scaffold，只在**新空项目**注册新 preset、专属 Scene、独立 narration/shot plan 和 tokens，并写 `custom-style-lock.json`（ID/version/SHA-256）。新项目携带完整包，不依赖原风格库路径；Studio/生产/实际 probe 都经过相同路由。
 

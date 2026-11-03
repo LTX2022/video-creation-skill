@@ -2,7 +2,7 @@ import { captureInputRevision, revisionErrors, hashLocalFile } from "./input-rev
 import { requiredDecisionChecks } from "./workflow-evidence";
 import { layoutQualityIssues } from "./screen-quality";
 import ts from "typescript";
-import { adaptationErrors, contractErrors, isDouyinProfile, outputMode, overlaySafetyErrors, localPath } from "./delivery-contract";
+import { assetRightsErrors, adaptationErrors, contractErrors, isDouyinProfile, outputMode, overlaySafetyErrors, localPath } from "./delivery-contract";
 import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import { join, relative, resolve } from "node:path";
 import { appendFeedbackEvent } from "./feedback-event";
@@ -877,9 +877,7 @@ if (!existsSync(assetManifestPath)) {
     if (!asset.source && asset.placeholder !== true) {
       fail(`x asset ${id}: missing source or placeholder=true`);
     }
-    if (asset.commercialUse !== true && asset.placeholder !== true) {
-      fail(`x asset ${id}: commercialUse must be true or placeholder=true`);
-    }
+    for (const error of assetRightsErrors(asset, workflowState ?? {})) fail(`x asset ${id}: ${error}`);
     if (asset.type === "lottie" && asset.placeholder !== true) {
       if (!asset.license) fail(`x asset ${id}: lottie assets must record license`);
       if (!asset.author) fail(`x asset ${id}: lottie assets must record author`);

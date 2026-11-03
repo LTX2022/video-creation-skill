@@ -57,12 +57,17 @@ test('ZIP installs independently with notices, working entry links, and a repack
   // Execute the exact documented Bash commands from a separate project cwd,
   // with a Skill path containing spaces (no accidental relative-path success).
   const themeDocs = readFileSync(join(installed, 'references/THEMES.md'), 'utf8');
-  const commands = themeDocs.split('\n').filter(line => line.startsWith('node '));
+  const commands = themeDocs.split('\n').filter(line => line.startsWith('node "$SKILL/scripts/theme-summary.mjs"'));
   assert.equal(commands.length, 3);
   for (const command of commands) {
     assert.ok(command.startsWith('node "$SKILL/scripts/theme-summary.mjs"'));
     run('bash', ['-c', command], {cwd: root, env: {...process.env, SKILL: installed}});
   }
+  // New grouped entry works after extraction without a configured personal directory.
+  const grouped = JSON.parse(run(process.execPath, [join(installed, 'scripts/style-recommendations.mjs'), '--all'], {cwd: root}).stdout);
+  assert.equal(grouped.sections[0].items.length, 60);
+  assert.equal(grouped.sections[1].state, 'not-configured');
+  assert.deepEqual(grouped.sections.map(section => section.source), ['builtin', 'user']);
   assert.match(readFileSync(join(installed, 'SKILL.md'), 'utf8'), /node "\$SKILL\/scripts\/theme-summary\.mjs"/);
   const repacked = join(root, 'repacked');
   const installedScript = join(installed, 'scripts/package-skill.ts');

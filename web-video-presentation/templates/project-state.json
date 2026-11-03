@@ -33,6 +33,7 @@
   "goldenFramesShownToUser": false,
   "finalRenderApproved": false,
   "notes": [
+    "Do not infer intendedUse or commercial rights. For explicitly authorized personal/noncommercial assets, record intendedUse and matching asset.authorization allowedUses, basis and evidence; otherwise retain the existing commercialUse contract.",
     "Do not render selected final outputs until video profile confirmation, full shot design, first chapter anchor acceptance, subtitles preview when enabled, preflight, golden frames, and user approval are recorded.",
     "Default to sequential chapter review. batch-after-anchor or parallel requires the actual selected developmentMode to be included in current accepted project plan and shot-design decisions; neither a default flag nor first-anchor acceptance authorizes expansion."
   ]

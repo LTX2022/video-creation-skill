@@ -1,4 +1,4 @@
-import { adaptationErrors, contractErrors, isDouyinProfile, outputMode } from "./delivery-contract";
+import { assetRightsErrors, adaptationErrors, contractErrors, isDouyinProfile, outputMode } from "./delivery-contract";
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 
@@ -68,9 +68,8 @@ for (const asset of manifest.assets ?? []) {
     console.error(`x asset ${id}: missing source (or mark placeholder=true)`);
     failed++;
   }
-  if (asset.commercialUse !== true && asset.placeholder !== true) {
-    console.error(`x asset ${id}: commercialUse must be true, or mark placeholder=true`);
-    failed++;
+  for (const error of assetRightsErrors(asset, projectState ?? {})) {
+    console.error(`x asset ${id}: ${error}`); failed++;
   }
   // v2.6.0: 视频素材字段校验（与 preflight.ts 同步）
   if (asset.type === "video" && asset.placeholder !== true) {

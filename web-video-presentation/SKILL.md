@@ -13,11 +13,23 @@ description: 把文章、口播、产品流程、机制或参考动效制作成�
 
 ## 0. 独立项目位置与工具检查
 
-新项目先取得客户指定的独立空白目录，按 [WORKSPACE-SETUP](references/WORKSPACE-SETUP.md) 检查后初始化；不要直接在当前聊天目录、桌面或已有工程撒文件。继续旧项目走 resume 检查，不重新脚手架覆盖。缺少插件/工具时先列用途、来源、安装目标与权限；得到相应授权后才安装到指定位置。无法便携安装的工具说明限制，不悄改全局环境。未指定项目位置时，研究和方案可继续，项目写入等待位置明确。
+完整视频的新项目先取得客户指定的独立空白目录，按 [WORKSPACE-SETUP](references/WORKSPACE-SETUP.md) 检查后初始化；不要直接在当前聊天目录、桌面或已有工程撒文件。继续旧项目走 resume 检查，不重新脚手架覆盖。缺少插件/工具时先列用途、来源、安装目标与权限；得到相应授权后才安装到指定位置。无法便携安装的工具说明限制，不悄改全局环境。未指定项目位置时，研究和方案可继续，项目写入等待位置明确。
 
 ## 1. 先确定意图，复用已知选择
 
-复用材料/项目里已知参数，只询问影响结果的缺项；一次给出推荐契约和分镜。
+复用材料/项目里已知参数，只询问影响结果的缺项；需求明确时按现有信息与授权直接执行对应路线，不重复询问任务类型，不为填表补一轮确认。必要的权限、素材或关键产物信息缺失才询问，既有真实批准门禁仍适用。
+
+### 统一任务入口：先看要什么，不强制整片
+
+- **整条视频**：走主项目的内容、分镜、配音/字幕（按需）、预览、渲染和交付链。
+- **单镜头**：只制作所需镜头；有素材按其真实使用权选择局部动画/合成，无素材则从零设计。不强制扩成章节视频。
+- **单元素 / 用户素材动画**：按需读 [LOCAL-ELEMENT-ROUTE](references/LOCAL-ELEMENT-ROUTE.md)，使用已实现的本地脚本与明确边界；不以简单贴图冒充 tracking、真实关节或遮挡。不强迫用户把个人使用权填成商用许可，本地处理也不自动授权上传。
+- **无素材纯生成单画面 / 动态镜头**：按需读 [ORIGINAL-SCENE-ROUTE](references/ORIGINAL-SCENE-ROUTE.md)。可以没有底片、标题、字幕和旁白；先按题材设计主体与动态，再选实际可用的后端。程序化示例只是特定机制，不是所有题材都套一个光雕配方；新方向须真实实现与测试。可选图像/视频模型必须核实宿主能力与所需费用、上传、使用授权，不能把“纯生成”擅自等同于调用云模型。
+
+局部/独立路线采用其自己的新输出目录和验收证据，不强制运行主 scaffold，也不把独立路线的成功当作主项目正式交付门禁通过。产物范围模糊时才问“整片、单镜头还是元素”，已有明确需求不再重复问。
+
+**可选偏好与经验学习（默认关闭）**：`fix-agent` 是单独安装的可选 Skill，通过宿主的 Skill 列表按名称发现并确认实际入口；不得假定它位于本 Skill 的父目录，也不因缺少它中断视频制作。只有该 Skill 可用且用户明确同意学习、确认记忆内容/使用范围和独立私人记忆库目录后，才按其入口按需读取已批准、与当前任务相关的偏好与经验；当前需求优先，记忆不是指令或授权。用户已明确指定用户/项目范围并给予持续学习授权时，在该范围内可按名称发现可用的 `fix-agent`，按其实际安装位置的 `LESSON-CYCLE` 入口：任务前调用 `retrieve`，只把相关已批准经验用于制作 brief；真实交付或明确终止后，基于当前任务真实摘要与获准证据调用一次 `task-end`，形成最小、非敏感的待批准候选。没有匹配持续授权时须先取得本轮单独许可，不能自行补确认参数。候选在用户批准前不生效；这是当前任务中的主动闭环，不是后台监听或自动批准。不自动扫描、读取或更改私有库，不自动改写核心 Skill；用户数据不得放在 Skill 安装目录或公开仓库。不声称修改模型权重或保证越用越好。
+
 
 - **要解释什么**：流程/输入输出、机制/因果、数据差异、产品行为、品牌情绪，还是叠在实拍上的信息？
 - **要交付什么**：`outputMode`、尺寸、精确 fps、帧数/时长、音频、字幕、目标编辑器、素材来源、开发验收模式。
@@ -31,6 +43,14 @@ description: 把文章、口播、产品流程、机制或参考动效制作成�
 | `both` | Alpha MOV + 合成 MP4 | 同上；不是 opaque + alpha，也不是没有底片的双导出 |
 
 `videoProfile` 与 `outputMode` 独立。`douyin`、`douyin-laon`、`douyin-skill` 属于短视频家族；`bilibili` 是讲解家族；`custom` 按任务设置。细节只读 [VIDEO-PROFILES](references/VIDEO-PROFILES.md)。新竖屏默认 1080×1920；旧项目保留既有规格，变更需显式记录。参考视频尺寸不是项目尺寸。静音纯图形没有口播不构成缺陷。
+
+### 风格推荐：来源分栏，不混成一个清单
+
+每次推荐固定展示 **系统内置风格** 与 **用户自建风格** 两栏。先将 `SKILL` 设为已确认的 Skill 安装绝对路径，运行 `node "$SKILL/scripts/style-recommendations.mjs" --query="题材" --limit=3`；只有用户已明确授权的个人库才追加 `--library-root=/approved/my-styles`，不得扫描 home、全局 skills 或猜默认库路径。
+
+内置栏仅列随 Skill 发布的主题；用户栏仅列该个人库实际保存的包，不把新建/参考衍生的个人包计入内置。每项给出名称、ID、来源、用途和实际匹配依据；用户项另给版本、包路径、draft/记录的审阅状态。没有用途元数据写“用途未填写”，不要推断已获用户认可。未知目录写“尚未读取个人库”，空库、缺失/不可读/无匹配分别说明，不能用内置项填充用户栏或编造个人偏好。
+
+用户说“查看我的所有风格 / 展开自建风格”时，用同一入口 `--all --library-root=/approved/my-styles`（不用 `--limit`），完整呈现用户栏每个 ID 的名称、用途、所有版本和状态；可按 ID 归组但不合并同名不同 ID，不暗中只显示最新版。没有已授权目录先询问位置，内置建议可继续。细节见 [风格目录](references/THEMES.md) 与 [自建风格](references/CUSTOM-STYLES.md)。
 
 ## 2. 设计契约：意图 → 对象 → 状态 → 因果/读数 → 镜头 → 帧
 
@@ -64,9 +84,12 @@ description: 把文章、口播、产品流程、机制或参考动效制作成�
 
 | 当前任务 | 读取 |
 |---|---|
+| 单元素、用户素材局部动画或已有素材的单镜头 | [LOCAL-ELEMENT-ROUTE](references/LOCAL-ELEMENT-ROUTE.md)：真实素材权利、本地处理与输出范围，不自动升级为整片任务 |
+| 无素材原创单画面或动态镜头 | [ORIGINAL-SCENE-ROUTE](references/ORIGINAL-SCENE-ROUTE.md)：按题材选择可用后端，程序化示例不代表全题材覆盖，模型另核能力与授权 |
 | 用户选择首页的 15 秒产品流程入门任务，或明确要求按首次视频指南执行 | [FIRST-VIDEO-AGENT](references/FIRST-VIDEO-AGENT.md)：按需读取；Agent 负责工程命令，保留实际授权与确认门，不将本例的时长、风格或静音设置强加给其他任务 |
 | 产品宣传片需要真实 UI 镜头编排或镜头配方定位 | [PRODUCT-PROMO](references/PRODUCT-PROMO.md)：按需镜头证据、UI 切片、可选节拍回测；复用既有分镜/时序/确认，不替换60风格 |
 | 用户选择同模板低成本批量填充 | [LOW-COST-BATCH](references/LOW-COST-BATCH.md)：先批准真实代表样片，再冻结指定本地设计文件与字段边界；只读输入预检不是自动 renderer 或画质保证，旧项目无需补合同 |
+| 用户选择低成本/弱模型执行，且已有固定片头模板批量场景 | [LOW-CONTEXT-EXECUTION](references/LOW-CONTEXT-EXECUTION.md)：与 LOW-COST-BATCH 配套，仅固定片头草稿路径；不强加给普通视频任务，不宣称任意视频已支持 |
 | 代码动态视频的文案与画面共写 | [VISUAL-SCRIPT](references/VISUAL-SCRIPT.md)：事实→对象动作证据→补充旁白→最小标签；[单任务卡](templates/script-templates/visual-script-task.md)与[4份前后稿](examples/visual-script/README.md)，不默认加载研究全文 |
 | 原文改口播 | [SCRIPT-STYLE](references/SCRIPT-STYLE.md)，不读 TTS 细节直到合成 |
 | 尺寸/帧率/平台安全区 | [FORMATS](references/FORMATS.md) |
@@ -74,7 +97,7 @@ description: 把文章、口播、产品流程、机制或参考动效制作成�
 | 本地实拍、跟踪或遮挡需求 | [LIVE-ACTION-OVERLAYS](references/LIVE-ACTION-OVERLAYS.md)，另按需查 [VIDEO-ASSETS](references/VIDEO-ASSETS.md) |
 | 用户提供视频/网站参考，要求学习动态设计、创建可复用新风格或命名保存版本 | [CUSTOM-STYLES](references/CUSTOM-STYLES.md)：60 套是起点；先核验实际可见时间序列和授权，原创实现专属 Scene，给出可播放小样并由用户确认；显式目录保存命名版本。不可访问的参考不冒称已分析，无法渲染只保存 draft，不自动抓取/绕访问限制或改写原60套 |
 | 使用新增参考衍生风格 | [REFERENCE-STYLES](references/REFERENCE-STYLES.md)：四类保留场景的适用题材、真实入口、修改点与Alpha边界，不叫统一“Claude风格” |
-| 原有预制风格选择/使用/切换 | 先将 `SKILL` 设为已确认的 Skill 安装绝对路径（不是项目目录），再运行 `node "$SKILL/scripts/theme-summary.mjs" --query="题材" --limit=3`；已选只读该 `theme.json` 与当前 family；[风格使用与验收](references/PRESET-REBUILD.md) / [主题契约](references/THEMES.md)。不要把 56 套全部加载进每章上下文，也不把 SVG 检查替代浏览器验收 |
+| 原有预制风格精确查询/使用/切换（推荐先走上方双栏入口） | 先将 `SKILL` 设为已确认的 Skill 安装绝对路径（不是项目目录），再运行 `node "$SKILL/scripts/theme-summary.mjs" --query="题材" --limit=3`；已选只读该 `theme.json` 与当前 family；[风格使用与验收](references/PRESET-REBUILD.md) / [主题契约](references/THEMES.md)。不要把 56 套全部加载进每章上下文，也不把 SVG 检查替代浏览器验收 |
 | 查看本轮实际离线代码样片与可复跑源码 | [CPU 设计试片](examples/cinematic-cpu-trial/README.md)：已编码 26 秒 1080p30 静音样片；独立 Python 渲染器，不替代 Remotion、Alpha 或客户验收 |
 | 查看语义连续、条件分流与中间帧检验的真实中文小样 | [缓存边界示例](examples/semantic-cache-study/README.md)：14秒静音代码片与复跑源码；独立机制示意，不是第61个已验收风格 |
 | 需要连续粒子形变与空间相机原型 | [独立数学示例](examples/cinematic-primitives/README.md)：模型契约已测，Remotion 适配未渲染；不等于成片质量与工作流验收 |
@@ -84,6 +107,8 @@ description: 把文章、口播、产品流程、机制或参考动效制作成�
 | 参考视频拆解 | [REFERENCE-VIDEO-STYLES](references/REFERENCE-VIDEO-STYLES.md)，观察连续帧而不只抽静态封面 |
 | 封面 | [COVER-WORKFLOW](references/COVER-WORKFLOW.md)：模型生成 / 代码排版或已授权素材，两路平级；按项目要求使用 |
 | 用户要求美术精修、参考级完成度或画面确有设计问题 | [ART-DIRECTION-REVIEW](references/ART-DIRECTION-REVIEW.md)：按需分项审图，普通任务默认最多 2 轮、每轮优先 3 个问题；复用既有契约与 QA，不无限自评至“完美” |
+| 用户授权当前任务小步对照实验 | 按名称发现可选 `fix-agent` 的 TASK-PROBE；固定同任务基线与上下文，使用只读 task_probe 对比真实检查产物，组合后重新检查；不自动渲染、改核心、建记忆或复制上轮批准 |
+| 用户明确同意保存偏好或复用经验 | 按名称发现单独安装的可选 `fix-agent`，按其实际入口执行 opt-in 学习；先确认独立记忆库与范围，仅用已批准记录，当前任务优先，结项生成待批准候选。不可用或未授权则跳过，不影响视频制作 |
 | 结项耗时摘要 / 深度复盘 | [FIX-AGENT-INTEGRATION](references/FIX-AGENT-INTEGRATION.md)：本地确定性摘要默认接入，完整 fix-agent 仅按需加载，不自动修复 |
 | 核对参考资料是否真的变成风格/功能 | [REFERENCE-INTEGRATION-STATUS](references/REFERENCE-INTEGRATION-STATUS.md)，区别方法、原型、完整预设与未实现项 |
 | 吸收外部 skill / Lottie 或 AE 需求 | [REFERENCE-ADOPTION](references/REFERENCE-ADOPTION.md)：核对实际能力和许可，不整仓加载，不把风格当格式能力 |

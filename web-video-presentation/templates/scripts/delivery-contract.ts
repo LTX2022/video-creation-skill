@@ -31,8 +31,27 @@ export function localPath(root: string, path: unknown): string {
   if (rel.startsWith('..') || isAbsolute(rel)) throw new Error(`Path escapes project: ${path}`);
   return full;
 }
+/** Recorded permission for this project, not a legal certification or inferred commercial grant. */
+export const INTENDED_USES = ['personal', 'noncommercial', 'commercial'] as const;
+export type IntendedUse = typeof INTENDED_USES[number];
+export interface AssetAuthorization { allowedUses: Array<'personal' | 'noncommercial'>; basis: string; evidence: string }
+export function assetRightsErrors(asset: any, state: { intendedUse?: unknown } = {}): string[] {
+  // Preserve the historical explicitly commercial / draft-placeholder paths.
+  if (asset.placeholder === true || (asset.commercialUse === true && asset.authorization === undefined)) return [];
+  const errors: string[] = [];
+  const use = state.intendedUse;
+  if (use !== 'personal' && use !== 'noncommercial') errors.push('noncommercial asset requires explicit project intendedUse=personal or noncommercial; unknown/commercial use is not authorized');
+  if (asset.commercialUse !== undefined && typeof asset.commercialUse !== 'boolean') errors.push('commercialUse must be a truthful boolean when supplied; do not infer a commercial grant');
+  const auth = asset.authorization;
+  if (!auth || typeof auth !== 'object' || Array.isArray(auth)) return [...errors, 'asset requires authorization with allowedUses, basis and evidence'];
+  if (!Array.isArray(auth.allowedUses) || !auth.allowedUses.length || auth.allowedUses.some((v: unknown) => v !== 'personal' && v !== 'noncommercial') || !auth.allowedUses.includes(use)) errors.push('authorization.allowedUses must explicitly include this project intendedUse (personal/noncommercial); scopes are not inferred');
+  for (const key of ['basis', 'evidence']) if (typeof auth[key] !== 'string' || !auth[key].trim() || /^(unknown|pending|tbd|n\/a|未知|未确认|待确认)$/i.test(auth[key].trim())) errors.push(`authorization.${key} must record the actual permission basis/evidence`);
+  return errors;
+}
+
 export function contractErrors(state: any, result?: any, currentRevision?: InputRevision): string[] {
   const errors: string[] = [];
+  if (state.intendedUse !== undefined && !INTENDED_USES.includes(state.intendedUse)) errors.push('intendedUse must be personal, noncommercial or commercial when supplied');
   let mode: OutputMode;
   try { mode = outputMode(state.outputMode); } catch (error) { return [String(error)]; }
   if (mode === 'alpha' && (state.audioRequested === true || state.subtitlesRequested === true)) errors.push('alpha-only is a silent graphics export; set audioRequested=false and subtitlesRequested=false');

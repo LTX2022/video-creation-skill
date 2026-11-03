@@ -12,6 +12,23 @@
 
 主题与输出规格解耦：换主题不悄改 width/height/fps。横竖屏需要实际重排；Alpha 仅移除明确的场景底，保留主体表面、文字和必要阴影，再验证真实透明像素。
 
+## 推荐时固定两栏
+
+推荐入口不合并来源：`系统内置风格` 来自安装包 `themes/`；`用户自建风格` 来自用户显式授权的个人目录。即便用户风格以某内置主题为 baseTheme，也仍属于用户栏。缺个人库位置时不扫描、不假定为空。
+
+```bash
+SKILL='/absolute/path/to/web-video-presentation'
+node "$SKILL/scripts/style-recommendations.mjs" --query="产品 流程" --limit=3
+# 只有已获准读取这个目录才加此参数
+node "$SKILL/scripts/style-recommendations.mjs" --query="产品 流程" --limit=3 --library-root=/approved/my-styles
+# 用户要求展开时：完整输出全部版本，无分页、不截断
+node "$SKILL/scripts/style-recommendations.mjs" --all --library-root=/approved/my-styles
+```
+
+输出 `sections` 固定有两栏，`source` 为 `builtin` / `user`；查询 `--limit` 各栏独立。用户栏 `state` 区分 `not-configured`（未读取）、`missing`、`inaccessible`、`invalid`、`empty`、`no-match`、`available`，不可把失败读库说成空库。失败时仍可展示内置建议，但必须展示用户栏错误并解决路径/权限后再查询；脚本不会自动申请或扩大权限。
+
+个人项包含 `name/id/bestFor/version/status/package`，用途缺失就标未填写；完整展开以 ID 区分重名，展示每个版本，不只最新版。`matchedTerms` / `matchedEvidence` 是元数据词项命中，不是审美分数。用户项只匹配自身名称、用途、标签、描述和设计规则，不继承 baseTheme 用途，也不将参考 URL/权利声明当适用依据。旧包不需补字段即可列出；记录的 render-reviewed 不等于本轮独立验收。目录读取会验证完整本地包但不执行其代码，不访问引用 URL；授权目录中的文件也应受操作系统权限约束。
+
 ## 最小读取
 
 未选主题先查摘要，选定后只读该主题；全库盘点才使用 `--all`。

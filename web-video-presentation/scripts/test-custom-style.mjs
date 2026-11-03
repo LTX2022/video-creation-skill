@@ -88,3 +88,48 @@ test('absolute CLI works outside skill directory and rejects unknown options',t=
  result=run('list',`--library-root=${library}`);assert.equal(result.status,0,result.stderr);assert.equal(JSON.parse(result.stdout)[0].name,'Orbital Morph Study');
  assert.notEqual(run('validate',`--package=${pack}`,'--silently-ignore-me').status,0);
 });
+
+test('recommendations separate provenance, expose all versions and distinguish unknown, empty, missing and no match',t=>{
+ const root=temp(t),pack=fixture(path.join(root,'work')),library=path.join(root,'library');
+ const cli=fileURLToPath(new URL('./style-recommendations.mjs',import.meta.url));
+ const run=(...args)=>{const r=spawnSync(process.execPath,[cli,...args],{cwd:root,encoding:'utf8'});assert.equal(r.status,0,r.stderr);return JSON.parse(r.stdout);};
+ const unknown=run('--all');assert.deepEqual(unknown.sections.map(s=>s.title),['系统内置风格','用户自建风格']);assert.equal(unknown.sections[0].items.length,60);assert.equal(unknown.sections[1].state,'not-configured');
+ assert.equal(run('--all',`--library-root=${library}`).sections[1].state,'missing');fs.mkdirSync(library);
+ assert.equal(run('--all',`--library-root=${library}`).sections[1].state,'empty');
+ const metaPath=path.join(pack,'style.json'),meta=JSON.parse(fs.readFileSync(metaPath));
+ meta.design.extra={legacyNote:1}; // unknown legacy metadata is not searchable evidence
+ meta.bestFor=['轨道产品演示'];meta.tags=['同主体形变'];meta.description='用于连续动作讲解';
+ fs.writeFileSync(metaPath,JSON.stringify(meta));save(pack,library);
+ meta.version=2;fs.writeFileSync(metaPath,JSON.stringify(meta));save(pack,library);
+ const all=run('--all',`--library-root=${library}`),user=all.sections[1];
+ assert.equal(user.totalVersions,2);assert.deepEqual(user.items.map(i=>i.version),[1,2]);assert.ok(user.items.every(i=>i.source==='user'&&i.status==='draft'&&i.bestFor[0]==='轨道产品演示'));
+ assert.ok(all.sections[0].items.every(i=>i.source==='builtin'&&i.id!==meta.id));
+ const query=run('--query=轨道','--limit=1',`--library-root=${library}`).sections[1];assert.equal(query.items.length,1);assert.equal(query.items[0].version,2);assert.deepEqual(query.items[0].matchedEvidence,[{term:'轨道',field:'bestFor',value:'轨道产品演示'}]);
+ assert.equal(run('--query=zzzznotfound',`--library-root=${library}`).sections[1].state,'no-match');
+ // Even matching display names never merge distinct IDs or versions.
+ meta.id='other-orbit';fs.writeFileSync(metaPath,JSON.stringify(meta));const presetPath=path.join(pack,'preset.json'),preset=JSON.parse(fs.readFileSync(presetPath));preset.id=meta.id;fs.writeFileSync(presetPath,JSON.stringify(preset));save(pack,library);
+ assert.equal(run('--all',`--library-root=${library}`).sections[1].items.length,3);
+ for(let version=3;version<=13;version++){meta.version=version;fs.writeFileSync(metaPath,JSON.stringify(meta));save(pack,library);}
+ const expanded=run('--all',`--library-root=${library}`).sections[1];assert.equal(expanded.items.length,14);assert.equal(expanded.totalVersions,14);assert.equal(expanded.items.filter(i=>i.id==='other-orbit').length,12);
+ for(const args of [['--all','--limit=2'],['--query=?!'],['--all','--library-root='],['--all','--all']]) assert.notEqual(spawnSync(process.execPath,[cli,...args],{encoding:'utf8'}).status,0);
+});
+
+test('library traversal rejects symlink roots, IDs, versions, mismatched identity and malformed metadata',t=>{
+ const root=temp(t),pack=fixture(path.join(root,'work')),library=path.join(root,'library');save(pack,library);
+ const cli=fileURLToPath(new URL('./style-recommendations.mjs',import.meta.url));
+ const run=dir=>JSON.parse(spawnSync(process.execPath,[cli,'--all',`--library-root=${dir}`],{encoding:'utf8'}).stdout).sections[1];
+ fs.symlinkSync(library,path.join(root,'alias'));assert.equal(run(path.join(root,'alias')).state,'invalid');
+ fs.symlinkSync(pack,path.join(library,'escape'));assert.equal(run(library).state,'invalid');fs.unlinkSync(path.join(library,'escape'));
+ const idDir=path.join(library,'orbital-morph-study');fs.symlinkSync(pack,path.join(idDir,'v2'));assert.equal(run(library).state,'invalid');fs.unlinkSync(path.join(idDir,'v2'));
+ fs.renameSync(path.join(idDir,'v1'),path.join(idDir,'v9'));assert.equal(run(library).state,'invalid');fs.renameSync(path.join(idDir,'v9'),path.join(idDir,'v1'));
+ const meta=path.join(idDir,'v1','style.json');fs.writeFileSync(meta,'{broken');const result=run(library);assert.equal(result.state,'invalid');assert.deepEqual(result.items,[]);assert.equal(result.totalVersions,null);
+});
+
+test('unreadable explicit library remains inaccessible, never silently empty', {skip:process.platform==='win32'||process.getuid?.()===0},t=>{
+ const root=temp(t),library=path.join(root,'private');fs.mkdirSync(library);fs.chmodSync(library,0);
+
+ const cli=fileURLToPath(new URL('./style-recommendations.mjs',import.meta.url));
+ let result;try{result=spawnSync(process.execPath,[cli,'--all',`--library-root=${library}`],{encoding:'utf8'});}finally{fs.chmodSync(library,0o700);}
+ assert.equal(result.status,0,result.stderr);const sections=JSON.parse(result.stdout).sections;
+ assert.equal(sections[0].items.length,60);assert.equal(sections[1].state,'inaccessible');assert.equal(sections[1].totalVersions,null);
+});

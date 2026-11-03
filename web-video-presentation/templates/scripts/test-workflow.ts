@@ -18,6 +18,20 @@ function artifact(kind:'alpha'|'composite',revision:string){return {schema:3,kin
 function event(subject:any,decision='accepted'){return {schema:2,recordKind:'user-decision',eventType:subject.gate==='chapter'?'chapter-review':subject.gate,decision,userResolution:decision,userQuote:'SYNTHETIC TEST FIXTURE — not an actual user decision',source:{kind:'synthetic',reference:null,declaration:'Offline synthetic fixture only; never production approval'},subject};}
 const allowSynthetic={allowSynthetic:true};
 try {
+ test('project use and asset permission changes invalidate previous render and review identity',()=>{
+   const {root,state}=fixture();
+   put(root,'project-state.json',{...state,intendedUse:'personal'});
+   put(root,'asset-manifest.json',{version:1,assets:[{id:'personal',commercialUse:false,authorization:{allowedUses:['personal'],basis:'Synthetic owner grant',evidence:'Synthetic fixture only'}}]});
+   const a=captureInputRevision(root);assert.equal(a.status,'bound');
+   const plan=subjectForDecision(root,'checkpoint-plan',{scope:'project'});
+   put(root,'project-state.json',{...state,intendedUse:'commercial'});
+   const b=captureInputRevision(root);assert.notEqual(b.contentRevision,a.contentRevision);assert.ok(revisionErrors(b,{contentRevision:a.contentRevision}).length);
+   assert.notDeepEqual(subjectForDecision(root,'checkpoint-plan',{scope:'project'}),plan);
+   put(root,'project-state.json',{...state,intendedUse:'personal'});
+   assert.equal(captureInputRevision(root).contentRevision,a.contentRevision);
+   put(root,'asset-manifest.json',{version:1,assets:[{id:'personal',commercialUse:false,authorization:{allowedUses:[],basis:'Permission revoked',evidence:'Synthetic fixture only'}}]});
+   const c=captureInputRevision(root);assert.notEqual(c.contentRevision,a.contentRevision);assert.ok(revisionErrors(c,{contentRevision:a.contentRevision}).length);
+ });
  test('same revision combines both finals, changed foreground discards old composite',()=>{const {root,state}=fixture();const a=captureInputRevision(root);assert.equal(a.status,'bound');const old=mergeFinalOutput(state,artifact('composite',a.contentRevision!));const joined=mergeFinalOutput(state,artifact('alpha',a.contentRevision!),old);assert.equal(joined.complete,true);assert.deepEqual(contractErrors(state,joined,a),[]);put(root,'src/chapters/01-intro/Intro.tsx','changed foreground');const b=captureInputRevision(root);assert.notEqual(a.contentRevision,b.contentRevision);const next=mergeFinalOutput(state,artifact('alpha',b.contentRevision!),old);assert.equal(next.complete,false);assert.equal(next.outputs.length,1);assert.ok(contractErrors(state,joined,b).some(e=>/stale/.test(e)));});
  test('timing, font bytes, CSS, assets, and same-path replacements invalidate',()=>{for(const [path,value] of [['timing-manifest.json',JSON.stringify({fps:31,steps:[]})],['public/fonts/local.woff2','changed-font'],['src/styles/fonts.css','font-family:Changed;'],['public/plate.bin','changed-asset'],['src/video/render-timing.generated.ts','changed timing']]){const {root}=fixture();const before=captureInputRevision(root);put(root,path,value);assert.notEqual(captureInputRevision(root).contentRevision,before.contentRevision,path);}});
  test('reports, approval booleans, timestamps and JSON formatting do not dirty rendering',()=>{const {root,state}=fixture();const before=captureInputRevision(root);put(root,'output/unrelated-report.json',{generatedAt:Date.now(),pass:true});put(root,'feedback-events.jsonl','{"synthetic":true}\n');put(root,'project-state.json',{...state,updatedAt:'new',finalRenderApproved:true,goldenFramesShownToUser:true,acceptedChapterIds:['intro'],notes:['unrelated']});const timing=JSON.parse(readFileSync(resolve(root,'timing-manifest.json'),'utf8'));timing.generatedAt='longer timestamp';put(root,'timing-manifest.json',timing);assert.equal(captureInputRevision(root).contentRevision,before.contentRevision);});

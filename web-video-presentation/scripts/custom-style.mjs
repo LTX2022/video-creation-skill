@@ -42,6 +42,8 @@ export function validate(root) {
  if(!/--[a-zA-Z][\w-]*\s*:\s*[^;}\s]/.test(css)) fail('tokens.css must define actual CSS tokens');
  if(meta.schema!==1||typeof meta.id!=='string'||!idPattern.test(meta.id)||!Number.isInteger(meta.version)||meta.version<1) fail('Invalid schema, id or version');
  text(meta.name,'name');
+ for(const key of ['bestFor','mood','tags']) if(meta[key]!==undefined&&(!Array.isArray(meta[key])||meta[key].some(v=>typeof v!=='string'||!v.trim()))) fail(`Invalid ${key}`);
+ if(meta.description!==undefined) text(meta.description,'description');
  if(fs.existsSync(path.join(skill,'themes',meta.id))) fail('Custom ID collides with built-in theme');
  if(typeof meta.baseTheme!=='string'||!idPattern.test(meta.baseTheme)||!fs.existsSync(path.join(skill,'themes',meta.baseTheme,'tokens.css'))) fail('Unknown baseTheme');
  if(preset.id!==meta.id) fail('preset.id must equal style.id');
@@ -125,13 +127,36 @@ export function scaffold(root,target,args=[]) {
  install(pack,target);
  return {project:target,id:pack.meta.id,version:pack.meta.version,sha256:pack.sha256,validation:'source-only; typecheck, render and visual review still required'};
 }
+// Read only the explicitly selected library; never discover home/global directories.
+export function listStyles(library) {
+ const root=path.resolve(library);noSymlinkPath(root);
+ if(!fs.statSync(root).isDirectory()) fail('Library must be a directory');
+ const result=[];
+ for(const entry of fs.readdirSync(root,{withFileTypes:true}).sort((a,b)=>a.name.localeCompare(b.name))) {
+  if(entry.isSymbolicLink()) fail('Symlink entries are not allowed in library');
+  if(!entry.isDirectory()) continue;
+  if(!idPattern.test(entry.name)) fail('Invalid style directory ID');
+  const directory=path.join(root,entry.name);noSymlinkPath(directory);
+  for(const version of fs.readdirSync(directory,{withFileTypes:true}).sort((a,b)=>a.name.localeCompare(b.name,undefined,{numeric:true}))) {
+   if(version.isSymbolicLink()) fail('Symlink versions are not allowed');
+   if(!version.isDirectory()||!/^v[1-9]\d*$/.test(version.name)) fail('Invalid version directory');
+   const p=validate(path.join(directory,version.name));
+   if(p.meta.id!==entry.name||`v${p.meta.version}`!==version.name) fail('Library directory must match style ID and version');
+   result.push({id:p.meta.id,name:p.meta.name,version:p.meta.version,status:p.meta.status,package:p.root,
+    source:'user',bestFor:p.meta.bestFor??[],mood:p.meta.mood??[],tags:p.meta.tags??[],description:p.meta.description??'',design:p.meta.design,
+    validation:'source contract only; review status is recorded metadata, not independent visual approval'});
+  }
+ }
+ return result;
+}
 function main(args) {
  const command=args.shift(),opts={},forward=[];
  for(const arg of args) {const m=/^--(package|library-root|project-root)=(.+)$/.exec(arg);if(m){if(opts[m[1]]) fail('Duplicate option');opts[m[1]]=m[2];}else forward.push(arg);}
  if(command!=='scaffold'&&forward.length) fail('Unknown option: '+forward[0]);
  if(command==='list') {
-  if(!opts['library-root']) fail('--library-root required');const root=path.resolve(opts['library-root']);noSymlinkPath(root);
-  return fs.readdirSync(root).filter(id=>idPattern.test(id)).flatMap(id=>fs.readdirSync(path.join(root,id)).map(version=>{const p=validate(path.join(root,id,version));return {id:p.meta.id,name:p.meta.name,version:p.meta.version,status:p.meta.status,package:p.root};}));
+  if(!opts['library-root']) fail('--library-root required');
+  if(opts.package||opts['project-root']) fail('list accepts only --library-root');
+  return listStyles(opts['library-root']);
  }
  if(!opts.package) fail('Usage: custom-style.mjs validate|save|scaffold --package=<directory> [--library-root=<directory> | --project-root=<empty-directory>] [scaffold options]; list --library-root=<directory>');
  if(command==='validate') {const p=validate(opts.package);return {id:p.meta.id,version:p.meta.version,sha256:p.sha256,validation:'source contract only; code has not been executed or visually reviewed'};}

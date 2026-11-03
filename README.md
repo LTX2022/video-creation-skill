@@ -1,8 +1,8 @@
-# Video Creation Skill · 60 Styles
+# Video Creation Skill
 
 **Turn scripts, product workflows, and explanations into videos you can keep editing.**
 
-60 visual styles · Landscape and portrait · Voiceover and subtitles · Transparent animation · Live-action overlays
+Extensible visual styles · Landscape and portrait · Voiceover and subtitles · Transparent animation · Live-action overlays
 
 **English** · [简体中文](README-CN.md)
 
@@ -22,7 +22,7 @@ These are animated GIF previews, not embedded MP4 players. Click to open each MP
 <details>
 <summary><strong>Earlier reference examples — Chinese on-screen text</strong></summary>
 
-These older examples are Chinese-language references, not demonstrations of English-language output. Their production methods differ from the new samples; see the source notes below.
+These older examples are Chinese-language references, not demonstrations of English-language output.
 
 ### Earlier examples — Chinese on-screen text
 
@@ -30,17 +30,17 @@ These older examples are Chinese-language references, not demonstrations of Engl
 
 **THREAD / 一线 · Chinese on-screen text · 14 seconds · With audio** — One panel transforms from an input into a result, then resolves into an icon. [Open the full MP4](media/thread-continuity-14s.mp4)
 
-| All 60 styles · 6:24 | From noise to order · 26 seconds | Cache boundaries · 14 seconds |
+| Built-in style overview · 6:24 | From noise to order · 26 seconds | Cache boundaries · 14 seconds |
 |:---:|:---:|:---:|
-| [![Preview of 60 styles](media/previews/styles.jpg)](media/60-styles-noto-overview.mp4) | [![From noise to order preview](media/previews/order.jpg)](media/order-emergent-26s.mp4) | [![Cache mechanism preview](media/previews/cache.jpg)](web-video-presentation/examples/semantic-cache-study/semantic-cache-boundary.mp4) |
+| [![Built-in styles preview](media/previews/styles.jpg)](media/60-styles-noto-overview.mp4) | [![From noise to order preview](media/previews/order.jpg)](media/order-emergent-26s.mp4) | [![Cache mechanism preview](media/previews/cache.jpg)](web-video-presentation/examples/semantic-cache-study/semantic-cache-boundary.mp4) |
 | [Open MP4](media/60-styles-noto-overview.mp4) | [Open MP4](media/order-emergent-26s.mp4) | [Open MP4](web-video-presentation/examples/semantic-cache-study/semantic-cache-boundary.mp4) |
 
-Click a preview to open the MP4 file page. If no player appears, choose **Download raw file** to watch it locally. The animated preview above is a silent GIF, **not an embedded MP4 player**. The three videos in the table are silent. The style overview was made with React/SVG; the other samples were generated with Python. [Sources and reproduction notes](media/README.md)
+Click a preview to open the MP4 file page. If no player appears, choose **Download raw file** to watch it locally. The animated preview above is a silent GIF, **not an embedded MP4 player**. The three videos in the table are silent.
 
 <details>
-<summary><strong>Browse all 60 styles</strong> (actual frames from the overview, in playback order)</summary>
+<summary><strong>Browse the built-in styles</strong> (actual frames from the overview, in playback order)</summary>
 
-[![Frames from all 60 styles](media/previews/60-styles.jpg)](media/60-styles-noto-overview.mp4)
+[![Frames from the built-in styles](media/previews/60-styles.jpg)](media/60-styles-noto-overview.mp4)
 
 [Style names, uses, and timestamps](media/preview-source/index.json) · [All theme source files](web-video-presentation/themes/)
 
@@ -60,7 +60,9 @@ Click a preview to open the MP4 file page. If no player appears, choose **Downlo
 
 This is a tool for **AI agents that can load skills, read and write files, and run code**, not a standalone video editor. Installation and permissions vary by agent. The workflow is: **choose a style → approve the storyboard and key frames → preview → render and check → receive the video and source project**. Installing the skill does not install the rendering environment.
 
-## 60 styles are a starting point, not a limit
+## Built-in styles and your own style library
+
+The skill includes 60 built-in styles as a starting point, not a limit. Your custom styles are stored separately in a personal folder you choose; they are not part of the built-in content distributed and installed with the skill. Recommendations are shown in two separate sections—**System built-in styles** and **User-created styles**—so their sources remain clear. You can also ask the agent to show all your custom styles and what each is useful for; they remain in your personal library, not automatically part of the built-in catalog.
 
 None of the built-in styles fit? Give your agent a video, website, or playable screen recording and explain what you like about it. Within the material it can actually access and has permission to study, the agent can examine composition, camera movement, continuous transformations, transitions, and pacing, then build a reusable new style—not just a different color palette. Unseen motion stays unknown: this does not automatically scrape arbitrary websites or bypass access restrictions.
 
@@ -68,11 +70,19 @@ Start with a short playable preview. Review and approve the direction before exp
 
 [How to study, save, and reuse a custom style](web-video-presentation/references/CUSTOM-STYLES.md)
 
+## You do not have to make a whole video
+
+Ask for the result you need: **a complete video, one shot, an animated element or asset you provide, or a still image or moving shot created from scratch with no source assets**. If the request is clear, the agent proceeds using the information and permissions already given; it asks only when missing details would materially change the result.
+
+With your assets, it can create element animation, transparent foregrounds, or overlays within your actual usage rights. Commercial rights are not automatically required, and permission for local processing does not authorize external uploads. With no assets, you can still start creating—there is no mandatory footage, title, subtitle, or narration. The included local generation examples implement specific procedural visuals, not every subject or style; other directions need actual design and testing. Image or video models are optional and require tools that are genuinely available in your host, plus the relevant cost, upload, and usage permissions. Neither model availability nor successful output from an arbitrary description is guaranteed.
+
+[Animate your assets and elements](web-video-presentation/references/LOCAL-ELEMENT-ROUTE.md) · [Original images and shots without source assets](web-video-presentation/references/ORIGINAL-SCENE-ROUTE.md)
+
 ## Download and install
 
 **[Download the complete public release as a ZIP](https://github.com/LTX2022/video-creation-skill/archive/refs/heads/main.zip)**, or use the green **Code → Download ZIP** button on this page. Extract it to get the `video-creation-skill-main` folder.
 
-The ZIP contains the complete public skill, source files for all 60 styles, ten MP4 files (four earlier videos plus three new concepts in English and Chinese), and the optional `fix-agent` skill. Dependencies, model services, and older research tools for frame extraction, transcription, and distillation are not included. This is not an archive of the original historical bundle.
+The ZIP contains the complete public skill, source files for the 60 built-in styles, ten MP4 files (four earlier videos plus three new concepts in English and Chinese), and the optional `fix-agent` skill. Dependencies, model services, and older research tools for frame extraction, transcription, and distillation are not included. This is not an archive of the original historical bundle.
 
 ### Install in your agent
 
@@ -81,6 +91,12 @@ Extract the ZIP, then tell your agent:
 > Please install the web-video-presentation folder from my extracted video-creation-skill download as a skill. First check how skills are installed in your environment. Ask me for the folder location or permission if needed, then confirm that you can find the skill.
 
 Provide the extracted folder location when asked. Your agent needs access to the files and a way to install skills. Installation, permissions, and dependencies vary by host; follow your agent's instructions if it uses another way to load skills.
+
+### Optional: build a better understanding of your preferences
+
+`fix-agent` is an optional skill that must be **installed separately**. Video creation can continue with just the video skill. To opt in, ask your agent to find `fix-agent` by name and first agree with you on what to remember, which projects may use it, and a separate private memory folder you choose. Your private memory store must not be read or changed without explicit consent.
+
+With your explicit consent, the agent can gradually turn your clear feedback into **preferences you can inspect, change, or revoke**, informing later style recommendations and production plans so you do not have to start from scratch each time. It consults approved preferences and relevant lessons only as needed; **your current request always takes priority**. At the end of a task, it prepares useful preferences or lessons as candidates for your approval—not automatic lasting rules. Only approved entries can inform later work. User data stays outside the skill installation and public repository, and the core skill is not rewritten automatically. You can also authorize ongoing learning for a specific user/project scope: consult approved lessons before a task, then proactively review it and propose candidates after actual delivery or explicit termination. This does not enable background monitoring or automatic approval. This is inspectable, optional local recordkeeping and reuse, not model self-training or a guarantee of better results.
 
 ## Make your first video: a 15-second product workflow
 

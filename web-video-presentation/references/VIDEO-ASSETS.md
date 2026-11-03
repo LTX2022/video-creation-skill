@@ -47,4 +47,23 @@
 }
 ```
 
-示例数值必须换成实际probe结果；`commercialUse:true` 只能在确有相应权利时填写。当前校验器要求非占位素材明确该字段；未知/不允许商业使用不能为过门禁改成true，应暂停依赖该素材的最终交付或调整已获授权的素材/范围。清单不是法律结论。
+示例数值必须换成实际 probe 结果；`commercialUse:true` 只能在确有相应权利时填写。旧的明确商业授权分支保持兼容；未知授权不能为过门禁改成 true 或 placeholder。清单是使用范围记录，不是法律结论。
+
+### 仅个人 / 非商业授权素材
+
+合法个人素材不需要虚构商业授权。先按用户实际用途在 `project-state.json` 明确设置 `"intendedUse": "personal"` 或 `"noncommercial"`，再在对应资产上记录：
+
+```json
+{
+  "commercialUse": false,
+  "authorization": {
+    "allowedUses": ["personal"],
+    "basis": "<实际授权人及许可范围，不能填未知或推测>",
+    "evidence": "<可追溯的用户授权原话/消息日期引用或真实许可记录>"
+  }
+}
+```
+
+`allowedUses` 必须明确包含本项目的准确用途；personal 与 noncommercial 不自动互相推断。来源 `source`、实际用途 `usage`、视频规格及其他既有检查仍必填。两处门禁 `validate-assets` / `preflight` 使用同一授权规则。用途缺失/未知、缺授权依据/证据、个人授权配商业用途均拒绝；非空文字本身不证明真实权利，执行者仍须核对其真实性与范围。商业项目仍需真实 `commercialUse:true`，不得把本地处理权限当作公开发布或商业使用许可。
+
+未使用这一窄分支的旧项目无需补填 intendedUse；模板不会擅自选择用户用途。`intendedUse` 与资产清单纳入输入修订身份，改变用途/授权后旧渲染及最终交付证据失效。新增权限绑定会令旧版本未绑定这些字段的证据需要重新核验；不会修改素材或将 false 改成 true。

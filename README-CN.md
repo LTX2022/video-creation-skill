@@ -1,10 +1,10 @@
-# 视频创作 Skill · 60 风格
+# 视频创作 Skill
 
 [English](README.md) · **简体中文**
 
 **把你的文案、产品流程和知识解释，变成可以继续修改的视频工程。**
 
-60 套风格 · 横竖屏 · 配音字幕 · 透明动画 · 实拍叠加
+可扩展风格 · 横竖屏 · 配音字幕 · 透明动画 · 实拍叠加
 
 [下载 ZIP](https://github.com/LTX2022/video-creation-skill/archive/refs/heads/main.zip) · [安装](#下载与安装) · [做第一条视频](#做出第一条视频15-秒产品流程) · [完整指南](web-video-presentation/README.zh-CN.md)
 
@@ -20,7 +20,7 @@
 上方是动态 GIF 预览，不是内嵌 MP4 播放器。点击打开成片；GitHub 无播放器时选择 **Download raw file**。
 
 <details>
-<summary><strong>历史中文参考样片与 60 风格总览</strong></summary>
+<summary><strong>历史中文参考样片与内置风格总览</strong></summary>
 
 ### 历史中文样片
 
@@ -28,12 +28,12 @@
 
 **THREAD / 一线 · 14 秒 · 有声** — 同一个面板，从输入变成结果，再收束为图标。[打开完整 MP4](media/thread-continuity-14s.mp4)
 
-| 60 风格总览 · 6:24 | 从噪声到秩序 · 26 秒 | 缓存边界 · 14 秒 |
+| 内置风格总览 · 6:24 | 从噪声到秩序 · 26 秒 | 缓存边界 · 14 秒 |
 |:---:|:---:|:---:|
 | [![60风格预览](media/previews/styles.jpg)](media/60-styles-noto-overview.mp4) | [![秩序预览](media/previews/order.jpg)](media/order-emergent-26s.mp4) | [![缓存机制预览](media/previews/cache.jpg)](web-video-presentation/examples/semantic-cache-study/semantic-cache-boundary.mp4) |
 | [打开 MP4](media/60-styles-noto-overview.mp4) | [打开 MP4](media/order-emergent-26s.mp4) | [打开 MP4](web-video-presentation/examples/semantic-cache-study/semantic-cache-boundary.mp4) |
 
-点击图片打开 MP4 文件页；若无播放器，点 **Download raw file** 下载播放。首页动态图片是无声 GIF，**不是内嵌 MP4 播放器**。后三条视频为静音；风格总览来自 React/SVG，其他为 Python 自生成试片。[来源与复现](media/README.md)
+点击图片打开 MP4 文件页；若无播放器，点 **Download raw file** 下载播放。首页动态图片是无声 GIF，**不是内嵌 MP4 播放器**。后三条视频为静音。
 
 <details>
 <summary><strong>展开看全部 60 套风格</strong>（真实总览截图，按视频顺序排列）</summary>
@@ -58,7 +58,9 @@
 
 这是供**支持加载 Skill，且能读写文件、运行代码的 AI Agent**使用的工具，不是独立剪辑软件。不同 Agent 的安装方式与权限可能不同。工作流程是：**选风格 → 确认分镜与关键画面 → 预览 → 渲染与检查 → 交付视频和源码**。安装 Skill 不等于装好渲染环境。
 
-## 60 套是起点，不是上限
+## 内置风格与个人风格库
+
+Skill 内置 60 套风格，作为创作起点，而不是功能上限。你自行创建的扩展风格保存在指定的独立个人目录中，不属于随 Skill 分发和安装的内置内容。推荐时，Agent 会分为「系统内置风格」和「用户自建风格」两个栏目，明确来源，不混在一起。你也可以要求 Agent 展开全部自建风格及其用途；这些仍属于个人风格库，不会自动变成系统内置风格。
 
 没有合适的内置风格？把喜欢的视频、网站或可播放录屏交给 Agent，说明你想借鉴的部分。Agent 会在实际可访问、获准研究的范围内观察构图、运镜、连续形变、转场和节奏，提炼规则并编写可复用的新风格，而不只是换颜色。看不到的动态会明确标为未知，不会假装已经分析过，也不会自动抓取任意网站或绕过访问限制。
 
@@ -66,11 +68,19 @@
 
 [新风格的学习、保存与复用说明](web-video-presentation/references/CUSTOM-STYLES.md)
 
+## 不必每次都做整条视频
+
+直接说你要的结果：**整条视频、一个镜头、让某个元素或你提供的素材动起来，或者没有任何素材、从零做一张画面或动态镜头**。需求已经明确，Agent 就按已有信息和授权执行，不再让你重复选择任务类型；只有会改变结果的关键信息不清楚时才问。
+
+有素材时，按你实际拥有的使用权制作元素动画、透明前景或叠到镜头上，不默认要求商用授权，也不把本地处理许可当成外部上传许可。没有素材也能开始创作，不强制先找底片、补标题、字幕或旁白。现有本地生成示例只实现特定的程序化视觉机制，不代表覆盖所有题材；其他方向需要真正设计和测试。需要图像/视频模型时，先确认宿主确有可用工具及相应费用、上传和使用授权，不承诺模型一定可用或任意描述都能直接出片。
+
+[用户素材与元素动画](web-video-presentation/references/LOCAL-ELEMENT-ROUTE.md) · [无素材原创画面与镜头](web-video-presentation/references/ORIGINAL-SCENE-ROUTE.md)
+
 ## 下载与安装
 
 **[下载完整公开版 ZIP](https://github.com/LTX2022/video-creation-skill/archive/refs/heads/main.zip)**，或点本页绿色 **Code → Download ZIP**，解压后得到 `video-creation-skill-main`。
 
-ZIP 包含完整公开版 Skill、60 套风格源码、10 个 MP4（4 条历史片，以及 3 种新示例的中英文版本） 与可选 `fix-agent`。依赖、模型服务及旧研究抽帧/转写/蒸馏工具不附；不是历史原始总包。
+ZIP 包含完整公开版 Skill、60 套内置风格源码、10 个 MP4（4 条历史片，以及 3 种新示例的中英文版本） 与可选 `fix-agent`。依赖、模型服务及旧研究抽帧/转写/蒸馏工具不附；不是历史原始总包。
 
 ### 安装到你的 Agent
 
@@ -79,6 +89,12 @@ ZIP 包含完整公开版 Skill、60 套风格源码、10 个 MP4（4 条历史�
 > 请把我解压的 video-creation-skill 里的 web-video-presentation 文件夹安装为技能。先检查你的技能安装方式；如果需要我提供目录或确认权限，请告诉我。安装完成后确认技能可以被识别。
 
 根据 Agent 的提示提供解压目录即可。需要能读取文件和安装技能的 Agent；各平台的操作、权限及依赖可能不同。如果 Agent 不支持安装技能，可参考该平台说明加载完整文件夹。
+
+### 可选：越用越懂你的偏好
+
+`fix-agent` 是需要**单独安装**的可选 Skill；只安装视频 Skill 也能正常继续制作。想启用时，请让 Agent 按名称查找 `fix-agent`，并先与你确认要记什么、允许在哪些项目使用，以及你指定的独立私人记忆目录。未经明确同意，不读取或更改你的私有记忆库。
+
+你明确同意后，Agent 可以把你清楚表达的反馈逐步积累成**可查看、修改、撤销的偏好**，用于后续风格推荐和制作计划；不是每次都从零沟通。它只按需参考已批准的偏好和相关经验，**本次需求始终优先**。任务结束时，它会把值得保留的偏好或经验整理为待批准候选，而不是直接当成长期规则；你确认后才供以后使用。用户数据不放在 Skill 安装目录或公开仓库，也不会自动改写核心 Skill。你也可以授权指定用户/项目范围内的持续学习：任务前参考已批准经验，真实交付或明确终止后主动复盘、提出待批准候选；不会后台监听或自行批准。这是可检查、可停用的本地记录与复用，不是模型自我训练或效果保证。
 
 ## 做出第一条视频：15 秒产品流程
 
@@ -149,6 +165,6 @@ media/                   视频、预览与来源说明（缓存示例在 exampl
 docs/                    验证记录
 ```
 
-**已完成的验证：** 已制作并检查 4 条历史片与 6 个中英文新样片文件，范围以各自记录为准；完成代码测试、独立脚手架 typecheck/bundle 和视频完整解码检查。样片的具体制作方式见[来源与复现](media/README.md)。不同 Agent、系统及输出路线的兼容情况，以各自测试记录为准。[详细记录](docs/VALIDATION.md)
+**已完成的验证：** 已制作并检查 4 条历史片与 6 个中英文新样片文件，范围以各自记录为准；完成代码测试、独立脚手架 typecheck/bundle 和视频完整解码检查。不同 Agent、系统及输出路线的兼容情况，以各自测试记录为准。[详细记录](docs/VALIDATION.md)
 
 原创代码的 MIT 范围见 [LICENSE-SCOPE](LICENSE-SCOPE.md)；视频、字体与第三方内容不自动适用 MIT。[第三方说明](THIRD_PARTY_NOTICES.md)

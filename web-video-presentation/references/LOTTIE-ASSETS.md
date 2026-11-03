@@ -76,3 +76,5 @@ Lottie 是可选的语义动效素材输入，适合图标、流程节点和状�
 `scripts/scaffold.sh` 与 `templates/package-lock.json` 同时声明 `@remotion/lottie`、`lottie-web`、`animejs`；用户授权的显式项目安装与声明分离，不全局安装。依赖核对是静态检查，不代表已经执行安装。Anime.js 的 timeline/stagger/path/morph 可作为设计概念，视频输出仍由帧驱动，不启用其墙钟运行时。
 
 Pixabay/Pexels 候选脚本不等于已下载/已授权素材，是否调用取决于项目范围。素材来源、许可和用途记录不因工具名称省略。
+
+授权范围同样遵循 [视频素材授权合同](VIDEO-ASSETS.md#仅个人--非商业授权素材)：仅个人/非商业许可不伪填 `commercialUse:true`，需项目明确用途与资产匹配的 `authorization.allowedUses/basis/evidence`；Lottie 的来源、作者和 license 检查仍保留。

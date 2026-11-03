@@ -1,9 +1,21 @@
 
-> **离线公开整理候选 / publication review only:** 60 风格源码保留；第三方研究抽帧与转写未附；精选自生成示例见仓库 media 目录。原创代码 MIT 范围已获用户确认；第三方与媒体另按各自许可。当前测试与缺口见 [仓库发布说明（在线）](https://github.com/LTX2022/video-creation-skill/blob/main/README.md)。历史记录不等于本次验收。
+> **Public skill package:** Built-in style sources are included; third-party research frames and transcripts are not. Selected videos are available in the repository’s media directory, not in the standalone skill package. MIT applies only within the original-code scope in [LICENSE-SCOPE.md](LICENSE-SCOPE.md); third-party content and media retain their own terms. See the [repository overview (online)](https://github.com/LTX2022/video-creation-skill/blob/main/README.md) for current information. Historical test records do not establish current acceptance.
 
 # Web Video Presentation
 
 Create frame-deterministic Remotion videos from articles, narration, workflows, product behavior, or mechanisms. Also create transparent motion graphics and composite them over authorized live-action footage. Start with [SKILL.md](SKILL.md); read `VERSION` for the release. Updating this package does not install a personal skill.
+
+## You do not have to make a whole video
+
+Ask for the result you need: **a complete video, one shot, an animated element or asset you provide, or a still image or moving shot created from scratch with no source assets**. If the request is clear, the agent proceeds using the information and permissions already given; it asks only when missing details would materially change the result.
+
+With your assets, it can create element animation, transparent foregrounds, or overlays within your actual usage rights. Commercial rights are not automatically required, and permission for local processing does not authorize external uploads. With no assets, you can still start creating—there is no mandatory footage, title, subtitle, or narration. The included local generation examples implement specific procedural visuals, not every subject or style; other directions need actual design and testing. Image or video models are optional and require tools that are genuinely available in your host, plus the relevant cost, upload, and usage permissions. Neither model availability nor successful output from an arbitrary description is guaranteed.
+
+[Animate your assets and elements](references/LOCAL-ELEMENT-ROUTE.md) · [Original images and shots without source assets](references/ORIGINAL-SCENE-ROUTE.md)
+
+## Built-in styles and your own style library
+
+The skill includes 60 built-in styles as a starting point, not a limit. User-created custom styles are stored separately in a chosen personal folder; they are not part of the built-in content distributed and installed with the skill. Recommendations are shown in two separate sections—**System built-in styles** and **User-created styles**—so their sources remain clear. You can also ask the agent to show all your custom styles and what each is useful for; they remain in your personal library, not automatically part of the built-in catalog. See [custom styles](references/CUSTOM-STYLES.md) for studying, saving, and reusing them.
 
 ## Visual scripting
 

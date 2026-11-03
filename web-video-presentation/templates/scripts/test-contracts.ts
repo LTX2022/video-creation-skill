@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import { resolve } from 'node:path';
 import {
-  OUTPUT_MODES, OUTPUTS, outputMode, outputKinds, finalOutputs,
+  assetRightsErrors, OUTPUT_MODES, OUTPUTS, outputMode, outputKinds, finalOutputs,
   isDouyinProfile, localPath, contractErrors, adaptationErrors, mergeFinalOutput, overlaySafetyErrors,
   type OutputKind, type OutputMode,
 } from './delivery-contract';
@@ -170,6 +170,37 @@ test('URLs, absolute paths, network shares and drive paths are rejected', () => 
 });
 test('empty and non-string paths are rejected', () => {
   for (const path of ['', null, undefined, false, 5]) assert.throws(() => localPath(root, path));
+});
+const personalAsset = {commercialUse:false, authorization:{allowedUses:['personal'],basis:'Synthetic owner grant for personal use only',evidence:'Synthetic permission fixture — not a real user grant'}};
+test('legacy commercial declarations and placeholders retain existing behavior',()=>{
+  assert.deepEqual(assetRightsErrors({commercialUse:true},{}),[]);
+  assert.deepEqual(assetRightsErrors({placeholder:true},{}),[]);
+});
+test('legacy commercial flag cannot swallow new explicit personal restrictions',()=>{
+  assert.ok(assetRightsErrors({...personalAsset,commercialUse:true},{intendedUse:'commercial'}).length);
+  assert.ok(assetRightsErrors({...personalAsset,commercialUse:true},{}).length);
+  assert.deepEqual(assetRightsErrors({...personalAsset,commercialUse:true},{intendedUse:'personal'}),[]);
+});
+test('explicit personal grant passes without changing commercialUse=false',()=>{
+  const before=JSON.stringify(personalAsset);
+  assert.deepEqual(assetRightsErrors(personalAsset,{intendedUse:'personal'}),[]);
+  assert.equal(JSON.stringify(personalAsset),before);
+  assert.deepEqual(assetRightsErrors({...personalAsset,commercialUse:undefined},{intendedUse:'personal'}),[]);
+});
+test('noncommercial use needs its exact explicitly recorded scope',()=>{
+  assert.ok(assetRightsErrors(personalAsset,{intendedUse:'noncommercial'}).length);
+  assert.deepEqual(assetRightsErrors({...personalAsset,authorization:{...personalAsset.authorization,allowedUses:['noncommercial']}},{intendedUse:'noncommercial'}),[]);
+});
+test('missing, unknown and commercial project uses cannot use a personal grant',()=>{
+  for(const intendedUse of [undefined,null,'','unknown','commercial',true]) assert.ok(assetRightsErrors(personalAsset,{intendedUse}).length);
+});
+test('missing or unknown permission evidence and malformed scopes stay blocked',()=>{
+  for(const authorization of [undefined,null,{},[],{...personalAsset.authorization,basis:''},{...personalAsset.authorization,evidence:'unknown'},{...personalAsset.authorization,evidence:'未知'},{...personalAsset.authorization,allowedUses:[]},{...personalAsset.authorization,allowedUses:['commercial']},{...personalAsset.authorization,allowedUses:'personal'}]) assert.ok(assetRightsErrors({...personalAsset,authorization},{intendedUse:'personal'}).length);
+  for(const commercialUse of ['false','true',null,0]) assert.ok(assetRightsErrors({...personalAsset,commercialUse},{intendedUse:'personal'}).length);
+});
+test('invalid explicit intendedUse is rejected even for otherwise legacy contracts',()=>{
+  for(const intendedUse of [null,'','unknown',false]) assert.ok(contractErrors({...state(),intendedUse}).length);
+  for(const intendedUse of ['personal','noncommercial','commercial']) assert.deepEqual(contractErrors({...state(),intendedUse}),[]);
 });
 console.log(`\nContract tests: ${passed} passed, ${failed} failed.`);
 if (failed > 0) process.exitCode = 1;
