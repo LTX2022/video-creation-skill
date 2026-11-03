@@ -1,0 +1,49 @@
+name: Optional Fix-Agent feedback / 可选反馈
+description: Share a reviewed minimal bug report or workflow suggestion. Public, never automatic.
+title: "[Fix-Agent feedback] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue and your GitHub identity will be public. Sharing is optional and does not affect video creation.
+        此 Issue 和你的 GitHub 身份将公开；反馈完全可选，不影响继续制作视频。
+        Never paste media, raw logs, prompts, credentials, private paths, or personal memory. Use invented reproduction data.
+        不要粘贴媒体、原始日志、提示词、凭证、私有路径或私人记忆；请使用虚构复现数据。
+        Local allowlisting and scanners cannot guarantee anonymity. Review all fields, including anything you add manually.
+        本地白名单和扫描器无法保证匿名；请检查所有字段，包括你自行补充的内容。
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category / 类型
+      options:
+        - Bug / 问题
+        - Workflow / 工作流
+        - Documentation / 文档
+        - Suggestion / 建议
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Expected and actual behavior / 预期与实际表现
+      description: Keep it brief. Do not include private project content.
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Reviewed minimal diagnostics / 已审阅的最小诊断信息
+      description: Optional. Paste only reviewed fields from feedback_draft.py. Unknown is valid; declarations are not verification.
+      placeholder: "Versions, adapter, category, declared status, recorded attempt counts; unknown if unavailable."
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction / 最小复现
+      description: Use invented non-private sample data, or write unknown. No full projects or logs needed.
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Public sharing / 公开分享
+      options:
+        - label: I reviewed this content and choose to publish it publicly with my GitHub identity. / 我已审阅内容，并自愿以我的 GitHub 身份公开提交。
+          required: true

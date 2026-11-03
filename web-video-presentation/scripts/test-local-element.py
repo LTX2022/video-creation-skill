@@ -78,7 +78,7 @@ def main():
         assert set(execute(composite_only)['outputs'])=={'shot-composite.mp4'}
         cases=[]
         bad=copy.deepcopy(c); bad['localProcessingAuthorized']=False; cases.append((bad,'authorization'))
-        bad=copy.deepcopy(c); bad['element']['motionModel']='true-3d-flap'; cases.append((bad,'flat image'))
+        bad=copy.deepcopy(c); bad['element']['motionModel']='true-3d-flap'; cases.append((bad,'motionModel must'))
         bad=copy.deepcopy(c); bad['plate']['trimStartSec']=1.5; cases.append((bad,'too short'))
         bad=copy.deepcopy(c); bad['tracking']={'enabled':True}; cases.append((bad,'unsupported'))
         bad=copy.deepcopy(c); bad['plate']['rights']=''; cases.append((bad,'rights'))

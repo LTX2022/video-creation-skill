@@ -2,6 +2,7 @@
 """Isolated local-media element / single-shot renderer; not a browser render."""
 import argparse
 import hashlib
+import importlib.util
 import json
 import math
 import subprocess
@@ -45,6 +46,11 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+_rig_spec = importlib.util.spec_from_file_location('layer_rig', Path(__file__).with_name('layer-rig.py'))
+rig = importlib.util.module_from_spec(_rig_spec)
+_rig_spec.loader.exec_module(rig)
+
+
 def render(contract_path, output):
     from PIL import Image
     contract_path = Path(contract_path).resolve()
@@ -80,10 +86,15 @@ def render(contract_path, output):
     layers = []
     if e is not None:
         fields(e, 'motionModel asset layers flapHz minWingScale startFrame endFrameExclusive allowClipping keyframes', 'element')
-        require(e.get('motionModel') in ('rigid', 'layered-wings'), 'flat image supports rigid flight only; layered-wings requires real separate layers')
+        require(e.get('motionModel') in ('rigid', 'layered-wings', 'layered-rig'), 'motionModel must be rigid, layered-wings or layered-rig; no automatic segmentation')
         if e['motionModel'] == 'rigid':
             require(not any(k in e for k in ('layers','flapHz','minWingScale')), 'rigid motion cannot accept wing controls')
             specs = [dict(e['asset'], role='body')]
+        elif e['motionModel'] == 'layered-rig':
+            require(not any(k in e for k in ('asset', 'flapHz', 'minWingScale')), 'layered-rig uses generic layers only')
+            specs = e.get('layers')
+            require(isinstance(specs, list) and 1 <= len(specs) <= 64 and all(isinstance(s, dict) for s in specs), 'layered-rig requires 1..64 layer objects')
+            require(all(isinstance(s.get('id'), str) for s in specs) and len({s['id'] for s in specs}) == len(specs), 'rig layer ids must be unique strings')
         else:
             require('asset' not in e, 'layered-wings uses layers, not flat asset')
             specs = e.get('layers', [])
@@ -93,22 +104,26 @@ def render(contract_path, output):
         size = None
         layer_hashes = set()
         for spec in specs:
-            fields(spec, 'path rights role hingeX', 'element asset')
+            if e['motionModel'] != 'layered-rig':
+                fields(spec, 'path rights role hingeX', 'element asset')
             p = asset(spec)
             identity = assets[str(p)]['sha256']
-            require(identity not in layer_hashes, 'layered-wings requires distinct actual layer contents, not repeated assets')
+            require(e['motionModel'] == 'layered-rig' or identity not in layer_hashes, 'layered-wings requires distinct actual layer contents, not repeated assets')
             layer_hashes.add(identity)
             im = Image.open(p)
             require(im.format == 'PNG', 'element assets must be transparent PNG; no automatic background removal/redrawing')
+            require(getattr(im, 'n_frames', 1) == 1, 'animated PNG unsupported as a static layer; explicitly choose/extract a static frame or use an implemented video route')
             im.load()
             im = im.convert('RGBA')
             require(im.getchannel('A').getextrema()[0] < 255 and im.getchannel('A').getextrema()[1] > 0, 'element must contain transparent and visible pixels')
             require(size is None or im.size == size, 'layered PNGs must share a registered canvas')
             size = im.size
             pivot = spec.get('hingeX')
-            if spec['role'] != 'body':
+            if e['motionModel'] == 'layered-rig':
+                rig.validate(spec, size, e.get('startFrame'), e.get('endFrameExclusive'), fps, fields, number, require)
+            elif spec['role'] != 'body':
                 number(pivot, 'hingeX (source pixels)', 0, im.width)
-            layers.append((im, spec['role'], pivot))
+            layers.append((im, spec if e['motionModel'] == 'layered-rig' else spec['role'], pivot))
         start = integer(e.get('startFrame'), 'startFrame')
         end = integer(e.get('endFrameExclusive'), 'endFrameExclusive', 1)
         require(start < end <= n, 'element interval outside timeline')
@@ -175,7 +190,9 @@ def render(contract_path, output):
                         # Caller supplies actual layer order; no inferred segmentation or hidden repaint.
                         for im, role, hinge in layers:
                             layer = im
-                            if role != 'body':
+                            if e['motionModel'] == 'layered-rig':
+                                layer = rig.transform(im, role, f, start, fps)
+                            elif role != 'body':
                                 s = e['minWingScale']+(1-e['minWingScale'])*(.5+.5*math.cos(2*math.pi*e['flapHz']*(f-start)/float(fps)))
                                 layer = im.transform(size, Image.Transform.AFFINE, (1/s, 0, hinge*(1-1/s), 0, 1, 0), Image.Resampling.BICUBIC)
                             canvas.alpha_composite(layer)
@@ -231,7 +248,7 @@ def render(contract_path, output):
             require(results['element-alpha.mov']['audioStreams'] == 0, 'alpha must be silent')
             results['element-alpha.mov']['decodedAlphaSamples']=samples
         for p, record in assets.items(): require(digest(Path(p)) == record['sha256'], f'source changed: {p}')
-        report = {'schema':1,'renderer':'Pillow RGBA + FFmpeg (not browser/Remotion)', 'scope':c['scope'],'sourceUnchanged':True,'inputs':assets,'outputs':results,'contract':c,'commands':commands,'visualReview':'pending-human-review','hostImport':'not-tested','tracking':'not-implemented','wingModel':'2D hinge foreshortening, not physical 3D flight' if e and e['motionModel']=='layered-wings' else None}
+        report = {'schema':1,'renderer':'Pillow RGBA + FFmpeg (not browser/Remotion)', 'scope':c['scope'],'sourceUnchanged':True,'inputs':assets,'outputs':results,'contract':c,'commands':commands,'visualReview':'pending-human-review','hostImport':'not-tested','tracking':'not-implemented','rigModel':'authored independent 2D affine layers; no inference, segmentation, skeletal IK or 3D' if e and e['motionModel']=='layered-rig' else None,'wingModel':'2D hinge foreshortening, not physical 3D flight' if e and e['motionModel']=='layered-wings' else None}
         (output/'render-evidence.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n')
         progress.unlink()
         print(json.dumps({'output':str(output),'outputs':list(results),'visualReview':'pending-human-review'}))

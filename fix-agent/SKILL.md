@@ -53,6 +53,12 @@ description: On-request evidence-based diagnosis and retrospectives for complete
 
 低能力/低上下文流程只增加一次 profile 读取，不要求读历史全集。`review` 输出可检查建议但不应用；程序性经验需要独立差异、回归证据与用户对具体核心修改的确认，绝不凭偏好/素材/评分自动修改 Skill。工具门禁不是人类授权证明，真正会话授权始终必要。
 
+### 低打扰的有限自动学习（独立 opt-in）
+
+默认仍走 `propose → approve`。用户另外明确允许自动积累时，先按 [PERSONALIZATION](references/PERSONALIZATION.md) 确认外部私有目录、user/project、允许的 key、最低置信和 TTL，用 `learning-enable --confirmed` 记录有限策略。当前制作 Agent 在已获授权任务中核实来源及含义，整理最小非敏感枚举记录与脱敏证据文件，再调用 `observe`；普通偏好仅明确 user-feedback、项目 check_* 仅 objective-check 达阈值时可自动生效。Agent/复盘推断和低置信仍 pending。hash 不认证来源或语义，不能用工具成功冒充用户许可。
+
+下一任务制作计划前读取 `profile`，当前明确要求可用 `--overrides` 临时覆盖且不写回；风格消费者排序和其他规划提示继续经过原设计/渲染/验收门禁。重复证据不增置信或延长 TTL，新冲突带 supersedes，到期停止采用。用户可 inspect/revoke/forget，或 learning-disable 立即停止自动收集及采用。无后台 watcher、聊天扫描、模型训练、联网、核心自改或自动复验；Agent 未调用就不会积累。此许可不替代下述一般经验闭环的独立批准，也不授权外发或扩大项目范围。
+
 ### 每轮结束主动积累经验（独立授权）
 
 用户明确允许每个视频结束后学习时，按 [LESSON-CYCLE](references/LESSON-CYCLE.md) 用 `lesson_cycle.py enable-cycle` 记录用户/项目范围和授权ref；当前制作 Agent 在真实交付/明确终止后调用 `task-end`，复用已生成summary与已核对反馈/check证据，提出pending经验和改进计划。它不是后台监听，也不从交接文件自动取授权。默认无策略不调用；没有用户指定外部目录则先确认目的地。
@@ -62,6 +68,10 @@ description: On-request evidence-based diagnosis and retrospectives for complete
 ## 可选：当前任务小步对照
 
 用户授权同任务实验时，按 [TASK-PROBE](references/TASK-PROBE.md) 固定基线/上下文，提出最小候选，使用只读 `scripts/task_probe.py` 对照真实检查产物，按证据保留/组合；组合后重新检查。它不需要先结束任务或初始化记忆，且不自动改代码、执行评估器或批准。无权限/预算/有效证据则保留基线。结束后再按独立许可积累待批准经验，下轮不自动继承本轮改动。
+
+## 可选：公开诊断反馈入口
+
+仅在用户愿意反馈时按 [FEEDBACK](references/FEEDBACK.md) 生成最小本地草稿；此入口独立于复盘和本地学习，不自动触发、不阻塞制作。`scripts/feedback_draft.py` 只输出白名单字段，缺失写 unknown；默认不包含媒体、日志、提示词、私人记忆、私有路径。白名单和扫描器均不能保证匿名。用户审阅最终内容后自行在公开 GitHub Issue 表单中明确提交，Agent 不代为上传或提交。
 
 ## 数据与权限边界
 

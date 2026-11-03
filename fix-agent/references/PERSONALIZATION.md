@@ -36,7 +36,7 @@ python3 "$TOOL" --root "$MEM" init --consent-ref consent-001 --confirmed
 }
 ```
 
-示例 digest 只是占位，不是真实证据。实际 ref 是能在当前获授权证据索引找到的非敏感 ID，digest 对应已核对、最小化的来源片段；哈希不认证用户，也不证明推断正确。**禁止完整会话、原始日志、账号、姓名、密钥、令牌、鉴权 URL**。即便字段格式合法也不能把敏感信息编码成 ID；脚本不是通用秘密检测器。`source` 区分 `user-feedback`、`objective-check`、`agent-inference` 和兼容复盘的 `retrospective`，全部先 pending；confidence 是人工标注置信度，不会因重复写入或自动检查通过而增长。一次偏好不应自动推广成全局偏好。
+示例 digest 只是占位，不是真实证据。实际 ref 是能在当前获授权证据索引找到的非敏感 ID，digest 对应已核对、最小化的来源片段；哈希不认证用户，也不证明推断正确。**禁止完整会话、原始日志、账号、姓名、密钥、令牌、鉴权 URL**。即便字段格式合法也不能把敏感信息编码成 ID；脚本不是通用秘密检测器。`source` 区分 `user-feedback`、`objective-check`、`agent-inference` 和兼容复盘的 `retrospective`，默认 `propose` 路径全部先 pending；另行明确授权的低打扰自动模式见本文末节；confidence 是人工标注置信度，不会因重复写入或自动检查通过而增长。一次偏好不应自动推广成全局偏好。
 
 ```bash
 python3 "$TOOL" --root "$MEM" propose --user user-001 --project project-001 --record /approved/work/preference.json
@@ -83,6 +83,53 @@ node /absolute/installed/web-video-presentation/scripts/style-recommendations.mj
 python3 -m unittest discover -s fix-agent/tests -v
 ```
 
-测试在真正隔离的临时目录跨进程执行：第一轮反馈仅候选→批准→第二轮真实 style-recommendations 消费排序→纠正/撤销/忘记；另测用户/项目/全局优先级、无确认拒绝、注入与敏感字段拒绝、路径/符号链接、锁、停用降级。它证明工具状态/消费者行为，不证明低能力模型的理解、长期审美提升、视觉质量或成功率。真实效果需在用户授权下记录偏好命中/纠正率、人工接受结果与代表性成片，不把自动化测试当模型评测。新增两轮视觉偏好/项目经验测试验证真实 profile 消费和撤销；客观检查及 Agent 推断也不能跳过确认。
+测试在真正隔离的临时目录跨进程执行：第一轮反馈仅候选→批准→第二轮真实 style-recommendations 消费排序→纠正/撤销/忘记；另测用户/项目/全局优先级、无确认拒绝、注入与敏感字段拒绝、路径/符号链接、锁、停用降级。它证明工具状态/消费者行为，不证明低能力模型的理解、长期审美提升、视觉质量或成功率。真实效果需在用户授权下记录偏好命中/纠正率、人工接受结果与代表性成片，不把自动化测试当模型评测。新增两轮视觉偏好/项目经验测试验证真实 profile 消费和撤销；默认手动路径的客观检查及 Agent 推断也不能跳过确认；末节单独授权的 adaptive 模式仅允许合格客观检查自动生效，Agent 推断仍为 pending。
 
 设计参考（借鉴原则而非复用代码）：[LangMem](https://langchain-ai.github.io/langmem/concepts/conceptual_guide/) 的记忆类型分离、[Reflexion](https://arxiv.org/abs/2303.11366) 的反馈经验、[Voyager](https://arxiv.org/abs/2305.16291) 的技能检索和验证、[OpenHands](https://docs.openhands.dev/sdk/guides/persistent-memory) 的 opt-in/不可信记忆、[Letta](https://docs.letta.com/v1-sdk/memory/memory-blocks) 的只读边界。本实现刻意更窄：没有自动探索、联网同步、长期后台反思或代码自更新。
+
+## 可选低打扰自动积累：单独授权的 adaptive 模式
+
+上文 `propose → approve` 是兼容的默认手动路径。若用户另外明确允许“在这个项目中自动记住这些类别”，可以一次记录有限策略，之后由当前制作 Agent 在已获授权的工作中调用 `observe`，不必逐条打断用户。它不是后台监听、自动读聊天或模型权重学习；Agent 未调用时不会发生任何积累。不要把“记住这一次”扩大成自动学习授权。原有 `lesson_cycle.py` 的自由 checkId 经验仍按自己的 pending/批准门禁；本节自动路径只覆盖有限 typed 偏好和 check_* 项目复验提示，不自动批准其他经验或核心变更。
+
+首次启用先向用户说明并确认：外部私有目录、用户/项目 ID、允许自动记住的 key 列表、默认最低置信 0.8、90 天有效期、只保留枚举值及最小证据引用、停用/忘记方法。可以一次问清而不是每次检查通过都询问。授权只限本项目，不会自动推广为全局。初始存储 `init` 许可不等于 adaptive 许可。
+
+```bash
+python3 "$TOOL" --root "$MEM" learning-enable \
+  --user user-001 --project project-001 \
+  --keys pace motion check_text check_timing \
+  --min-confidence 0.8 --ttl-days 90 \
+  --consent-ref bounded-learning-consent-001 --confirmed
+python3 "$TOOL" --root "$MEM" learning-status --user user-001 --project project-001
+```
+
+`--min-confidence` 限 0.5–1，`--ttl-days` 限 1–365。策略以 user/project 隔离。改变范围或恢复停用必须再次有真实授权；不要自动重写策略。新 consent-ref 不会恢复旧授权的自动记录；相同 consent-ref 重新启用可能恢复仍有效且仍在 key 范围的旧记录，恢复前检查历史。
+
+每次获授权任务中发现真实反馈/复验结果时：
+
+1. 只提取非敏感、有限类型的相关内容。不要复制完整对话、日志、姓名、账户、密钥、token 或鉴权 URL。用户当前临时要求不自动当长期倾向，先判断其是否确实表达项目偏好。
+2. 使用上文完全相同的六字段 record schema，另指定已经获授权读取的最小脱敏证据文件（绝对路径，≤100KB，拒绝符号链接），计算其真实 SHA-256。文件只用于当次核对，不复制进记忆；引用与 hash 仍必须非敏感。脚本无法识别所有秘密，更不能判断调用者是否伪造来源标签，调用者必须先核实来源及枚举值是否忠实对应证据；程序不做语义判断，例如把“calm”的来源错误标成“brisk”也无法由 hash 检出。不要为调用此命令创建/读取未经许可的证据文件。
+3. 执行 `observe`。只有已允许的项目 key 可写入：普通偏好仅 `user-feedback` 可自动生效；`check_*` 仅 `objective-check` 可自动生效。都必须达到最低置信。Agent 推断、复盘推断、低置信及不匹配来源只成为 pending，不能替代已生效偏好。confidence 是调用者的证据判断，不是统计校准值。
+4. 下次制作先读取同一 `profile`，核对当前请求，消费者实际风格排序或 Agent 计划提示继续走原门禁。未实现自动调整渲染参数、自动执行复验或质量保证。
+
+```bash
+python3 "$TOOL" --root "$MEM" observe --user user-001 --project project-001 \
+  --record /approved/work/preference.json \
+  --evidence-file /approved/work/minimal-sanitized-feedback.txt
+# 只用于这次请求的覆盖；不写回用户记忆，也不把覆盖当自动学习：
+python3 "$TOOL" --root "$MEM" profile --user user-001 --project project-001 \
+  --overrides '{"pace":"brisk","motion":"expressive"}'
+```
+
+`observe` 返回 `evidenceDigestVerified:true` 仅说明字节匹配；`sourceAuthenticityVerified:false` 始终明确来源未由程序认证。没有可验证的证据、授权或目录时，不声称“已经学会”，继续普通制作。
+
+同 key 新的合格反馈取代旧值，并用 `supersedes` 保留冲突链；当前请求覆盖始终最高且不持久化。相同项目/key/value/source/evidence 重放返回 duplicate，不增加置信、不刷新有效期，也不复活已撤销记录。更新 consent-ref 后，旧的相同证据仍返回 duplicate，不会重新授权旧记录；需要新的真实反馈证据，不能只为绕过重放保护换 ID。不同证据可以修正偏好，但不会因次数累加置信。过期采用硬失效而非伪造连续置信衰减：最后一个生效记录过期后该 key 不再采用，不偷偷恢复更旧冲突值；`learning.expiredKeys` 可检查。手工批准历史不强制新增到期时间，保持兼容。每类 check 仍只输出一个当前复验提示，不能替代完整 QA。
+
+控制与回滚复用 `inspect/review/revoke/forget`；记录中保留来源、置信、范围、证据、授权引用、到期和替代关系。`revoke` 可能恢复仍有效旧值，务必重新读取 profile；`forget` 真正删除该 key 的本项目和用户全局历史，范围与前文一致。自动模式可以单独关闭：
+
+```bash
+python3 "$TOOL" --root "$MEM" learning-disable --user user-001 --project project-001 --confirmed
+```
+
+此命令立即停止该项目的新 observe，且 profile 不再使用该项目自动记录，保留数据供审查/忘记；原手动批准的记录可能重新生效。整个目录 `disable` 则按原规则关闭所有读写偏好。策略缩小 key 列表后，旧范围的自动记录即使未过期也不再采用。没有外发、核心自改、后台调度或授权继承。
+
+可复现实测：`test_adaptive_learning.py` 使用隔离临时目录运行真实 CLI，覆盖默认关闭、授权/key/user/project 边界、来源/置信门禁、冲突/撤销、重复、到期、请求覆盖、停用、忘记、证据不匹配以及真实 Node 推荐消费者的下一轮排序。这证明有可运行的自动积累与消费闭环，不证明模型变聪明、真实用户审美提升或成片效果。
