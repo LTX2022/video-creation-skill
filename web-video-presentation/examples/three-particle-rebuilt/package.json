@@ -1,0 +1,9 @@
+{
+  "name": "original-three-particle-rebuilt-study",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Source-only deterministic particle rebuild; no rendered or visually validated output",
+  "scripts": {"test": "node --test core.test.mjs", "check": "node --check core.mjs && node --check scene.mjs && node --check browser.mjs", "check:three": "node dependency-check.mjs"},
+  "dependencies": {"three": "0.180.0"}
+}

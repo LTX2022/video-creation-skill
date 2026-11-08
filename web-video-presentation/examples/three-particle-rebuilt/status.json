@@ -1,0 +1,42 @@
+{
+  "artifact": "original-three-particle-rebuilt-study",
+  "kind": "new-source-rebuild-not-recovery",
+  "baselineZipSha256": "3c14f175919ffb5f37350030e2465e1929c90d8a691e169c87cdecadea084c0e",
+  "checkedAtUtc": "2026-11-08",
+  "node": "v24.22.1",
+  "dependency": "three@0.180.0",
+  "tests": {
+    "passed": 19,
+    "failed": 0,
+    "skipped": 0,
+    "freshRun": true
+  },
+  "syntaxChecks": true,
+  "dependencyImport": false,
+  "temporaryLocalDependencyInstall": false,
+  "dependencyBundled": false,
+  "browser": false,
+  "chromium": false,
+  "webgl": false,
+  "shaderCompilation": false,
+  "video": false,
+  "visualValidation": false,
+  "visual_validation": false,
+  "merged": true,
+  "installed": false,
+  "installedMeaning": "Not installed as a skill; no dependency was available in this checkpoint environment.",
+  "status": "source-only checkpoint integrated; pending permitted browser/GPU, shader, export and visual review",
+  "baselineKernelTests": {
+    "passed": 12,
+    "failed": 0,
+    "sourceMatchedRemote": true
+  },
+  "dependencyImportStatus": "not rerun: dependency unavailable; offline install ENOTCACHED",
+  "historicalDependencyImport": {
+    "date": "2026-11-07",
+    "passed": true,
+    "rendererCreated": false
+  },
+  "formalReleasePublished": false,
+  "sourceCheckpointIntegrated": true
+}

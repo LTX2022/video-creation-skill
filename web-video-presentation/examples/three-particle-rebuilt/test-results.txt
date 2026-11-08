@@ -1,0 +1,32 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> original-three-particle-rebuilt-study@0.1.0 test
+> node --test core.test.mjs
+
+✔ repeat and arbitrary-order seek are identical (9.145407ms)
+✔ same seed reproduces; different seed changes geometry (3.314139ms)
+✔ physical times agree at 24, 30, 60 and 120 fps (6.888899ms)
+✔ timeline endpoints clamp only beyond duration (1.250234ms)
+✔ graph signal includes both route endpoints (0.516585ms)
+✔ all frames retain stable IDs and finite bounded buffers (13.547105ms)
+✔ return-value mutation cannot alter cached state or later results (1.055279ms)
+✔ three events are separately ordered gold, cyan, cyan (0.226389ms)
+✔ each event emits outward and leaves a decaying tail (0.17574ms)
+✔ final target is stable and every ID maps to its own target (1.5237ms)
+✔ target callback return arrays are copied; default geometry is original organic curve (14.177211ms)
+✔ history is bounded, backward sampled and seek-independent (5.126538ms)
+✔ invalid count, seed and target fail explicitly (1.510012ms)
+✔ invalid time, progress, frames and fps fail explicitly (0.958436ms)
+✔ viewport validation covers dimensions, ratio and GPU pixel budget (0.48556ms)
+✔ history and wave helper validation (0.424084ms)
+✔ bounds include large accepted replacement targets (4.697668ms)
+✔ camera planes and angular fit cover narrow and large-target scenes (0.325886ms)
+✔ custom shader explicitly converts linear working colors to output space (1.316898ms)
+ℹ tests 19
+ℹ suites 0
+ℹ pass 19
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 220.600612

@@ -101,6 +101,7 @@ description: 把文章、口播、产品流程、机制或参考动效制作成�
 | 查看本轮实际离线代码样片与可复跑源码 | [CPU 设计试片](examples/cinematic-cpu-trial/README.md)：已编码 26 秒 1080p30 静音样片；独立 Python 渲染器，不替代 Remotion、Alpha 或客户验收 |
 | 查看语义连续、条件分流与中间帧检验的真实中文小样 | [缓存边界示例](examples/semantic-cache-study/README.md)：14秒静音代码片与复跑源码；独立机制示意，不是第61个已验收风格 |
 | 需要连续粒子形变与空间相机原型 | [独立数学示例](examples/cinematic-primitives/README.md)：模型契约已测，Remotion 适配未渲染；不等于成片质量与工作流验收 |
+| 需要 Three.js 路径传导、球面波、星云和可替换粒子聚形源码实验 | [重建隔离示例](examples/three-particle-rebuilt/README.md)：已合入源码与模型测试，尚未渲染或视觉验收；先读[观察边界](references/THREE-PARTICLE-REBUILT-STUDY.md)，不替代生产流程 |
 | 同对象跨场景承接、事件动作重定时、可选真实时间采样模糊 | [OBJECT-HANDOFF](references/OBJECT-HANDOFF.md)：先跑无依赖探针；对象轨复用现有章时钟，不新建时轴；Canvas模糊可明确降级，DOM/SVG默认保持清晰 |
 | 连续变形、同主体换材质、支点与有机动作 | [MOTION-CRAFT](references/MOTION-CRAFT.md)；按需使用 `src/video/mechanisms/`，不改全部主题。来源见 [研究取舍](references/UPSTREAM-MOTION-SOURCES.md) |
 | 需要具体运动配方 | [MOTION-PATTERN-LIBRARY](references/MOTION-PATTERN-LIBRARY.md)，再选一项 [技法索引](references/jitter-motion-techniques/README.md) |

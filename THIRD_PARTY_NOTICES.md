@@ -9,3 +9,8 @@
 - Fonts, model weights, node_modules and historical demonstration raster assets are not bundled; four source-backed videos are retained with separate media terms. Users must supply authorized fonts, footage, audio and provider credentials as needed.
 
 This is a bounded technical preparation, not legal clearance. Historical evidence and source claims were not independently authenticated in full.
+
+
+## Optional Three.js particle source checkpoint
+
+`web-video-presentation/examples/three-particle-rebuilt/` is an independent original implementation informed by high-level observation only. It includes no tutorial video, screenshots, full prompts, logo, author source code, voice recording or generated media. Three.js is pinned to 0.180.0 in its lockfile; the exact upstream MIT notice is retained as `THREE-LICENSE.txt`. Third-party dependency code is not bundled. No source or media rights are inferred from availability of the reference link. This addition does not change the existing code-only MIT or media licensing scope.

@@ -1,0 +1,5 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> original-three-particle-rebuilt-study@0.1.0 check
+> node --check core.mjs && node --check scene.mjs && node --check browser.mjs
+

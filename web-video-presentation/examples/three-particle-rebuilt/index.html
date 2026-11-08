@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Organic Signal • Original Particle Rebuild</title>
+  <style>
+    :root { color-scheme: dark; font-family: system-ui, sans-serif; background: #030810; color: #b6c8d1; }
+    body { margin: 0; padding: 24px; }
+    main { max-width: 1280px; margin: auto; }
+    h1 { font-size: 18px; font-weight: 500; }
+    canvas { width: 100%; height: auto; aspect-ratio: 16 / 9; display: block; }
+    input { width: 100%; } p { font-size: 13px; line-height: 1.5; }
+  </style>
+  <script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js"}}</script>
+</head>
+<body><main>
+  <h1>Organic Signal</h1>
+  <p>Original source-only rebuild. Browser, GPU, video export and visual review are unverified.</p>
+  <canvas width="1280" height="720" aria-label="Particle study preview"></canvas>
+  <label for="seek">Seek a frame (30 fps)</label>
+  <input id="seek" type="range" min="0" max="480" value="0" step="1">
+  <p id="status">Preview requires a permitted browser and locally installed dependency.</p>
+</main><script type="module" src="./browser.mjs"></script></body>
+</html>

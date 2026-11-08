@@ -1,0 +1,20 @@
+✔ same seed/count gives stable geometry/IDs; a new seed changes geometry (7.510101ms)
+✔ all morph endpoints and final hold equal their authored geometry (1.189338ms)
+✔ one global timeline retains all IDs and has no shot-boundary jumps (3.990957ms)
+✔ out-of-order seeks and repeated same frames have no memory; inputs stay immutable (2.670768ms)
+✔ equal physical time at 24, 30, 60 and 120 fps gives exactly equal models (6.893805ms)
+✔ perspective center, vertical convention and near/far-plane clipping (0.479698ms)
+✔ depth sorting is far-to-near, ID-stable at equal depth, and non-mutating (0.214709ms)
+✔ all frames have finite world/camera/projected numbers and stable count (53.578862ms)
+✔ invalid counts/seeds/times/fps/viewports fail explicitly (1.316927ms)
+✔ invalid camera bases/projection ranges and nonfinite world points are rejected (0.507633ms)
+✔ invalid/overlapping timeline ranges and unknown target names fail validation (0.250981ms)
+✔ source has no ambient side effects or imports (0.573791ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 212.531107
