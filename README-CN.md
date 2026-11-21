@@ -6,7 +6,7 @@
 
 可扩展风格 · 横竖屏 · 配音字幕 · 透明动画 · 实拍叠加
 
-[下载 ZIP](https://github.com/LTX2022/video-creation-skill/archive/refs/heads/main.zip) · [安装](#下载与安装) · [做第一条视频](#做出第一条视频15-秒产品流程) · [完整指南](web-video-presentation/README.zh-CN.md)
+[下载审核版 ZIP](https://github.com/LTX2022/video-creation-skill/archive/refs/heads/reviewed-video-skill-20261113.zip) · [安装](#下载与安装) · [做第一条视频](#做出第一条视频15-秒产品流程) · [完整指南](web-video-presentation/README.zh-CN.md)
 
 ## 先看效果
 
@@ -79,9 +79,9 @@ Skill 内置 60 套风格，作为创作起点，而不是功能上限。你自�
 
 ## 下载与安装
 
-**[下载完整公开版 ZIP](https://github.com/LTX2022/video-creation-skill/archive/refs/heads/main.zip)**，或点本页绿色 **Code → Download ZIP**，解压后得到 `video-creation-skill-main`。
+**[下载本次审核版 ZIP](https://github.com/LTX2022/video-creation-skill/archive/refs/heads/reviewed-video-skill-20261113.zip)**，或点本页绿色 **Code → Download ZIP**，请解压到新目录。
 
-ZIP 包含完整公开版 Skill、60 套内置风格源码、10 个 MP4（4 条历史片，以及 3 种新示例的中英文版本） 与可选 `fix-agent`。依赖、模型服务及旧研究抽帧/转写/蒸馏工具不附；不是历史原始总包。
+ZIP 包含完整公开版 Skill、60 套内置风格源码、12 个 MP4（原有 10 条视频，以及中英两版离线流程样片）与可选 `fix-agent`。依赖、模型服务及旧研究抽帧/转写/蒸馏工具不附；不是历史原始总包。
 
 ### 安装到你的 Agent
 
@@ -104,6 +104,10 @@ ZIP 包含完整公开版 Skill、60 套内置风格源码、10 个 MP4（4 条�
 遇到问题或有流程建议？可以打开[公开的 Fix-Agent 反馈表单](https://github.com/LTX2022/video-creation-skill/issues/new?template=fix-agent-feedback.yml)，或先让 Agent 生成[最小本地草稿](fix-agent/references/FEEDBACK.md)。**由你审阅，并自行明确点击提交。** 不会自动分享，不反馈也不影响继续制作。默认不包含媒体、日志、提示词、私人记忆和私有路径；白名单与扫描器都无法保证匿名，请检查最终内容，并留意 Issue 及 GitHub 身份是公开的。缺失证据如实保留为 unknown。
 
 ## 做出第一条视频：15 秒产品流程
+
+[观看或下载 15 秒中文样片](media/first-video-offline-r2/product-flow-15s-zh.mp4) · 这是一个可编辑的离线清单示例。
+
+使用随附的中英 Python 源码和预装 Linux 工具，[离线复现固定的 15 秒示例](web-video-presentation/references/FIRST-VIDEO-AGENT.md#offline-reproduction)。这条固定示例路线不需要 Remotion，但不会把任意文案自动生成新视频。
 
 在你选择的 **兼容 Agent 的对话中**提出需求。环境、权限和依赖满足后，Agent 可以负责检查环境、创建工程、写代码和渲染；你负责确认方案与观看结果。
 

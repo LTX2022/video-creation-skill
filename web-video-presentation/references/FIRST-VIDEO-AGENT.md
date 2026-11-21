@@ -20,6 +20,32 @@
 
 这是一条操作路线，不是“已替你跑通”的保证。下面每个阶段都在自己的项目中执行；文档命令经脚本核对，真实浏览器渲染与原生系统端到端尚未验收。
 
+## Offline reproduction
+
+### English: reproduce the fixed sample
+
+This route reproduces the included English or Chinese source example without Remotion: original procedural graphics, 1920×1080, 30 fps, 15 seconds, silent. No newly rendered sample is bundled. It does not turn an arbitrary brief into a new video; new content still requires design, implementation and review.
+
+Confirm an authorized, independent empty project directory first. The runner uses preinstalled Linux tools only: Python 3 with NumPy and Pillow, Node, FFmpeg/ffprobe, and system DejaVu Sans fonts for English or Noto Sans CJK SC fonts for Chinese. Fonts are not bundled. It does not download or install dependencies. The agent resolves `SKILL` and `PROJECT` to verified absolute paths, then runs:
+
+    python3 "$SKILL/scripts/first-video-offline.py" --locale en --project-root "$PROJECT"
+
+Use `zh` instead of `en` for Chinese. The runner checks tools and the destination, copies only four source files, runs state tests, renders the video and verifies the output. Deliver the actual reported MP4 and the corresponding authorized source. Stop on missing tools, a nonempty destination or failed verification; do not present an existing video as a newly generated result. Inspect a failed attempt before choosing another empty directory.
+
+This fixed-example directory is not the standard scaffold or a resumable project, and does not prove the whole skill is installed. This runner has not been verified on macOS or Windows. The remaining numbered sections describe the optional Remotion workflow, not additional steps required by this offline sample.
+
+### 中文：复现固定示例
+
+仅要从随包源码复现固定的中英首片时可用此路线，不启动 Remotion。示例是原创程序化界面，规格为 1080p30、15 秒、静音。此处不附新增示例成片。按自己的文案出片仍需设计和实现，不能把复现入门示例当作完成新项目。
+
+先核实用户授权的独立空目录。仅使用已安装的 Linux 工具：Python 3、NumPy、Pillow、Node、FFmpeg/ffprobe，以及系统 DejaVu（英文）或 Noto Sans CJK SC（中文）。包内不附字体，脚本不联网或安装依赖。由 Agent 核实 `SKILL`、`PROJECT` 两个绝对路径，再执行；示例中的 zh 可替换为 en。
+
+    python3 "$SKILL/scripts/first-video-offline.py" --locale zh --project-root "$PROJECT"
+
+脚本检查工具及目标目录，仅复制四份源码，再执行状态测试、实际渲染及成片验证。交付脚本实际报告的 MP4 和获准交付的对应源码。若工具缺失、目标非空或校验失败，停在报错处，不把已有视频冒充新生成结果；先检查失败记录，再选择其他空目录重跑。
+
+此固定示例目录不是标准脚手架或可标准续作的工程，也不证明整套 Skill 已安装。未在 macOS 或 Windows 上验证此脚本。后续编号章节描述可选 Remotion 路线，不是本离线示例的额外必做步骤。
+
 ## 1. 读取用户需求并给出待确认方案
 
 确认用户已安装并启用 `web-video-presentation`。以下是首页任务示例，读取后先给方案，不把示例文字当作已取得的确认：

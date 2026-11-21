@@ -86,7 +86,7 @@ description: 把文章、口播、产品流程、机制或参考动效制作成�
 |---|---|
 | 单元素、用户素材局部动画或已有素材的单镜头 | [LOCAL-ELEMENT-ROUTE](references/LOCAL-ELEMENT-ROUTE.md)：真实素材权利、本地处理与输出范围，不自动升级为整片任务 |
 | 无素材原创单画面或动态镜头 | [ORIGINAL-SCENE-ROUTE](references/ORIGINAL-SCENE-ROUTE.md)：按题材选择可用后端，程序化示例不代表全题材覆盖，模型另核能力与授权 |
-| 用户选择首页的 15 秒产品流程入门任务，或明确要求按首次视频指南执行 | [FIRST-VIDEO-AGENT](references/FIRST-VIDEO-AGENT.md)：按需读取；Agent 负责工程命令，保留实际授权与确认门，不将本例的时长、风格或静音设置强加给其他任务 |
+| 用户选择首页的 15 秒产品流程入门任务，或明确要求按首次视频指南执行 | [FIRST-VIDEO-AGENT](references/FIRST-VIDEO-AGENT.md)：按需读取；内置首片可选 Linux 离线复现；Agent 负责工程命令，保留实际授权与确认门，不将本例的时长、风格或静音设置强加给其他任务 |
 | 产品宣传片需要真实 UI 镜头编排或镜头配方定位 | [PRODUCT-PROMO](references/PRODUCT-PROMO.md)：按需镜头证据、UI 切片、可选节拍回测；复用既有分镜/时序/确认，不替换60风格 |
 | 用户选择同模板低成本批量填充 | [LOW-COST-BATCH](references/LOW-COST-BATCH.md)：先批准真实代表样片，再冻结指定本地设计文件与字段边界；只读输入预检不是自动 renderer 或画质保证，旧项目无需补合同 |
 | 用户选择低成本/弱模型执行，且已有固定片头模板批量场景 | [LOW-CONTEXT-EXECUTION](references/LOW-CONTEXT-EXECUTION.md)：与 LOW-COST-BATCH 配套，仅固定片头草稿路径；不强加给普通视频任务，不宣称任意视频已支持 |

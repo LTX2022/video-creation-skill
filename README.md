@@ -6,7 +6,7 @@ Extensible visual styles · Landscape and portrait · Voiceover and subtitles ·
 
 **English** · [简体中文](README-CN.md)
 
-[Download ZIP](https://github.com/LTX2022/video-creation-skill/archive/refs/heads/main.zip) · [Install](#download-and-install) · [Make your first video](#make-your-first-video-a-15-second-product-workflow) · [Full guide (Chinese)](web-video-presentation/README.zh-CN.md)
+[Download review ZIP](https://github.com/LTX2022/video-creation-skill/archive/refs/heads/reviewed-video-skill-20261113.zip) · [Install](#download-and-install) · [Make your first video](#make-your-first-video-a-15-second-product-workflow) · [Full guide (Chinese)](web-video-presentation/README.zh-CN.md)
 
 ## See it in action
 
@@ -81,9 +81,9 @@ You review a short playable sample of the actual motion before expansion. Prepar
 
 ## Download and install
 
-**[Download the complete public release as a ZIP](https://github.com/LTX2022/video-creation-skill/archive/refs/heads/main.zip)**, or use the green **Code → Download ZIP** button on this page. Extract it to get the `video-creation-skill-main` folder.
+**[Download this review candidate as a ZIP](https://github.com/LTX2022/video-creation-skill/archive/refs/heads/reviewed-video-skill-20261113.zip)**, or use the green **Code → Download ZIP** button on this page. Extract it into a new folder.
 
-The ZIP contains the complete public skill, source files for the 60 built-in styles, ten MP4 files (four earlier videos plus three new concepts in English and Chinese), and the optional `fix-agent` skill. Dependencies, model services, and older research tools for frame extraction, transcription, and distillation are not included. This is not an archive of the original historical bundle.
+The ZIP contains the complete public skill, source files for the 60 built-in styles, twelve MP4 files (ten existing videos and two localized offline workflow samples), and the optional `fix-agent` skill. Dependencies, model services, and older research tools for frame extraction, transcription, and distillation are not included. This is not an archive of the original historical bundle.
 
 ### Install in your agent
 
@@ -106,6 +106,10 @@ There is **no background watcher**, automatic chat scanning, model training, cor
 Found a bug or have a workflow suggestion? [Open the public Fix-Agent feedback form](https://github.com/LTX2022/video-creation-skill/issues/new?template=fix-agent-feedback.yml), or ask your agent to prepare a [minimal local draft](fix-agent/references/FEEDBACK.md) first. **You review it and explicitly submit it yourself.** Nothing is shared automatically; declining does not interrupt video creation. Media, logs, prompts, personal memory, and private paths are excluded by default. Allowlisting and scanners cannot guarantee anonymity, so check the final content and remember that GitHub issues and your GitHub identity are public. Missing evidence remains unknown.
 
 ## Make your first video: a 15-second product workflow
+
+[Watch or download the 15-second English sample](media/first-video-offline-r2/product-flow-15s.mp4) · An editable offline checklist example.
+
+[Reproduce the fixed 15-second sample offline](web-video-presentation/references/FIRST-VIDEO-AGENT.md#offline-reproduction) from the included English or Chinese Python sources, using preinstalled Linux tools. This route does not require Remotion, but it does not turn an arbitrary brief into a new video.
 
 Make your request **in a conversation with your chosen compatible agent**. Once the environment, permissions, and dependencies are ready, the agent can check the setup, create the project, write the code, and render the video. Your job is to approve the plan and review the results.
 
