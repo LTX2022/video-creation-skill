@@ -9,6 +9,8 @@
 4. 从 [精选镜头定位](PRODUCT-PROMO-RECIPES.md) 只读当前一项；选定卡时记录固定 commit、card、variant/style-key、demo 路径、preview 来源和实际查看结果。未取得动态预览则写“预览未核实”，不得声称同款/复刻完成。
 5. 实现仍由 narrations.ts 对应 timing/cue 或 stepTimings 驱动。配方只决定动作语法，不引入第二个总时钟。资产变更、文字变更、字幕和声音继续同步原契约。
 
+单独制作功能操作镜头时，可先跑 [Stillroom 离线样片](../examples/stillroom-focus/README.md)：先读界面，再定位控件，按下后才改变结果，最后留出停读。需要三卡的连续编排时，可跑 [Cutline 离线样片](../examples/cutline-three-cards/README.md)，核对薄边转正、移动中的停读和收束交接。两例均为原创概念动效，不是可交互产品或通用渲染器。
+
 ## 真实 UI 资产：整页与切片必须对得上
 在已有素材清单为所用截图补充：来源页面/用户文件、授权范围、采集日期、页面状态、viewport CSS宽高、devicePixelRatio、图片像素宽高、脱敏方式、SHA-256。
 切片记录父截图哈希及像素矩形 x/y/w/h；范围须在父图内。动画定位明确使用 CSS像素、图片像素或归一化坐标，并写换算，不能混用。留必要页面上下文，功能操作前后状态须真实对应。对相机推近后的最终文字尺寸及裁切边缘做像素检查。

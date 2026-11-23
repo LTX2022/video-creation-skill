@@ -14,6 +14,8 @@
 
 [查找动效研究与镜头验收方法](web-video-presentation/references/REFERENCE-STUDY.md) · [离线同帧核对修订](web-video-presentation/references/FRAME-REVIEW.md)。
 
+[Stillroom 聚焦交互试片](web-video-presentation/examples/stillroom-focus/README.md)：从源码离线渲染 6 秒可编辑样片。 · [Cutline 三卡动效](web-video-presentation/examples/cutline-three-cards/README.md)：可编辑卡片透视姿态和收束动画。
+
 **中文界面 · 三条各 12 秒 · 1080p30 · 静音**
 
 | 产品流程 | 数据解释 | 动态排版 |

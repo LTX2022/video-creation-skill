@@ -14,6 +14,8 @@ Extensible visual styles · Landscape and portrait · Voiceover and subtitles ·
 
 [Explore the motion reference index](web-video-presentation/references/REFERENCE-STUDY.md) · [Review a revision frame by frame](web-video-presentation/references/FRAME-REVIEW.md).
 
+[Stillroom interaction study](web-video-presentation/examples/stillroom-focus/README.md): render an editable six-second focus-mode UI shot offline. · [Cutline three-card choreography](web-video-presentation/examples/cutline-three-cards/README.md): edit the perspective poses and handoff.
+
 **English on-screen text · Three 12-second samples · 1080p30 · Silent**
 
 | Product workflow | Data explanation | Kinetic typography |

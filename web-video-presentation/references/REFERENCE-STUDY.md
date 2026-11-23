@@ -4,6 +4,8 @@ This is a routing index for design and review, not a list of bundled effects or 
 
 **Coverage / 覆盖：** [Video Shotcraft Gallery](https://vincentwei1021.github.io/video-shotcraft/) inventory revision **bdd94be16d60fa8f**: **124 cards, 150 variants/previews, 10 categories**. All 124 pinned written cards were read and condensed into [one practical review note per card](SHOT-REVIEW-NOTES.md); 5 official previews were decoded and inspected at selected frames (not continuously watched or audio-reviewed). The index does not imply that all 150 videos were reviewed. Historical work is recorded separately; counts may overlap and are not added together. No third-party footage, preview frames, source code, card prose or assets are bundled here.
 
+[Earlier references: pinned evidence and a reproducible seam counterexample / 旧参考复验](EARLIER-MOTION-REFERENCES.md).
+
 ## Pick the shot by the job / 先选表达任务，再选动作
 
 | Category / 类目 | Use when / 用法 | Evidence to check / 看什么 |
