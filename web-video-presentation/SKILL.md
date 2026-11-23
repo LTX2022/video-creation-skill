@@ -66,7 +66,7 @@ description: 把文章、口播、产品流程、机制或参考动效制作成�
 
 连续对象不因 narration step 换页；动作依次/并行/错峰/hold 绑定同一 timing。普通流程与品牌情绪无需伪造机械因果。模型复杂时读 [MECHANISM-DESIGN](references/MECHANISM-DESIGN.md)，选设计家族读 [MOTION-CASEBOOK](references/MOTION-CASEBOOK.md)，网页参考转视频读 [WEB-TO-VIDEO](references/WEB-TO-VIDEO.md)。不要把三份全当每章必读。
 
-多场景、连续变形或材质切换时，按需读 [MOTION-DIRECTION](references/MOTION-DIRECTION.md)，把既有镜头约束压缩到一份可检查契约，不重复重写分镜。先检验关键静帧，再补连续动作；只读结构检查不等于审美或用户验收。简单修改不强制新增契约。
+多场景、连续变形或材质切换时，按需读 [MOTION-DIRECTION](references/MOTION-DIRECTION.md)，把既有镜头约束压缩到一份可检查契约，不重复重写分镜。先检验关键静帧，再补连续动作；只读结构检查不等于审美或用户验收。简单修改不强制新增契约。已有离线成片需要核对局部修订时，可用 [同帧对照](references/FRAME-REVIEW.md) 输出对照图和采样保护区结果；它不代替连续播放。
 
 ## 3. 制作与确认
 

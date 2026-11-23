@@ -26,4 +26,4 @@
 
 ## 能力边界
 本分支集成的是方法和固定来源导航，加一个无依赖数值诊断。没有导入上游124卡/150镜头库、媒体、模板、工作台或剪映导出。样片的离线渲染证据不能升级成Remotion/browser、NLE、Windows/Mac或客户验收。
-来源及取舍：[UPSTREAM-SHOTCRAFT](UPSTREAM-SHOTCRAFT.md)。
+来源及取舍：[UPSTREAM-SHOTCRAFT](UPSTREAM-SHOTCRAFT.md)。 想按表达任务查找参考，读 [动效研究索引](REFERENCE-STUDY.md)；找到候选后才翻它的 [卡片验收要点](SHOT-REVIEW-NOTES.md)，不需要整份载入。设计和最终成片仍分开验。

@@ -10,6 +10,10 @@ Extensible visual styles · Landscape and portrait · Voiceover and subtitles ·
 
 ## See it in action
 
+**Start with the 15-second, editable product workflow.** [English MP4](media/first-video-offline-r2/product-flow-15s.mp4) · [中文 MP4](media/first-video-offline-r2/product-flow-15s-zh.mp4) · [Reproduce from source](web-video-presentation/references/FIRST-VIDEO-AGENT.md#offline-reproduction).
+
+[Explore the motion reference index](web-video-presentation/references/REFERENCE-STUDY.md) · [Review a revision frame by frame](web-video-presentation/references/FRAME-REVIEW.md).
+
 **English on-screen text · Three 12-second samples · 1080p30 · Silent**
 
 | Product workflow | Data explanation | Kinetic typography |

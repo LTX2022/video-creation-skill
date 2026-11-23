@@ -10,6 +10,10 @@
 
 ## 先看效果
 
+**先看可编辑的 15 秒产品流程。** [中文 MP4](media/first-video-offline-r2/product-flow-15s-zh.mp4) · [English MP4](media/first-video-offline-r2/product-flow-15s.mp4) · [从源码离线复现](web-video-presentation/references/FIRST-VIDEO-AGENT.md#offline-reproduction)。
+
+[查找动效研究与镜头验收方法](web-video-presentation/references/REFERENCE-STUDY.md) · [离线同帧核对修订](web-video-presentation/references/FRAME-REVIEW.md)。
+
 **中文界面 · 三条各 12 秒 · 1080p30 · 静音**
 
 | 产品流程 | 数据解释 | 动态排版 |
