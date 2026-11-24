@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "expected_delay_frames": 3,
+  "cases": [
+    {
+      "id": "correction-origin",
+      "baseline": {"path": "origin/before.mp4", "sha256": "<replace with sha256>"},
+      "candidate": {"path": "origin/after.mp4", "sha256": "<replace with sha256>"},
+      "width": 64, "height": 48, "fps": 24, "frames": 24,
+      "cues": [
+        {"roi": [16, 5, 6, 6], "channel": 0, "direction": 1, "threshold": 100},
+        {"roi": [30, 14, 6, 6], "channel": 0, "direction": 1, "threshold": 100},
+        {"roi": [46, 24, 6, 6], "channel": 0, "direction": 1, "threshold": 100}
+      ],
+      "protection": {"roi": [2, 2, 10, 10], "max_mae": 6}
+    },
+    {
+      "id": "second-case",
+      "baseline": {"path": "repeat/before.mp4", "sha256": "<replace with sha256>"},
+      "candidate": {"path": "repeat/after.mp4", "sha256": "<replace with sha256>"},
+      "width": 64, "height": 48, "fps": 24, "frames": 24,
+      "cues": [
+        {"roi": [16, 5, 6, 6], "channel": 0, "direction": 1, "threshold": 100},
+        {"roi": [30, 14, 6, 6], "channel": 0, "direction": 1, "threshold": 100},
+        {"roi": [46, 24, 6, 6], "channel": 0, "direction": 1, "threshold": 100}
+      ],
+      "protection": {"roi": [2, 2, 10, 10], "max_mae": 6}
+    }
+  ]
+}
