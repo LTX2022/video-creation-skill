@@ -120,3 +120,7 @@ python "$SKILL_ROOT/scripts/test-local-element.py" --artifacts=/absolute/path/ne
 仍要人工看当前产物在黑白/纹理和实际底片上的边缘、运动、时机、主体禁遮挡区；目标编辑器导入/Alpha解释/色彩管理未实际操作就标未验证。证据默认 `pending-human-review`，脚本不会伪造 accepted。与主项目合流时登记 asset-manifest、shot-manifest/overlaySafety 和输出 hash；不能用该独立回归报告跳过正式验收。
 
 已有契约与能力边界：[Alpha](ALPHA-COMPOSITING.md)、[实拍前景](LIVE-ACTION-OVERLAYS.md)。官方技术背景：[FFmpeg overlay](https://ffmpeg.org/ffmpeg-filters.html#overlay)、[ProRes 编码](https://ffmpeg.org/ffmpeg-codecs.html#ProRes)、[Remotion 透明输出](https://www.remotion.dev/docs/transparent-videos)。
+
+## 可选：已分层素材的简表起步
+
+已有对齐且带透明的图层、标定枢轴和明确底板要求时，可用[离线仪表盘简表示例](../examples/layered-dial-starter/)起步。它适合首次执行的简单动作：简表展开为同一离线合同，按明确的底板选择出片，不自动识别枢轴、拆层或恢复遮挡内容。

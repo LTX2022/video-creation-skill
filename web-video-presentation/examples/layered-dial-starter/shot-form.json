@@ -1,0 +1,66 @@
+{
+  "canvas": [
+    480,
+    270
+  ],
+  "fps": 24,
+  "frames": 72,
+  "localProcessingAuthorized": true,
+  "rights": "Original synthetic rehearsal asset, authorized for local animation",
+  "background": {
+    "mode": "both",
+    "plate": "assets/plate.mp4"
+  },
+  "layers": [
+    {
+      "id": "dial",
+      "png": "assets/dial.png",
+      "pivot": [
+        240,
+        148
+      ]
+    },
+    {
+      "id": "needle",
+      "png": "assets/needle.png",
+      "pivot": [
+        240,
+        148
+      ],
+      "rotationKeys": [
+        [
+          0,
+          0
+        ],
+        [
+          8,
+          0
+        ],
+        [
+          26,
+          -30
+        ],
+        [
+          37,
+          -30
+        ],
+        [
+          54,
+          0
+        ],
+        [
+          71,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "hub",
+      "png": "assets/hub.png",
+      "pivot": [
+        240,
+        148
+      ]
+    }
+  ]
+}
