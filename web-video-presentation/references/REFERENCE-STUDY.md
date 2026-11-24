@@ -2,7 +2,7 @@
 
 This is a routing index for design and review, not a list of bundled effects or a claim that every video was watched. 这是按镜头任务选资料、验自己成片的索引，不代表所有原片已看完、全部实现或第三方素材可用。
 
-**Coverage / 覆盖：** [Video Shotcraft Gallery](https://vincentwei1021.github.io/video-shotcraft/) inventory revision **bdd94be16d60fa8f**: **124 cards, 150 variants/previews, 10 categories**. All 124 pinned written cards were read and condensed into [one practical review note per card](SHOT-REVIEW-NOTES.md); 5 official previews were decoded and inspected at selected frames (not continuously watched or audio-reviewed). The index does not imply that all 150 videos were reviewed. Historical work is recorded separately; counts may overlap and are not added together. No third-party footage, preview frames, source code, card prose or assets are bundled here.
+**Coverage / 覆盖：** [Video Shotcraft Gallery](https://vincentwei1021.github.io/video-shotcraft/) inventory revision **bdd94be16d60fa8f**: **124 cards, 150 variants/previews, 10 categories**. All 124 pinned written cards were read and condensed into [one practical review note per card](SHOT-REVIEW-NOTES.md); 150/150 catalog previews were strictly decoded and inspected at selected frames; one related upstream clip, `element-body-moves`, was sampled separately and is outside this catalog count. Neither audio nor continuous playback was reviewed. Catalog URL uniqueness is not on its own an observation of a video. Historical work is recorded separately; counts may overlap and are not added together. No third-party footage, preview frames, source code, card prose or assets are bundled here.
 
 [Earlier references: pinned evidence and a reproducible seam counterexample / 旧参考复验](EARLIER-MOTION-REFERENCES.md).
 
@@ -30,6 +30,14 @@ This is a routing index for design and review, not a list of bundled effects or 
 
 For each adaptation, save one main intention, the object/state that carries it, the changes that must not happen, one expected failure case, the exact frames inspected, and a continuous playback result when available. 对每次适配记录镜头意图、主体状态、保护范围、一个应被检出的反例、实际验收帧及可用时的连续播放结论。Treat automated or sampled checks as evidence, not aesthetic approval. 不把抽帧或指标通过当美术验收。
 
+### Follow-up sampled previews / 新增抽帧复核
+
+- **Settle before the proof / 先稳镜头，再给证据。** In [tilt reveal](https://github.com/Vincentwei1021/video-shotcraft/blob/59f3e9b9e936ff2bce0e18446226d770a3f2f61f/references/shots/camera/overhead-camera-moves.md), the camera settles before much of the chart draws. Check readable chart axes at the settled pose rather than layering the first data change onto the tilt.
+- **Let the connector carry the edit / 让连接线承担交接。** In [line carry](https://github.com/Vincentwei1021/video-shotcraft/blob/59f3e9b9e936ff2bce0e18446226d770a3f2f61f/references/shots/transition/line-carry-transition.md), the line is visible while both subject layouts are briefly absent. Review continuity through that gap, not just matched first and last frames.
+- **Arrival before response / 先到达，后响应。** In [orb relay](https://github.com/Vincentwei1021/video-shotcraft/blob/59f3e9b9e936ff2bce0e18446226d770a3f2f61f/references/shots/effects/glow-flyline-moves.md), sampling shows the cue in transit before each receiving halo expands. Sample transit, contact and response as separate states; a simultaneous glow is not evidence of travel.
+
+[Umbra: original source-only exercise](../examples/umbra-optical-iris/) uses a witness mark, camera settle, aperture reveal and then a separate reflection payoff; no upstream artwork or footage.
+
 ## Earlier references / 既有参考回收
 
 | Evidence state / 状态 | Source families / 来源 | Keep or next check / 落点 |
@@ -46,7 +54,7 @@ For prior adoption and executable scope, see the repository's reference adoption
 
 ## Full card locator / 124 张卡片导航
 
-Legend: every listed card has an original written review note. **Frames / 抽帧** marks the five official previews also decoded and inspected at selected frames. Open the [official gallery](https://vincentwei1021.github.io/video-shotcraft/) for its variant list.
+Legend: every listed card has an original written review note. **Frames / 抽帧** marks the five official previews from the first pass; the follow-up is summarized above. Open the [official gallery](https://vincentwei1021.github.io/video-shotcraft/) for its variant list.
 
 ### Opening & Brand / 开场与品牌 (11)
 
