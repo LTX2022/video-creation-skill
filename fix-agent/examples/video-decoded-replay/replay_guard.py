@@ -20,8 +20,10 @@ def require(ok, why):
         raise ValueError(why)
 
 
-def shape(obj, keys):
-    require(type(obj) is dict and set(obj) == set(keys.split()), 'invalid manifest fields')
+def shape(obj, keys, optional=''):
+    required = set(keys.split())
+    require(type(obj) is dict and required <= obj.keys() <= required | set(optional.split()),
+            'invalid manifest fields')
 
 
 def number(v, lo, hi):
@@ -118,15 +120,26 @@ def roi(v, w, h, n, box, channel=None):
             for f in range(n)]
 
 
-def first_event(rows, sign, threshold):
-    # Mean signed shift relative to the actual first decoded frame, sustained for 3 frames.
-    b = sum(rows[0])
-    hits = [sign*(sum(p)-b) >= threshold*len(p) for p in rows]
-    return next((i for i in range(1,len(hits)-2) if all(hits[i:i+3])), None)
+def cue_runs(rows, sign, threshold):
+    # Contiguous signed shifts from the actual first decoded frame; discard runs <3 frames.
+    baseline = sum(rows[0])
+    start = None
+    runs = []
+    for i in range(1,len(rows)+1):
+        hit = i < len(rows) and sign*(sum(rows[i])-baseline) >= threshold*len(rows[i])
+        if hit and start is None:
+            start = i
+        elif not hit and start is not None:
+            if i-start >= 3:
+                runs.append((start,i-start))
+            start = None
+    return runs
 
 
 def case(root, desc, delta):
-    shape(desc, 'id baseline candidate width height fps frames cues protection')
+    shape(desc, 'id baseline candidate width height fps frames cues protection', 'preserve_cue_runs')
+    preserve_runs = desc.get('preserve_cue_runs',False)
+    require(type(preserve_runs) is bool, 'preserve_cue_runs must be a boolean')
     require(isinstance(desc['id'], str) and re.fullmatch(r'[a-z0-9_-]{1,32}',desc['id']), 'bad case id')
     w=number(desc['width'], 16, 512)
     h=number(desc['height'], 16, 512)
@@ -150,8 +163,9 @@ def case(root, desc, delta):
     boxes.append(protection['roi'])
     # Validate all rectangles in roi(), then keep them separate: a protection patch
     # can't accidentally be inside a deliberately moved cue.
-    e=[[first_event(roi(v,w,h,n,c['roi'],c['channel']),c['direction'],c['threshold'])
-        for c in cues] for v in (before,after)]
+    runs=[[cue_runs(roi(v,w,h,n,c['roi'],c['channel']),c['direction'],c['threshold'])
+           for c in cues] for v in (before,after)]
+    e=[[r[0][0] if r else None for r in clip] for clip in runs]
     b,a=(roi(v,w,h,n,protection['roi']) for v in (before,after))
     for i,(x,y,ww,hh) in enumerate(boxes):
         for xx,yy,vv,kk in boxes[:i]:
@@ -174,9 +188,15 @@ def case(root, desc, delta):
         regressions.append('cue_order_or_onset')
     if mae > limit:
         regressions.append('protected_roi')
-    return {'id':desc['id'], 'events':e, 'shifts':shifts, 'protected_max_mae':round(mae,6),
-            'exact_gain': shifts == [0,delta,delta], 'regressions':regressions,
-            'baseline_sha256':desc['baseline']['sha256'], 'candidate_sha256':desc['candidate']['sha256']}
+    result = {'id':desc['id'], 'events':e, 'shifts':shifts, 'protected_max_mae':round(mae,6),
+              'exact_gain': shifts == [0,delta,delta], 'regressions':regressions,
+              'baseline_sha256':desc['baseline']['sha256'], 'candidate_sha256':desc['candidate']['sha256']}
+    if preserve_runs:
+        lengths=[[[length for _,length in cue] for cue in clip] for clip in runs]
+        result['cue_run_lengths']=lengths
+        if lengths[0] != lengths[1]:
+            regressions.append('cue_run_lengths')
+    return result
 
 
 def evaluate(manifest, fd):
