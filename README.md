@@ -115,7 +115,7 @@ Found a bug or have a workflow suggestion? [Open the public Fix-Agent feedback f
 
 [Watch or download the 15-second English sample](media/first-video-offline-r2/product-flow-15s.mp4) · An editable offline checklist example.
 
-[Reproduce the fixed 15-second sample offline](web-video-presentation/references/FIRST-VIDEO-AGENT.md#offline-reproduction) from the included English or Chinese Python sources, using preinstalled Linux tools. This route does not require Remotion, but it does not turn an arbitrary brief into a new video.
+[Reproduce the fixed 15-second sample offline](web-video-presentation/references/FIRST-VIDEO-AGENT.md#offline-reproduction) from the included English or Chinese Python sources, using preinstalled Python, FFmpeg and fonts. The optional offline runner does not require Node or Remotion. The fixed sample was verified on Linux; native macOS and Windows rendering remain unverified.
 
 Make your request **in a conversation with your chosen compatible agent**. Once the environment, permissions, and dependencies are ready, the agent can check the setup, create the project, write the code, and render the video. Your job is to approve the plan and review the results.
 

@@ -1,5 +1,5 @@
 """Offline original 15-second product-flow demonstration. No browser or installs."""
-import argparse,json,subprocess,hashlib
+import argparse,json,os,subprocess,hashlib
 from pathlib import Path
 import numpy as np
 from PIL import Image,ImageDraw,ImageFont,ImageFilter
@@ -9,8 +9,6 @@ OUT=ROOT/'output';OUT.mkdir(exist_ok=True)
 W,H=1920,1080
 FONT='/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'
 BOLD='/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc'
-F={s:ImageFont.truetype(FONT,s,index=2) for s in [21,24,27,30,34,38,42,52,60]}
-B={s:ImageFont.truetype(BOLD,s,index=2) for s in [22,24,27,30,34,38,42,52,60]}
 INK='#eaf0fa';MUTED='#8e9db4';BLUE='#8dafff';GREEN='#7bdec3'
 
 def mix(a,b,u): return tuple(int(x+(y-x)*u) for x,y in zip(a,b))
@@ -98,12 +96,24 @@ def draw(frame):
     return im.convert('RGB')
 
 def main():
-    ap=argparse.ArgumentParser();ap.add_argument('--keyframes',action='store_true');args=ap.parse_args()
+    global F,B
+    ap=argparse.ArgumentParser()
+    ap.add_argument('--keyframes',action='store_true')
+    ap.add_argument('--font-regular',default=FONT)
+    ap.add_argument('--font-bold',default=BOLD)
+    ap.add_argument('--font-regular-index',type=int)
+    ap.add_argument('--font-bold-index',type=int)
+    args=ap.parse_args()
+    regular,bold=args.font_regular,args.font_bold
+    reg_index=args.font_regular_index if args.font_regular_index is not None else (2 if regular==FONT else 0)
+    bold_index=args.font_bold_index if args.font_bold_index is not None else (2 if bold==BOLD else 0)
+    F={s:ImageFont.truetype(regular,s,index=reg_index) for s in [21,24,27,30,34,38,42,52,60]}
+    B={s:ImageFont.truetype(bold,s,index=bold_index) for s in [22,24,27,30,34,38,42,52,60]}
     indices=[0,90,140,165,205,270,306,342,378,420,449]
     if args.keyframes:
         for f in indices:draw(f).save(OUT/f'frame-{f:03d}.png')
         return
-    cmd=['ffmpeg','-v','error','-y','-f','rawvideo','-pix_fmt','rgb24','-s','1920x1080','-r','30','-i','-',
+    cmd=[os.environ.get('FIRST_VIDEO_FFMPEG','ffmpeg'),'-v','error','-y','-f','rawvideo','-pix_fmt','rgb24','-s','1920x1080','-r','30','-i','-',
          '-an','-c:v','libx264','-preset','fast','-crf','19','-pix_fmt','yuv420p','-movflags','+faststart',str(OUT/'product-flow-15s-zh.mp4')]
     proc=subprocess.Popen(cmd,stdin=subprocess.PIPE)
     for f in range(FRAMES):proc.stdin.write(draw(f).tobytes())

@@ -113,7 +113,7 @@ ZIP 包含完整公开版 Skill、60 套内置风格源码、12 个 MP4（原有
 
 [观看或下载 15 秒中文样片](media/first-video-offline-r2/product-flow-15s-zh.mp4) · 这是一个可编辑的离线清单示例。
 
-使用随附的中英 Python 源码和预装 Linux 工具，[离线复现固定的 15 秒示例](web-video-presentation/references/FIRST-VIDEO-AGENT.md#offline-reproduction)。这条固定示例路线不需要 Remotion，但不会把任意文案自动生成新视频。
+使用随附的中英 Python 源码和已安装的 Python、FFmpeg、字体，[离线复现固定的 15 秒示例](web-video-presentation/references/FIRST-VIDEO-AGENT.md#offline-reproduction)。仅这条固定示例路线不需要 Node 或 Remotion，且不会把任意文案自动生成新视频。当前已在 Linux 验证，未在原生 macOS 或 Windows 验证。
 
 在你选择的 **兼容 Agent 的对话中**提出需求。环境、权限和依赖满足后，Agent 可以负责检查环境、创建工程、写代码和渲染；你负责确认方案与观看结果。
 
