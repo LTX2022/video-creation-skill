@@ -35,11 +35,11 @@ class FirstVideoOfflineTest(unittest.TestCase):
             (self.bin / name).symlink_to(Path(where).resolve())
         self.env = {**os.environ, 'PATH': str(self.bin)}
 
-    def run_cli(self, path, *flags, locale='en'):
+    def run_cli(self, path, *flags, locale='en', stream_encoding='utf-8', timeout=15):
         return subprocess.run(
             [sys.executable, '-B', str(RUNNER), '--locale', locale, '--project-root', str(path), *flags],
-            cwd=self.root, env=self.env, capture_output=True, text=True, encoding='utf-8',
-            timeout=15,
+            cwd=self.root, env={**self.env, 'PYTHONIOENCODING': f'{stream_encoding}:strict'},
+            capture_output=True, text=True, encoding=stream_encoding, timeout=timeout,
         )
 
     def expect_error(self, path, message, *flags):
@@ -57,6 +57,35 @@ class FirstVideoOfflineTest(unittest.TestCase):
         self.expect_error(child, 'not empty')
         self.assertEqual(sentinel.read_bytes(), b'keep unchanged')
         self.assertEqual(set(child.iterdir()), {sentinel})
+
+    def test_unencodable_project_path_does_not_fail_after_render(self):
+        encoders = subprocess.check_output([str(self.bin / 'ffmpeg'), '-hide_banner', '-encoders'],
+                                           text=True, encoding='utf-8', timeout=10)
+        if 'libx264 ' not in encoders:
+            self.skipTest('Requires an FFmpeg build with libx264')
+        project = self.root / 'selected 项目'
+        result = self.run_cli(project, stream_encoding='cp1252', timeout=90)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        prefix = 'Verified offline example (JSON path): '
+        line = result.stdout.splitlines()[-1]
+        self.assertTrue(line.startswith(prefix), line)
+        output = project / 'output' / 'product-flow-15s.mp4'
+        self.assertEqual(Path(json.loads(line[len(prefix):])), output)
+        self.assertGreater(output.stat().st_size, 0)
+        self.assertTrue((output.parent / 'verification.json').is_file())
+
+    def test_unencodable_rejection_does_not_modify_project(self):
+        project = self.root / 'selected 项目'
+        project.mkdir()
+        sentinel = project / '.sentinel'
+        sentinel.write_bytes(b'keep unchanged')
+        result = self.run_cli(project, stream_encoding='cp1252')
+        self.assertEqual(result.returncode, 1, result.stderr)
+        self.assertIn('not empty', result.stderr)
+        self.assertIn(r'\u9879\u76ee', result.stderr)
+        self.assertNotIn('Traceback', result.stderr)
+        self.assertEqual(set(project.iterdir()), {sentinel})
+        self.assertEqual(sentinel.read_bytes(), b'keep unchanged')
 
     def test_nested_and_skill_installation(self):
         existing = self.root / 'has-package'

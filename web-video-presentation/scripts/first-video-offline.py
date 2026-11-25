@@ -2,6 +2,7 @@
 """Start the bundled offline product-flow example in a selected empty directory."""
 import argparse
 import importlib.util
+import json
 import os
 from pathlib import Path, PureWindowsPath
 import re
@@ -140,6 +141,18 @@ def require_encoder(ffmpeg):
         raise ValueError(f'{message}; use a working FFmpeg build with libx264 support')
 
 
+def output_message(output, encoding):
+    path = str(output)
+    try:
+        path.encode(encoding or 'utf-8', errors='strict')
+    except UnicodeEncodeError:
+        # A redirected Windows stream may use an ANSI code page, not UTF-8.
+        # Use an explicitly labelled, reversible JSON string rather than
+        # changing stream settings or losing characters from the path.
+        return f'Verified offline example (JSON path): {json.dumps(path, ensure_ascii=True)}'
+    return f'Verified offline example: {path}'
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--locale', choices=ROUTES, required=True)
@@ -206,7 +219,7 @@ def main():
             raise ValueError('No verified video at the expected output path')
     except (OSError, ValueError, subprocess.CalledProcessError) as error:
         parser.exit(1, f'Offline example not verified: {error}\n')
-    print(f'Verified offline example: {output}')
+    print(output_message(output, sys.stdout.encoding))
     return 0
 
 
