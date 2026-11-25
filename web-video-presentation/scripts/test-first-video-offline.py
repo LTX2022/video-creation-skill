@@ -74,6 +74,66 @@ class FirstVideoOfflineTest(unittest.TestCase):
         self.assertGreater(output.stat().st_size, 0)
         self.assertTrue((output.parent / 'verification.json').is_file())
 
+    def test_post_start_failures_do_not_publish_unverified_media(self):
+        ffmpeg = (self.bin / 'ffmpeg').resolve()
+        ffprobe = (self.bin / 'ffprobe').resolve()
+        encoders = subprocess.check_output([str(ffmpeg), '-hide_banner', '-encoders'],
+                                           text=True, encoding='utf-8', timeout=10)
+        if 'libx264 ' not in encoders:
+            self.skipTest('Requires an FFmpeg build with libx264')
+        old_project = self.root / 'already verified 项目'
+        result = self.run_cli(old_project, timeout=90)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        out = old_project / 'output'
+        old_bytes = {p.name: p.read_bytes() for p in out.iterdir()}
+        self.assertIn('verification.json', old_bytes)
+
+        ffmpeg_failure = self.root / 'fail encode'
+        ffmpeg_failure.write_text(f'#!{sys.executable}\n'
+                                  'import sys\n'
+                                  'from pathlib import Path\n'
+                                  'assert len(sys.stdin.buffer.read(1920 * 1080 * 3)) == 1920 * 1080 * 3\n'
+                                  'Path(sys.argv[-1]).write_bytes(b"incomplete encoder output")\n'
+                                  'sys.exit(7)\n')
+        ffmpeg_failure.chmod(0o700)
+        rerender = subprocess.run([sys.executable, '-B', str(old_project / 'render.py')],
+                                  cwd=old_project,
+                                  env={**self.env, 'FIRST_VIDEO_FFMPEG': str(ffmpeg_failure)},
+                                  capture_output=True, timeout=90)
+        self.assertNotEqual(rerender.returncode, 0)
+        self.assertEqual({p.name: p.read_bytes() for p in out.iterdir()}, old_bytes)
+
+        sha = out / 'sha256.txt'
+        sha.write_text('stale sidecar')
+        reverify = subprocess.run([sys.executable, '-B', str(old_project / 'verify.py')],
+                                  cwd=old_project, env={**self.env, 'FIRST_VIDEO_FFMPEG': str(ffmpeg),
+                                                        'FIRST_VIDEO_FFPROBE': str(ffprobe)},
+                                  capture_output=True, timeout=90)
+        self.assertNotEqual(reverify.returncode, 0)
+        self.assertIn(b'sidecar does not match', reverify.stderr)
+        self.assertNotIn(b'technical-checks-pass', reverify.stdout)
+        self.assertEqual((out / 'verification.json').read_bytes(), old_bytes['verification.json'])
+
+        probe_marker = self.root / 'reached probe'
+        probe_entry = self.bin / 'ffprobe'
+        probe_entry.unlink()
+        probe_entry.write_text(f'#!{sys.executable}\n'
+                               'import sys\n'
+                               'from pathlib import Path\n'
+                               'assert Path(sys.argv[-1]).stat().st_size > 0\n'
+                               f'Path({str(probe_marker)!r}).touch()\n'
+                               'sys.exit(7)\n')
+        probe_entry.chmod(0o700)
+        fresh = self.root / 'fresh rejected 项目'
+        result = self.run_cli(fresh, timeout=90)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertTrue(probe_marker.is_file())
+        self.assertNotIn('Verified offline example', result.stdout)
+        self.assertNotIn('technical-checks-pass', result.stdout)
+        self.assertEqual(list((fresh / 'output').iterdir()), [])
+        self.assertEqual({p.name for p in fresh.iterdir()},
+                         {'state.py', 'render.py', 'verify.py', 'test_state.py', 'output'})
+
     def test_unencodable_rejection_does_not_modify_project(self):
         project = self.root / 'selected 项目'
         project.mkdir()

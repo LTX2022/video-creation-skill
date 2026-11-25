@@ -211,8 +211,7 @@ def main():
                 dest.write(data)
         for command in (('-m', 'unittest', 'test_state'),
                         ('render.py', '--font-regular', str(fonts[0]), '--font-bold', str(fonts[1]),
-                         '--font-regular-index', str(indices[0]), '--font-bold-index', str(indices[1])),
-                        ('verify.py',)):
+                         '--font-regular-index', str(indices[0]), '--font-bold-index', str(indices[1]))):
             subprocess.run([sys.executable, '-B', *command], cwd=project, env=env, check=True)
         output = project / 'output' / movie
         if not output.is_file() or output.stat().st_size == 0:

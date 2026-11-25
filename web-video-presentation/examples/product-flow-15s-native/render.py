@@ -1,11 +1,11 @@
 """Offline original 15-second product-flow demonstration. No browser or installs."""
-import argparse,json,os,subprocess,hashlib
+import argparse,json,os,subprocess,tempfile
 from pathlib import Path
 import numpy as np
 from PIL import Image,ImageDraw,ImageFont,ImageFilter
 from state import *
+from verify import MOVIE, OUT, RECEIPT, output_lock, publish, verify
 ROOT=Path(__file__).resolve().parent
-OUT=ROOT/'output';OUT.mkdir(exist_ok=True)
 W,H=1920,1080
 FONT='/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 BOLD='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
@@ -111,14 +111,24 @@ def main():
     B={s:ImageFont.truetype(bold,s,index=bold_index) for s in [22,24,27,30,34,38,42,52,60]}
     indices=[0,90,140,165,205,270,306,342,378,420,449]
     if args.keyframes:
+        OUT.mkdir(exist_ok=True)
         for f in indices:draw(f).save(OUT/f'frame-{f:03d}.png')
         return
-    cmd=[os.environ.get('FIRST_VIDEO_FFMPEG','ffmpeg'),'-v','error','-y','-f','rawvideo','-pix_fmt','rgb24','-s','1920x1080','-r','30','-i','-',
-         '-an','-c:v','libx264','-preset','fast','-crf','19','-pix_fmt','yuv420p','-movflags','+faststart',str(OUT/'product-flow-15s.mp4')]
-    proc=subprocess.Popen(cmd,stdin=subprocess.PIPE)
-    for f in range(FRAMES):proc.stdin.write(draw(f).tobytes())
-    proc.stdin.close();assert proc.wait()==0
-    (OUT/'states.json').write_text(json.dumps([state(f) for f in range(FRAMES)],indent=2))
-    (OUT/'sha256.txt').write_text(hashlib.sha256((OUT/'product-flow-15s.mp4').read_bytes()).hexdigest()+'  product-flow-15s.mp4\n')
+    with output_lock(), tempfile.TemporaryDirectory(prefix='.first-video-render-', dir=OUT) as directory:
+        staged = Path(directory)
+        cmd=[os.environ.get('FIRST_VIDEO_FFMPEG','ffmpeg'),'-v','error','-n','-f','rawvideo','-pix_fmt','rgb24','-s','1920x1080','-r','30','-i','-',
+             '-an','-c:v','libx264','-preset','fast','-crf','19','-pix_fmt','yuv420p','-movflags','+faststart',str(staged / MOVIE)]
+        with subprocess.Popen(cmd, stdin=subprocess.PIPE) as proc:
+            for f in range(FRAMES):
+                proc.stdin.write(draw(f).tobytes())
+            proc.stdin.close()
+            if proc.wait():
+                raise RuntimeError('FFmpeg exited unsuccessfully')
+        (staged / 'states.json').write_text(json.dumps([state(f) for f in range(FRAMES)], indent=2))
+        receipt = verify(staged)
+        (staged / 'sha256.txt').write_text(receipt['hashes'][f'output/{MOVIE}'] + f'  {MOVIE}\n')
+        (staged / RECEIPT).write_text(json.dumps(receipt, indent=2))
+        publish(staged)
+    print(json.dumps(receipt, indent=2))
 
 if __name__=='__main__':main()
