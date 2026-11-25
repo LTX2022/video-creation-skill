@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Exercise the offline launcher's refusal cases with no Node on PATH."""
 import importlib.util
+import json
 import os
 from pathlib import Path
 import shutil
@@ -117,6 +118,42 @@ class FirstVideoOfflineTest(unittest.TestCase):
         (elsewhere / 'project-state.json').symlink_to(elsewhere / 'missing.json')
         self.expect_error(elsewhere / 'child', 'not nested')
         self.assertFalse((elsewhere / 'child').exists())
+
+    def test_encoder_refusal_is_pre_write(self):
+        tool = self.bin / 'ffmpeg'
+        tool.unlink()
+        trace = self.root / 'ffmpeg.jsonl'
+        tool.write_text(f'#!{sys.executable}\n'
+                        'import json, os, sys\n'
+                        'from pathlib import Path\n'
+                        f'with Path({str(trace)!r}).open("a", encoding="utf-8") as f:\n'
+                        '    args = [sys.argv[1:], len(sys.stdin.buffer.read()), os.getenv("FFREPORT")]\n'
+                        '    f.write(json.dumps(args) + "\\n")\n'
+                        'sys.stderr.write("private ffmpeg diagnostic")\n'
+                        'sys.exit(1)\n', encoding='utf-8')
+        tool.chmod(0o700)
+        self.env['FFREPORT'] = 'file=unexpected-report.log'
+        absent = self.root / 'must not create 项目'
+        empty = self.root / 'already empty 项目'
+        empty.mkdir()
+        for project in (absent, empty):
+            with self.subTest(project=project):
+                result = self.run_cli(project)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn('preflight frame with libx264', result.stderr)
+                self.assertNotIn('private ffmpeg diagnostic', result.stderr)
+                self.assertNotIn('Verified offline example:', result.stdout)
+                self.assertFalse(absent.exists())
+                self.assertEqual(list(empty.iterdir()), [])
+        probes = [json.loads(line) for line in trace.read_text(encoding='utf-8').splitlines()]
+        self.assertEqual(len(probes), 2)
+        for command, nbytes, ffreport in probes:
+            for flag, expected in (('-c:v', 'libx264'), ('-pix_fmt', 'yuv420p'),
+                                   ('-i', 'pipe:0'), ('-frames:v', '1')):
+                self.assertEqual(command[command.index(flag) + 1], expected)
+            self.assertEqual(command[-3:], ['-f', 'null', '-'])
+            self.assertEqual(nbytes, 16 * 16 * 3)
+            self.assertIsNone(ffreport)
 
     def test_partial_missing_corrupt_font_is_pre_write(self):
         project = self.root / 'do-not-create'

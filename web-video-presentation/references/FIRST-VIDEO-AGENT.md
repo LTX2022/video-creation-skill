@@ -18,7 +18,7 @@
 
 目标：**输入任务 → 三步计划 → 完成标记**，1920×1080、30 fps、15 秒、静音，交付 MP4 和获准交付的源码。使用原创图形，不需要 TTS 或付费素材服务。
 
-这是一条操作路线，不是“已替你跑通”的保证。下面每个阶段都在自己的项目中执行；文档命令经脚本核对，真实浏览器渲染与原生系统端到端尚未验收。
+请在自己的项目中按路线执行并核对结果。固定离线示例的实测范围见下一节；后续可选 Remotion 路线的真实浏览器端到端渲染不在这些离线验证之内。
 
 ## Offline reproduction
 
@@ -34,7 +34,7 @@ Use `zh` instead of `en` for Chinese. For custom layouts of installed fonts, or 
 
     & $PythonExe (Join-Path $Skill 'scripts/first-video-offline.py') --locale en --project-root $Project --font-regular $RegularFont --font-bold $BoldFont
 
-Use verified local absolute paths for each variable, not UNC/device paths. Choose the matching locale and fonts with the required glyphs. For explicit font collections the default is face 0; use `--font-regular-index` and `--font-bold-index` as needed (the bundled Linux Chinese defaults select Noto Sans CJK SC, face 2). Alternate fonts or tool builds can change glyph layout or encoded bytes; only claim visual agreement after inspecting the actual frames. Use the same font flags if rerendering directly with the copied `render.py`. The runner checks tools and the destination, copies only four source files, runs state tests, renders the video and verifies the output. Deliver the actual reported MP4 and the corresponding authorized source. Stop on missing tools, a nonempty destination or failed verification; do not present an existing video as a newly generated result. Inspect a failed attempt before choosing another empty directory.
+Use verified local absolute paths for each variable, not UNC/device paths. Choose the matching locale and fonts with the required glyphs. For explicit font collections the default is face 0; use `--font-regular-index` and `--font-bold-index` as needed (the bundled Linux Chinese defaults select Noto Sans CJK SC, face 2). Alternate fonts or tool builds can change glyph layout or encoded bytes; only claim visual agreement after inspecting the actual frames. Use the same font flags if rerendering directly with the copied `render.py`. The runner checks tools and the destination, then tries encoding one synthetic frame with the selected FFmpeg and libx264 without writing a file. If that check fails, it leaves the destination untouched. After preflight it copies only four source files, runs state tests, renders and verifies the video. Deliver the actual reported MP4 and the corresponding authorized source. Stop on missing tools, a nonempty destination or failed verification; do not present an existing video as a newly generated result. Inspect a failed attempt before choosing another empty directory.
 
 This fixed-example directory is not the standard scaffold or a resumable project, and does not prove the whole skill is installed. Both language variants were verified on Linux and on one Apple silicon Mac (macOS 15.8.1, arm64). The Mac run used installed Command Line Tools Python 3.9.6, NumPy 2.0.2, Pillow 10.4.0 and FFmpeg/ffprobe 9.0.2. It used Arial regular/bold for English and the Songti SC collection (Light face 3, Bold face 1) for Simplified Chinese. Both 15-second clips decoded at 1080p30, 450 frames, with no audio track. This does not establish visual or byte parity with Linux. Native Windows remains unverified; the PowerShell command is a starting point, not a support claim. The remaining numbered sections describe the optional Remotion workflow, not additional steps required by this offline sample.
 
@@ -46,7 +46,7 @@ This fixed-example directory is not the standard scaffold or a resumable project
 
     python3 "$SKILL/scripts/first-video-offline.py" --locale zh --project-root "$PROJECT"
 
-非 Linux 环境或字体安装在其他位置时，明确传入 `--font-regular` 和 `--font-bold` 两个本地文件绝对路径；PowerShell 的写法见上方。选用覆盖相应语言的字体。明确指定字体集时默认使用编号 0 的字面；需要时用 `--font-regular-index` 和 `--font-bold-index`（Linux 的中文默认字体选择 Noto Sans CJK SC，编号 2）。更换字体或编码工具版本可能改变字形布局或输出字节，应以实际成片检验；直接用复制的 `render.py` 重渲时也传入相同字体参数。脚本检查工具及目标目录，仅复制四份源码，再执行状态测试、实际渲染及成片验证。交付脚本实际报告的 MP4 和获准交付的对应源码。若工具缺失、目标非空或校验失败，停在报错处，不把已有视频冒充新生成结果；先检查失败记录，再选择其他空目录重跑。
+非 Linux 环境或字体安装在其他位置时，明确传入 `--font-regular` 和 `--font-bold` 两个本地文件绝对路径；PowerShell 的写法见上方。选用覆盖相应语言的字体。明确指定字体集时默认使用编号 0 的字面；需要时用 `--font-regular-index` 和 `--font-bold-index`（Linux 的中文默认字体选择 Noto Sans CJK SC，编号 2）。更换字体或编码工具版本可能改变字形布局或输出字节，应以实际成片检验；直接用复制的 `render.py` 重渲时也传入相同字体参数。脚本检查工具及目标目录，仅复制四份源码，再执行状态测试、实际渲染及成片验证。交付脚本实际报告的 MP4 和获准交付的对应源码。若工具缺失或目标非空，停在报错处。首次写入前，脚本会用实际选中的 FFmpeg 和 libx264 编码一帧合成画面且不保存文件；此检查失败时不会写入目标目录。若后续渲染或校验失败，不把已有视频冒充新结果；先检查失败记录，再选择其他空目录重跑。
 
 此固定示例目录不是标准脚手架或可标准续作的工程，也不证明整套 Skill 已安装。中英两版已在 Linux 和一台 Apple 芯片 Mac（macOS 15.8.1，arm64）上验证。Mac 使用已安装的命令行工具 Python 3.9.6、NumPy 2.0.2、Pillow 10.4.0 和 FFmpeg/ffprobe 9.0.2；英文使用 Arial 常规和粗体，简体中文使用宋体简字体集（Light 编号 3、Bold 编号 1）。两版均通过解码核验：1080p30、450 帧、15 秒、无音轨；不代表和 Linux 的字形布局或输出字节一致。原生 Windows 尚未验证。后续编号章节描述可选 Remotion 路线，不是本离线示例的额外必做步骤。
 

@@ -77,6 +77,28 @@ def project_target(root):
     return target
 
 
+def require_encoder(ffmpeg):
+    # Exercise RGB conversion and x264 initialization, not just encoder listing.
+    # The null muxer discards output so preflight never creates a project file.
+    command = [ffmpeg, '-hide_banner', '-loglevel', 'error', '-nostdin',
+               '-f', 'rawvideo', '-pixel_format', 'rgb24', '-video_size', '16x16',
+               '-framerate', '30', '-i', 'pipe:0', '-frames:v', '1', '-an',
+               '-c:v', 'libx264', '-preset', 'fast', '-crf', '19',
+               '-pix_fmt', 'yuv420p', '-f', 'null', '-']
+    message = 'Selected FFmpeg could not encode the preflight frame with libx264'
+    # FFREPORT can create a file even without a destination or -report.
+    probe_env = {key: value for key, value in os.environ.items() if key.upper() != 'FFREPORT'}
+    try:
+        result = subprocess.run(command, input=bytes(16 * 16 * 3), stdout=subprocess.DEVNULL,
+                                stderr=subprocess.DEVNULL, timeout=10, env=probe_env)
+    except subprocess.TimeoutExpired:
+        raise ValueError(f'{message} (10-second timeout)') from None
+    except OSError:
+        raise ValueError(f'{message} (could not start FFmpeg)') from None
+    if result.returncode != 0:
+        raise ValueError(f'{message}; use a working FFmpeg build with libx264 support')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--locale', choices=ROUTES, required=True)
@@ -121,14 +143,15 @@ def main():
                 raise ValueError(f'Pillow cannot load installed font {font} face {index}: {error}') from error
         project = project_target(args.project_root)
         inputs = {name: (src / name).read_bytes() for name in FILES}
+        env = {**os.environ, **{f'FIRST_VIDEO_{name.upper()}': str(Path(path).resolve(strict=True))
+                                for name, path in tools.items()}}
+        require_encoder(env['FIRST_VIDEO_FFMPEG'])
         if lstat(project) is None:
             project.mkdir()
         project = project_target(str(project))
         for name, data in inputs.items():
             with (project / name).open('xb') as dest:
                 dest.write(data)
-        env = {**os.environ, **{f'FIRST_VIDEO_{name.upper()}': str(Path(path).resolve())
-                                for name, path in tools.items()}}
         for command in (('-m', 'unittest', 'test_state'),
                         ('render.py', '--font-regular', str(fonts[0]), '--font-bold', str(fonts[1]),
                          '--font-regular-index', str(indices[0]), '--font-bold-index', str(indices[1])),
