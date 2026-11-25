@@ -78,6 +78,12 @@
 
 **迁移**：自有实拍的动作成为布局节拍，局部窗口顺动作方向重排，图形路径连接动作和结论。多窗口改为同一画布的合成层。需重拍、音乐许可或主体 matte 时明确成本与缺项，不复制原片。
 
+### 11. GreenSock GSAP Skills｜把交互编排转成定帧镜头
+
+已读 [Timeline](https://github.com/greensock/gsap-skills/blob/aed9cfd3277740755f6bfc1155c7aa645403b760/skills/gsap-timeline/SKILL.md)、[Core](https://github.com/greensock/gsap-skills/blob/aed9cfd3277740755f6bfc1155c7aa645403b760/skills/gsap-core/SKILL.md)、[ScrollTrigger](https://github.com/greensock/gsap-skills/blob/aed9cfd3277740755f6bfc1155c7aa645403b760/skills/gsap-scrolltrigger/SKILL.md) 和 [Performance](https://github.com/greensock/gsap-skills/blob/aed9cfd3277740755f6bfc1155c7aa645403b760/skills/gsap-performance/SKILL.md)。分镜先为动作命名，再明确写出开始、结束、对上一条开始或结束的偏移；状态变化用一组带间隔的轨道表达，不给每个元素个别补延时。不要把滚动位置、带时间追赶的 scrub 或实时布局读数当成导出时间；要用交互的节奏，先设计固定进度曲线，随后令每帧独立取值。
+
+原创离线样例 [Aperture 04](../examples/aperture-fixed-timeline/README.md) 用三段实物风格的校准动作展示读数与开孔重叠、读数分段错峰、镜头画面后段归于稳定。验收同时看解码画面和状态，乱序抽帧应重现，故意串行或颠倒顺序应不通过。与上方 Image Sequence Scrub 案例不同，这里迁移的是编排方法，而不是用进度选取已有图片序列。没有运行 GSAP，也不引入浏览器依赖或第三方素材。
+
 ## 机制/算法的补充参照
 
 - [Bartosz Ciechanowski：Mechanical Watch](https://ciechanow.ski/mechanical-watch/)：约束→简单方案不足→新增部件解决→回到整体；长篇机制不硬塞入短片。
