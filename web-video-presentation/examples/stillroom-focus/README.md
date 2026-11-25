@@ -8,6 +8,12 @@ Requirements: Python 3/Pillow, FFmpeg with libx264, system URW Nimbus Sans regul
 
     python3 -B render.py stillroom-focus-final.mp4
 
+Choose a new output filename. Existing files, directories and symlinks (including dangling links) are never replaced. Output is staged and then published without overwrite, even if the final filename is claimed while rendering. The destination filesystem must support hard links; if publication fails, use a new filename on a supported filesystem.
+
+To run the local overwrite regression tests (including a real six-second render and a test of another process claiming the output name):
+
+    python3 -B -m unittest -v test_render.py
+
 One scene: H.264 / yuv420p, 1280 × 720, 30 fps, 180 frames / 6 seconds. All frame numbers are zero-based.
 
 | Event | Frames | Evidence |

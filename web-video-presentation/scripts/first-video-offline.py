@@ -22,6 +22,47 @@ ROUTES = {
            '/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc'),
 }
 
+# Chinese copy actually displayed by each font role in the frozen sample.
+# Whitespace is deliberately ignored; update this inventory if its copy changes.
+CHINESE_FONT_TEXT = (
+    '可编辑的产品流程示范 输入 计划 逐项确认 筹备一次产品发布 已完成 '
+    '先找对要沟通的人 让所需素材准备就绪 选定产品发布的时刻 '
+    '一个任务，拆成三个明确步骤。 从明确需求开始，把计划一步步完成。',
+    '从任务，到计划，再到完成。 发布任务 工作区 任务 这次要完成什么？ '
+    '生成计划 你的三步计划 明确目标受众 准备发布素材 安排发布时间 已完成 清单已完成。',
+)
+
+
+def require_sample_glyphs(face, text, label, path, index):
+    # Pillow loads Latin-only fonts successfully and paints .notdef for missing
+    # Chinese characters. Probe the selected face at a representative regular/bold UI
+    # size; comparing complete masks avoids misclassifying lookalike shapes.
+    def signature(character):
+        mask = face.getmask(character, mode='L')
+        return mask.size, bytes(mask)
+
+    # These are noncharacters; ordinary font faces paint the same .notdef mask.
+    # A mismatch cannot establish the missing-glyph mask. Stop rather than
+    # silently accepting boxed text or assuming which sentinel is unassigned.
+    fallback, second = map(signature, ('\uffff', '\U0010ffff'))
+    if fallback != second:
+        raise ValueError(f'{label} Chinese sample coverage could not be verified: '
+                         f'missing-glyph probes disagree; choose another Chinese-capable font '
+                         f'or face index ({path}, face {index})')
+    missing = []
+    for char in dict.fromkeys(text):
+        if char.isspace():
+            continue
+        actual = signature(char)
+        if actual == fallback or not any(actual[1]):
+            missing.append(char)
+    if missing:
+        preview = ', '.join(f'{char} U+{ord(char):04X}' for char in missing[:5])
+        if len(missing) > 5:
+            preview += f' (and {len(missing) - 5} more)'
+        raise ValueError(f'{label} cannot display required Chinese sample glyphs: {preview}; '
+                         f'choose a Chinese-capable font or its correct face index ({path}, face {index})')
+
 
 def lstat(path):
     try:
@@ -133,14 +174,17 @@ def main():
         fonts = [local_path(value, label) for value, label in ((args.font_regular or regular, 'regular font'),
                                                              (args.font_bold or bold, 'bold font'))]
         from PIL import ImageFont
-        for font, index in zip(fonts, indices):
+        for role, (font, index) in enumerate(zip(fonts, indices)):
+            label = ('Regular font', 'Bold font')[role]
             if not font.is_file():
                 raise ValueError(f'Installed font file not found: {font}')
             # Fail before writing the project if Pillow cannot load the selected files.
             try:
-                ImageFont.truetype(str(font), 22, index=index)
+                face = ImageFont.truetype(str(font), (21, 22)[role], index=index)
             except OSError as error:
                 raise ValueError(f'Pillow cannot load installed font {font} face {index}: {error}') from error
+            if args.locale == 'zh':
+                require_sample_glyphs(face, CHINESE_FONT_TEXT[role], label, font, index)
         project = project_target(args.project_root)
         inputs = {name: (src / name).read_bytes() for name in FILES}
         env = {**os.environ, **{f'FIRST_VIDEO_{name.upper()}': str(Path(path).resolve(strict=True))

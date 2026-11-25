@@ -35,9 +35,9 @@ class FirstVideoOfflineTest(unittest.TestCase):
             (self.bin / name).symlink_to(Path(where).resolve())
         self.env = {**os.environ, 'PATH': str(self.bin)}
 
-    def run_cli(self, path, *flags):
+    def run_cli(self, path, *flags, locale='en'):
         return subprocess.run(
-            [sys.executable, '-B', str(RUNNER), '--locale', 'en', '--project-root', str(path), *flags],
+            [sys.executable, '-B', str(RUNNER), '--locale', locale, '--project-root', str(path), *flags],
             cwd=self.root, env=self.env, capture_output=True, text=True, encoding='utf-8',
             timeout=15,
         )
@@ -170,6 +170,52 @@ class FirstVideoOfflineTest(unittest.TestCase):
                           '--font-regular', str(LINUX_FONTS / 'DejaVuSans.ttf'),
                           '--font-bold', bold, '--font-bold-index', '99')
         self.assertFalse(project.exists())
+
+    def test_chinese_glyph_refusal_is_pre_write_for_both_fonts(self):
+        noto = Path('/usr/share/fonts/opentype/noto')
+        latin_regular = LINUX_FONTS / 'DejaVuSans.ttf'
+        latin_bold = LINUX_FONTS / 'DejaVuSans-Bold.ttf'
+        regular = noto / 'NotoSansCJK-Regular.ttc'
+        bold = noto / 'NotoSansCJK-Bold.ttc'
+        if not regular.is_file() or not bold.is_file():
+            self.skipTest('Requires installed Noto Sans CJK collection faces')
+        for font_regular, font_bold, irregular_role in (
+            (latin_regular, bold, 'Regular font'),
+            (regular, latin_bold, 'Bold font'),
+        ):
+            for exists in (False, True):
+                with self.subTest(role=irregular_role, exists=exists):
+                    path = self.root / f'缺字 项目 {irregular_role} {exists}'
+                    if exists:
+                        path.mkdir()
+                    result = self.run_cli(path, '--font-regular', str(font_regular),
+                                          '--font-bold', str(font_bold),
+                                          '--font-regular-index', '2' if font_regular == regular else '0',
+                                          '--font-bold-index', '2' if font_bold == bold else '0',
+                                          locale='zh')
+                    self.assertEqual(result.returncode, 1, result.stderr)
+                    self.assertIn(f'{irregular_role} cannot display required Chinese sample glyphs', result.stderr)
+                    self.assertIn('U+', result.stderr)
+                    self.assertNotIn('Verified offline example:', result.stdout)
+                    if exists:
+                        self.assertEqual(list(path.iterdir()), [])
+                    else:
+                        self.assertFalse(path.exists())
+
+    def test_ambiguous_missing_glyph_probe_refused(self):
+        spec = importlib.util.spec_from_file_location('first_video_offline', RUNNER)
+        runner = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(runner)
+
+        class Mask(bytes):
+            size = (1, 1)
+
+        class Face:
+            def getmask(self, char, *, mode):
+                return Mask(b'\x80' if char == '\U0010ffff' else b'\xff')
+
+        with self.assertRaisesRegex(ValueError, 'coverage could not be verified.*probes disagree'):
+            runner.require_sample_glyphs(Face(), '中', 'Regular font', Path('test.ttf'), 0)
 
 
 if __name__ == '__main__':

@@ -2,7 +2,7 @@
 """Render Stillroom, an original 6-second concept UI film; no input media."""
 from pathlib import Path
 from functools import lru_cache
-import argparse, math, os, shutil, subprocess
+import argparse, math, os, shutil, subprocess, tempfile
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 W,H,FPS,N=1280,720,30,180
@@ -123,13 +123,27 @@ def render_frame(f):
 
 def main():
     p=argparse.ArgumentParser(); p.add_argument('output',type=Path); args=p.parse_args()
+    if os.path.lexists(args.output): p.error(f'Output already exists: {args.output}')
     if not shutil.which('ffmpeg'): p.error('FFmpeg with libx264 is required')
     for name,path in [('STILLROOM_REGULAR_FONT',REGULAR),('STILLROOM_BOLD_FONT',BOLD),('STILLROOM_MONO_FONT',MONO)]:
         if not Path(path).is_file(): p.error(f'{name} not found: {path}')
     args.output.parent.mkdir(parents=True,exist_ok=True)
-    with subprocess.Popen(['ffmpeg','-v','error','-nostdin','-xerror','-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),'-i','-','-an','-c:v','libx264','-threads','4','-preset','medium','-crf','17','-pix_fmt','yuv420p','-movflags','+faststart',str(args.output)],stdin=subprocess.PIPE) as proc:
-        for f in range(N): proc.stdin.write(render_frame(f).tobytes())
-        proc.stdin.close()
-        if proc.wait(): raise RuntimeError('FFmpeg exited unsuccessfully')
+    # Stage beside the target, then claim its name atomically without replacing it.
+    # FFmpeg's -n protects the staged name; link() closes the final-name race.
+    with tempfile.TemporaryDirectory(prefix='.stillroom-', dir=args.output.parent) as tmp:
+        staged = Path(tmp) / args.output.name
+        try:
+            with subprocess.Popen(['ffmpeg','-v','error','-nostdin','-xerror','-n','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),'-i','-','-an','-c:v','libx264','-threads','4','-preset','medium','-crf','17','-pix_fmt','yuv420p','-movflags','+faststart',str(staged)],stdin=subprocess.PIPE) as proc:
+                for f in range(N): proc.stdin.write(render_frame(f).tobytes())
+                proc.stdin.close()
+                if proc.wait(): raise RuntimeError('FFmpeg exited unsuccessfully')
+        except (BrokenPipeError, RuntimeError) as exc:
+            p.exit(1, f'FFmpeg failed; no output was published: {exc}\n')
+        try:
+            os.link(staged, args.output)
+        except FileExistsError:
+            p.exit(1, f'Output already exists: {args.output}\n')
+        except OSError as exc:
+            p.exit(1, f'Could not publish safely (the destination must support hard links): {exc}\n')
 
 if __name__=='__main__': main()
