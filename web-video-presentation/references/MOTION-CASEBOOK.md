@@ -84,6 +84,12 @@
 
 原创离线样例 [Aperture 04](../examples/aperture-fixed-timeline/README.md) 用三段实物风格的校准动作展示读数与开孔重叠、读数分段错峰、镜头画面后段归于稳定。验收同时看解码画面和状态，乱序抽帧应重现，故意串行或颠倒顺序应不通过。与上方 Image Sequence Scrub 案例不同，这里迁移的是编排方法，而不是用进度选取已有图片序列。没有运行 GSAP，也不引入浏览器依赖或第三方素材。
 
+### 12. GSAP Flip｜换位置，不换身份
+
+[官方 Flip API](https://gsap.com/docs/v3/Plugins/Flip/#how-do-i-flip-between-two-different-elements) 用相同的 `data-flip-id` 跨布局状态匹配对象；[固定版本的实现](https://github.com/greensock/GSAP/blob/5e6c35ff8eedea12d4f229129def635277d8b0f2/src/Flip.js) 可用于核对。转成离线成片时，片头片尾先按稳定 ID 对齐内容，再给对象设计从起点到目标槽位的移动曲线。给交叉移动留一条清晰的避让轨道，用编号、徽记形状以及图案保持辨认，不仅靠槽位、色彩或剪切证明连续。
+
+原创离线例子 [Edit Desk](../examples/edit-desk-review-handoff/README.md) 将三张画稿重排到审核顺序。用实际解码的反例专门暴露「坐标都对，卡片错了」：把目标槽位的枚举颠倒并错误按索引配对，起落布局占用保持不变，末态身份验收必须拒绝。它与 Cutline 的三张卡片运镜相互补充，不替换 Cutline、不搭载或运行 GSAP，也不声称重现 DOM 的缩放或嵌套行为。
+
 ## 机制/算法的补充参照
 
 - [Bartosz Ciechanowski：Mechanical Watch](https://ciechanow.ski/mechanical-watch/)：约束→简单方案不足→新增部件解决→回到整体；长篇机制不硬塞入短片。
