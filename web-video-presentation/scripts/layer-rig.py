@@ -1,5 +1,6 @@
 """Object-independent, authored 2D cutout transforms. No recognition or segmentation."""
 import math
+from fractions import Fraction
 
 CHANNELS = {'x': 0., 'y': 0., 'rotationDeg': 0., 'scaleX': 1., 'scaleY': 1., 'opacity': 1.}
 
@@ -32,7 +33,9 @@ def validate(spec, size, start, end, fps, fields, number, require):
         require(channel in CHANNELS and channel not in channels, 'one oscillation per known channel')
         channels.add(channel)
         number(wave.get('amplitude'), 'amplitude', 0)
-        number(wave.get('hz'), 'hz', .001, float(fps)/2)
+        hz = number(wave.get('hz'), 'hz', .001)
+        require(2 * Fraction(str(hz)) < fps,
+                'oscillation hz must be below half the output fps; lower hz or raise fps')
         number(wave.get('phaseDeg'), 'phaseDeg')
         # Bound the entire cycle, not just the sampled frames; no invisible collapse or implicit clamps.
         if channel.startswith('scale'):

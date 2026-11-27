@@ -85,6 +85,16 @@ def main():
         bad=copy.deepcopy(c); bad['element']['keyframes'][0]['x']=-1; cases.append((bad,'clips'))
         bad=copy.deepcopy(c); bad['fps']=30; cases.append((bad,'fps differs'))
         bad=copy.deepcopy(c); bad['outputMode']='alpha'; cases.append((bad,'must not include plate'))
+        # A valid encode must not silently turn a flap into a still image or a slower cycle.
+        for fps, hz in [(20,20),(24,20),(24,12),('47/2',11.75)]:
+            bad=copy.deepcopy(layered)
+            bad.pop('plate'); bad.update(outputMode='alpha',fps=fps)
+            bad['element']['flapHz']=hz
+            try: execute(bad)
+            except ValueError as exc:
+                if 'flapHz must be below half the output fps' not in str(exc): raise
+            else: raise AssertionError('undersampled legacy flap accepted')
+            if (root/f'out-{counter}').exists(): raise AssertionError('rejected flap left output')
         for bad, message in cases:
             try: execute(bad)
             except ValueError as exc: assert message in str(exc),(message,str(exc))

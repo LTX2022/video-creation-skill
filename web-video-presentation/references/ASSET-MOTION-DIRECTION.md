@@ -55,7 +55,7 @@
 - 每层 keyframes 完整填写所有通道、严格递增，覆盖 element 的 startFrame 到 endFrameExclusive−1，使用相同的输出绝对帧。逐段线性插值。每帧独立求值，不依赖播放顺序。
 - 先以 pivot 为中心做 scaleX/scaleY、逆时针 rotationDeg，再 x/y 平移；逐层合成后才应用 element 总轨迹。独立层不继承父关节姿态，需要连接运动时由作者写出协调的关键帧。
 - 可对 x、y、rotationDeg、scaleX、scaleY、opacity 各加至多一个正弦周期：`amplitude * sin(2π * hz * (frame−startFrame)/fps + phaseDeg)`。phaseDeg 按度换算，hz 为每秒周期。相位可产生交替或错峰，但不是自动步态求解器。
-- scaleX/Y 范围 .05..20，不支持负缩放/穿零翻面；opacity 0..1。周期振幅连同基础关键帧需全程保持这些范围，不能暗中截断。hz 不超过 fps/2 是最低采样限制，不保证快速运动看来自然；高速翅膀在低 fps 下应另外设计视觉近似并实际审片，不伪称捕捉真实振翅频率。
+- scaleX/Y 范围 .05..20，不支持负缩放/穿零翻面；opacity 0..1。周期振幅连同基础关键帧需全程保持这些范围，不能暗中截断。hz 必须严格低于输出 fps/2；等于一半时，某些相位会逐帧采到相同姿势。通过这个限制不保证快速运动看来自然；高速翅膀在低 fps 下应另外设计视觉近似并实际审片，不伪称捕捉真实振翅频率。
 - `allowLayerClipping: false` 检查旋转/缩放后的源 Alpha 包围盒四角是否超注册画布，保守拒绝可能裁切；可给所有源层补同样透明边距。它与总 element 的输出边界 allowClipping 独立。允许裁切必须符合意图。此实现不自动增大注册画布。
 
 ```bash

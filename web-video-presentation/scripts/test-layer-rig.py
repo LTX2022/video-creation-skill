@@ -63,6 +63,16 @@ def main():
         path=root/'request.json';path.write_text(json.dumps(c));report=m.render(path,root/'out')
         assert report['sourceUnchanged'] and 'authored' in report['rigModel']
         assert set(report['outputs'])=={'element-alpha.mov','shot-composite.mp4'}
+        for fps, hz in [(24,12),('47/2',11.75)]:
+            narrow=copy.deepcopy(c); narrow.pop('plate'); narrow.update(outputMode='alpha',fps=fps)
+            narrow['element']['layers'][0]['oscillations'][0]['hz']=hz
+            path=root/'sample-bound.json'; path.write_text(json.dumps(narrow))
+            rejected=root/'sample-bound-out'
+            try:m.render(path,rejected)
+            except ValueError as exc:
+                if 'oscillation hz must be below half the output fps' not in str(exc): raise
+            else:raise AssertionError('undersampled rig wave accepted')
+            if rejected.exists():raise AssertionError('rejected wave left output')
         raw=subprocess.check_output(['ffmpeg','-v','error','-i',str(root/'out'/'element-alpha.mov'),'-vf','alphaextract','-pix_fmt','gray','-f','rawvideo','-'])
         frame=lambda f:raw[f*128*96:(f+1)*128*96]
         assert not any(frame(0)) and not any(frame(23)) and any(frame(2)) and frame(2)!=frame(5)

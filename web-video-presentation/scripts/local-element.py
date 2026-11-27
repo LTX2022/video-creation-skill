@@ -99,7 +99,9 @@ def render(contract_path, output):
             require('asset' not in e, 'layered-wings uses layers, not flat asset')
             specs = e.get('layers', [])
             require(len(specs) == 3 and {x.get('role') for x in specs} == {'left-wing', 'right-wing', 'body'}, 'layered-wings requires real body, left-wing and right-wing assets')
-            number(e.get('flapHz'), 'flapHz', .1, 20)
+            flap_hz = number(e.get('flapHz'), 'flapHz', .1, 20)
+            require(2 * Fraction(str(flap_hz)) < fps,
+                    'flapHz must be below half the output fps; lower flapHz or raise fps')
             number(e.get('minWingScale'), 'minWingScale', .05, 1)
         size = None
         layer_hashes = set()
