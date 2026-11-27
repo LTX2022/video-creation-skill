@@ -132,6 +132,37 @@ def main():
         try: m.render(path,out)
         except ValueError as exc: assert 'never overwrite' in str(exc)
         else: raise AssertionError('overwrite accepted')
+        # A plate whose first video starts 0.5 s after the sound is not aligned.
+        # Reject before creating outputs; muting it is an explicit separate choice.
+        offset_plate = root/'offset-plate.mp4'
+        subprocess.run(['ffmpeg','-v','error','-itsoffset','0.5','-f','lavfi','-i','color=c=blue:s=128x96:r=24:d=2',
+                        '-f','lavfi','-i','sine=frequency=440:duration=3','-map','0:v','-map','1:a',
+                        '-c:v','libx264','-pix_fmt','yuv420p','-c:a','aac',str(offset_plate)],check=True)
+        delayed=copy.deepcopy(shot)
+        delayed['plate'].update(path=offset_plate.name,trimStartSec=0.75,audio='keep')
+        try: execute(delayed)
+        except ValueError as exc: assert 'audio and video start times differ' in str(exc), str(exc)
+        else: raise AssertionError('offset audio accepted')
+        assert not (root/f'out-{counter}').exists()
+        delayed['plate']['audio']='mute'
+        assert execute(delayed)['outputs']['shot-composite.mp4']['audioStreams']==0
+        # Technical validation must fail on decoder errors, not just short output.
+        def fail_strict_decode(args):
+            if args[-3:]==['-f','null','-']:
+                assert '-xerror' in args, args
+                raise subprocess.CalledProcessError(1,args)
+            return original_run(args)
+        m.run=fail_strict_decode
+        try:
+            try: execute(shot)
+            except subprocess.CalledProcessError: pass
+            else: raise AssertionError('decoder verifier refusal ignored')
+        finally: m.run=original_run
+        refused=root/f'out-{counter}'
+        assert (refused/'render-failed.json').is_file()
+        assert (refused/'shot-composite.mp4.incomplete').is_file()
+        assert not (refused/'shot-composite.mp4').exists()
+        assert not (refused/'render-evidence.json').exists()
         # A 300x320 coded ellipse is circular at SAR 16:15, but not at 1:1.
         # Inspect decoded pixels, not just the output canvas or SAR metadata.
         sizes = {'contain': (576, 240), 'cover': (768, 320)}

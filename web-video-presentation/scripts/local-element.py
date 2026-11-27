@@ -155,6 +155,20 @@ def render(contract_path, output):
         info = probe(pp)
         video = next((s for s in info['streams'] if s['codec_type'] == 'video'), None)
         require(video is not None, 'plate has no video')
+        if plate['audio'] == 'keep':
+            audio = next((s for s in info['streams'] if s['codec_type'] == 'audio'), None)
+            if audio is not None:
+                # The video filter rebases its first frame; optional audio mapping
+                # does not share that rebase. Refuse a known or unknown offset,
+                # rather than silently delay, truncate or desynchronize the audio.
+                try:
+                    v_start, a_start = (Fraction(s['start_time']) for s in (video, audio))
+                    v_tick, a_tick = (Fraction(s['time_base']) for s in (video, audio))
+                except (KeyError, TypeError, ValueError, ZeroDivisionError) as exc:
+                    raise ValueError('plate audio start cannot be verified; use an aligned plate or explicitly mute') from exc
+                tolerance = max(v_tick, a_tick) + Fraction(1, 1_000_000)
+                require(abs(v_start - a_start) <= tolerance,
+                        'plate audio and video start times differ; use an aligned plate or explicitly mute')
         duration = float(video.get('duration', info['format'].get('duration', 0)))
         require(duration + .00001 >= trim + n / float(fps), 'plate too short; no silent freeze/loop')
         require(plate['fpsPolicy'] == 'resample' or Fraction(video['avg_frame_rate']) == fps, 'plate fps differs; explicit resample required')
@@ -239,7 +253,7 @@ def render(contract_path, output):
             require(int(v['nb_read_frames']) == n, f'output frame mismatch: {p}')
             require(Fraction(v['avg_frame_rate']) == fps, 'output fps mismatch')
             require((v['width'],v['height']) == (w,h), 'output dimensions mismatch')
-            run(['ffmpeg','-v','error','-i',str(p),'-f','null','-'])
+            run(['ffmpeg','-v','error','-xerror','-i',str(p),'-f','null','-'])
             results[p.name] = {'sha256':digest(p), 'frames':n, 'fps':str(fps), 'width':v['width'], 'height':v['height'], 'codec':v['codec_name'], 'pixelFormat':v['pix_fmt'], 'audioStreams':sum(s['codec_type']=='audio' for s in info['streams'])}
         if 'element-alpha.mov' in results:
             sample_frames = sorted({0, start, (start+end-1)//2, end-1, n-1, visible_frames[0], visible_frames[len(visible_frames)//2], visible_frames[-1]})
