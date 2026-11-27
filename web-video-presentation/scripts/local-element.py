@@ -212,7 +212,15 @@ def render(contract_path, output):
                 ff(['-framerate',str(fps),'-i',str(td/'%06d.png'),'-frames:v',str(n),'-an','-c:v','prores_ks','-profile:v','4','-pix_fmt','yuva444p10le',str(alpha)])
             if pp:
                 fit = 'decrease' if plate['fit']=='contain' else 'increase'
-                geom = f'scale={w}:{h}:force_original_aspect_ratio={fit},' + (f'pad={w}:{h}:(ow-iw)/2:(oh-ih)/2' if fit=='decrease' else f'crop={w}:{h}')
+                # Fit the decoded display ratio before declaring square output pixels.
+                # The scale expression `dar` defaults missing SAR to 1 and avoids
+                # requiring the newer scale reset_sar option.
+                limit = 'min' if fit == 'decrease' else 'max'
+                # Keep integer products before division for square-pixel inputs
+                # so exact half-pixel ties round like the previous fit filter.
+                fw = f'max(1,{limit}({w},floor(if(eq(sar,1),{h}*iw/ih,{h}*dar)+0.5)))'
+                fh = f'max(1,{limit}({h},floor(if(eq(sar,1),{w}*ih/iw,{w}/dar)+0.5)))'
+                geom = f"scale=w='{fw}':h='{fh}'," + (f'pad={w}:{h}:(ow-iw)/2:(oh-ih)/2' if fit=='decrease' else f'crop={w}:{h}')
                 args = ['-protocol_whitelist','file','-format_whitelist','mov,mp4,m4a,3gp,3g2,mj2,matroska,webm,avi,mpeg,mpegts,ogg,flv,gif','-ss',str(trim),'-i',str(pp)]
                 graph = f'[0:v]setpts=PTS-STARTPTS,fps={fps},{geom},setsar=1[plate]'
                 if e:

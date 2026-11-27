@@ -132,6 +132,37 @@ def main():
         try: m.render(path,out)
         except ValueError as exc: assert 'never overwrite' in str(exc)
         else: raise AssertionError('overwrite accepted')
+        # A 300x320 coded ellipse is circular at SAR 16:15, but not at 1:1.
+        # Inspect decoded pixels, not just the output canvas or SAR metadata.
+        sizes = {'contain': (576, 240), 'cover': (768, 320)}
+        pattern = Image.new('RGB', (720, 576), (45, 100, 150))
+        ImageDraw.Draw(pattern).ellipse((210, 128, 509, 447), fill='white')
+        pattern.save(root/'sar-plate.png')
+        plate_path = root/'sar-plate.mp4'
+        subprocess.run(['ffmpeg','-v','error','-loop','1','-framerate','24','-i',str(root/'sar-plate.png'),
+                        '-vf','setsar=16/15','-frames:v','12','-c:v','libx264','-pix_fmt','yuv420p',str(plate_path)],check=True)
+        assert m.probe(plate_path)['streams'][0]['sample_aspect_ratio']=='16:15'
+        for fit, (expected_width, expected_circle) in sizes.items():
+            anamorphic=copy.deepcopy(shot)
+            anamorphic.update(width=768,height=432,frames=8)
+            anamorphic['plate'].update(path=plate_path.name,trimStartSec=0,fit=fit)
+            execute(anamorphic)
+            movie=root/f'out-{counter}'/'shot-composite.mp4'
+            assert m.probe(movie)['streams'][0]['sample_aspect_ratio']=='1:1'
+            rgb=subprocess.check_output(['ffmpeg','-v','error','-xerror','-i',str(movie),
+                                         '-pix_fmt','rgb24','-f','rawvideo','-'])
+            frame_bytes=768*432*3
+            assert len(rgb)==8*frame_bytes
+            for pixels in (rgb[:frame_bytes],rgb[-frame_bytes:]):
+                frame=Image.frombytes('RGB',(768,432),pixels)
+                area=frame.getchannel('B').point(lambda x: 255 if x>75 else 0).getbbox()
+                circle=frame.getchannel('R').point(lambda x: 255 if x>200 else 0).getbbox()
+                left=(768-expected_width)//2
+                assert area == (left,0,768-left,432), (fit,area)
+                assert circle is not None
+                cw,ch=circle[2]-circle[0],circle[3]-circle[1]
+                assert abs(cw-expected_circle)<=2 and abs(ch-expected_circle)<=2, (fit,circle)
+        print('PASS: anamorphic plate contain/cover preserves display geometry on decoded video.')
         print('PASS: all three output modes; rigid + real layered-wing encode; single-shot trim; alpha pixels/handles/movement; composite pixels/audio; rational fps; source hashes; negative contracts + duplicate layers/symlink/offscreen + caught-failure quarantine. Synthetic fixtures only, not browser or visual approval.')
 
 if __name__=='__main__': main()
