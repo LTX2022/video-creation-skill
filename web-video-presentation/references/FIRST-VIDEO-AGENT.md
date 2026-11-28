@@ -24,7 +24,7 @@
 
 ### English: reproduce the fixed sample
 
-This route reproduces the included English or Chinese source example without Remotion: original procedural graphics, 1920×1080, 30 fps, 15 seconds, silent. No newly rendered sample is bundled. It does not turn an arbitrary brief into a new video; new content still requires design, implementation and review.
+This route reproduces the included English or Chinese source example without Remotion: original procedural graphics, 1920×1080, 30 fps, 15 seconds, silent. The localized example folders contain source only; the full repository ZIP includes both rendered previews under `media/first-video-offline-r2/`. It does not turn an arbitrary brief into a new video; new content still requires design, implementation and review.
 
 Confirm an authorized, independent empty project directory (or a new directory under an existing parent) first. The runner uses preinstalled Python 3 with NumPy and Pillow, FFmpeg with libx264, ffprobe, and installed fonts; it does not need Node, npm, Bash, or a browser. No dependencies or fonts are bundled or downloaded. Linux defaults are DejaVu Sans regular/bold for English and Noto Sans CJK SC regular/bold for Chinese. The agent resolves `SKILL` and `PROJECT` to verified absolute paths, then runs:
 
@@ -44,7 +44,7 @@ This fixed-example directory is not the standard scaffold or a resumable project
 
 ### 中文：复现固定示例
 
-仅要从随包源码复现固定的中英首片时可用此路线，不启动 Remotion。示例是原创程序化界面，规格为 1080p30、15 秒、静音。此处不附新增示例成片。按自己的文案出片仍需设计和实现，不能把复现入门示例当作完成新项目。
+仅要从随包源码复现固定的中英首片时可用此路线，不启动 Remotion。示例是原创程序化界面，规格为 1080p30、15 秒、静音。两个本地化示例目录只含源码；完整仓库 ZIP 在 `media/first-video-offline-r2/` 下附中英两版预览 MP4。按自己的文案出片仍需设计和实现，不能把复现入门示例当作完成新项目。
 
 先核实用户授权的独立空目录，或已存在父目录下的新目录。需要已安装的 Python 3、NumPy、Pillow、支持 libx264 的 FFmpeg、ffprobe 和字体；不需要 Node、npm、Bash 或浏览器。Linux 默认使用系统 DejaVu Sans（英文）或 Noto Sans CJK SC（中文）的常规和粗体。包内不附字体，脚本不联网或安装依赖。由 Agent 核实 `SKILL`、`PROJECT` 两个绝对路径，再执行；示例中的 zh 可替换为 en。
 

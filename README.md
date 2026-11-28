@@ -173,11 +173,11 @@ I approve this version. Verify the duration, resolution, and frame rate,
 then prepare the MP4 and a source delivery package.
 First list the source files, assets, and exclusions. Do not include secrets or assets
 we do not have permission to share.
-Give me the actual video and ZIP paths, explain how to keep editing,
-and state what has not been verified.
+Give me the video, ZIP, and existing project paths. Say whether the ZIP is a
+source snapshot or a project you verified will reopen from a fresh folder.
 ```
 
-The agent will tell you where it saved the video and source package, and explain how to keep editing. The delivery package does not include every original asset by default, and packaging it does not mean it has been tested on another computer.
+Keep editing in the existing project folder. The opt-in [source snapshot](web-video-presentation/references/SOURCE-HANDOFF.md) contains only selected files; the ZIP alone cannot use standard project resume. If you need a project that reopens on another computer, request a complete handoff and a reopen check from a fresh folder.
 
 For a narrated video, add your script, voice, and subtitle requirements. For transparent animation or live-action overlays, describe the assets and output you need. The agent should follow the appropriate workflow rather than reuse this silent example unchanged. [Output and delivery guide](web-video-presentation/DELIVERY.md)
 
@@ -190,6 +190,6 @@ media/                   Videos, previews, and source notes (the cache example i
 docs/                    Validation records
 ```
 
-**Validation completed:** four earlier videos and six new bilingual sample files have been produced and checked within the scopes described above. Code tests, a standalone scaffold typecheck and bundle, and full video decoding checks have also been completed. See [sources and reproduction notes](media/README.md) for how each sample was made. Compatibility with particular agents, operating systems, and output workflows is limited to what their test records establish. [Detailed validation record](docs/VALIDATION.md)
+**Validation completed:** four earlier videos and six new bilingual sample files have been produced and checked within the scopes described above. Code tests, a standalone scaffold typecheck and bundle, and full video decoding checks have also been completed. See [earlier sample sources](media/README.md) and the [fixed offline workflow](web-video-presentation/references/FIRST-VIDEO-AGENT.md#offline-reproduction). Compatibility with particular agents, operating systems, and output workflows is limited to what their test records establish. [Detailed validation record](docs/VALIDATION.md)
 
 See [LICENSE-SCOPE](LICENSE-SCOPE.md) for the MIT license's coverage of original code. Videos, fonts, and third-party content are not automatically covered by MIT. [Third-party notices](THIRD_PARTY_NOTICES.md)

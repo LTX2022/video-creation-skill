@@ -61,6 +61,25 @@ try {
     const f = fixture([...MINIMUM_SOURCE_INPUTS]); const report = run(f);
     assert.equal(report.status, 'minimum-inputs-present-not-verified'); assert.equal(report.minimumInputs.met, true);
     assert.deepEqual(report.minimumInputs.missing, []); assert.equal(report.kind, 'selected-source-snapshot');
+    assert.deepEqual(report.workspaceResume, {
+      standard: 'not-supported-by-snapshot', workspaceMarkerIncluded: false, projectStateIncluded: false,
+    });
+  });
+  test('explicitly selecting project state does not permit workspace marker or standard resume', () => {
+    const f = fixture([...MINIMUM_SOURCE_INPUTS, 'project-state.json']);
+    const marker = '.web-video-presentation-project.json';
+    put(f.root, 'project-state.json', { projectSkill: 'web-video-presentation', schema: 1 });
+    put(f.root, marker, { skill: 'web-video-presentation', schema: 1 });
+    const report = run(f);
+    assert.equal(report.minimumInputs.met, true);
+    assert.deepEqual(report.workspaceResume, {
+      standard: 'not-supported-by-snapshot', workspaceMarkerIncluded: false, projectStateIncluded: true,
+    });
+    assert.equal(existsSync(join(f.stage, 'source-project', marker)), false);
+    const g = fixture(); put(g.root, marker, { skill: 'web-video-presentation', schema: 1 });
+    g.manifest.files.push(marker); g.save();
+    assert.throws(() => run(g), /excluded source path/);
+    assert.deepEqual(readdirSync(g.stage), []);
   });
   test('package scripts referenced but unselected remain explicit partial scope', () => {
     const f = fixture([...MINIMUM_SOURCE_INPUTS]);

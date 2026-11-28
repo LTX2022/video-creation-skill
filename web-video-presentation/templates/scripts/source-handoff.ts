@@ -27,6 +27,7 @@ export interface SourceHandoffReport {
   authorization: { request: string; authenticated: false };
   files: Array<{ path: string; packagePath: string; sha256: string; bytes: number }>;
   minimumInputs: { required: string[]; missing: string[]; met: boolean };
+  workspaceResume: { standard: 'not-supported-by-snapshot'; workspaceMarkerIncluded: false; projectStateIncluded: boolean };
   referencedScriptsNotSelected: string[];
   declaredExclusions: Array<{ path: string; reason: string }>;
   limitations: string[];
@@ -164,10 +165,16 @@ export function stageSourceHandoff(root: string, stageDir: string, options: { in
     authorization: { request, authenticated: false },
     files: snapshots.map(file => ({ path: file.path, packagePath: `source-project/${file.path}`, sha256: file.sha256, bytes: file.bytes.length })),
     minimumInputs: { required: [...MINIMUM_SOURCE_INPUTS], missing, met: missing.length === 0 },
+    workspaceResume: {
+      standard: 'not-supported-by-snapshot',
+      workspaceMarkerIncluded: false,
+      projectStateIncluded: paths.includes('project-state.json'),
+    },
     referencedScriptsNotSelected, declaredExclusions,
     limitations: [
       'Only explicitly selected files are included. Unselected project files were not enumerated; there is no complete-project or dependency-closure claim.',
       'Minimum inputs are a presence check only. Imports, npm scripts, assets, fonts, runtime versions, browsers, system tools, and remote resources may be missing or require separate installation/authorization.',
+      'A selected snapshot excludes the workspace identity marker and cannot be reopened with standard workspace resume, even when project-state.json is selected. Edit the existing project or separately verify a complete handoff.',
       'Offline execution, rendering, and reproducibility of this source snapshot are not verified. No install, script execution, network access, or credential read was performed by this helper.',
       'Authorization text records the task scope; it does not authenticate permission or prove copyright/license clearance. The sender must review selected file contents for secrets and redistribution rights.',
       'Hidden paths, secrets/keys, dependency caches, build/output folders, links, nonregular files, absolute paths and traversal are prohibited. Name checks are not a comprehensive secret detector.',
